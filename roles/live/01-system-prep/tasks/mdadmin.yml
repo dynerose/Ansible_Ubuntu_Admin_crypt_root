@@ -1,0 +1,55 @@
+---
+- name: Ubuntu | Installing mdadm
+  apt:
+    name: "mdadm"
+    state: "present"
+  when: _mdadm | default(false) | bool == true
+  tags:
+    - zfs_partition
+
+- name: mdadm | Get arrays status
+  shell: "mdadm --detail --scan"
+  register: "existed_arrays_raw"
+  changed_when: false
+  when: _mdadm | default(false) | bool == true
+  tags:
+    - zfs_partition
+
+- name: mdadm | Get existed_arrays
+  set_fact:
+    existed_arrays: '{{ existed_arrays | default([]) + [ item.split(" ")[1] ] }}'
+  with_items: "{{existed_arrays_raw.stdout_lines}}"
+  when: _mdadm | default(false) | bool == true
+  tags:
+    - zfs_partition
+
+- name: mdadm | Get arrays to create
+  set_fact:
+    arrays_to_create: '{{ arrays_to_create + [ item | combine({"name": "/dev/md/" + item.number | string})] }}'
+  when: 
+    - item.state | lower == "present"
+    - ("/dev/md/" + item.number | string) not in existed_arrays
+    - _mdadm | default(false) | bool == true
+  with_items: "{{mdadm_arrays}}"
+  tags:
+    - zfs_partition
+
+- name: mdadm | Get arrays to delete
+  set_fact:
+    arrays_to_delete: '{{ arrays_to_delete + [ item | combine({"name": "/dev/md/" + item.number | string})] }}'
+  when: 
+    - item.state | lower == "absent"
+    - ("/dev/md/" + item.number| string) in existed_arrays
+    - _mdadm | default(false) | bool == true
+  with_items: "{{mdadm_arrays}}"
+  tags:
+    - zfs_partition
+
+- name: mdadm | Delete arrays
+  include_tasks: delete_arrays.yml
+  with_items: "{{arrays_to_delete}}"
+  loop_control:
+    loop_var: array_item
+  when: _mdadm | default(false) | bool == true
+  tags:
+    - zfs_partition

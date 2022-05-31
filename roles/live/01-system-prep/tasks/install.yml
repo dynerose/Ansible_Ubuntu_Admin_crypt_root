@@ -1,13 +1,24 @@
 ---
 # description: Install our required packages for zfs-partition
 
-- name: Installing Packages
+#- name: Installing Packages
+#  apt:
+#    update_cache: yes
+#    name:
+#      - zfsutils-linux
+#      - gdisk
+#      - debootstrap
+#      - dosfstools
+#    state: present
+#  tags:
+#    - zfs_install
+
+- name: Install global dependencies
   apt:
+    name: "{{ dependencies.global }}"
+    state: latest
     update_cache: yes
-    name:
-      - zfsutils-linux
-      - gdisk
-      - debootstrap
-    state: present
+    cache_valid_time: "{{ debian_cache_valid_time|default(7200) }}"
   tags:
     - zfs_install
+

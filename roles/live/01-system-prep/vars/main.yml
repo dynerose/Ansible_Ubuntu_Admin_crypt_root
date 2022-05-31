@@ -1,2 +1,89 @@
 ---
 # vars file for 01-system-prep
+
+dependencies:
+  global:
+    - parted
+    - gdisk
+    - debootstrap
+    - xfsprogs
+    - e2fsprogs
+    - uuid-runtime
+    - dosfstools
+#    - zstd
+  encryption:
+    - cryptsetup
+  lvm:
+    - lvm2
+    - thin-provisioning-tools
+  md:
+    - mdadm
+  zfs:
+    - "linux-headers-{{ ansible_kernel }}"
+    - linux-headers-generic
+    - zfsutils-linux
+    - zfs-initramfs
+#    - zfs-dkms  # for ZFS 0.8 using the PPA
+
+mirrors:
+  focal: http://archive.ubuntu.com/ubuntu
+  groovy: http://archive.ubuntu.com/ubuntu
+  hirsute: http://archive.ubuntu.com/ubuntu
+  impish: http://archive.ubuntu.com/ubuntu
+  jammy: http://archive.ubuntu.com/ubuntu
+
+supported_releases: ['focal', 'groovy', 'hirsute', 'impish', 'jammy']
+
+_target_devices: []
+_devices_used: []
+_mountlist: []
+_encrypt_targets: {}
+
+required_packages:
+  all:
+#    - grub-pc
+    - openssh-server
+    - locales
+    - python3-minimal
+    - sudo
+  focal:
+    - linux-image-generic
+  groovy:
+    - linux-image-generic
+  hirsute:
+    - linux-image-generic
+  impish:
+    - linux-image-generic
+  jammy:
+    - linux-image-generic
+
+_apt_env:
+  DEBIAN_FRONTEND: noninteractive
+
+dbstrp_mkfs_defaults:
+  ext4: -b 4096
+  xfs: -m crc=1 -s size=4096 -b size=4096
+
+# Name of the label parameter for the mkfs program, defaults to -L
+dbstrp_label_option:
+  vfat: "-n"
+
+dbstrp_label_max:
+  ext4: 16
+  vfat: 11
+  xfs: 12
+
+_dbstrp_user:
+  name: debootstrap
+  uid: 65533
+  group: ~
+  gid: ~
+  password: '*'
+  non_unique: yes
+
+pseudo_fs:
+  - proc
+  - sys
+  - dev
+  - dev/pts
+  - run/udev

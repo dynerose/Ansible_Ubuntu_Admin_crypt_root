@@ -1,6 +1,6 @@
 _boot_pool: bpool
-_root_pool: rpool
-_data_pool: datastore
+_root_pool: root_pool
+_data_pool: datastore_pool
 
 my_unique_id:
 #my_unique_id: 2l7nlh

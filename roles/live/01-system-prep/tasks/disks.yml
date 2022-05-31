@@ -1,0 +1,79 @@
+---
+- debug: msg='11111111 Disks {{ _system_disks }}'
+#- debug: msg='ZFS pool {{ item.name }} has {{ item.free }} free space out of {{ item.size }}.'
+#  with_items: '{{ ansible_zfs_pools }}'
+
+## Various checks for system disks, multiple checks for different layout types
+- name: If system disk is undefined then check boot partition and assume this is a system disk
+  shell: "fdisk -l | grep '^/dev/[a-z]*[0-9]' | grep '*' | awk '{print $1}' | sed 's/[0-9]//g'"
+  register: system_disk_check
+  when: not _system_disks
+  changed_when: false
+
+- name: Set system disk based on above check
+  set_fact:
+    system_disks: "{{ _system_disks }} + [ '{{ item | basename }}' ]"
+  with_items: "{{ system_disk_check.stdout_lines | default([]) }}"
+
+- name: If system disk is undefined then check boot partition and assume this is a system disk
+  shell: "fdisk -l | grep boot | awk '{print $1}' | sed 's/[0-9]//g'"
+  register: system_disk_check
+  when: not _system_disks
+  changed_when: false
+
+- name: Set system disk based on above check
+  set_fact:
+    system_disks: "{{ _system_disks }} + [ '{{ item | basename }}' ]"
+  with_items: "{{ system_disk_check.stdout_lines | default([]) }}"
+
+#- name: System disk output
+#  debug:
+#    msg: "System disks output: {{ _system_disks | join(' ') }"
+
+- name: If system disks is empty then fail
+  fail:
+    msg: "No system disks found or defined. Failing"
+  when: not _system_disks | length > 0
+
+- name: Set disk_check_failed to false by default
+  set_fact:
+    disk_check_failed: false
+
+- name: "Set up var for disks"
+  set_fact:
+    disk_var: "{{ hostvars[inventory_hostname]['ansible_devices'].keys()|list }}"
+    ignored_disks: []
+
+- name: var for disks output
+  debug:
+    msg: "System disks ===> : {{ disk_var | join(' ') }}"
+
+- name: Set up ignored disks
+  set_fact:
+    ignored_disks: "{{ ignored_disks + [ item ] }}"
+  with_items:
+    - "{{ _system_disks }}"
+    - "{{ _zfs_ignore_disks }}"
+
+
+#- name: Create GPT entry on disks
+#  parted:
+#    device: /dev/{{ item }}
+##    part_start: 0%
+##    part_end: 512MiB
+##    name: EFI
+#    number: 1
+#    unit: MiB
+#    label: gpt
+#    state: present
+#  register: device_info
+##  command: parted --script  /dev/{{ item }}  mklabel gpt
+#  with_items:
+#    - "{ _system_disks }"
+#    - "{{ _data_disks }}"
+
+##########################################################################################3
+- name: var for disks output
+  debug:
+    msg: "System disks ===> : {{  _system_disks }}"
+

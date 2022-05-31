@@ -1,0 +1,156 @@
+---
+##############################################################################################################################################
+#- name: chmod 777 /mnt/install/root
+#  file:
+#    path: "{{ _installdir }}/root"
+#    mode: 777
+#  tags:
+#    - zfs_final
+
+# Mount a tmpfs at /run:
+- name: /mnt/install/run
+  shell: "mkdir -p {{ _installdir }}/run"
+  tags:
+    - zfs_final
+
+- name: "{{ _installdir }}/run"
+  shell: "mount -t tmpfs tmpfs {{ _installdir }}/run"
+  tags:
+    - zfs_final
+
+- name: "{{ _installdir }}/run/lock"
+  shell: "mkdir -p {{ _installdir }}/run/lock"
+  tags:
+    - zfs_final
+
+
+- name: mkdir boot
+  shell: "mkdir -p {{ _installdir }}/boot"
+#  with_items:
+#    - "{{ _root_device_list }}"
+  when:
+    - _zfs_boot | default(false) | bool != true
+    - _lukscrypt | default(false) | bool != true
+  tags:
+    - zfs_final1
+#- debug:
+#    msg: mkdir
+
+- name: mount {{ _installdir }}/boot
+  shell: "mount {{ item }} {{ _installdir }}/boot"
+  with_items:
+    - "/dev/disk/by-id/{{ _root_disks_by_id  | first }}{{ _boot_part_append }}"
+  when:
+    - _zfs_boot | default(false) | bool != true
+    - _lukscrypt | default(false) | bool != true
+  tags:
+    - zfs_final1
+- debug:
+    msg: mount
+
+- name: mkdir /boot/efi
+  shell: "mkdir -p {{ _installdir }}/boot/efi"
+#  with_items:
+#    - "{{ _root_device_list }}"
+  when: _efi | default(false) | bool == true
+  tags:
+    - zfs_final1
+
+#- debug:
+#    msg: mkdir
+
+- name: mount {{ _installdir }}/boot/efi
+  shell: "mount {{ item }}  {{ _installdir }}/boot/efi"
+  with_items:
+    - "/dev/disk/by-id/{{ _root_disks_by_id  | first }}{{ _efi_part_append }}"
+  when: _efi | default(false) | bool == true
+  tags:
+    - zfs_final1
+
+#- debug:
+#    msg: efi
+
+##################################################################################################################################################
+- name: run debootstrap and set devices=off for root pool
+  shell: "debootstrap {{ _ubuntu_release }} {{ _installdir }}"
+#  shell: "debootstrap {{ _ubuntu_release }} {{ _installdir }} && zfs set devices=off {{ _root_pool }}"
+  tags:
+    - zfs_final
+
+#- name: set devices=off for data pool
+#  shell: "zfs set devices=off {{ _root_pool }}"
+
+#- name: set devices=off for data pool
+#  shell: "zfs set devices=off {{ _data_pool }}"
+
+# Copy in zpool.cache:
+#- name: "{{ _installdir }}/etc/zfs"
+#  shell: "mkdir -p {{ _installdir }}/etc/zfs"
+#  tags:
+#    - zfs_final
+
+#- name: cp /etc/zfs/zpool.cache
+#  shell: "cp /etc/zfs/zpool.cache {{ _installdir }}/etc/zfs"
+#  tags:
+#    - zfs_final
+
+# Step 4: System Configuration
+- name: write /etc/hostname in chroot
+  copy:
+    content: "{{ _hostname.short }}"
+    dest:  "{{ _installdir }}/etc/hostname"
+  tags:
+    - zfs_final
+
+- name: add hostname entries to /etc/hosts in chroot
+  lineinfile:
+    line: "127.0.0.1 {{ _hostname.short }} {{ _hostname.long }}"
+    path:  "{{ _installdir }}/etc/hosts"
+    state: present
+    insertbefore: BOF
+  tags:
+    - zfs_final
+
+- name: "write {{ _installdir }}/apt/sources.list in chroot"
+  template:
+    src: etc/apt/sources.j2
+    dest: "{{ _installdir }}/etc/apt/sources.list"
+  tags:
+    - zfs_final
+
+# Bind the virtual filesystems from the LiveCD environment to the new system and chroot into it:
+- name: mount special filesystems for chroot
+  shell: "mount --rbind {{ item }}"
+  with_items:
+    - /dev "{{ _installdir }}/dev"
+    - /proc "{{ _installdir }}/proc"
+    - /sys "{{ _installdir }}/sys"
+  args:
+    warn: false
+  tags:
+    - zfs_final
+
+#- name: Ansible copy directory to the remote server
+#  copy:
+#    src:/etc/zfs/zpool.cache
+#    dest:{{ _installdir }}/etc/zfs/
+
+
+#- name: Get physical interfaces names
+#  command: find /sys/class/net -type l -not -lname '*virtual*' -printf '%f\n'
+#  register: physical_interfaces_name
+#  changed_when: false
+#  check_mode: false
+#  tags:
+#    - zfs_final
+
+#- name: Show interfaces details
+#  debug:
+#    msg: "{{ lookup('vars', 'ansible_' + item) }}"
+#  loop: "{{ physical_interfaces_name.stdout_lines }}"
+#  tags:
+#    - zfs_final
+
+
+
+

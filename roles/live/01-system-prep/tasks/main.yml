@@ -1,12 +1,70 @@
 ---
-
-#- include_tasks: debugmsg.yml
-#  tags: zfs_debug
-# {{ _system_disks }}'
-
 - include_tasks: debugmsg.yml
   tags: zfs_debug
 
 - include_tasks: install.yml
   tags:
     - zfs_install
+
+- debug: msg='Disks {{ _system_disks }}'
+  tags: zfs_debug
+
+- debug: msg='_root_pool_type {{ _root_pool_type }}'
+  tags: zfs_debug
+
+- include_tasks: cleanup.yml
+  tags:
+    - zfs_partition
+
+- name: check if already mount
+  stat:
+    path: "{{ _installdir }}/boot"
+  register: _stat_mount
+
+- set_fact:
+    deboostrapped: "{{ _stat_mount.stat.exists }}"
+    deboostrappedin_chroot: "{{ _stat_mount.stat.exists }}"
+
+- block:
+  - include_tasks: disks.yml
+    when:
+    - "{{ _system_disks }}"
+    tags:
+      - zfs_disks
+
+  - include_tasks: partition.yml
+    when:
+    - "{{ _system_disks }}"
+    tags:
+      - zfs_partition
+
+  - include_tasks: partition.yml
+    when:
+    - "{{ _system_disks }}"
+    tags:
+      - zfs_partition
+
+#- include_tasks: zfs_check.yml
+#  tags:
+#    - zfs_bootstrap
+
+#- name: Using JSON Query
+#    vars:
+#      jmes_path: "join(':', [address, port])"
+#    debug:
+#      msg: "{{ my_list | to_json | from_json | map('json_query', jmes_path) | join(' ') }}"
+
+  - include_tasks: create_zpool.yml
+    tags:
+      - create_zpool
+
+  - include_tasks: create_zfs.yml
+    tags:
+      - create_zfs
+      - zfs_bootstrap
+
+  - include_tasks: finish.yml
+    tags:
+      - zfs_final
+
+when: not deboostrapped or wipe|default('') == "ABSOLUTELY"

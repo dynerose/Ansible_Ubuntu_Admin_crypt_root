@@ -1,0 +1,233 @@
+---
+# tasks file for 01-system-prep
+#- debug:
+#    msg: System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }}
+#- debug:
+#    msg: System {{ inventory_hostname }} has gateway {{ ansible_default_ipv4.gateway }}
+#UUID: "$(dd if=/dev/urandom bs=1 count=100 2>/dev/null | tr -dc 'a-z0-9' | cut -c-6)"
+
+#- name: Create a unique ID
+#  shell: echo "`date +"%Y%m%d%H%M%S"`-$(cat /dev/urandom | tr -cd [:alpha:] | tr '[:upper:]' '[:lower:]' | head -c 4)"
+#  shell: echo "$(dd if=/dev/urandom bs=1 count=100 2>/dev/null | tr -dc 'a-z0-9' | cut -c-6)"
+#  register: my_unique_id
+
+#- name: manage_zfs | checking existing zpool(s)
+#  shell: "zpool list | awk 'FNR >1' | awk '{print $1}'"
+#  changed_when: false
+#  register: zpools
+#  check_mode: no
+#  when: _root_device_list is defined
+#  tags:
+#    - zfs_bootstrap
+
+#- name: manage_zfs | Gather ZPool Status
+#  shell: zpool status
+#  changed_when: false
+#  register: zpool_devices
+#  check_mode: no
+#  when: _root_device_list is defined
+#  tags:
+#    - zfs_bootstrap
+
+#- debug:
+#   msg:  "{{UUID}} {{ _root_device_list | product([_root_part_append]) | map('join') | list }}"
+#  msg:  "myunique id {{ my_unique_id }}"
+
+
+#Create filesystem datasets to act as containers
+- name: Update ZFS root datasets1
+# no grub
+  shell: "zfs create -o canmount=noauto -o mountpoint=/ {{ _root_pool }}/root"
+# grtub
+#  shell: "zfs create -o canmount=off -o mountpoint=none {{ _root_pool }}/ROOT"
+ # command: zfs create -o canmount=off -o mountpoint=none "{{ _root_pool }}/ROOT"
+  when:
+    - _zfs_boot | default(false) | bool != true
+  tags:
+  - zfs_bootstrap
+
+- name: Update ZFS root datasets2
+# no grub
+  shell: "zfs mount {{ _root_pool }}/root"
+  when:
+    - _zfs_boot | default(false) | bool != true
+  tags:
+  - zfs_bootstrap
+
+
+- name: Update ZFS boot datasets
+  command: "zfs create -o canmount=off -o mountpoint=none {{ _boot_pool }}/BOOT"
+  when: _zfs_boot | default(false) | bool == true
+  tags:
+    - zfs_bootstrap
+
+#- name: Create filesystem datasets to act as containers
+#  zfs:
+#    name: "{{_root_pool}}/ROOT"
+#    state: present
+#    extra_zfs_properties:
+#      canmount: off
+#      mountpoint: none
+#  tags:
+#    - zfs_bootstrap
+
+#- name: Create boot filesystem datasets to act as containers
+#  zfs:
+#    name: "{{_boot_pool}}/BOOT"
+#    state: present
+#    extra_zfs_properties:
+#      canmount: off
+#      mountpoint: none
+#  when: _zfs_boot | default(false) | bool == true
+#  tags:
+#    - zfs_bootstrap
+
+# Create filesystem datasets for the root and boot filesystems:
+#- name: create root fs
+#  zfs:
+#    name:  "{{ _root_pool }}/ROOT/ubuntu}"
+#    state: present
+#    extra_zfs_properties:
+#      canmount: noauto
+#      mountpoint: /
+#      com.sun:auto-snapshot: bootfs=yes
+#      com.ubuntu.zsys:last-used: $(date +%s)
+#      canmount: off
+#      mountpoint: none
+#  when:
+#    - zfs_pool_state | default('present') == 'absent'
+#    - result_pool_list.rc == 0
+#  tags:
+#    - zfs_bootstrap
+- name: Create filesystem datasets for the root
+  shell: "zfs create -o mountpoint=/ -o com.ubuntu.zsys:bootfs=yes {{ _root_pool }}/root/ubuntu"
+  when:
+    - _zfs_boot | default(false) | bool == true
+#  command: "zfs create -o mountpoint=/ -o com.ubuntu.zsys:bootfs=yes -o com.ubuntu.zsys:last-used=$(date +%s) {{ _root_pool }}/ROOT/ubuntu"
+#   when: _zfs_boot | default(false) | bool == true
+  tags:
+  - zfs_bootstrap
+
+- name: Create filesystem datasets for the boot
+  shell: "zfs create -o mountpoint=/boot {{ _boot_pool }}/BOOT/ubuntu"
+#  command: "zfs create -o mountpoint=/boot {{ _boot_pool }}/BOOT/ubuntu"
+  when: _zfs_boot | default(false) | bool == true
+  tags:
+  - zfs_bootstrap
+
+#- name: Update ZFS root datasets3
+#  command: zfs set com.sun:auto-snapshot=bootfs=yes  "{{ _root_pool }}/ROOT/ubuntu"
+#  tags:
+#    - zfs_bootstrap
+
+#- name: create boot dataset
+#  zfs:
+#    name: "{{ _boot_pool }}/BOOT/ubuntu"
+#    state: present
+#    extra_zfs_properties:
+#      mountpoint: /boot
+#  when: _zfs_boot | default(false) | bool == true
+#  tags:
+#    - zfs_bootstrap
+
+#- name: manually mount rpool/root before creating other mountpoints
+#  shell: "zfs mount {{ _root_pool }}/root"
+
+# Create datasets
+- name: create mountpoints
+  zfs:
+    name: "{{ item.name }}"
+    state: present
+    extra_zfs_properties:
+#      "{{ item.properties }}"
+      com.sun:auto-snapshot: false
+  with_items:
+    - "{{ _root_volumes }}"
+  tags:
+    - zfs_bootstrap
+
+#- name: Create filesystem datasets for the boot
+#  shell: "zfs create -o com.sun:auto-snapshot=false {{_root_pool}}/ROOT/ubuntu/var/lib/docker"
+#  when: _docker | default(false) | bool == true
+#  tags:
+#  - zfs_bootstrap
+- name: create mountpoints in root pool
+  zfs:
+    name: "{{_root_pool}}/USERDATA"
+    state: present
+    extra_zfs_properties:
+      mountpoint: /
+      canmount: off
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - zfs_bootstrap
+
+- name: create mountpoints in root poolss
+  zfs:
+    name: "{{_root_pool}}/USERDATA/root"
+    state: present
+    extra_zfs_properties:
+      mountpoint: /root
+      com.ubuntu.zsys:bootfs-datasets: "{{ _root_pool }}/root/ubuntu"
+      canmount: on
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - zfs_bootstrap
+
+- name: Update ZFS root datasets4
+  command: zfs set com.ubuntu.zsys:bootfs-datasets="{{_root_pool}}/USERDATA/root" "{{_root_pool}}/USERDATA/root"
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - zfs_bootstrap
+
+- name: create mountpoints
+  zfs:
+    name: "{{ item.name }}"
+    state: present
+    extra_zfs_properties:
+      com.sun:auto-snapshot: false
+  with_items:
+    - "{{ _datastore_volume }}"
+  tags:
+    - zfs_bootstrap
+
+# zfs create -o com.ubuntu.zsys:bootfs=no bpool/grub
+
+- name: Update ZFS root datasets5
+  shell: "zfs create -o com.ubuntu.zsys:bootfs=no bpool/grub"
+  when:
+    - _zfs_boot | default(false) | bool == true
+    - _raid | default(false) | bool == true
+  tags:
+    - zfs_bootstrap
+
+#- name: Create zfs grub
+#  zfs:
+#    name: "{{  _boot_pool }}/grub"
+#    state: present
+#    extra_zfs_properties:
+#      com.ubuntu.zsys:bootfs: no
+#  when:
+#    - _zfs_boot | default(false) | bool == true
+#    - _raid | default(false) | bool == true
+#  tags:
+#    - zfs_bootstrap
+
+#- name: Update ZFS root datasets6
+#  command: zfs set com.ubuntu.zsys:bootfs=no "{{ _root_pool }}/grub"
+#  tags:
+#    - zfs_bootstrap
+
+
+#- name: chmod 777 /mnt/install/root
+#  file:
+#    path: "{{ _installdir }}root"
+#    mode: 01777
+
+#- name: chmod 01777 /mnt/var/tmp
+#  file:
+#    path: "{{ _installdir }}var/tmp"
+#    mode: 01777

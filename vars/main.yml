@@ -23,7 +23,6 @@ enable_task_debugger: true
 isneeded: true
 _needed: false
 
-_ubuntu_release: focal
 _timezone: "UTC"
 #_grub_cmdline: "elevator=noop"
 #_grub_cmdline: "root=ZFS={{ _root_pool }}/root"

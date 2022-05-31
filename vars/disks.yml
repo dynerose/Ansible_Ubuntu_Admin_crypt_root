@@ -13,7 +13,8 @@ _zfs_boot: false
 _zfs_docker: true
 
 _system_disks:
-  - sda
+  - sdf
+#  - sda
 #  - sdb
 #  - sdc
 
@@ -27,13 +28,13 @@ _data_disks:
 
 zfs_arrays:
 # Define array name
-  - name: 'zpool'
+  - name: 'root_pool'
     # Define disk devices to assign to array
     devices:
     #      - '/dev/sdc'
     #      - '/dev/sdb'
     # the sda must last because copy from datastructure
-      - '/dev/sda'
+      - '/dev/sdf'
     # Define filesystem to partition array with
     filesystem: 'zfs'
     # Define the array raid level

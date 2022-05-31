@@ -1,0 +1,60 @@
+---
+# tasks file for 01-system-prep
+#- debug:
+#    msg: System {{ inventory_hostname }} has uuid {{ ansible_product_uuid }}
+#- debug:
+#    msg: System {{ inventory_hostname }} has gateway {{ ansible_default_ipv4.gateway }}
+#UUID: "$(dd if=/dev/urandom bs=1 count=100 2>/dev/null | tr -dc 'a-z0-9' | cut -c-6)"
+
+#- debug:
+#    msg: create zpool > "zpool create {{ _crypt_flags | join(' ') }} {{ _root_pool_opts | join(' ') }} {{ _root_pool }} {{ _root_pool_type }} {{ item }} -f"
+#    with_items:
+#      -  "{% for item in  _root_device_list  %}{{ item }}{{ _root_part_append }}{% if not loop.last %} {% endif %}{% endfor %}"
+
+# cerate boot pool
+- name: set up boot zfs
+  shell: "zpool create {{ _boot_pool_opts | join(' ') }} {{ _boot_pool }} {{ _root_pool_type }} {{ item }} -f"
+  with_items:
+    -  "{% for item in  _root_device_list  %}{{ item }}{{ _boot_part_append }}{% if not loop.last %} {% endif %}{% endfor %}"
+  when:
+#    - _crypt | default(false) | bool != true
+    - _zfs_boot | default(false) | bool == true
+    - _lukscrypt | default(false) | bool != true
+#    - zfs_pool_state | default('present') == 'present'
+#    - result_pool_list.rc == 1
+  tags:
+    - create_zpool
+
+# create root pool
+- name: set up root zfs crypt devices
+  shell: "echo -n {{ _crypt_passphrase }} | zpool create {{ _crypt_flags | join(' ') }} {{ _root_pool_opts | join(' ') }} {{ _root_pool }} {{ _root_pool_type }} {{ item }} -f"
+  with_items:
+    -  "{% for item in  _root_device_list  %}{{ item }}{{ _root_part_append }}{% if not loop.last %} {% endif %}{% endfor %}"
+  when:
+    - _crypt | default(false) | bool == true
+    - _lukscrypt | default(false) | bool != true
+#    - zfs_pool_state | default('present') == 'present'
+#    - result_pool_list.rc == 1
+  tags:
+    - create_zpool
+
+# set up root zfs luks crypt devices
+#- name: set up root zfs luks crypt devices
+#  shell: "zpool create {{ _lukscrypt_flags | join(' ') }} {{ _root_pool_opts | join(' ') }} {{ _root_pool }} {{ _root_pool_type }} {{ item }} -f"
+#  with_items:
+#    -  "{% for item in  _root_device_list  %}{{ item }}{{ _root_part_append }}{% if not loop.last %} {% endif %}{% endfor %}"
+#  when: _lukscrypt | default(false) | bool == true
+#  tags:
+#    - create_zpool
+
+#- name: set up root zfs devices
+#  shell: "zpool create {{ _root_pool_opts | join(' ') }} {{ _root_pool }} {{ _root_pool_type }} {{ item }} -f"
+#  with_items:
+#    -  "{% for item in  _root_device_list  %}{{ item }}{{ _root_part_append }}{% if not loop.last %} {% endif %}{% endfor %}"
+#  when:
+#    - _crypt | default(false) | bool != true
+#    - _lukscrypt | default(false) | bool != true
+#    - zfs_pool_state | default('present') == 'present'
+#    - result_pool_list.rc == 1
+#  tags:
+#    - create_zpool
