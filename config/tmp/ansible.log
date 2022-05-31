@@ -2694,3 +2694,466 @@ The offending line appears to be:
 2022-05-31 09:10:41,230 p=40630 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
 2022-05-31 09:10:42,483 p=40630 u=root n=ansible |  [ERROR]: User interrupted execution
 
+2022-05-31 09:13:26,652 p=40991 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be 
+removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:13:26,897 p=40991 u=root n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: FileNotFoundError: [Errno 2] No such file or directory: '/mnt/install/bin/sh'
+2022-05-31 09:13:26,898 p=40991 u=root n=ansible | /mnt/install/ | FAILED! => {
+    "msg": "Unexpected failure during module execution.",
+    "stdout": ""
+}
+2022-05-31 09:13:26,959 p=40991 u=root n=ansible | zfs_root | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Data could not be sent to remote host \"192.168.100.10\". Make sure this host can be reached over ssh: ssh: connect to host 192.168.100.10 port 22: Connection refused\r\n",
+    "unreachable": true
+}
+2022-05-31 09:13:26,988 p=40991 u=root n=ansible | hostname | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Data could not be sent to remote host \"192.168.168.1\". Make sure this host can be reached over ssh: ssh: Could not resolve hostname sshpass: Temporary failure in name resolution\r\n",
+    "unreachable": true
+}
+2022-05-31 09:24:29,223 p=40991 u=root n=ansible | local_zfs_root | CHANGED => {
+    "changed": true,
+    "msg": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nCalculating upgrade...\nThe following packages will be upgraded:\n  base-files libjson-c5 libnss-systemd libpam-systemd libssl3 libsystemd0\n  libudev1 linux-firmware openssl systemd systemd-sysv systemd-timesyncd\n  ubuntu-advantage-tools udev\n14 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.\nNeed to get 249 MB of archives.\nAfter this operation, 455 kB of additional disk space will be used.\nGet:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 base-files amd64 12ubuntu4.1 [62.8 kB]\nGet:2 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 systemd-timesyncd amd64 249.11-0ubuntu3.1 [31.2 kB]\nGet:3 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libsystemd0 amd64 249.11-0ubuntu3.1 [317 kB]\nGet:4 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 systemd-sysv amd64 249.11-0ubuntu3.1 [10.5 kB]\nGet:5 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnss-systemd amd64 249.11-0ubuntu3.1 [133 kB]\nGet:6 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libpam-systemd amd64 249.11-0ubuntu3.1 [203 kB]\nGet:7 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 systemd amd64 249.11-0ubuntu3.1 [4554 kB]\nGet:8 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 udev amd64 249.11-0ubuntu3.1 [1557 kB]\nGet:9 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libudev1 amd64 249.11-0ubuntu3.1 [76.9 kB]\nGet:10 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libssl3 amd64 3.0.2-0ubuntu1.2 [1900 kB]\nGet:11 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libjson-c5 amd64 0.15-3~ubuntu1.22.04.1 [33.5 kB]\nGet:12 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 openssl amd64 3.0.2-0ubuntu1.2 [1183 kB]\nGet:13 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 ubuntu-advantage-tools amd64 27.8~22.04.1 [847 kB]\nGet:14 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 linux-firmware all 20220329.git681281e4-0ubuntu3.2 [238 MB]\nPreconfiguring packages ...\nFetched 249 MB in 7min 40s (542 kB/s)\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 107649 files and directories currently installed.)\r\nPreparing to unpack .../base-files_12ubuntu4.1_amd64.deb ...\r\nUnpacking base-files (12ubuntu4.1) over (12ubuntu4) ...\r\nSetting up base-files (12ubuntu4.1) ...\r\nmotd-news.service is a disabled or a static unit not running, not starting it.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 107649 files and directories currently installed.)\r\nPreparing to unpack .../systemd-timesyncd_249.11-0ubuntu3.1_amd64.deb ...\r\nUnpacking systemd-timesyncd (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...\r\nPreparing to unpack .../libsystemd0_249.11-0ubuntu3.1_amd64.deb ...\r\nUnpacking libsystemd0:amd64 (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...\r\nSetting up libsystemd0:amd64 (249.11-0ubuntu3.1) ...\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 107649 files and directories currently installed.)\r\nPreparing to unpack .../0-systemd-sysv_249.11-0ubuntu3.1_amd64.deb ...\r\nUnpacking systemd-sysv (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...\r\nPreparing to unpack .../1-libnss-systemd_249.11-0ubuntu3.1_amd64.deb ...\r\nUnpacking libnss-systemd:amd64 (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...\r\nPreparing to unpack .../2-libpam-systemd_249.11-0ubuntu3.1_amd64.deb ...\r\nUnpacking libpam-systemd:amd64 (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...\r\nPreparing to unpack .../3-systemd_249.11-0ubuntu3.1_amd64.deb ...\r\nUnpacking systemd (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...\r\nPreparing to unpack .../4-udev_249.11-0ubuntu3.1_amd64.deb ...\r\nUnpacking udev (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...\r\nPreparing to unpack .../5-libudev1_249.11-0ubuntu3.1_amd64.deb ...\r\nUnpacking libudev1:amd64 (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...\r\nSetting up libudev1:amd64 (249.11-0ubuntu3.1) ...\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 107649 files and directories currently installed.)\r\nPreparing to unpack .../libssl3_3.0.2-0ubuntu1.2_amd64.deb ...\r\nUnpacking libssl3:amd64 (3.0.2-0ubuntu1.2) over (3.0.2-0ubuntu1.1) ...\r\nSetting up libssl3:amd64 (3.0.2-0ubuntu1.2) ...\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 107649 files and directories currently installed.)\r\nPreparing to unpack .../libjson-c5_0.15-3~ubuntu1.22.04.1_amd64.deb ...\r\nUnpacking libjson-c5:amd64 (0.15-3~ubuntu1.22.04.1) over (0.15-2build4) ...\r\nPreparing to unpack .../openssl_3.0.2-0ubuntu1.2_amd64.deb ...\r\nUnpacking openssl (3.0.2-0ubuntu1.2) over (3.0.2-0ubuntu1.1) ...\r\nPreparing to unpack .../ubuntu-advantage-tools_27.8~22.04.1_amd64.deb ...\r\nUnpacking ubuntu-advantage-tools (27.8~22.04.1) over (27.7~22.04.1) ...\r\nPreparing to unpack .../linux-firmware_20220329.git681281e4-0ubuntu3.2_all.deb ...\r\nUnpacking linux-firmware (20220329.git681281e4-0ubuntu3.2) over (20220329.git681281e4-0ubuntu3) ...\r\nSetting up linux-firmware (20220329.git681281e4-0ubuntu3.2) ...\r\nupdate-initramfs: Generating /boot/initrd.img-5.15.0-33-generic\r\ndropbear: WARNING: Invalid authorized_keys file, SSH login to initramfs won't work!\r\nSetting up systemd (249.11-0ubuntu3.1) ...\r\nSetting up systemd-timesyncd (249.11-0ubuntu3.1) ...\r\nSetting up udev (249.11-0ubuntu3.1) ...\r\nSetting up ubuntu-advantage-tools (27.8~22.04.1) ...\r\nInstalling new version of config file /etc/ubuntu-advantage/help_data.yaml ...\r\nSetting up openssl (3.0.2-0ubuntu1.2) ...\r\nSetting up libjson-c5:amd64 (0.15-3~ubuntu1.22.04.1) ...\r\nSetting up systemd-sysv (249.11-0ubuntu3.1) ...\r\nSetting up libnss-systemd:amd64 (249.11-0ubuntu3.1) ...\r\nSetting up libpam-systemd:amd64 (249.11-0ubuntu3.1) ...\r\nProcessing triggers for libc-bin (2.35-0ubuntu3) ...\r\nProcessing triggers for plymouth-theme-ubuntu-text (0.9.5+git20211018-1ubuntu3) ...\r\nupdate-initramfs: deferring update (trigger activated)\r\nProcessing triggers for dbus (1.12.20-2ubuntu4) ...\r\nProcessing triggers for initramfs-tools (0.140ubuntu13) ...\r\nupdate-initramfs: Generating /boot/initrd.img-5.15.0-33-generic\r\ndropbear: WARNING: Invalid authorized_keys file, SSH login to initramfs won't work!\r\n",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nCalculating upgrade...\nThe following packages will be upgraded:\n  base-files libjson-c5 libnss-systemd libpam-systemd libssl3 libsystemd0\n  libudev1 linux-firmware openssl systemd systemd-sysv systemd-timesyncd\n  ubuntu-advantage-tools udev\n14 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.\nNeed to get 249 MB of archives.\nAfter this operation, 455 kB of additional disk space will be used.\nGet:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 base-files amd64 12ubuntu4.1 [62.8 kB]\nGet:2 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 systemd-timesyncd amd64 249.11-0ubuntu3.1 [31.2 kB]\nGet:3 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libsystemd0 amd64 249.11-0ubuntu3.1 [317 kB]\nGet:4 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 systemd-sysv amd64 249.11-0ubuntu3.1 [10.5 kB]\nGet:5 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnss-systemd amd64 249.11-0ubuntu3.1 [133 kB]\nGet:6 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libpam-systemd amd64 249.11-0ubuntu3.1 [203 kB]\nGet:7 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 systemd amd64 249.11-0ubuntu3.1 [4554 kB]\nGet:8 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 udev amd64 249.11-0ubuntu3.1 [1557 kB]\nGet:9 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libudev1 amd64 249.11-0ubuntu3.1 [76.9 kB]\nGet:10 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libssl3 amd64 3.0.2-0ubuntu1.2 [1900 kB]\nGet:11 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libjson-c5 amd64 0.15-3~ubuntu1.22.04.1 [33.5 kB]\nGet:12 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 openssl amd64 3.0.2-0ubuntu1.2 [1183 kB]\nGet:13 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 ubuntu-advantage-tools amd64 27.8~22.04.1 [847 kB]\nGet:14 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 linux-firmware all 20220329.git681281e4-0ubuntu3.2 [238 MB]\nPreconfiguring packages ...\nFetched 249 MB in 7min 40s (542 kB/s)\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 107649 files and directories currently installed.)\r\nPreparing to unpack .../base-files_12ubuntu4.1_amd64.deb ...\r\nUnpacking base-files (12ubuntu4.1) over (12ubuntu4) ...\r\nSetting up base-files (12ubuntu4.1) ...\r\nmotd-news.service is a disabled or a static unit not running, not starting it.\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 107649 files and directories currently installed.)\r\nPreparing to unpack .../systemd-timesyncd_249.11-0ubuntu3.1_amd64.deb ...\r\nUnpacking systemd-timesyncd (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...\r\nPreparing to unpack .../libsystemd0_249.11-0ubuntu3.1_amd64.deb ...\r\nUnpacking libsystemd0:amd64 (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...\r\nSetting up libsystemd0:amd64 (249.11-0ubuntu3.1) ...\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 107649 files and directories currently installed.)\r\nPreparing to unpack .../0-systemd-sysv_249.11-0ubuntu3.1_amd64.deb ...\r\nUnpacking systemd-sysv (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...\r\nPreparing to unpack .../1-libnss-systemd_249.11-0ubuntu3.1_amd64.deb ...\r\nUnpacking libnss-systemd:amd64 (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...\r\nPreparing to unpack .../2-libpam-systemd_249.11-0ubuntu3.1_amd64.deb ...\r\nUnpacking libpam-systemd:amd64 (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...\r\nPreparing to unpack .../3-systemd_249.11-0ubuntu3.1_amd64.deb ...\r\nUnpacking systemd (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...\r\nPreparing to unpack .../4-udev_249.11-0ubuntu3.1_amd64.deb ...\r\nUnpacking udev (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...\r\nPreparing to unpack .../5-libudev1_249.11-0ubuntu3.1_amd64.deb ...\r\nUnpacking libudev1:amd64 (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...\r\nSetting up libudev1:amd64 (249.11-0ubuntu3.1) ...\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 107649 files and directories currently installed.)\r\nPreparing to unpack .../libssl3_3.0.2-0ubuntu1.2_amd64.deb ...\r\nUnpacking libssl3:amd64 (3.0.2-0ubuntu1.2) over (3.0.2-0ubuntu1.1) ...\r\nSetting up libssl3:amd64 (3.0.2-0ubuntu1.2) ...\r\n(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 107649 files and directories currently installed.)\r\nPreparing to unpack .../libjson-c5_0.15-3~ubuntu1.22.04.1_amd64.deb ...\r\nUnpacking libjson-c5:amd64 (0.15-3~ubuntu1.22.04.1) over (0.15-2build4) ...\r\nPreparing to unpack .../openssl_3.0.2-0ubuntu1.2_amd64.deb ...\r\nUnpacking openssl (3.0.2-0ubuntu1.2) over (3.0.2-0ubuntu1.1) ...\r\nPreparing to unpack .../ubuntu-advantage-tools_27.8~22.04.1_amd64.deb ...\r\nUnpacking ubuntu-advantage-tools (27.8~22.04.1) over (27.7~22.04.1) ...\r\nPreparing to unpack .../linux-firmware_20220329.git681281e4-0ubuntu3.2_all.deb ...\r\nUnpacking linux-firmware (20220329.git681281e4-0ubuntu3.2) over (20220329.git681281e4-0ubuntu3) ...\r\nSetting up linux-firmware (20220329.git681281e4-0ubuntu3.2) ...\r\nupdate-initramfs: Generating /boot/initrd.img-5.15.0-33-generic\r\ndropbear: WARNING: Invalid authorized_keys file, SSH login to initramfs won't work!\r\nSetting up systemd (249.11-0ubuntu3.1) ...\r\nSetting up systemd-timesyncd (249.11-0ubuntu3.1) ...\r\nSetting up udev (249.11-0ubuntu3.1) ...\r\nSetting up ubuntu-advantage-tools (27.8~22.04.1) ...\r\nInstalling new version of config file /etc/ubuntu-advantage/help_data.yaml ...\r\nSetting up openssl (3.0.2-0ubuntu1.2) ...\r\nSetting up libjson-c5:amd64 (0.15-3~ubuntu1.22.04.1) ...\r\nSetting up systemd-sysv (249.11-0ubuntu3.1) ...\r\nSetting up libnss-systemd:amd64 (249.11-0ubuntu3.1) ...\r\nSetting up libpam-systemd:amd64 (249.11-0ubuntu3.1) ...\r\nProcessing triggers for libc-bin (2.35-0ubuntu3) ...\r\nProcessing triggers for plymouth-theme-ubuntu-text (0.9.5+git20211018-1ubuntu3) ...\r\nupdate-initramfs: deferring update (trigger activated)\r\nProcessing triggers for dbus (1.12.20-2ubuntu4) ...\r\nProcessing triggers for initramfs-tools (0.140ubuntu13) ...\r\nupdate-initramfs: Generating /boot/initrd.img-5.15.0-33-generic\r\ndropbear: WARNING: Invalid authorized_keys file, SSH login to initramfs won't work!\r\n",
+    "stdout_lines": [
+        "Reading package lists...",
+        "Building dependency tree...",
+        "Reading state information...",
+        "Calculating upgrade...",
+        "The following packages will be upgraded:",
+        "  base-files libjson-c5 libnss-systemd libpam-systemd libssl3 libsystemd0",
+        "  libudev1 linux-firmware openssl systemd systemd-sysv systemd-timesyncd",
+        "  ubuntu-advantage-tools udev",
+        "14 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.",
+        "Need to get 249 MB of archives.",
+        "After this operation, 455 kB of additional disk space will be used.",
+        "Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 base-files amd64 12ubuntu4.1 [62.8 kB]",
+        "Get:2 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 systemd-timesyncd amd64 249.11-0ubuntu3.1 [31.2 kB]",
+        "Get:3 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libsystemd0 amd64 249.11-0ubuntu3.1 [317 kB]",
+        "Get:4 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 systemd-sysv amd64 249.11-0ubuntu3.1 [10.5 kB]",
+        "Get:5 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnss-systemd amd64 249.11-0ubuntu3.1 [133 kB]",
+        "Get:6 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libpam-systemd amd64 249.11-0ubuntu3.1 [203 kB]",
+        "Get:7 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 systemd amd64 249.11-0ubuntu3.1 [4554 kB]",
+        "Get:8 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 udev amd64 249.11-0ubuntu3.1 [1557 kB]",
+        "Get:9 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libudev1 amd64 249.11-0ubuntu3.1 [76.9 kB]",
+        "Get:10 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libssl3 amd64 3.0.2-0ubuntu1.2 [1900 kB]",
+        "Get:11 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libjson-c5 amd64 0.15-3~ubuntu1.22.04.1 [33.5 kB]",
+        "Get:12 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 openssl amd64 3.0.2-0ubuntu1.2 [1183 kB]",
+        "Get:13 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 ubuntu-advantage-tools amd64 27.8~22.04.1 [847 kB]",
+        "Get:14 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 linux-firmware all 20220329.git681281e4-0ubuntu3.2 [238 MB]",
+        "Preconfiguring packages ...",
+        "Fetched 249 MB in 7min 40s (542 kB/s)",
+        "(Reading database ... ",
+        "(Reading database ... 5%",
+        "(Reading database ... 10%",
+        "(Reading database ... 15%",
+        "(Reading database ... 20%",
+        "(Reading database ... 25%",
+        "(Reading database ... 30%",
+        "(Reading database ... 35%",
+        "(Reading database ... 40%",
+        "(Reading database ... 45%",
+        "(Reading database ... 50%",
+        "(Reading database ... 55%",
+        "(Reading database ... 60%",
+        "(Reading database ... 65%",
+        "(Reading database ... 70%",
+        "(Reading database ... 75%",
+        "(Reading database ... 80%",
+        "(Reading database ... 85%",
+        "(Reading database ... 90%",
+        "(Reading database ... 95%",
+        "(Reading database ... 100%",
+        "(Reading database ... 107649 files and directories currently installed.)",
+        "Preparing to unpack .../base-files_12ubuntu4.1_amd64.deb ...",
+        "Unpacking base-files (12ubuntu4.1) over (12ubuntu4) ...",
+        "Setting up base-files (12ubuntu4.1) ...",
+        "motd-news.service is a disabled or a static unit not running, not starting it.",
+        "(Reading database ... ",
+        "(Reading database ... 5%",
+        "(Reading database ... 10%",
+        "(Reading database ... 15%",
+        "(Reading database ... 20%",
+        "(Reading database ... 25%",
+        "(Reading database ... 30%",
+        "(Reading database ... 35%",
+        "(Reading database ... 40%",
+        "(Reading database ... 45%",
+        "(Reading database ... 50%",
+        "(Reading database ... 55%",
+        "(Reading database ... 60%",
+        "(Reading database ... 65%",
+        "(Reading database ... 70%",
+        "(Reading database ... 75%",
+        "(Reading database ... 80%",
+        "(Reading database ... 85%",
+        "(Reading database ... 90%",
+        "(Reading database ... 95%",
+        "(Reading database ... 100%",
+        "(Reading database ... 107649 files and directories currently installed.)",
+        "Preparing to unpack .../systemd-timesyncd_249.11-0ubuntu3.1_amd64.deb ...",
+        "Unpacking systemd-timesyncd (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...",
+        "Preparing to unpack .../libsystemd0_249.11-0ubuntu3.1_amd64.deb ...",
+        "Unpacking libsystemd0:amd64 (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...",
+        "Setting up libsystemd0:amd64 (249.11-0ubuntu3.1) ...",
+        "(Reading database ... ",
+        "(Reading database ... 5%",
+        "(Reading database ... 10%",
+        "(Reading database ... 15%",
+        "(Reading database ... 20%",
+        "(Reading database ... 25%",
+        "(Reading database ... 30%",
+        "(Reading database ... 35%",
+        "(Reading database ... 40%",
+        "(Reading database ... 45%",
+        "(Reading database ... 50%",
+        "(Reading database ... 55%",
+        "(Reading database ... 60%",
+        "(Reading database ... 65%",
+        "(Reading database ... 70%",
+        "(Reading database ... 75%",
+        "(Reading database ... 80%",
+        "(Reading database ... 85%",
+        "(Reading database ... 90%",
+        "(Reading database ... 95%",
+        "(Reading database ... 100%",
+        "(Reading database ... 107649 files and directories currently installed.)",
+        "Preparing to unpack .../0-systemd-sysv_249.11-0ubuntu3.1_amd64.deb ...",
+        "Unpacking systemd-sysv (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...",
+        "Preparing to unpack .../1-libnss-systemd_249.11-0ubuntu3.1_amd64.deb ...",
+        "Unpacking libnss-systemd:amd64 (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...",
+        "Preparing to unpack .../2-libpam-systemd_249.11-0ubuntu3.1_amd64.deb ...",
+        "Unpacking libpam-systemd:amd64 (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...",
+        "Preparing to unpack .../3-systemd_249.11-0ubuntu3.1_amd64.deb ...",
+        "Unpacking systemd (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...",
+        "Preparing to unpack .../4-udev_249.11-0ubuntu3.1_amd64.deb ...",
+        "Unpacking udev (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...",
+        "Preparing to unpack .../5-libudev1_249.11-0ubuntu3.1_amd64.deb ...",
+        "Unpacking libudev1:amd64 (249.11-0ubuntu3.1) over (249.11-0ubuntu3) ...",
+        "Setting up libudev1:amd64 (249.11-0ubuntu3.1) ...",
+        "(Reading database ... ",
+        "(Reading database ... 5%",
+        "(Reading database ... 10%",
+        "(Reading database ... 15%",
+        "(Reading database ... 20%",
+        "(Reading database ... 25%",
+        "(Reading database ... 30%",
+        "(Reading database ... 35%",
+        "(Reading database ... 40%",
+        "(Reading database ... 45%",
+        "(Reading database ... 50%",
+        "(Reading database ... 55%",
+        "(Reading database ... 60%",
+        "(Reading database ... 65%",
+        "(Reading database ... 70%",
+        "(Reading database ... 75%",
+        "(Reading database ... 80%",
+        "(Reading database ... 85%",
+        "(Reading database ... 90%",
+        "(Reading database ... 95%",
+        "(Reading database ... 100%",
+        "(Reading database ... 107649 files and directories currently installed.)",
+        "Preparing to unpack .../libssl3_3.0.2-0ubuntu1.2_amd64.deb ...",
+        "Unpacking libssl3:amd64 (3.0.2-0ubuntu1.2) over (3.0.2-0ubuntu1.1) ...",
+        "Setting up libssl3:amd64 (3.0.2-0ubuntu1.2) ...",
+        "(Reading database ... ",
+        "(Reading database ... 5%",
+        "(Reading database ... 10%",
+        "(Reading database ... 15%",
+        "(Reading database ... 20%",
+        "(Reading database ... 25%",
+        "(Reading database ... 30%",
+        "(Reading database ... 35%",
+        "(Reading database ... 40%",
+        "(Reading database ... 45%",
+        "(Reading database ... 50%",
+        "(Reading database ... 55%",
+        "(Reading database ... 60%",
+        "(Reading database ... 65%",
+        "(Reading database ... 70%",
+        "(Reading database ... 75%",
+        "(Reading database ... 80%",
+        "(Reading database ... 85%",
+        "(Reading database ... 90%",
+        "(Reading database ... 95%",
+        "(Reading database ... 100%",
+        "(Reading database ... 107649 files and directories currently installed.)",
+        "Preparing to unpack .../libjson-c5_0.15-3~ubuntu1.22.04.1_amd64.deb ...",
+        "Unpacking libjson-c5:amd64 (0.15-3~ubuntu1.22.04.1) over (0.15-2build4) ...",
+        "Preparing to unpack .../openssl_3.0.2-0ubuntu1.2_amd64.deb ...",
+        "Unpacking openssl (3.0.2-0ubuntu1.2) over (3.0.2-0ubuntu1.1) ...",
+        "Preparing to unpack .../ubuntu-advantage-tools_27.8~22.04.1_amd64.deb ...",
+        "Unpacking ubuntu-advantage-tools (27.8~22.04.1) over (27.7~22.04.1) ...",
+        "Preparing to unpack .../linux-firmware_20220329.git681281e4-0ubuntu3.2_all.deb ...",
+        "Unpacking linux-firmware (20220329.git681281e4-0ubuntu3.2) over (20220329.git681281e4-0ubuntu3) ...",
+        "Setting up linux-firmware (20220329.git681281e4-0ubuntu3.2) ...",
+        "update-initramfs: Generating /boot/initrd.img-5.15.0-33-generic",
+        "dropbear: WARNING: Invalid authorized_keys file, SSH login to initramfs won't work!",
+        "Setting up systemd (249.11-0ubuntu3.1) ...",
+        "Setting up systemd-timesyncd (249.11-0ubuntu3.1) ...",
+        "Setting up udev (249.11-0ubuntu3.1) ...",
+        "Setting up ubuntu-advantage-tools (27.8~22.04.1) ...",
+        "Installing new version of config file /etc/ubuntu-advantage/help_data.yaml ...",
+        "Setting up openssl (3.0.2-0ubuntu1.2) ...",
+        "Setting up libjson-c5:amd64 (0.15-3~ubuntu1.22.04.1) ...",
+        "Setting up systemd-sysv (249.11-0ubuntu3.1) ...",
+        "Setting up libnss-systemd:amd64 (249.11-0ubuntu3.1) ...",
+        "Setting up libpam-systemd:amd64 (249.11-0ubuntu3.1) ...",
+        "Processing triggers for libc-bin (2.35-0ubuntu3) ...",
+        "Processing triggers for plymouth-theme-ubuntu-text (0.9.5+git20211018-1ubuntu3) ...",
+        "update-initramfs: deferring update (trigger activated)",
+        "Processing triggers for dbus (1.12.20-2ubuntu4) ...",
+        "Processing triggers for initramfs-tools (0.140ubuntu13) ...",
+        "update-initramfs: Generating /boot/initrd.img-5.15.0-33-generic",
+        "dropbear: WARNING: Invalid authorized_keys file, SSH login to initramfs won't work!"
+    ]
+}
+2022-05-31 09:29:11,934 p=62931 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:29:12,273 p=62931 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 09:29:13,350 p=62931 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 09:29:13,350 p=62931 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:29:13,403 p=62931 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/debugmsg.yml for local_zfs_root
+2022-05-31 09:29:13,451 p=62931 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:29:13,453 p=62931 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "1 Ubuntu"
+}
+2022-05-31 09:29:13,493 p=62931 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:29:13,496 p=62931 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "2 22.04"
+}
+2022-05-31 09:29:13,538 p=62931 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:29:13,539 p=62931 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "3 22"
+}
+2022-05-31 09:29:13,832 p=62931 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:29:13,833 p=62931 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:29:14,004 p=62931 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:29:14,004 p=62931 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:29:14,085 p=62931 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:29:14,086 p=62931 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '18.5G', 'size': '18.5G', 'name': 'backupPool1'}) => {
+    "msg": "4 ZFS pool backupPool1 has 18.5G free space out of 18.5G."
+}
+2022-05-31 09:29:14,094 p=62931 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '89.5G', 'size': '89.5G', 'name': 'dataPool'}) => {
+    "msg": "4 ZFS pool dataPool has 89.5G free space out of 89.5G."
+}
+2022-05-31 09:29:14,097 p=62931 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '11.4G', 'size': '14.5G', 'name': 'rpool'}) => {
+    "msg": "4 ZFS pool rpool has 11.4G free space out of 14.5G."
+}
+2022-05-31 09:29:14,163 p=62931 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:29:14,163 p=62931 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "rpool name root_pool"
+}
+2022-05-31 09:29:14,193 p=62931 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/install.yml for local_zfs_root
+2022-05-31 09:29:15,173 p=62931 u=root n=ansible | TASK [01-system-prep : Install global dependencies] *******************************************************************************************************************************************************************
+2022-05-31 09:29:15,173 p=62931 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:29:15,213 p=62931 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:29:15,214 p=62931 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks ['sdf']"
+}
+2022-05-31 09:29:15,272 p=62931 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:29:15,273 p=62931 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "_root_pool_type  "
+}
+2022-05-31 09:29:15,306 p=62931 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/cleanup.yml for local_zfs_root
+2022-05-31 09:29:15,708 p=62931 u=root n=ansible | TASK [01-system-prep : Unmount All Directories] ***********************************************************************************************************************************************************************
+2022-05-31 09:29:15,709 p=62931 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/dev)
+2022-05-31 09:29:15,861 p=62931 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/proc)
+2022-05-31 09:29:16,004 p=62931 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/sys)
+2022-05-31 09:29:16,149 p=62931 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/boot/efi)
+2022-05-31 09:29:16,298 p=62931 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/boot)
+2022-05-31 09:29:16,443 p=62931 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/home)
+2022-05-31 09:29:16,591 p=62931 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/run)
+2022-05-31 09:29:16,736 p=62931 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/tmpfs)
+2022-05-31 09:29:17,036 p=62931 u=root n=ansible | TASK [01-system-prep : Get list of Available zfs pools] ***************************************************************************************************************************************************************
+2022-05-31 09:29:17,036 p=62931 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:29:17,106 p=63055 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: '{{_root_pool}}' in zpool_list.stdout
+
+2022-05-31 09:29:17,421 p=62931 u=root n=ansible | TASK [01-system-prep : check if already mount] ************************************************************************************************************************************************************************
+2022-05-31 09:29:17,422 p=62931 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:29:17,453 p=62931 u=root n=ansible | TASK [01-system-prep : set_fact] **************************************************************************************************************************************************************************************
+2022-05-31 09:29:17,454 p=62931 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:29:17,484 p=62931 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:29:17,485 p=62931 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks ures"
+}
+2022-05-31 09:29:17,511 p=63067 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ _system_disks }}
+
+2022-05-31 09:29:17,529 p=62931 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/disks.yml for local_zfs_root
+2022-05-31 09:29:17,563 p=62931 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:29:17,564 p=62931 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "11111111 Disks ['sdf']"
+}
+2022-05-31 09:29:17,731 p=62931 u=root n=ansible | TASK [01-system-prep : Set disk_check_failed to false by default] *****************************************************************************************************************************************************
+2022-05-31 09:29:17,732 p=62931 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:29:17,775 p=62931 u=root n=ansible | TASK [01-system-prep : Set up var for disks] **************************************************************************************************************************************************************************
+2022-05-31 09:29:17,776 p=62931 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:29:17,808 p=62931 u=root n=ansible | TASK [01-system-prep : var for disks output] **************************************************************************************************************************************************************************
+2022-05-31 09:29:17,809 p=62931 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "System disks ===> : loop1 sdf sdd sdb loop6 loop4 sr0 loop2 loop0 sde sdc loop7 sda loop5 loop3"
+}
+2022-05-31 09:29:17,857 p=62931 u=root n=ansible | TASK [01-system-prep : Set up ignored disks] **************************************************************************************************************************************************************************
+2022-05-31 09:29:17,857 p=62931 u=root n=ansible | ok: [local_zfs_root] => (item=sdf)
+2022-05-31 09:29:17,863 p=62931 u=root n=ansible | ok: [local_zfs_root] => (item=loop)
+2022-05-31 09:29:17,872 p=62931 u=root n=ansible | ok: [local_zfs_root] => (item=dm)
+2022-05-31 09:29:17,879 p=62931 u=root n=ansible | ok: [local_zfs_root] => (item=md)
+2022-05-31 09:29:17,885 p=62931 u=root n=ansible | ok: [local_zfs_root] => (item=sr)
+2022-05-31 09:29:17,918 p=62931 u=root n=ansible | TASK [01-system-prep : var for disks output] **************************************************************************************************************************************************************************
+2022-05-31 09:29:17,919 p=62931 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "System disks ===> : ['sdf']"
+}
+2022-05-31 09:29:17,945 p=63091 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ _system_disks }}
+
+2022-05-31 09:29:17,968 p=62931 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/partition.yml for local_zfs_root
+2022-05-31 09:29:18,316 p=62931 u=root n=ansible | TASK [01-system-prep : Check to see if partition exists on disk already] **********************************************************************************************************************************************
+2022-05-31 09:29:18,317 p=62931 u=root n=ansible | changed: [local_zfs_root] => (item=sdf)
+2022-05-31 09:29:19,667 p=62931 u=root n=ansible | TASK [01-system-prep : forcibly zap disks] ****************************************************************************************************************************************************************************
+2022-05-31 09:29:19,667 p=62931 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:29:19,719 p=62931 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:29:19,720 p=62931 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "_root_device_list ['/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0']"
+}
+2022-05-31 09:29:19,752 p=62931 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:29:19,753 p=62931 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Create bootloader partition(s) -n1:1M:+512M -t1:EF00 -c1:EFI"
+}
+2022-05-31 09:29:20,987 p=62931 u=root n=ansible | TASK [01-system-prep : set up efi disk partitions] ********************************************************************************************************************************************************************
+2022-05-31 09:29:20,987 p=62931 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:29:22,368 p=62931 u=root n=ansible | TASK [01-system-prep : set up boot disk partitions] *******************************************************************************************************************************************************************
+2022-05-31 09:29:22,369 p=62931 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:29:23,741 p=62931 u=root n=ansible | TASK [01-system-prep : set up swap disk partitions] *******************************************************************************************************************************************************************
+2022-05-31 09:29:23,741 p=62931 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:29:26,856 p=62931 u=root n=ansible | TASK [01-system-prep : set up root disk partitions] *******************************************************************************************************************************************************************
+2022-05-31 09:29:26,857 p=62931 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:29:27,141 p=62931 u=root n=ansible | TASK [01-system-prep : print info disk] *******************************************************************************************************************************************************************************
+2022-05-31 09:29:27,142 p=62931 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:29:27,464 p=62931 u=root n=ansible | TASK [01-system-prep : format boot] ***********************************************************************************************************************************************************************************
+2022-05-31 09:29:27,464 p=62931 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:29:27,735 p=62931 u=root n=ansible | TASK [01-system-prep : format /boot/efi] ******************************************************************************************************************************************************************************
+2022-05-31 09:29:27,735 p=62931 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:29:27,762 p=63327 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ _system_disks }}
+
+2022-05-31 09:29:27,782 p=62931 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/mdadmin.yml for local_zfs_root
+2022-05-31 09:29:27,916 p=62931 u=root n=ansible | TASK [01-system-prep : mdadm | Get arrays to create] ******************************************************************************************************************************************************************
+2022-05-31 09:29:27,917 p=62931 u=root n=ansible | fatal: [local_zfs_root]: FAILED! => {"msg": "'mdadm_arrays' is undefined"}
+2022-05-31 09:29:27,922 p=62931 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.1.live.install_zfs.retry
+
+2022-05-31 09:29:27,923 p=62931 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 09:29:27,923 p=62931 u=root n=ansible | local_zfs_root             : ok=39   changed=9    unreachable=0    failed=1    skipped=17   rescued=0    ignored=0   
+2022-05-31 09:31:00,450 p=63530 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:31:00,607 p=63530 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 09:31:01,446 p=63530 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 09:31:01,447 p=63530 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:31:01,529 p=63530 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/debugmsg.yml for local_zfs_root
+2022-05-31 09:31:01,587 p=63530 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:01,588 p=63530 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "1 Ubuntu"
+}
+2022-05-31 09:31:01,648 p=63530 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:01,649 p=63530 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "2 22.04"
+}
+2022-05-31 09:31:01,709 p=63530 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:01,710 p=63530 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "3 22"
+}
+2022-05-31 09:31:02,038 p=63530 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:31:02,039 p=63530 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:31:02,244 p=63530 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:31:02,244 p=63530 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:31:02,308 p=63530 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:02,308 p=63530 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '18.5G', 'size': '18.5G', 'name': 'backupPool1'}) => {
+    "msg": "4 ZFS pool backupPool1 has 18.5G free space out of 18.5G."
+}
+2022-05-31 09:31:02,316 p=63530 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '89.5G', 'size': '89.5G', 'name': 'dataPool'}) => {
+    "msg": "4 ZFS pool dataPool has 89.5G free space out of 89.5G."
+}
+2022-05-31 09:31:02,320 p=63530 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '11.4G', 'size': '14.5G', 'name': 'rpool'}) => {
+    "msg": "4 ZFS pool rpool has 11.4G free space out of 14.5G."
+}
+2022-05-31 09:31:02,364 p=63530 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:02,365 p=63530 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "rpool name root_pool"
+}
+2022-05-31 09:31:02,397 p=63530 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/install.yml for local_zfs_root
+2022-05-31 09:31:03,423 p=63530 u=root n=ansible | TASK [01-system-prep : Install global dependencies] *******************************************************************************************************************************************************************
+2022-05-31 09:31:03,424 p=63530 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:31:03,493 p=63530 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:03,493 p=63530 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks ['sdf']"
+}
+2022-05-31 09:31:03,553 p=63530 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:03,554 p=63530 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "_root_pool_type  "
+}
+2022-05-31 09:31:03,591 p=63530 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/cleanup.yml for local_zfs_root
+2022-05-31 09:31:03,976 p=63530 u=root n=ansible | TASK [01-system-prep : Unmount All Directories] ***********************************************************************************************************************************************************************
+2022-05-31 09:31:03,977 p=63530 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/dev)
+2022-05-31 09:31:04,135 p=63530 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/proc)
+2022-05-31 09:31:04,282 p=63530 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/sys)
+2022-05-31 09:31:04,425 p=63530 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/boot/efi)
+2022-05-31 09:31:04,569 p=63530 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/boot)
+2022-05-31 09:31:04,713 p=63530 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/home)
+2022-05-31 09:31:04,856 p=63530 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/run)
+2022-05-31 09:31:05,001 p=63530 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/tmpfs)
+2022-05-31 09:31:05,254 p=63530 u=root n=ansible | TASK [01-system-prep : Get list of Available zfs pools] ***************************************************************************************************************************************************************
+2022-05-31 09:31:05,255 p=63530 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:31:05,327 p=63654 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: '{{_root_pool}}' in zpool_list.stdout
+
+2022-05-31 09:31:05,583 p=63530 u=root n=ansible | TASK [01-system-prep : check if already mount] ************************************************************************************************************************************************************************
+2022-05-31 09:31:05,583 p=63530 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:31:05,617 p=63530 u=root n=ansible | TASK [01-system-prep : set_fact] **************************************************************************************************************************************************************************************
+2022-05-31 09:31:05,617 p=63530 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:31:05,649 p=63530 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:05,649 p=63530 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks ures"
+}
+2022-05-31 09:31:05,675 p=63666 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ _system_disks }}
+
+2022-05-31 09:31:05,694 p=63530 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/disks.yml for local_zfs_root
+2022-05-31 09:31:05,727 p=63530 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:05,727 p=63530 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "11111111 Disks ['sdf']"
+}
+2022-05-31 09:31:05,901 p=63530 u=root n=ansible | TASK [01-system-prep : Set disk_check_failed to false by default] *****************************************************************************************************************************************************
+2022-05-31 09:31:05,901 p=63530 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:31:05,946 p=63530 u=root n=ansible | TASK [01-system-prep : Set up var for disks] **************************************************************************************************************************************************************************
+2022-05-31 09:31:05,946 p=63530 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:31:05,980 p=63530 u=root n=ansible | TASK [01-system-prep : var for disks output] **************************************************************************************************************************************************************************
+2022-05-31 09:31:05,981 p=63530 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "System disks ===> : loop1 sdf sdd sdb loop6 loop4 sr0 loop2 loop0 sde sdc loop7 sda loop5 loop3"
+}
+2022-05-31 09:31:06,025 p=63530 u=root n=ansible | TASK [01-system-prep : Set up ignored disks] **************************************************************************************************************************************************************************
+2022-05-31 09:31:06,026 p=63530 u=root n=ansible | ok: [local_zfs_root] => (item=sdf)
+2022-05-31 09:31:06,036 p=63530 u=root n=ansible | ok: [local_zfs_root] => (item=loop)
+2022-05-31 09:31:06,045 p=63530 u=root n=ansible | ok: [local_zfs_root] => (item=dm)
+2022-05-31 09:31:06,055 p=63530 u=root n=ansible | ok: [local_zfs_root] => (item=md)
+2022-05-31 09:31:06,060 p=63530 u=root n=ansible | ok: [local_zfs_root] => (item=sr)
+2022-05-31 09:31:06,095 p=63530 u=root n=ansible | TASK [01-system-prep : var for disks output] **************************************************************************************************************************************************************************
+2022-05-31 09:31:06,096 p=63530 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "System disks ===> : ['sdf']"
+}
+2022-05-31 09:31:06,121 p=63690 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ _system_disks }}
+
+2022-05-31 09:31:06,145 p=63530 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/partition.yml for local_zfs_root
+2022-05-31 09:31:06,453 p=63530 u=root n=ansible | TASK [01-system-prep : Check to see if partition exists on disk already] **********************************************************************************************************************************************
+2022-05-31 09:31:06,454 p=63530 u=root n=ansible | changed: [local_zfs_root] => (item=sdf)
+2022-05-31 09:31:10,030 p=63530 u=root n=ansible | TASK [01-system-prep : forcibly zap disks] ****************************************************************************************************************************************************************************
+2022-05-31 09:31:10,031 p=63530 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:31:10,097 p=63530 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:10,099 p=63530 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "_root_device_list ['/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0']"
+}
+2022-05-31 09:31:10,133 p=63530 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:10,134 p=63530 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Create bootloader partition(s) -n1:1M:+512M -t1:EF00 -c1:EFI"
+}
+2022-05-31 09:31:11,382 p=63530 u=root n=ansible | TASK [01-system-prep : set up efi disk partitions] ********************************************************************************************************************************************************************
+2022-05-31 09:31:11,383 p=63530 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:31:12,742 p=63530 u=root n=ansible | TASK [01-system-prep : set up boot disk partitions] *******************************************************************************************************************************************************************
+2022-05-31 09:31:12,743 p=63530 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:31:14,047 p=63530 u=root n=ansible |  [ERROR]: User interrupted execution
+

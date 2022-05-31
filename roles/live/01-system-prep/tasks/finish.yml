@@ -74,8 +74,12 @@
 - name: run debootstrap and set devices=off for root pool
   shell: "debootstrap {{ _ubuntu_release }} {{ _installdir }}"
 #  shell: "debootstrap {{ _ubuntu_release }} {{ _installdir }} && zfs set devices=off {{ _root_pool }}"
+  poll: 5
+  register: result
   tags:
     - zfs_final
+- debug:
+  var: result.stdout
 
 #- name: set devices=off for data pool
 #  shell: "zfs set devices=off {{ _root_pool }}"

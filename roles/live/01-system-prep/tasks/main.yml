@@ -49,10 +49,9 @@
         - zfs_partition
 
     - include_tasks: mdadmin.yml
-      when:
-      - "{{ _system_disks }}"
+      when: _mdadm | default(false) | bool == true
       tags:
-        - zfs_partition
+        - zfs_lukscrypt
 
     - include_tasks: luks.yml
       when: _lukscrypt | default(false) | bool == true
