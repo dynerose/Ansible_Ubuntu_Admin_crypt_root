@@ -12,7 +12,9 @@
 - debug: msg='_root_pool_type {{ _root_pool_type }}'
   tags: zfs_debug
 
-- include_tasks: cleanup.yml
+- name: Create filesystems
+  include_tasks: cleanup.yml
+  when: cleanup|default('') == "ABSOLUTELY"
   tags:
     - zfs_partition
 
@@ -38,12 +40,16 @@
     tags:
       - zfs_partition
 
-  - include_tasks: partition.yml
+  - include_tasks: mdadmin.yml
     when:
     - "{{ _system_disks }}"
     tags:
       - zfs_partition
 
+  - include_tasks: luks.yml
+    when: _lukscrypt | default(false) | bool == true
+    tags:
+      - zfs_lukscrypt
 #- include_tasks: zfs_check.yml
 #  tags:
 #    - zfs_bootstrap
@@ -67,4 +73,4 @@
     tags:
       - zfs_final
 
-when: not deboostrapped or wipe|default('') == "ABSOLUTELY"
+when: not deboostrapped or cleanup|default('') == "ABSOLUTELY"

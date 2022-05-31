@@ -1,0 +1,20 @@
+---
+
+- name: create temp file
+  command: mktemp /tmp/encdisk.XXXXXXX
+  register: tmp
+
+- name: write password to temp file
+  template: src=templates/encrypt-pass.j2 dest={{tmp.stdout}}
+
+- name: encrypt disk
+  shell: cat {{tmp.stdout}} | cryptsetup --verbose --batch-mode luksFormat {{ _root_device_list }}{{ _cryptstore_part_append }}
+
+- name: open encrypted disk
+  shell: cat {{tmp.stdout}} | cryptsetup luksOpen  {{ _root_device_list }}{{ _cryptstore_part_append }} {{_luksname}}
+
+- name: mkfs on
+  command: 'mkfs.xfs -L {{_luksname}} /dev/mapper/{{_luksname}}'
+
+- name: purge temp file
+  command: shred -z -u {{tmp.stdout}}
