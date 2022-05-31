@@ -1,0 +1,90 @@
+---
+
+#- name: Distribution
+- debug: msg="1 {{ ansible_distribution }}"
+  tags: zfs_debug
+#- name: Distribution version
+- debug: msg="2 {{ ansible_distribution_version}}"
+  tags: zfs_debug
+#- name: Distribution major version
+- debug: msg="3 {{ ansible_distribution_major_version }}"
+  tags: zfs_debug
+#- name: Print test message
+#  debug:
+#    msg: " ELSO mount | grep -v zfs | tac | awk '/\/mnt/ {print $3}' | xargs -i{} umount -lf {}"
+
+# Gather facts about ZFS pool rpool
+- zpool_facts: pool=rpool
+  tags: zfs_debug
+# Gather space usage about all imported ZFS pools
+- zpool_facts: properties='free,size'
+  tags: zfs_debug
+- debug: msg='4 ZFS pool {{ item.name }} has {{ item.free }} free space out of {{ item.size }}.'
+  with_items: '{{ ansible_zfs_pools }}'
+  tags: zfs_debug
+
+#- name: Gather facts about ZFS dataset rpool/export/home
+#  zfs_facts:
+#    dataset: "{{ _root_pool }}"
+#  tags: zfs_debug
+
+#- name: Report space usage on ZFS filesystems under data/home
+#  zfs_facts:
+#    name:  "{{ _root_pool }}"
+#    recurse: yes
+#    type: filesystem
+#  tags: zfs_debug
+
+#- debug:
+#    msg: '5 ZFS dataset {{ item.name }} consumes {{ item.used }} of disk space.'
+#  with_items: '{{ ansible_zfs_datasets }}'
+#  tags: zfs_debug
+
+- debug:
+    msg: rpool name {{ _root_pool }}
+  tags: zfs_debug
+#- debug:
+#    msg: {{ zfsprep_root_disks_by_id }}
+
+#- name: 'Create keyfile'
+#  file: path= /boot/{{ _root_pool }}.key owner=root group=root mode=0400 state=touch
+#  when: keyfile.stat.exists == false
+
+#- debug:
+#   msg: ddd1 "{{ _root_device_list }}
+
+#- debug:
+#   msg: ddd2 " {{ _root_part_append }}"
+
+#- debug:
+#   msg: ddd3 {{ _root_device_list | join(' ') }}
+
+#- debug:
+#   msg: ddd1 {{ [_root_part_append] | product(_root_device_list) | map("join") | list}}
+#   msg: ddd2 {{ _root_device_list | join("-part4 ")}}
+#    msg: ddd4  "{{ _root_device_list | product([_root_part_append]) | map('join') | list }}"
+#   msg: ddd3 {{ product(_root_device_list) | map("join") | [_root_part_append] | list}}
+#   msg: ddd3 {{ product(_root_device_list) | map("join") | [_root_part_append] | list}}
+
+#- debug:
+#    msg: hossz "{{ _root_pool_type }}"
+#- debug:
+#    msg: counts "{{ (_root_device_list | count ) }} "
+#- debug:
+#   msg: counts "{{ (_root_device_list | count == 2 ) | ternary( 'mirror', '1') }} "
+#- debug:
+#   msg: tesyt "{{ _root_device_list | product([_root_part_append]) | map('join') | list }}"
+
+#- debug:
+#   msg: eee   "{{ _root_device_list | map('regex_replace', '$', _root_part_append) | list }}"
+#- debug:
+#    msg: qqqqqqqqqqqqqq "{% for item in  _root_device_list  %}{{ item }}{{ _root_part_append }}{% if not loop.last %} {% endif %}{% endfor %}"
+#- name: Using JSON Query
+#    vars:
+#      jmes_path: "join(':', [address, port])"
+#    debug:
+#      msg: "{{ my_list | to_json | from_json | map('json_query', jmes_path) | join(' ') }}"
+
+#- import_tasks: netplan.yml
+#  when: netplan_enabled
+

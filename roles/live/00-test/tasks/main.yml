@@ -1,4 +1,40 @@
 ---
-- name: Print test message
-  debug:
-    msg: " ELSO mount | grep -v zfs | tac | awk '/\/mnt/ {print $3}' | xargs -i{} umount -lf {}"
+
+#- name: Distribution
+- debug: msg="{{ ansible_distribution }}"
+#- name: Distribution version
+- debug: msg="{{ ansible_distribution_version}}"
+#- name: Distribution major version
+- debug: msg="{{ ansible_distribution_major_version }}"
+
+#- name: Print test message
+#  debug:
+#    msg: " ELSO mount | grep -v zfs | tac | awk '/\/mnt/ {print $3}' | xargs -i{} umount -lf {}"
+
+# Gather facts about ZFS pool rpool
+- zpool_facts: pool=rpool
+
+# Gather space usage about all imported ZFS pools
+- zpool_facts: properties='free,size'
+
+- debug: msg='ZFS pool {{ item.name }} has {{ item.free }} free space out of {{ item.size }}.'
+  with_items: '{{ ansible_zfs_pools }}'
+
+- name: Gather facts about ZFS dataset rpool/export/home
+  zfs_facts:
+    dataset: rpool/export/home
+
+- name: Report space usage on ZFS filesystems under data/home
+  zfs_facts:
+    name: data/home
+    recurse: yes
+    type: filesystem
+
+- debug:
+    msg: 'ZFS dataset {{ item.name }} consumes {{ item.used }} of disk space.'
+  with_items: '{{ ansible_zfs_datasets }}'
+
+# Gather space usage about all imported ZFS pools
+#- zpool_facts: properties='free,size'
+#- debug: msg='ZFS pool {{ item.name }} exists? -> [{{ item.name == zfs.poolName }}] It has {{ item.free }} free space out of {{ item.size }}.'
+#  with_items: '{{ ansible_zfs_pools }}'

@@ -1,0 +1,13 @@
+---
+# description: Install our required packages for zfs-partition
+
+- name: Installing Packages
+  apt:
+    update_cache: yes
+    name:
+      - zfsutils-linux
+      - gdisk
+      - debootstrap
+    state: present
+  tags:
+    - zfs_install

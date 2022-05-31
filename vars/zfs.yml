@@ -1,3 +1,133 @@
-#  - ../vars/main.yml
-#    - ../vars/zfs.yml
-#    - ../vars/disks.yml
+_boot_pool: bpool
+_root_pool: rpool
+_data_pool: datastore
+
+my_unique_id:
+#my_unique_id: 2l7nlh
+#UUID: "$(dd if=/dev/urandom bs=1 count=100 2>/dev/null | tr -dc 'a-z0-9' | cut -c-6)"
+
+#zfsprep_root_pool_type: "mirror"
+#_root_pool_type: "{{ (root_device_list | count == 2) | ternary( '', 'mirror') }} "
+
+
+_timezone: "UTC"
+#_grub_cmdline: "elevator=noop"
+_grub_cmdline: "root=ZFS={{ _root_pool }}/root"
+
+_boot_pool_opts:
+  - "-o cachefile=/etc/zfs/zpool.cache"
+  - "-o ashift=12 -o autotrim=on -d"
+  - "-o feature@async_destroy=enabled"
+  - "-o feature@bookmarks=enabled"
+  - "-o feature@embedded_data=enabled"
+  - "-o feature@empty_bpobj=enabled"
+  - "-o feature@enabled_txg=enabled"
+  - "-o feature@extensible_dataset=enabled"
+  - "-o feature@filesystem_limits=enabled"
+  - "-o feature@hole_birth=enabled"
+  - "-o feature@large_blocks=enabled"
+  - "-o feature@lz4_compress=enabled"
+  - "-o feature@spacemap_histogram=enabled"
+  - "-O acltype=posixacl"
+  - "-O canmount=off"
+  - "-O compression=lz4"
+  - "-O devices=off"
+  - "-O normalization=formD"
+  - "-O relatime=on"
+  - "-O xattr=sa"
+  - "-O mountpoint=/boot -R {{ _installdir }} "
+
+#_crypt_flags: "-c aes-xts-plain64 -s 256 -h sha256"
+#_crypt_flags: " -O encryption=aes-256-gcm -O keylocation=prompt -O keyformat=passphrase"
+_crypt_flags:
+  - " -O encryption=aes-256-gcm"
+  - " -O keylocation=prompt"
+  - " -O keyformat=passphrase "
+
+_lukscrypt_flags:
+  - " -O encryption=aes-256-gcm"
+  - " -O keylocation=file:///boot/{{ _root_pool }}.key"
+  - " -O keyformat=raw"
+
+_root_pool_opts:
+  - "-o ashift=12"
+  - "-o autotrim=on"
+  - "-O acltype=posixacl"
+  - "-O canmount=off"
+  - "-O compression=lz4"
+  - "-O dnodesize=auto"
+  - "-O normalization=formD"
+  - "-O atime=off"
+  - "-O xattr=sa"
+  - "-O mountpoint=none -R {{ _installdir }} "
+#  - "-O mountpoint=/ -R {{ _installdir }} "
+
+zfsprep_data_pool_opts:
+  - "-o ashift=12"
+  - "-O atime=off"
+  - "-O canmount=off"
+  - "-O compression=lz4"
+  - "-O normalization=formD"
+  - "-O xattr=sa -O mountpoint=/data -R /mnt"
+
+_root_volumes:
+  - name: "{{ _root_pool }}/home"
+  - name: "{{ _root_pool }}/home/root"
+    properties:
+      mountpoint: /root
+  - name: "{{ _root_pool }}/var"
+    properties:
+      canmount: off
+  - name: "{{ _root_pool }}/var/lib"
+    properties:
+      canmount: off
+
+  - name: "{{ _root_pool }}/var/cache"
+    properties:
+      com.sun:auto-snapshot: false
+
+  - name: "{{ _root_pool }}/var/log"
+    properties:
+      com.sun:auto-snapshot: false
+
+  - name: "{{ _root_pool }}/var/spool"
+    properties:
+      com.sun:auto-snapshot: false
+
+  - name: "{{ _root_pool }}/var/tmp"
+    properties:
+      com.sun:auto-snapshot: false
+
+  - name: "{{ _root_pool }}/var/lib/docker"
+    properties:
+      com.sun:auto-snapshot: false
+#    properties:
+#      acltype: posixacl
+#      xattr: sa
+
+_datastore_volume:
+  - name: "{{ _root_pool }}/datastore"
+    properties:
+#      com.ubuntu.zsys: bootfs=no
+#      com.sun:auto-snapshot: false
+      mountpoint: /mnt/disk0
+
+# System disks - These are skipped over during the check, if this is unset then the drive with the /boot partition is assumed to be the primary disk
+# Spare disks - What will we use for our ZFS spares ( For blank list use [] )
+_zfs_spare_disks: []
+
+# What options should be enabled for our Zpool ( For blank list use [])
+_zpool_options:
+  - dedup=on
+  - acltype=posixacl
+  - xattr=sa
+
+_zfs_raid_type: raidz1
+# What type of RAID do we wish to define ( raidz1 raidz2 etc...)
+
+_zfs_ignore_disks:
+# Ignored disk types during check and creation process
+  - loop
+  - dm
+  - md
+  - sr

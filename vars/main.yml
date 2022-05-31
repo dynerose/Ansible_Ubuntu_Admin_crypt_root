@@ -1,4 +1,34 @@
-#  - ../vars/main.yml
-#    - ../vars/zfs.yml
-#    - ../vars/disks.yml
 
+# Will be added to the docker group to give user command line access to docker
+_user: sa
+_password: Password
+_root_password_hash: "DC647EB65E6711E155375218212B3964"  # "{{ _password }}"
+# Your email and domain, used for Let's Encrypt SSL certs
+_email: me@info.local
+
+# Applications will have subdomain SSL certificates created if Traefik is enabled, e.g. ansible-nas.<your-domain>, nextcloud.<your-domain>
+_domain: info.local
+_hostname:
+  short: TEST
+  long: TEST.local.com
+
+_installdir: /mnt/install
+
+#####################################################################################################################################################################################################
+
+debug:
+  msg: "DISK {{ _target_disks }} "
+
+enable_task_debugger: true
+isneeded: true
+_needed: false
+
+_ubuntu_release: focal
+_timezone: "UTC"
+#_grub_cmdline: "elevator=noop"
+#_grub_cmdline: "root=ZFS={{ _root_pool }}/root"
+_extra_locales: []
+_locales: "{{ _extra_locales + ['en_US.UTF-8'] }}"
+_lang: "en_US.UTF-8"
+
+_system_memory: 800M

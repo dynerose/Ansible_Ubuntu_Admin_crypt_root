@@ -1,3 +1,163 @@
-#+  - ../vars/main.yml
-#    - ../vars/zfs.yml
-#    - ../vars/disks.yml
+# defaults file for 01-system-prep
+
+_zap_disks: true
+_efi: true
+_grub: false
+_swap: true
+_crypt: true
+_lukscrypt: false
+_legacy_device_nodes: false
+_mdadm: false
+_raid: true
+_zfs_boot: false
+_zfs_docker: true
+
+_system_disks:
+  - sda
+#  - sdb
+#  - sdc
+
+_data_partitions: false
+_data_disks:
+#  - sdd
+#  - sde
+#  - sdf
+
+#_root_disks_by_id:  "/dev/disk/by-id/{{ (_system_disks | map('extract', hostvars[inventory_hostname]['ansible_devices'], ['links', 'ids', 0]) | list).0 }}"
+
+zfs_arrays:
+# Define array name
+  - name: 'zpool'
+    # Define disk devices to assign to array
+    devices:
+    #      - '/dev/sdc'
+    #      - '/dev/sdb'
+    # the sda must last because copy from datastructure
+      - '/dev/sda'
+    # Define filesystem to partition array with
+    filesystem: 'zfs'
+    # Define the array raid level
+    # 0|1|4|5|6|10
+    level: '0'
+    # Define mountpoint for array device
+    mountpoint: '/'
+    # Define if array should be present or absent
+    state: 'present'
+    # Set mount options (optional)
+    opts: 'noatime'
+
+swap_array:
+mdadm_arrays_data_arrays:
+# Define array name
+#  - name: 'md0'
+    # Define disk devices to assign to array
+#    devices:
+#      - '/dev/sdc'
+#      - '/dev/sdd'
+    # Define filesystem to partition array with (optional)
+    # ext4|ext3|ext2|btrfs|vfat|lvm|xfs
+#    filesystem: 'xfs'
+    # Define the array raid level
+    # 0|1|4|5|6|10
+#    level: '1'
+    # Define mountpoint for array device
+#    mountpoint: '/mnt/disk1'
+    # Define if array should be present or absent
+#    state: 'present'
+    # Set mount options (optional)
+#    opts: 'noatime'
+
+
+_root_disks_by_id: "{{ _system_disks | map('extract', hostvars[inventory_hostname]['ansible_devices'], ['links', 'ids', 0]) | list | map('regex_replace', '(.*)','\\g<1>') | list }}"
+_data_disks_by_id:  "{{ _data_disks | map('extract', hostvars[inventory_hostname]['ansible_devices'], ['links', 'ids', 0]) | list | map('regex_replace', '(.*)', '\\g<1>') | list }}"
+
+prefix: /dev/disk/by-id/
+_root_device_list:  "{{ _legacy_device_nodes | ternary( _root_disks_by_id, [prefix] | product( _root_disks_by_id ) | map('join') | list )}}"
+_data_device_list:  "{{ _legacy_device_nodes | ternary( _data_disks_by_id, [prefix] | product( _data_disks_by_id ) | map('join') | list )}}"
+
+#_root_disks_by_id: "/dev/disk/by-id/{{ ( _system_disks | map('extract', hostvars[inventory_hostname]['ansible_devices'], ['links', 'ids', 0]) | list).0 }}"
+_target_disks: "{{ _legacy_device_nodes | ternary((( _system_disks + _data_disks ) | map('regex_replace', '(.*)', '/dev/\\g<1>') | list),(_root_disks_by_id + _data_disks_by_id)) }}"
+
+#debug:
+#    msg: "DISK {{ _target_disks }} "
+_root_pool_type: "{{ (_root_device_list | count == 2 ) | ternary( 'mirror', '') }} "
+#_root_pool_type: "{{ (_root_device_list | count == 3 ) | ternary( 'raidz1', '') }} "
+
+_data_pool_type: "{{ (_data_device_list | count == 2 ) | ternary( 'mirror', '') }} "
+#_data_pool_type: "{{ (_data_device_list | count == 3 ) | ternary( 'raidz1', '') }} "
+
+# 1. partititon
+_efi_part_append: "{{ _legacy_device_nodes | ternary('1', '-part1') }}"
+_legacy_part_append: "{{ _legacy_device_nodes | ternary('1', '-part1') }}"
+
+# 2. partition
+_boot_part_append: "{{ _legacy_device_nodes | ternary('2', '-part2') }}"
+
+# 3. partititon
+_swap_part_append: "{{ _legacy_device_nodes | ternary('3', '-part3') }}"
+
+# 4. partition
+_cryptstore_part_append: "{{ _legacy_device_nodes | ternary('4', '-part4') }}"
+_root_part_append: "{{ _legacy_device_nodes | ternary('4', '-part4') }}"
+
+_data_part_append: "{{ _legacy_device_nodes | ternary('1', '-part1') }}"
+
+# partition
+_legacy_partition_flags: "-a1 -n5:24K:+1000K -t5:EF02"
+_mbr_partition_flags: "-a1 -n2:34:2047 -t2:EF02"
+_efi_partition_flags: "-n1:1M:+512M -t1:EF00 -c1:EFI"
+
+# Adjust the swap swize to your needs. If you wish to enable hiberation (which only works for unencrypted installs), the swap partition must be at least as large as the system’s RAM.
+_swap_partition_flags: "-n3:0:+{{ _system_memory }} -t3:8200"
+_swap_raid_partition_flags: "-n3:0:+{{ _system_memory }} -t3:FD00"
+
+# For legacy (BIOS) booting:
+#_boot_partition_flags: "-a1 -n5:24K:+1000K -t5:EF02 $DISK"
+# Create a boot pool partition:
+_boot_partition_flags: "-n2:0:+1024M -t2:8300 -c2:Boot"
+_boot_zfs_partition_flags: "-n2:0:+2G -t2:BF01 -c2:Boot"
+#_boot_zfs_partition_flags: "-n3:0:+2G -t3:BE00  c3:Boot"
+#_cryptboot_partition_flags: "-n3:0:+2G  -t4:8300"
+
+
+# Unencrypted zfs or ZFS native encryption
+_zfs_root_partition_flags: "-n4:0:0 -t4:BF00 -c4:Ubuntu"
+_root_partition_flags: "-n4:0:0 -t4:BF00 -c4:Ubuntu"
+
+# LUKS encrypt
+#_cryptstore_partition_flags: "-n5:0:+2048M -t5:8300 -c5:Cryptsore"
+_cryptboot_partition_flags: "-n2:0:+2G  -t4:8300"
+_cryptroot_partition_flags: "-n4:0:0 -t4:8309"
+_partition_flags: "{{ (_efi | default(false) | bool | ternary(_efi_partition_flags,_legacy_partition_flags)) + ' ' + (_luks | default(false) | bool | ternary(_cryptboot_partition_flags + ' ' + _cryptroot_partition_flags,_root_partition_flags)) }}"
+#a8 for 4k size
+_data_partition_flags: "-a8 -n1:0:0 {{ (_luks | default(false) | bool | ternary('-t1:8300', '-t1:BF01')) }}"
+_root_part_list:  "{{ _legacy_device_nodes | ternary( _root_device_list, product( _root_device_list ) | [_root_part_append] | map('join') | list )}}"
+
+_swap_opts:
+  volsize: 4G
+  compression: zle
+  logbias: throughput
+  sync: always
+  primarycache: metadata
+  secondarycache: none
+  com.sun:auto-snapshot: false
+
+_crypt_passphrase: "Password"
+_luksbootname: cryptboot
+_luksname: cryptstore
+_lukscryptkey: "/boot/{{ _luksname }}/{{ _root_pool }}.key"
+_luksoptions: "--type=luks1 -qc aes-xts-plain64 -s 512 -h sha256"
+
+_timezone: "UTC"
+#_grub_cmdline: "elevator=noop"
+# _grub_cmdline: "root=ZFS={{ _root_pool }}/root"
+
+blank_disks: []                       # This is determined from the list of current system disks and spare disks ( ie the ones which are not used up ) and is used for creating the zpool
+disk_check_failed: false              # Default data which is overriden later if required
+
+_luks_root_names:
+  - e0
+  - e1
+_luks_data_names:
+  - e2
+  - e3
