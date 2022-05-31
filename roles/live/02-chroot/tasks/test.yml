@@ -1,0 +1,14 @@
+---
+- name: zfs-load-key@.service
+  template:
+    src=etc/systemd/system/zfs-load-key@.service.j2
+    dest=/etc/systemd/system/zfs-load-key@.service
+    mode=664
+  notify:
+    - reload systemctl
+
+- name: Start zfs-load-key@.service
+  service:
+    name=zfs-load-key@{{ _root_pool }}
+    state=started
+    enabled=yes

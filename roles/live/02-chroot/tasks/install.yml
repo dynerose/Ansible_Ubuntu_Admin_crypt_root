@@ -1,0 +1,198 @@
+---
+# tasks file for 02-chroot
+#- debug:
+#    var: _efi|default(false)|bool == true
+
+- apt:
+    name: software-properties-common
+    state: present
+  tags:
+    - chroot_install
+
+- shell: add-apt-repository universe
+  tags:
+    - chroot_install
+
+- name: update apt cache
+  become: true
+  apt:
+    update_cache: yes
+    upgrade: 'yes'
+  tags:
+    - chroot_install
+
+- name: install locales
+  locale_gen:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ _locales }}"
+  tags:
+    - chroot_install
+
+- name: set LANG in /etc/default/locale
+  lineinfile:
+    line: "LANG={{ _lang }}"
+    path: /etc/default/locale
+    insertafter: EOF
+  tags:
+    - chroot_install
+
+- name: set timezone
+  shell: "echo {{ _timezone }} > /etc/timezone && rm /etc/localtime && dpkg-reconfigure -f noninteractive tzdata"
+  tags:
+    - chroot_install
+
+- name: ln -s /proc/self/mounts /etc/mtab
+  file:
+    src: /proc/self/mounts
+    dest: /etc/mtab
+    state: link
+  tags:
+    - chroot_install
+
+- name: ensure live system has necessary packages installed
+  apt:
+    state: present
+    update_cache: true
+    cache_valid_time: 3600
+    upgrade: safe
+  become: true
+  register: apt_out
+  tags:
+    - chroot_install
+
+- name: install our kernel linux-image-generic
+  apt:
+    name: linux-image-generic
+    install_recommends: no
+    state: present
+  tags:
+    - chroot_install
+
+- name: zfs-dkms note-incompatible-licenses note true
+  shell: "zfs-dkms zfs-dkms/note-incompatible-licenses note true | debconf-set-selections"
+  tags:
+    - chroot_install
+
+- name: Install zfs dependencies
+  apt:
+    name: "{{ dependencies.zfs }}"
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ debian_cache_valid_time|default(7200) }}"
+  tags:
+    - chroot_install
+
+- name: Install global dependencies
+  apt:
+    name: "{{ dependencies.global }}"
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ debian_cache_valid_time|default(7200) }}"
+  tags:
+    - chroot_install
+
+
+  encryption:
+  lvm:
+  md:
+  legacy_packages:
+#- name: Ensure specified packages are in there desired state
+#  package:
+#    name: '{{ item }}'
+#    state: present
+#  with_flattened: '{{ _zfs_packages }}'
+#  tags:
+#    - chroot_install
+
+#_zfs_chroot_packages
+#- name: Ensure specified packages _zfs_chroot_packages
+#  package:
+#    name: '{{ item }}'
+#    state: present
+#  with_flattened: '{{ _zfs_chroot_packages }}'
+#  tags:
+#    - chroot_install
+
+#- name: Enable ZFS on current system
+#  modprobe:
+#    name: zfs
+#    state: present
+
+#- name: install zfs-dkms
+#  apt:
+#    name: zfs-dkms
+#    state: present
+
+#- name: install zfs-initramfs
+#  apt:
+#    name: zfs-initramfs
+#    state: present
+
+- apt:
+    name: cryptsetup
+    state: present
+  when: _lukscrypt | default(false) | bool == true
+  tags:
+    - chroot_install
+
+- name: install grub-pc
+  apt:
+    name: grub-pc
+    state: present
+  when: _efi|default(false)|bool != true
+  tags:
+    - chroot_install
+
+- apt:
+    name: dosfstools
+    state: present
+  when: _efi|default(false)|bool == true
+  tags:
+    - chroot_install
+
+#- name: install grub-efi-amd64
+#  apt:
+#    name: grub-efi-amd64
+#    state: present
+#  when: _efi|default(false)|bool == true
+#  tags:
+#    - chroot_install
+
+#- apt:
+#    name: grub-efi-amd64-signed
+#    state: present
+#  when: _efi|default(false)|bool == true
+#  tags:
+#    - chroot_install
+
+#- apt:
+#    name: shim-signed
+#    state: present
+#  when: _efi|default(false)|bool == true
+#  tags:
+#    - chroot_install
+
+#- name: Ensure specified packages are in there desired state
+#  package:
+#    name: '{{ item }}'
+#    state: present
+#  with_flattened: '{{ default_packages }}'
+##  tags: [ 'role::kodi:pkgs' ]
+##  register: is_softneedinstalled
+##  become: yes
+#  become: true
+#  tags:
+#    - chroot_install
+
+## For mirror or raidz topology
+#- name: install mdadm
+#  apt: name={{ item }} state=present
+#  with_items:
+#   - mdadm
+#  when:
+##    - _crypt | default(false) | bool != true
+#    - _raid | default(false) | bool == true
+#  tags:
+#    - chroot_install

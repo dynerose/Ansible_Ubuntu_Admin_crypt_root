@@ -1,0 +1,222 @@
+---
+# Step 5: GRUB Installation
+#- name: "Debian | Vars | Check if grub is installed"
+#  stat:
+#    path: /etc/default/grub
+#  changed_when: false
+#  check_mode: no
+#  register: grubinstalled
+#  tags:
+#    - chroot_configure_grub
+
+#- name: Verify that the ZFS boot filesystem is recognized
+#  shell: grub-probe /boot
+#  ansible.builtin.shell: grub-probe /boot
+#  register: grub_probe
+#  until: grub_probe.stdout.find("ext") == true
+#  retries: 5
+#  delay: 10
+#  tags:
+#    - chroot_configure_grub
+
+# Refresh the initrd files:
+- name: rebuild initramfs if neccessary
+  shell: update-initramfs -c -k all
+#  when: grub_probe.stdout.find("ext") == true
+  tags:
+    - chroot_configure_grub
+
+- name: "Configuration | Set grub menu timeout"
+  lineinfile:
+    dest: /etc/default/grub
+    line: "GRUB_TIMEOUT={{ grub_timeout }}"
+    regexp: '^GRUB_TIMEOUT.*$'
+    state: present
+#  when:    grubinstalled.stat.exists
+# and
+# notify: update grub2
+  tags:
+    - chroot_configure_grub
+
+- name: "Configuration | Disable grub graphical boot"
+  lineinfile:
+    dest: /etc/default/grub
+    line: 'GRUB_CMDLINE_LINUX_DEFAULT="\1\3"'
+    regexp: '^GRUB_CMDLINE_LINUX_DEFAULT="(.*)( )?splash(.*)"$'
+    backrefs: yes
+    state: present
+#  when:    grubinstalled.stat.exists
+# and
+#  notify: update grub2
+#  tags: [ "grub", "configuration" ]
+  tags:
+    - chroot_configure_grub
+
+- name: "Configuration | Disable grub quiet boot"
+  lineinfile:
+    dest: /etc/default/grub
+    line: 'GRUB_CMDLINE_LINUX_DEFAULT="\1\3"'
+    regexp: '^GRUB_CMDLINE_LINUX_DEFAULT="(.*)( )?quiet(.*)"$'
+    backrefs: yes
+    state: present
+#  when:    grubinstalled.stat.exists
+#  and
+#  notify: update grub2
+  tags:
+    - chroot_configure_grub
+
+- name: modify /etc/default/grub
+  replace:
+    path: /etc/default/grub
+    regexp: "{{ item.regex }}"
+    replace: "{{ item.replace }}"
+  with_items:
+    - regex: "^(GRUB_HIDDEN_TIMEOUT.*)"
+      replace: "#\\1"
+    - regex: "^GRUB_CMDLINE_LINUX_DEFAULT=.*"
+      replace: 'GRUB_CMDLINE_LINUX_DEFAULT="init_on_alloc=0"'
+    - regex: "^GRUB_CMDLINE_LINUX=.*"
+      replace: 'GRUB_CMDLINE_LINUX="{{ _grub_cmdline }}"'
+#      replace: 'GRUB_CMDLINE_LINUX=root=ZFS=rpool/ROOT/ubuntu'
+    - regex: "^#(GRUB_TERMINAL.*)"
+      replace: "\\1"
+  tags:
+    - chroot_configure_grub
+
+# Disable memory zeroing
+#- name: modifygrub
+#  replace:
+#    path: /etc/default/grub
+#    regexp: "{{ item.regex }}"
+#    replace: "{{ item.replace }}"
+#  with_items:
+#    - regex: '^GRUB_TIMEOUT.*$'
+#      replace: "GRUB_TIMEOUT={{ grub_timeout }}"
+#    - regex: "^GRUB_HIDDEN_TIMEOUT.*)"
+#      replace: "#\\1"
+#    - regex: "^GRUB_CMDLINE_LINUX_DEFAULT=.*"
+#      replace: 'GRUB_CMDLINE_LINUX_DEFAULT="init_on_alloc=0"'
+#    - regex: "^GRUB_CMDLINE_LINUX=.*"
+#      replace: 'GRUB_CMDLINE_LINUX="{{ _grub_cmdline }}"'
+#    - regex: "^#(GRUB_TERMINAL.*)"
+#      replace: "\\1"
+#  when:
+#    - grubinstalled.stat.exists
+
+- shell: "echo 'GRUB_DISABLE_OS_PROBER=true' >> /etc/default/grub"
+  tags:
+    - chroot_configure_grub
+
+- name: update-grubs
+  shell: update-grub
+  tags:
+    - chroot_configure_grub
+
+# Refresh the initrd files:
+- name: rebuild initramfs if neccessary masodik
+  shell: update-initramfs -c -k all
+#  when: grub_probe.stdout.find("ext") == true
+  tags:
+    - chroot_configure_grub
+
+# Install the boot loader:
+# Choose one of the following options:
+# For legacy (BIOS) booting, install GRUB to the MBR:
+# grub-install $DISK
+# Note that you are installing GRUB to the whole disk, not a partition.
+# If you are creating a mirror or raidz topology, repeat the grub-install command for each disk in the pool.
+
+- name:  grub-install to disk
+  shell: "grub-install /dev/disk/by-id/{{ item }}"
+  with_items:
+    - "{{ _root_disks_by_id }}"
+  when: _efi|default(false)|bool != true
+  tags:
+    - chroot_configure_grub
+
+# For UEFI booting, install GRUB to the ESP:
+- name: grub-install --target
+  shell: "grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ubuntu --recheck --no-floppy"
+  when: _efi | default(false) | bool == true
+  tags:
+    - chroot_configure_grub
+
+# Disable grub-initrd-fallback.service
+# This is the service for /boot/grub/grubenv which does not work on mirrored or raidz topologies.
+# Disabling this keeps it from blocking subsequent mounts of /boot/grub if that mount ever fails.
+# Another option would be to set RequiresMountsFor=/boot/grub via a drop-in unit, but that is more work to do here for no reason.
+# Hopefully this bug will be fixed upstream.
+- name: Disable grub-initrd-fallback.service
+  shell: systemctl mask grub-initrd-fallback.service
+  when:
+    - _zfs_boot | default(false) | bool == true
+    - _efi|default(false)|bool == true
+#    - _lukscrypt | default(false) | bool != true
+#    - _raid | default(false) | bool != true
+  tags:
+    - chroot_configure_grub
+
+# Fix filesystem mount ordering
+# We need to activate zfs-mount-generator.
+# This makes systemd aware of the separate mountpoints, which is important for things like /var/log and /var/tmp.
+# In turn, rsyslog.service depends on var-log.mount by way of local-fs.target and services using the PrivateTmp feature of systemd automatically use After=var-tmp.mount.
+
+# Fix filesystem mount ordering:
+- shell: "mkdir /etc/zfs/zfs-list.cache"
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - chroot_configure_grub
+- shell: "touch /etc/zfs/zfs-list.cache/{{ _boot_pool }}"
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - chroot_configure_grub
+- shell: "touch /etc/zfs/zfs-list.cache/{{ _root_pool }}"
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - chroot_configure_grub
+- shell: "ln -s /usr/lib/zfs-linux/zed.d/history_event-zfs-list-cacher.sh /etc/zfs/zed.d"
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - chroot_configure_grub
+#- shell: "zed -F"
+#  tags:
+#    - chroot_configure_grub
+#- shell: "zed -F &"
+- shell: "zfs set canmount=on bpool/BOOT/ubuntu"
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - chroot_configure_grub
+- shell: "zfs set canmount=on rpool/ROOT/ubuntu"
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - chroot_configure_grub
+
+- name: systemctl enable zfs-trim.timer
+  when:
+    - _zfs_boot | default(false) | bool == true
+  shell: "systemctl enable zfs-trim.timer"
+#  when:
+#    - _crypt | default(false) | bool == true
+#    - _raid | default(false) | bool == true
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - chroot_configure_grub
+
+#If they are still empty, stop zed (as below), start zed (as above) and try again.
+#Once the files have data, stop zed:
+#fg
+#Press Ctrl-C.
+#Fix the paths to eliminate /mnt:
+#sed -Ei "s|/mnt/?|/|" /etc/zfs/zfs-list.cache/*
+
+#    - _efi | default(false) | bool == true
+#    - _raid | default(false) | bool == true
+#    - _crypt | default(false) | bool != true
+#    - _raid | default(false) | bool != true

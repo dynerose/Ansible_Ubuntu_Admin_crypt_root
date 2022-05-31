@@ -1,0 +1,38 @@
+--- a/lib/systemd/system-generators/zfs-mount-generator.in
++++ b/lib/systemd/system-generators/zfs-mount-generator.in
+@@ -42,6 +42,8 @@
+   do_fail "zero or three arguments required"
+ fi
+
++pools=$(zpool list -H -o name)
++
+ # For ZFSs marked "auto", a dependency is created for local-fs.target. To
+ # avoid regressions, this dependency is reduced to "wants" rather than
+ # "requires". **THIS MAY CHANGE**
+@@ -62,6 +64,7 @@
+   set -f
+   set -- $1
+   dataset="${1}"
++  pool="${dataset%%/*}"
+   p_mountpoint="${2}"
+   p_canmount="${3}"
+   p_atime="${4}"
+@@ -77,6 +80,18 @@
+   # Minimal pre-requisites to mount a ZFS dataset
+   wants="zfs-import.target"
+
++  # If the pool is already imported, zfs-import.target is not needed.  This
++  # avoids a dependency loop on root-on-ZFS systems:
++  # systemd-random-seed.service After (via RequiresMountsFor) var-lib.mount
++  # After zfs-import.target After zfs-import-{cache,scan}.service After
++  # cryptsetup.service After systemd-random-seed.service.
++  for p in $pools ; do
++    if [ "$p" = "$pool" ] ; then
++      wants=""
++      break
++    fi
++  done
++
+   # Handle encryption
+   if [ -n "${p_encroot}" ] &&
+       [ "${p_encroot}" != "-" ] ; then

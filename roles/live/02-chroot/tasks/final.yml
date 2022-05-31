@@ -1,0 +1,93 @@
+---
+# tasks file for 02-chroot
+#- debug:
+#    var: _efi|default(false)|bool == true
+
+- debug:
+    msg: X111111  "{{curl_address}}"
+- debug:
+    msg: X222222  "{{curl_sed}}"
+- debug:
+    msg: X333333  "{{curl_patch}}"
+
+
+- name: Autoremove unused packages
+  command: apt-get -y autoremove
+  register: apt_result
+  changed_when: "'packages will be REMOVED' in apt_result.stdout"
+  tags:
+    - chroot_final
+
+- name: Purge residual kernel packages
+  shell: apt-get remove -y --purge $(dpkg -l | grep "^rc\s*linux-image-" | awk '{print $2}' | tr '\n' ' ')
+  register: apt_result
+  changed_when: "'packages will be REMOVED' in apt_result.stdout"
+  tags:
+    - chroot_final
+
+#- name: Creates an entry like "@reboot /some/job.sh"
+#  cron:
+#    name: "a job for reboot"
+#    special_time: reboot
+#    job: " mount /boot ; mount /boot/efi"
+#- shell: "( crontab -l ; echo '"'@reboot mount /boot ; mount /boot/efi'"' ) | crontab -"
+
+- name: Purge residual kernel packages
+  shell: sed -Ei "s|/mnt/?|/|" /etc/zfs/zfs-list.cache/*
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - chroot_final
+
+#Double-check that /boot/efi/EFI/ubuntu/grub/grub.cfg contains lines that include insmod luks, cryptomount -u <UUID>, the correct boot entries, etc. And double-check that your initrd contains the cryptsetu
+# (If using ZFS instead of btrfs) grub-mkconfig and update-initrd won't recognize ZFS. 
+# The workaround involves (during chroot, prior to grub-mkconfig/update-initrd) editing /usr/sbin/grub-mkconfig to add || true to line 139 (which starts with GRUB_DEVICE=), 
+#adding GRUB_DEVICE="/dev/mapper/sda3_crypt" to /etc/default/grub, creating file /usr/share/initramfs-tools/conf-hooks.d/forcecryptsetup with contents export CRYPTSETUP=y 
+# and file /etc/initramfs-tools/conf.d/cryptroot with contents target=sda3_crypt,source=UUID=<UUID of sda3>,key=none,discard. All of this is in addition to steps that you would 
+# take if you were not encrypting the ZFS partiion (like installing zfs userspace utils in both the live system and during chroot and deleting the line that mounts / in fstab).
+
+- name: explicitly write nocompress to /etc/logrotate.conf
+  replace:
+    path: /etc/logrotate.conf
+    regexp: '^.*compress$'
+    replace: 'nocompress'
+  tags:
+    - chroot_final
+
+- name: find files in /etc/logrotate.d
+  find:
+    paths: /etc/logrotate.d
+    file_type: file
+  register: zfsprep_logrotate_jobs
+  tags:
+    - chroot_final
+
+- name: comment all compress from logrotate.conf
+  replace:
+    path: "{{ item.path }}"
+    regexp: '^(.*compress.*)$'
+    replace: '#\1'
+  with_items: "{{ zfsprep_logrotate_jobs.files }}"
+  tags:
+    - chroot_final
+
+- name: zfs snapshot bpool/BOOT/ubuntu@install
+  shell: "zfs snapshot bpool/BOOT/ubuntu@install"
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - chroot_final
+
+- name: zfs snapshot rpool/ROOT/ubuntu@install
+  shell: "zfs snapshot rpool/ROOT/ubuntu@install"
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - chroot_final
+
+- name: zfs snapshot rpool/root@install
+  shell: "zfs snapshot rpool/root@install"
+  when:
+    - _zfs_boot | default(false) | bool != true
+  tags:
+    - chroot_final

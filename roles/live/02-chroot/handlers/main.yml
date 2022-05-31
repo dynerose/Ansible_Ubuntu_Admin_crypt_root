@@ -1,0 +1,21 @@
+---
+# handlers file for 03-post-setup
+
+- name: Test and restart SSHD
+  command: sshd -t
+  notify: ["Restart SSHD"]
+
+- name: Restart SSHD
+  service:
+    name: "ssh"
+    state: "restarted"
+
+- name: reload systemctl
+  command: systemctl daemon-reload
+
+- name: update grub2
+  command: "{{ grub2_update_cmd }} -o {{ grub2_config }}"
+  tags: [ "grub", "configuration" ]
+
+- name: update-grub
+  command: /usr/sbin/update-grub

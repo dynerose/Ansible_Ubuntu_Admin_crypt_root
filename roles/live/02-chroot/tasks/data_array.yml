@@ -1,0 +1,209 @@
+---
+#- name: debian | Installing mdadm
+#  apt:
+#    name: "mdadm"
+#    state: "present"
+
+- name: install xfsprogs
+  apt:
+    name:
+    state: present
+  with_items:
+    - xfsprogs
+#  when:  _raid | default(false) | bool == true
+  tags:
+    - chroot_data_array
+
+- name: arrays | Setting distribution-specific facts
+  set_fact:
+    update_initramfs: "update-initramfs -u"
+    mdadm_conf: "/etc/mdadm/mdadm.conf"
+    mdadm_conf_path: "/etc/mdadm"
+  tags:
+    - chroot_data_array
+
+# Checking for any existing raid arrays
+- name: arrays | Checking Status Of Array(s)
+  shell: "cat /proc/mdstat | grep {{ item.name }}"
+  register: "array_check"
+  changed_when: false
+  failed_when: false
+  with_items: '{{ mdadm_arrays_data_arrays }}'
+  check_mode: no
+  tags:
+    - chroot_data_array
+
+# Creating raid arrays
+# We pass yes in order to accept any questions prompted for yes|no
+- name: arrays | Creating Array(s)
+  shell: "yes | mdadm --create /dev/{{ item.name }} --level={{ item.level }} --raid-devices={{ item.devices|count }} {{ item.devices| join (' ') }}"
+  register: "array_created"
+  with_items: '{{ mdadm_arrays_data_arrays }}'
+  when: >
+        item.state|lower == "present" and
+        array_check.results[0].rc != 0
+  ignore_errors: true
+  tags:
+    - chroot_data_array
+
+# Updates initramfs archives in /boot
+- name: arrays | Updating Initramfs
+  command: "{{ update_initramfs }}"
+  when: array_created.changed
+  tags:
+    - chroot_data_array
+
+# Capture the raid array details to append to mdadm.conf
+# in order to persist between reboots
+- name: arrays | Capturing Array Details
+  command: "mdadm --detail --scan"
+  register: "array_details"
+  changed_when: false
+  tags:
+    - chroot_data_array
+
+# Creating raid arrays filesystem
+- name: arrays | Creating Array(s) Filesystem
+  filesystem:
+    fstype: "{{ item.filesystem }}"
+    opts: "{{ item.filesystem_opts | default(omit) }}"
+    dev: "/dev/{{ item.name }}"
+  with_items: '{{ mdadm_arrays_data_arrays }}'
+  when:
+  - item.state|lower == "present"
+  - item.filesystem is defined
+  ignore_errors: true
+  tags:
+    - chroot_data_array
+
+# Mounting raid arrays
+- name: arrays | Mounting Array(s)
+  mount:
+    name: "{{ item.mountpoint }}"
+    src: "/dev/{{ item.name }}"
+    fstype: "{{ item.filesystem }}"
+    state: "mounted"
+    opts: "{{ item.opts | default(omit) }}"
+  with_items: '{{ mdadm_arrays_data_arrays }}'
+  when:
+  - item.state|lower == "present"
+  - item.filesystem is defined
+  - item.mountpoint is defined
+  ignore_errors: true
+  tags:
+    - chroot_data_array
+
+# Unmounting raid arrays in preparation of destroying
+- name: arrays | Unmounting Array(s)
+  mount:
+    name: "{{ item.mountpoint }}"
+    src: "/dev/{{ item.name }}"
+    state: "unmounted"
+  with_items: '{{ mdadm_arrays_data_arrays }}'
+  when:
+  - item.state|lower == "absent"
+  - item.mountpoint is defined
+  ignore_errors: true
+  tags:
+    - chroot_data_array1
+
+# Stopping raid arrays in preparation of destroying
+- name: arrays | Stopping Array(s)
+  command: "mdadm --stop /dev/{{ item.name }}"
+  register: "array_stopped"
+  with_items: '{{ mdadm_arrays_data_arrays }}'
+  when: >
+        item.state|lower == "absent" and
+        array_check.results[0].rc == 0
+  ignore_errors: true
+  tags:
+    - chroot_data_array1
+
+# Removing raid arrays
+- name: arrays | Removing Array(s)
+  command: "mdadm --remove /dev/{{ item.name }}"
+  register: "array_removed"
+  with_items: '{{ mdadm_arrays_data_arrays }}'
+  when: >
+        item.state|lower == "absent" and
+        array_check.results[0].rc == 0
+  ignore_errors: true
+  tags:
+    - chroot_data_array1
+
+# Zeroing out the disk devices which were part of the raid array
+- name: arrays | Zeroing Out Array Devices
+  command: "mdadm --zero-superblock {{ item.1 }}"
+  with_subelements:
+    - '{{ mdadm_arrays }}'
+    - devices
+  when: >
+        item.0.state|lower == "absent" and
+        array_check.results[0].rc == 0 and
+        array_removed.changed
+  ignore_errors: true
+  tags:
+    - chroot_data_array1
+
+# Wiping out the disk devices which were part of the raid array
+- name: arrays | Wiping Out Array Devices
+  command: "wipefs -af {{ item.1 }}"
+  with_subelements:
+    - '{{ mdadm_arrays_data_arrays }}'
+    - devices
+  when: >
+        item.0.state|lower == "absent" and
+        array_check.results[0].rc == 0 and
+        array_removed.changed
+  ignore_errors: true
+  tags:
+    - chroot_data_array1
+
+- name: arrays | Ensure {{ mdadm_conf }}'s directory exists
+  file:
+    path: "{{ mdadm_conf_path }}"
+    state: directory
+  when: mdadm_conf_path is defined
+  ignore_errors: true
+  tags:
+    - chroot_data_array
+
+- name: arrays | Ensure {{ mdadm_conf }} file exists
+  copy:
+    content: ""
+    dest: "{{ mdadm_conf }}"
+    force: no
+  tags:
+    - chroot_data_array
+
+# Updating mdadm.conf in order to persist between reboots
+- name: arrays | Updating {{ mdadm_conf }}
+  lineinfile:
+    dest: "{{ mdadm_conf }}"
+    regexp: "^{{ item }}"
+    line: "{{ item }}"
+    state: "present"
+  with_items: '{{ array_details.stdout_lines }}'
+  when: array_created.changed
+  tags:
+    - chroot_data_array
+
+# Updating mdadm.conf in order to not persist between reboots
+- name: arrays | Updating {{ mdadm_conf }}
+  lineinfile:
+    dest: "{{ mdadm_conf }}"
+    regexp: "^ARRAY /dev/{{ item.name }}"
+    line: "ARRAY /dev/{{ item.name }}"
+    state: "absent"
+  with_items: '{{ mdadm_arrays_data_arrays }}'
+  when: >
+        item.state == "absent"
+  tags:
+    - chroot_data_array
+
+# Updates initramfs archives in /boot
+- name: arrays | Updating Initramfs
+  command: "{{ update_initramfs }}"
+#  when: array_removed.changed and ansible_os_family == "Debian"
+  tags:
+    - chroot_data_array

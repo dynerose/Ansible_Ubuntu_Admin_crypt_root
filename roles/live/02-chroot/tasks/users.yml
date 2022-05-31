@@ -1,0 +1,71 @@
+---
+#- name: Add user nagios
+#    user:
+#      name: nagios
+#      groups: nagios
+#      shell: /sbin/nologin
+#      append: yes
+#      comment: "Nagios nologin User"
+#      state: present
+#      become: true
+
+#- name: Check if user exists
+#  command: getent passwd {{ user_name }}
+#  register: user_on_board
+#  ignore_errors: yes 
+#  continue with the playbook
+- debug:
+    msg: username passwords {{ user_name }} {{ user_password }}
+  tags: zfs_debug
+
+- name: Adding user sudo
+  user: 
+    name: "{{ user_name }}"
+    comment: "Alap system user"
+    shell: /bin/bash
+    groups: users,sudo
+    append: yes
+    password: "{{ user_password | password_hash('sha512') }}"
+    create_home: yes
+    home: "/home/{{ user_name }}"
+#comment, create_home, expires, force, generate_ssh_key, group, groups, hidden, home, local, login_class, move_home, name, non_unique, 
+#password, password_lock, profile, remove, role, seuser, shell, skeleton, ssh_key_bits, ssh_key_comment, ssh_key_file, ssh_key_passphrase, ssh_key_type, 
+#state, system, uid, update_password"
+  tags:
+    - chroot_users
+
+#- name: Creating user "{{ user_name }}" with admin access
+#  user:
+#    name: "{{ user_name }}"
+#    password: "{{ user_password  | password_hash('sha512') }}"
+#    groups: users, sudo    
+# Empty by default.
+#    groups: admin append=yes
+#    state: present
+#    shell: /bin/bash       
+# Defaults to /bin/bash
+#    system:  
+# Defaults to no system: Set this to "yes" to make it a system user. No shell or home directory will be made u>
+#    createhome: yes        
+# Defaults to yes
+#    home: /home/{{ user_name }}         
+# Defaults to /home/<username>
+#  when:  assigned_role  == "yes"
+#    when: user_on_board.rc == 0
+#  tags:
+#    - chroot_ssh_server
+
+#- name: Users | Add Super User Authorized Key
+#  authorized_key:
+#    user: "{{ user_name }}"
+#    key: "{{ lookup('file', 'id_rsa.pub') }}"
+#    state: present
+#  tags:
+#    - chroot_ssh_server
+
+#- name: Users | Enable passwordless sudo
+#  copy:
+#    content: "{{ user_name }} ALL=(ALL) NOPASSWD:ALL"
+#    dest: "/etc/sudoers.d/99-{{ user_name }}"
+#  tags:
+#    - chroot_ssh_server

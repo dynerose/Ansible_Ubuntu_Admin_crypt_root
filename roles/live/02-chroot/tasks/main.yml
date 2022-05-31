@@ -1,0 +1,50 @@
+---
+
+
+# tasks file for 02-chroot effdf
+#- debug:
+#    msg: XXXXXXXXX  "/dev/disk/by-id/{{ _root_disks_by_id  | first }}{{_boot_part_append}}"
+
+#- debug:
+#    msg: "{{ _root_disks_by_id  | first }}"
+#    var: "{{ _root_device_list  | first }}"
+
+- import_tasks: install.yml
+  tags:
+    - chroot_install
+
+- import_tasks: configure.yml
+  tags:
+    - chroot_configure
+
+#- import_tasks: data_array.yml
+#  tags:
+#    - chroot_data_array
+#- import_tasks: test.yml
+#  tags:
+#    - chroot
+#- import_tasks: patching.yml
+#  tags:
+#    - chroot
+
+- import_tasks: configure_grub.yml
+  tags:
+    - chroot_configure_grub
+
+- import_tasks: ssh_server.yml
+  when: sshd_enabled
+  tags:
+    - chroot_ssh_server
+
+- import_tasks: users.yml
+  tags:
+    - chroot_users
+
+- import_tasks: finaly.yml
+  tags:
+    - chroot_finaly
+
+- import_tasks: final.yml
+  tags:
+    - chroot_final
+

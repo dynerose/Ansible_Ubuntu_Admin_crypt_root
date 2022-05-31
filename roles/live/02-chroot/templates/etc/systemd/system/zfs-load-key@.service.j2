@@ -1,0 +1,16 @@
+[Unit]
+Description=Import key for ZFS pool
+Documentation=man:zfs(8)
+DefaultDependencies=no
+After=systemd-udev-settle.service
+After=zfs-import.target
+After=systemd-remount-fs.service
+Before=zfs-mount.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/sbin/zfs load-key -r %i
+
+[Install]
+WantedBy=zfs.target

@@ -1,0 +1,33 @@
+---
+- hosts: chroot
+  connection: chroot
+  become: yes
+  vars_files:
+    - ../vars/main.yml
+    - ../vars/disks.yml
+    - ../vars/zfs.yml
+    - ../vars/programs.yml
+
+  vars_prompt:
+    - name: "user_name"
+      prompt: "Enter User Name"
+      default: "sa"
+      private: yes
+      confirm: yes
+    - name: "user_password"
+      prompt: "Enter User Password"
+      default: "sa"
+#      encrypt: "sha512_crypt"
+      private: yes
+      confirm: yes
+#  tasks:
+#  - name: Patch sensu_check module (ttl)
+#    become: yes
+#    patch:
+#      src: zfs-mount-generator.in
+      # remote_src option /tmp/zfs-mount-generator.in
+      #        dest: "{{ ansible_location.stdout }}/modules/monitoring/sensu_check.py"
+#      dest: "/lib/systemd/system-generators/zfs-mount-generator"
+  roles:
+    - role: 02-chroot
+#    - role: 03-chroot-final

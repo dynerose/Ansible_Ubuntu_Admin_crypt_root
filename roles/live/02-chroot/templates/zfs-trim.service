@@ -1,0 +1,7 @@
+[Unit]
+Description=Discard unused ZFS blocks
+ConditionVirtualization=!container
+[Service]
+Type=oneshot
+ExecStart=/sbin/zpool trim {{ _boot_pool }}
+ExecStart=/sbin/zpool trim {{ _root_pool }}

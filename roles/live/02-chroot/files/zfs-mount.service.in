@@ -1,0 +1,9 @@
+--- a/lib/systemd/system/zfs-mount.service.in
++++ b/lib/systemd/system/zfs-mount.service.in
+@@ -6,7 +6,6 @@
+ After=zfs-import.target
+ After=systemd-remount-fs.service
+ Before=local-fs.target
+-Before=systemd-random-seed.service
+ After=zfs-load-module.service
+ ConditionPathExists=/sys/module/zfs

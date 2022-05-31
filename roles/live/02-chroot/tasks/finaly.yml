@@ -1,0 +1,56 @@
+---
+# tasks file for 02-chroot
+- debug:
+    var: _efi|default(false)|bool == true
+
+- shell: "update-initramfs -c -k all"
+  tags:
+    - chroot_finaly
+
+- shell: update-grub
+  tags:
+    - chroot_finaly
+
+- shell: "grub-install {{ item }}"
+  with_items:
+    - "{{ _root_device_list }}"
+  when: _efi|default(false)|bool != true
+  tags:
+    - chroot_finaly
+
+- name: install grub efi on primary disk
+  shell: "grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ubuntu --recheck --no-floppy"
+#          grub-install --target=x86_64-efi --efi-directory /boot/efi --bootloader=ubuntu --boot-directory=/boot/efi/EFI/ubuntu --recheck
+  when: 
+    - _efi|default(false)|bool == true
+    - _lukscrypt | default(false) | bool != true
+  tags:
+    - chroot_finaly
+
+- name:  grub-mkconfig
+  shell: "grub-mkconfig -o /boot/grub/grub.cfg"
+  when: _lukscrypt|default(false)|bool == true
+  tags:
+    - chroot_finaly
+
+
+- name: Creates an entry like "@reboot /some/job.sh"
+  cron:
+    name: "a job for reboot"
+    special_time: reboot
+    job: " mount /boot ; mount /boot/efi"
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - chroot_finaly
+
+#- shell: "( crontab -l ; echo '"'@reboot mount /boot ; mount /boot/efi'"' ) | crontab -"
+#  tags:
+#    - chroot_finaly
+
+#Double-check that /boot/efi/EFI/ubuntu/grub/grub.cfg contains lines that include insmod luks, cryptomount -u <UUID>, the correct boot entries, etc. And double-check that your initrd contains the cryptsetu
+# (If using ZFS instead of btrfs) grub-mkconfig and update-initrd won't recognize ZFS. 
+# The workaround involves (during chroot, prior to grub-mkconfig/update-initrd) editing /usr/sbin/grub-mkconfig to add || true to line 139 (which starts with GRUB_DEVICE=), 
+#adding GRUB_DEVICE="/dev/mapper/sda3_crypt" to /etc/default/grub, creating file /usr/share/initramfs-tools/conf-hooks.d/forcecryptsetup with contents export CRYPTSETUP=y 
+# and file /etc/initramfs-tools/conf.d/cryptroot with contents target=sda3_crypt,source=UUID=<UUID of sda3>,key=none,discard. All of this is in addition to steps that you would 
+# take if you were not encrypting the ZFS partiion (like installing zfs userspace utils in both the live system and during chroot and deleting the line that mounts / in fstab).

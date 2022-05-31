@@ -1,0 +1,53 @@
+---
+# vars file for 02-chroot
+grub2_update_cmd: /usr/sbin/update-grub2
+grub2_config: /boot/grub/grub.cfg
+
+# default_packages:
+dependencies:
+  global:
+    - ansible
+    - curl
+    - debootstrap
+    - dosfstools
+    - ethtool
+    - gdisk
+    - git
+    - gpart
+    - gparted
+    - htop
+    - lshw
+    - openssh-server
+    - mc
+    - nano
+    - net-tools
+    - ncdu
+    - parted
+    - p7zip-full
+    - rsync
+    - ssh-askpass
+    - strace
+    - tree
+    - wget
+#    - zstd
+  encryption:
+    - cryptsetup
+  lvm:
+    - lvm2
+    - thin-provisioning-tools
+  md:
+    - mdadm
+  zfs:
+    - "linux-headers-{{ ansible_kernel }}"
+    - linux-image-generic
+    - linux-headers-generic
+    - zfsutils-linux
+    - zfs-initramfs
+#    - zfs-dkms  # for ZFS 0.8 using the PPA
+    - grub-efi-amd64-signed
+    - shim-signed
+  legacy_packages:
+    - grub-pc
+    - linux-image-generic
+    - zfs-initramfs
+    - zsys

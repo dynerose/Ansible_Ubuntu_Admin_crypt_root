@@ -1,0 +1,439 @@
+---
+####################################################################################################################################################33
+## CRYPTSTORE 
+####################################################################################################################################################33
+
+#- name: format and mount /mnt/boot for LUKS
+#  shell: "mke2fs -t ext2 {{ item }} && mkdir /mnt/boot && mount {{ item }} /mnt/boot"
+#  with_items:
+#    - "{{ (zfsprep_root_device_list | length > 1) | ternary('/dev/', (zfsprep_root_device_list | map('regex_replace', '(.*)', '\\g<1>' + zfsprep_crypt_part_append) | list).0) }}"
+#  when: zfsprep_luks | default(false) | bool == true
+
+- name: update crypttab with crypt boot partitions
+  shell: "echo {{_luksbootname}} UUID=$(blkid -s UUID -o value {{ item }}) none luks,discard,initramfs >> /etc/crypttab"
+  with_items:
+    - "/dev/disk/by-id/{{ _root_disks_by_id  | first }}{{_boot_part_append}}"
+#    - "{{ _root_device_list }}{{  _boot_part_append }}"
+  when: _lukscrypt|default(false)|bool == true
+  tags:
+    - chroot_configure
+
+- name: update crypttab with cryptsetup partitions
+  shell: "echo {{_luksname}} UUID=$(blkid -s UUID -o value {{ item }}) none luks,discard,initramfs >> /etc/crypttab"
+  with_items:
+    - "{{ _root_device_list }}{{ _cryptstore_part_append }}"
+  when: _lukscrypt|default(false)|bool == true
+  tags:
+    - chroot_configure
+
+####################################################################################################################################################33
+## ZFS STORE
+####################################################################################################################################################33
+# 7 Create the EFI filesystem:
+# For a mirror or raidz topology, repeat the mkdosfs for the additional disks, but do not repeat the other commands.
+- name: Unmount EFI
+  mount:
+    path: "/boot/efi"
+    state: unmounted
+  when:
+    - _zfs_boot | default(false) | bool == true
+    -  _efi|default(false)|bool == true
+  tags:
+    - chroot_configure
+
+#- name: force umoount EFI
+#  shell: "umount /boot/efi"
+
+# Perform these steps for both UEFI and legacy (BIOS) booting all drives if mirrored or raid
+# For a mirror or raidz topology, repeat the mkdosfs for the additional disks.
+# Note: The -s 1 for mkdosfs is only necessary for drives which present 4 KiB logical sectors (“4Kn” drives) 
+# to meet the minimum cluster size (given the partition size of 512 MiB) for FAT32. It also works fine on drives which present 512 B sectors.
+- name: format EFI
+  shell: "mkdosfs -F 32 -s 1 -n EFI {{ item }}{{ _efi_part_append }}"
+  with_items:
+    - "{{ _root_device_list }}"
+#    - "/dev/disk/by-id/{{ _root_disks_by_id }}{{_efi_part_append}}"
+#    - "/dev/disk/by-id/{{ _root_disks_by_id | first }}{{_efi_part_append}}"
+#    -  "{% for item in  _root_device_list  %}{{ item }}{{ _efi_part_append }}{% if not loop.last %} {% endif %}{% endfor %}"
+  when:
+    - _zfs_boot | default(false) | bool == true
+    -  _efi|default(false)|bool == true
+  tags:
+    - chroot_configure
+
+#- name: create directory /boot/efi
+#  shell: "mkdir -p /boot/efi"
+#  when: _efi | default(false) | bool == true
+
+- name: echo fstab boot1
+  shell: "echo PARTUUID=$(blkid -s PARTUUID -o value {{ item }}) /boot ext4 noatime,nofail,x-systemd.device-timeout=5s 0 1 >> /etc/fstab"
+  with_items:
+    - "/dev/disk/by-id/{{ _root_disks_by_id | first }}{{_boot_part_append}}"
+  when: 
+    - _zfs_boot | default(false) | bool != true
+    -  _efi|default(false)|bool == true
+  tags:
+    - chroot_configure
+
+- name: fstab boot efi 2
+  shell: "echo PARTUUID=$(blkid -s PARTUUID -o value {{ item }}) /boot/efi vfat noatime,nofail,x-systemd.device-timeout=5s 0 1 >> /etc/fstab"
+  with_items:
+    - "/dev/disk/by-id/{{ _root_disks_by_id | first }}{{ _efi_part_append }}"
+  when:
+    - _zfs_boot | default(false) | bool != true
+    -  _efi|default(false)|bool == true
+  tags:
+    - chroot_configure
+
+- name: fstab efi2 3
+#  shell: "echo UUID=$(blkid -s UUID -o value {{ item }}) /boot/efi vfat defaults 0 0 >> /etc/fstab"
+  shell: "echo /dev/disk/by-uuid/$(blkid -s UUID -o value {{ item }}) /boot/efi vfat defaults 0 0 >> /etc/fstab"
+# /boot/efi vfat nofail,x-systemd.device-timeout=1 0 1
+  with_items:
+    - "/dev/disk/by-id/{{ _root_disks_by_id | first }}{{_efi_part_append}}"
+  when:
+    - _zfs_boot | default(false) | bool == true
+    -  _efi|default(false)|bool == true
+  tags:
+    - chroot_configure
+
+- name: mkdir and mount /boot/efi
+  shell: "mkdir -p /boot/efi && mount {{ item }} /boot/efi"
+  with_items:
+    - "/dev/disk/by-id/{{ _root_disks_by_id | first }}{{_efi_part_append}}"
+  when:
+    - _zfs_boot | default(false) | bool == true
+    -  _efi|default(false)|bool == true
+  tags:
+    - chroot_configure
+
+######################################################################################################################
+# 8 Put /boot/grub on the EFI System Partition:
+######################################################################################################################
+# This allows GRUB to write to /boot/grub (since it is on a FAT-formatted ESP instead of on ZFS), 
+# which means that /boot/grub/grubenv and the recordfail feature works as expected: 
+# if the boot fails, the normally hidden GRUB menu will be shown on the next boot. 
+# For a mirror or raidz topology, we do not want GRUB writing to the EFI System Partition. 
+# This is because we duplicate it at install without a mechanism to update the copies when the GRUB configuration changes (e.g. as the kernel is upgraded). 
+# Thus, we keep /boot/grub on the boot pool for the mirror or raidz topologies. 
+# This preserves correct mirroring/raidz behavior, at the expense of being able to write to /boot/grub/grubenv and thus the recordfail behavior.
+######################################################################################################################
+# For a single-disk install only
+######################################################################################################################
+- name: ansible create directory /boot/efi-grub
+  file:
+    path: /boot/efi/grub
+    state: directory
+  when:
+    - _zfs_boot | default(false) | bool == true
+    -  _efi | default(false) | bool == true
+    - _raid | default(false) | bool != true
+  tags:
+    - chroot_configure
+
+- name: ansible create directory /boot/grub
+  file:
+    path: /boot/grub
+    state: directory
+  when:
+    - _zfs_boot | default(false) | bool == true
+    -  _efi | default(false) | bool == true
+    - _raid | default(false) | bool != true
+  tags:
+    - chroot_configure
+
+- name: mountbootgrubfstab
+  shell: "echo /boot/efi/grub /boot/grub none defaults,bind 0 0 >> /etc/fstab"
+  when:
+    - _zfs_boot | default(false) | bool == true
+    -  _efi | default(false) | bool == true
+    - _raid | default(false) | bool != true
+  tags:
+    - chroot_configure
+
+- name: mountbootgrub
+  shell: "mount /boot/grub"
+  when:
+    - _zfs_boot | default(false) | bool == true
+    -  _efi | default(false) | bool == true
+    - _raid | default(false) | bool != true
+  tags:
+    - chroot_configure
+
+######################################################################################################################
+# 9 Install GRUB/Linux/ZFS in the chroot environment for the new system:
+######################################################################################################################
+
+# Install GRUB/Linux/ZFS for legacy (BIOS) booting:
+######################################################################################################################
+- name: Install GRUBLinuxZFS for legacy (BIOS) booting
+  package:
+    name: '{{ item }}'
+    state: present
+  with_flattened: '{{ _zfs_chroot_legacy_packages }}'
+  when: _efi|default(false)|bool != true
+  tags:
+    - chroot_configure
+
+# Install GRUB/Linux/ZFS for UEFI booting:
+# libzfs2linux zfs-initramfs zfs-zed zfsutils-linux
+- name: Install GRUBLinuxZFS for UEFI booting
+  package:
+    name: '{{ item }}'
+    state: present
+  with_flattened: '{{ _zfs_chroot_packages }}'
+  when: _efi|default(false)|bool == true
+  tags:
+    - chroot_configure
+# For a mirror or raidz topology, this step only installs GRUB on the first disk. The other disk(s) will be handled later. 
+# For some reason, grub-efi-amd64 does not prompt for install_devices here, but does after a reboot.
+
+#apt remove --purge os-prober
+#- name: Remove os-prober
+#  apt:
+#    pkg: os-prober
+#    state: absent
+#    purge: yes
+#  sudo: yes
+
+######################################################################################################################
+######################################################################################################################
+# 12 Configure swap
+######################################################################################################################
+# For an unencrypted single-disk install
+######################################################################################################################
+
+- name: mount /swap for an unencrypted single-disk install
+  shell: "mkswap -f /dev/disk/by-id/{{ _root_disks_by_id  | first }}{{_swap_part_append}}"
+  when:
+    - _crypt | default(false) | bool != true
+    - _raid | default(false) | bool != true
+  tags:
+    - chroot_configure
+
+- name: mount /swap for an unencrypted single-disk install
+  shell: "echo /dev/disk/by-uuid/$(blkid -s UUID -o value /dev/disk/by-id/{{ _root_disks_by_id  | first }}{{_swap_part_append}}) none swap discard 0 0 >> /etc/fstab"
+  when:
+    - _crypt | default(false) | bool != true
+    - _raid | default(false) | bool != true
+  tags:
+    - chroot_configure
+
+- name: mount /swap for an unencrypted single-disk install
+  shell: "swapon -a"
+  when:
+    - _crypt | default(false) | bool != true
+    - _raid | default(false) | bool != true
+  tags:
+    - chroot_configure
+
+######################################################################################################################
+# For an unencrypted mirror or raidz topology
+######################################################################################################################
+# Adjust the level (ZFS raidz = MD raid5, raidz2 = raid6) and raid-devices if necessary and specify the actual devices.
+- name: install mdadm
+  apt:
+    name:
+    state: present
+  with_items:
+    - mdadm
+  when:  _raid | default(false) | bool == true
+  tags:
+    - chroot_configure
+
+#  ignore_errors: true
+# swap_exists.rc != 1 and swap_exists.rc != 0
+
+# Checking for any existing raid arrays
+- name: arrays | Checking Status Of Array(s)
+  shell: "cat /proc/mdstat | grep {{ swap_array }}"
+  register: "array_check"
+  changed_when: false
+  failed_when: false
+  check_mode: no
+  ignore_errors: true
+  tags:
+    - chroot_configure
+
+# For an unencrypted single-disk install:
+- name: mkswapf
+  shell: "mkswap -f ${DISK}-part2 && echo swap /dev/disk/by-id/{{ _root_disks_by_id  | first }}{{_swap_part_append}} none swap discard 0 0 >> /etc/fstab"
+  when:
+    - _crypt | default(false) | bool != true
+    - _raid | default(false) | bool != true
+  tags:
+    - chroot_configure
+
+- name: swapona
+  shell: "swapon -a"
+  when:
+    - _crypt | default(false) | bool != true
+    - _raid | default(false) | bool != true
+  tags:
+    - chroot_configure
+
+
+# For an unencrypted mirror or raidz topology:
+# Adjust the level (ZFS raidz = MD raid5, raidz2 = raid6) and raid-devices if necessary and specify the actual devices.
+- name: mdamm for an unencrypted install
+  shell: "yes | mdadm --create /dev/{{swap_array}} --metadata=1.2 --level=mirror --raid-devices={{_root_device_list | count}} {{ item }}"
+  with_items:
+    -  "{% for item in  _root_device_list  %}{{ item }}{{ _swap_part_append }}{% if not loop.last %} {% endif %}{% endfor %}"
+  when:
+    - _crypt | default(false) | bool != true
+    - _raid | default(false) | bool == true
+  ignore_errors: true
+  tags:
+    - chroot_configure
+
+- name: mount /swap for an unencrypted install
+  shell: "mkswap -f /dev/{{swap_array}}"
+  when:
+    - _crypt | default(false) | bool != true
+    - _raid | default(false) | bool == true
+  tags:
+    - chroot_configure
+  
+- name: mount /swap for an unencrypted install
+  shell: "echo /dev/disk/by-uuid/$(blkid -s UUID -o value /dev/{{swap_array}}) none swap discard 0 0 >> /etc/fstab"
+  when:
+    - _crypt | default(false) | bool != true
+    - _raid | default(false) | bool == true
+  tags:
+    - chroot_configure
+
+######################################################################################################################
+# For an encrypted (LUKS or ZFS native encryption) single-disk install:
+######################################################################################################################
+- name: install cryptsetup
+  apt: name={{ item }} state=absent
+  with_items:
+   - cryptsetup
+  when:
+    - _crypt | default(false) | bool == true
+  tags:
+    - chroot_configure
+
+# #For an encrypted (LUKS or ZFS native encryption) single-disk install:
+- name: For an encrypted (LUKS or ZFS native encryption) single-disk install
+  shell: "echo swap /dev/disk/by-id/{{ _root_disks_by_id  | first }}{{_swap_part_append}} /dev/urandom swap,cipher=aes-xts-plain64:sha256,size=512 >> /etc/crypttab"
+  when:
+    - _crypt | default(false) | bool == true
+    - _raid | default(false) | bool != true
+  tags:
+    - chroot_configure
+- name: /dev/mapper/swap
+  shell: echo /dev/mapper/swap none swap defaults 0 0 >> /etc/fstab
+  when:
+    - _crypt | default(false) | bool == true
+    - _raid | default(false) | bool != true
+  tags:
+    - chroot_configure
+
+
+######################################################################################################################
+# For an encrypted (LUKS or ZFS native encryption) mirror or raidz topology:
+# Adjust the level (ZFS raidz = MD raid5, raidz2 = raid6) and raid-devices if necessary and specify the actual devices.
+######################################################################################################################
+- name: mdamm for an encrypted (LUKS or ZFS native encryption) mirror or raidz topology
+  shell: "yes | mdadm --create /dev/{{swap_array}} --metadata=1.2 --level=mirror --raid-devices={{_root_device_list | count}} {{ item }}"
+  with_items:
+    -  "{% for item in  _root_device_list  %}{{ item }}{{ _swap_part_append }}{% if not loop.last %} {% endif %}{% endfor %}"
+  when:
+    - _crypt | default(false) | bool == true
+    - _raid | default(false) | bool == true
+  ignore_errors: true
+  tags:
+    - chroot_configure
+
+- name: echo swap for an crypted mirror or raidz topology cryptab
+  shell: "echo swap /dev/{{swap_array}} /dev/urandom swap,cipher=aes-xts-plain64:sha256,size=512 >> /etc/crypttab"
+  when:
+    - _crypt | default(false) | bool == true
+    - _raid | default(false) | bool == true
+  tags:
+    - chroot_configure
+
+- name: echo swap for an crypted mirror or raidz topology fstab
+  shell: "echo /dev/mapper/swap none swap defaults 0 0 >> /etc/fstab"
+  when:
+    - _crypt | default(false) | bool == true
+    - _raid | default(false) | bool == true
+  tags:
+    - chroot_configure
+
+######################################################################################################################
+#Optional (but recommended): Mount a tmpfs to /tmp
+#cp /usr/share/systemd/tmp.mount /etc/systemd/system/
+#systemctl enable tmp.mount
+
+- name: Mount a tmpfs to /tmp
+  shell: "cp /usr/share/systemd/tmp.mount /etc/systemd/system/ && systemctl enable tmp.mount"
+#  when:
+#    - _crypt | default(false) | bool == true
+#    - _raid | default(false) | bool == true
+  tags:
+    - chroot_configure
+
+######################################################################################################################
+# Setup system groups:
+- name: addgroup --system lpadmin
+  shell: "addgroup --system lpadmin"
+  tags:
+    - chroot_configure
+- name: addgroup --system lxd
+  shell: "addgroup --system lxd"
+  tags:
+    - chroot_configure
+- name: addgroup --system sambashare
+  shell: "addgroup --system sambashare"
+  tags:
+    - chroot_configure
+
+- name: zfs-import-bpool.service
+  template:
+    src: "zfs-import-bpool.service"
+    dest: "/etc/systemd/system/zfs-import-bpool.service"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - chroot_configure
+
+- name: zfs-trim.service
+  template:
+    src: "zfs-trim.service"
+    dest: "/lib/systemd/system/zfs-trim.service"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+#  notify: ["Test and restart SSHD"]
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - chroot_configure
+
+- name: zfs-trim.timer
+  template:
+    src: "zfs-trim.timer"
+    dest: "/lib/systemd/system/zfs-trim.timer"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+#  notify: ["Test and restart SSHD"]
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - chroot_configure
+
+- name: systemctl enable zfs-import-bpool.service
+  shell: "systemctl enable zfs-import-bpool.service"
+#  when:
+#    - _crypt | default(false) | bool == true
+#    - _raid | default(false) | bool == true
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - chroot_configure
