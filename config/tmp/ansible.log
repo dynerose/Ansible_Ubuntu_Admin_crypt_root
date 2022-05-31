@@ -1917,3 +1917,780 @@ from ansible-base in version 2.13. Deprecation warnings can be disabled by setti
 2022-05-31 07:41:28,119 p=19207 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0-part1)
 2022-05-31 07:44:19,897 p=19207 u=root n=ansible |  [ERROR]: User interrupted execution
 
+2022-05-31 08:43:20,673 p=27710 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:43:20,791 p=27710 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  could not find expected ':'
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/meta/main.yml': line 6, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+3
+  # If the issue tracker for your role is not on github, uncomment the
+  ^ here
+
+2022-05-31 08:44:05,698 p=27713 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:44:05,817 p=27713 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  could not find expected ':'
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/meta/main.yml': line 6, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+3
+  # If the issue tracker for your role is not on github, uncomment the
+  ^ here
+
+2022-05-31 08:44:20,143 p=27716 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:44:20,257 p=27716 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  could not find expected ':'
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/meta/main.yml': line 6, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+3
+  # If the issue tracker for your role is not on github, uncomment the
+  ^ here
+
+2022-05-31 08:44:41,950 p=27719 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:44:42,062 p=27719 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  could not find expected ':'
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/meta/main.yml': line 6, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+3
+  # If the issue tracker for your role is not on github, uncomment the
+  ^ here
+
+2022-05-31 08:44:59,622 p=27722 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:44:59,734 p=27722 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  could not find expected ':'
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/meta/main.yml': line 6, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+3
+  # If the issue tracker for your role is not on github, uncomment the
+  ^ here
+
+2022-05-31 08:45:31,032 p=27922 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:45:31,149 p=27922 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/meta/main.yml': line 46, column 5, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+    #       Maximum 20 tags per role.
+    - system
+    ^ here
+
+2022-05-31 08:45:50,745 p=27925 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:45:50,864 p=27925 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected '-' indicator
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/main.yml': line 76, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+when: not deboostrapped or cleanup|default('') == "ABSOLUTELY"
+^ here
+
+2022-05-31 08:46:37,275 p=27928 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:46:37,392 p=27928 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected '-' indicator
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/main.yml': line 82, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+when: not deboostrapped or cleanup|default('') == "ABSOLUTELY"
+^ here
+
+2022-05-31 08:47:01,770 p=27931 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:47:01,883 p=27931 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected '-' indicator
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/main.yml': line 76, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+when: not deboostrapped
+^ here
+
+2022-05-31 08:49:15,776 p=27936 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:49:15,940 p=27936 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 08:49:16,749 p=27936 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 08:49:16,749 p=27936 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:49:16,832 p=27936 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 08:49:16,832 p=27936 u=root n=ansible | local_zfs_root             : ok=1    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2022-05-31 08:49:22,847 p=27972 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:49:23,007 p=27972 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 08:49:23,827 p=27972 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 08:49:23,828 p=27972 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:49:23,900 p=27972 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 08:49:23,901 p=27972 u=root n=ansible | local_zfs_root             : ok=1    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2022-05-31 08:50:03,345 p=28016 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:50:03,503 p=28016 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 08:50:04,323 p=28016 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 08:50:04,324 p=28016 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:50:04,400 p=28016 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 08:50:04,400 p=28016 u=root n=ansible | local_zfs_root             : ok=1    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2022-05-31 08:51:06,462 p=28054 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:51:06,626 p=28054 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 08:51:07,473 p=28054 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 08:51:07,474 p=28054 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:51:07,565 p=28054 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:51:07,566 p=28054 u=root n=ansible | fatal: [local_zfs_root]: FAILED! => {"msg": "The conditional check 'not deboostrapped or cleanup|default('') == \"ABSOLUTELY\"' failed. The error was: error while evaluating conditional (not deboostrapped or cleanup|default('') == \"ABSOLUTELY\"): 'deboostrapped' is undefined\n\nThe error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/main.yml': line 32, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n    - debug: msg='Disks ures'\n      ^ here\n"}
+2022-05-31 08:51:07,573 p=28054 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.1.live.install_zfs.retry
+
+2022-05-31 08:51:07,573 p=28054 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 08:51:07,574 p=28054 u=root n=ansible | local_zfs_root             : ok=1    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2022-05-31 08:51:29,099 p=28093 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:51:29,258 p=28093 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 08:51:30,058 p=28093 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 08:51:30,059 p=28093 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:51:30,153 p=28093 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:51:30,154 p=28093 u=root n=ansible | fatal: [local_zfs_root]: FAILED! => {"msg": "The conditional check 'not deboostrapped' failed. The error was: error while evaluating conditional (not deboostrapped): 'deboostrapped' is undefined\n\nThe error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/main.yml': line 32, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n    - debug: msg='Disks ures'\n      ^ here\n"}
+2022-05-31 08:51:30,162 p=28093 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.1.live.install_zfs.retry
+
+2022-05-31 08:51:30,162 p=28093 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 08:51:30,162 p=28093 u=root n=ansible | local_zfs_root             : ok=1    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2022-05-31 08:51:48,953 p=28133 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:51:49,111 p=28133 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 08:51:49,886 p=28133 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 08:51:49,886 p=28133 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:51:49,944 p=28133 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/debugmsg.yml for local_zfs_root
+2022-05-31 08:51:49,991 p=28133 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:51:49,992 p=28133 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "1 Ubuntu"
+}
+2022-05-31 08:51:50,032 p=28133 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:51:50,033 p=28133 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "2 22.04"
+}
+2022-05-31 08:51:50,077 p=28133 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:51:50,077 p=28133 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "3 22"
+}
+2022-05-31 08:51:50,360 p=28133 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 08:51:50,360 p=28133 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:51:50,533 p=28133 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 08:51:50,534 p=28133 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:51:50,583 p=28133 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:51:50,583 p=28133 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '18.5G', 'size': '18.5G', 'name': 'backupPool1'}) => {
+    "msg": "4 ZFS pool backupPool1 has 18.5G free space out of 18.5G."
+}
+2022-05-31 08:51:50,587 p=28133 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '89.5G', 'size': '89.5G', 'name': 'dataPool'}) => {
+    "msg": "4 ZFS pool dataPool has 89.5G free space out of 89.5G."
+}
+2022-05-31 08:51:50,594 p=28133 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '16.4G', 'size': '16.5G', 'name': 'root_pool'}) => {
+    "msg": "4 ZFS pool root_pool has 16.4G free space out of 16.5G."
+}
+2022-05-31 08:51:50,600 p=28133 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '12.2G', 'size': '14.5G', 'name': 'rpool'}) => {
+    "msg": "4 ZFS pool rpool has 12.2G free space out of 14.5G."
+}
+2022-05-31 08:51:50,644 p=28133 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:51:50,645 p=28133 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "rpool name root_pool"
+}
+2022-05-31 08:51:50,676 p=28133 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/install.yml for local_zfs_root
+2022-05-31 08:52:07,260 p=28133 u=root n=ansible |  [ERROR]: User interrupted execution
+
+2022-05-31 08:52:39,159 p=33567 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be 
+removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:52:39,391 p=33567 u=root n=ansible | PLAY [live] ****************************************************************************************************************************************************************************************************
+2022-05-31 08:52:40,331 p=33567 u=root n=ansible | TASK [Gathering Facts] *****************************************************************************************************************************************************************************************
+2022-05-31 08:52:40,332 p=33567 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:52:40,392 p=33567 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/debugmsg.yml for local_zfs_root
+2022-05-31 08:52:40,448 p=33567 u=root n=ansible | TASK [01-system-prep : debug] **********************************************************************************************************************************************************************************
+2022-05-31 08:52:40,449 p=33567 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "1 Ubuntu"
+}
+2022-05-31 08:52:40,501 p=33567 u=root n=ansible | TASK [01-system-prep : debug] **********************************************************************************************************************************************************************************
+2022-05-31 08:52:40,504 p=33567 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "2 22.04"
+}
+2022-05-31 08:52:40,553 p=33567 u=root n=ansible | TASK [01-system-prep : debug] **********************************************************************************************************************************************************************************
+2022-05-31 08:52:40,556 p=33567 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "3 22"
+}
+2022-05-31 08:52:40,883 p=33567 u=root n=ansible | TASK [01-system-prep : zpool_facts] ****************************************************************************************************************************************************************************
+2022-05-31 08:52:40,883 p=33567 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:52:41,125 p=33567 u=root n=ansible | TASK [01-system-prep : zpool_facts] ****************************************************************************************************************************************************************************
+2022-05-31 08:52:41,126 p=33567 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:52:41,253 p=33567 u=root n=ansible | TASK [01-system-prep : debug] **********************************************************************************************************************************************************************************
+2022-05-31 08:52:41,253 p=33567 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '18.5G', 'size': '18.5G', 'name': 'backupPool1'}) => {
+    "msg": "4 ZFS pool backupPool1 has 18.5G free space out of 18.5G."
+}
+2022-05-31 08:52:41,254 p=33567 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '89.5G', 'size': '89.5G', 'name': 'dataPool'}) => {
+    "msg": "4 ZFS pool dataPool has 89.5G free space out of 89.5G."
+}
+2022-05-31 08:52:41,259 p=33567 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '16.4G', 'size': '16.5G', 'name': 'root_pool'}) => {
+    "msg": "4 ZFS pool root_pool has 16.4G free space out of 16.5G."
+}
+2022-05-31 08:52:41,263 p=33567 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '12.2G', 'size': '14.5G', 'name': 'rpool'}) => {
+    "msg": "4 ZFS pool rpool has 12.2G free space out of 14.5G."
+}
+2022-05-31 08:52:41,313 p=33567 u=root n=ansible | TASK [01-system-prep : debug] **********************************************************************************************************************************************************************************
+2022-05-31 08:52:41,314 p=33567 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "rpool name root_pool"
+}
+2022-05-31 08:52:41,359 p=33567 u=root n=ansible | TASK [01-system-prep : debug] **********************************************************************************************************************************************************************************
+2022-05-31 08:52:41,361 p=33567 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks ['sdf']"
+}
+2022-05-31 08:52:41,433 p=33567 u=root n=ansible | TASK [01-system-prep : debug] **********************************************************************************************************************************************************************************
+2022-05-31 08:52:41,434 p=33567 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "_root_pool_type  "
+}
+2022-05-31 08:52:41,458 p=33567 u=root n=ansible | PLAY RECAP *****************************************************************************************************************************************************************************************************
+2022-05-31 08:52:41,458 p=33567 u=root n=ansible | local_zfs_root             : ok=11   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-05-31 08:52:49,406 p=35461 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be 
+removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:52:49,676 p=35461 u=root n=ansible | PLAY [live] ****************************************************************************************************************************************************************************************************
+2022-05-31 08:52:50,794 p=35461 u=root n=ansible | TASK [Gathering Facts] *****************************************************************************************************************************************************************************************
+2022-05-31 08:52:50,795 p=35461 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:52:50,848 p=35461 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/install.yml for local_zfs_root
+2022-05-31 08:53:00,467 p=35461 u=root n=ansible | TASK [01-system-prep : Install global dependencies] ************************************************************************************************************************************************************
+2022-05-31 08:53:00,468 p=35461 u=root n=ansible | fatal: [local_zfs_root]: FAILED! => {"cache_update_time": 1653975911, "cache_updated": false, "changed": false, "msg": "'/usr/bin/apt-get -y -o \"Dpkg::Options::=--force-confdef\" -o \"Dpkg::Options::=--force-confold\"      install 'parted' 'xfsprogs' 'uuid-runtime'' failed: E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 28420 (apt-get)\nE: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?\n", "rc": 100, "stderr": "E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 28420 (apt-get)\nE: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?\n", "stderr_lines": ["E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 28420 (apt-get)", "E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?"], "stdout": "", "stdout_lines": []}
+2022-05-31 08:53:00,475 p=35461 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.1.live.install_zfs.retry
+
+2022-05-31 08:53:00,475 p=35461 u=root n=ansible | PLAY RECAP *****************************************************************************************************************************************************************************************************
+2022-05-31 08:53:00,476 p=35461 u=root n=ansible | local_zfs_root             : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-05-31 08:55:33,452 p=39296 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be 
+removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:55:33,732 p=39296 u=root n=ansible | PLAY [live] ****************************************************************************************************************************************************************************************************
+2022-05-31 08:55:34,832 p=39296 u=root n=ansible | TASK [Gathering Facts] *****************************************************************************************************************************************************************************************
+2022-05-31 08:55:34,832 p=39296 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:55:34,895 p=39296 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/install.yml for local_zfs_root
+2022-05-31 08:55:36,677 p=39296 u=root n=ansible | TASK [01-system-prep : Install global dependencies] ************************************************************************************************************************************************************
+2022-05-31 08:55:36,678 p=39296 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:55:36,709 p=39296 u=root n=ansible | PLAY RECAP *****************************************************************************************************************************************************************************************************
+2022-05-31 08:55:36,711 p=39296 u=root n=ansible | local_zfs_root             : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-05-31 08:55:38,553 p=39345 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be 
+removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:55:38,807 p=39345 u=root n=ansible | PLAY [live] ****************************************************************************************************************************************************************************************************
+2022-05-31 08:55:40,063 p=39345 u=root n=ansible | TASK [Gathering Facts] *****************************************************************************************************************************************************************************************
+2022-05-31 08:55:40,064 p=39345 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:55:40,123 p=39345 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/install.yml for local_zfs_root
+2022-05-31 08:55:41,329 p=39345 u=root n=ansible | TASK [01-system-prep : Install global dependencies] ************************************************************************************************************************************************************
+2022-05-31 08:55:41,330 p=39345 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:55:41,353 p=39345 u=root n=ansible | PLAY RECAP *****************************************************************************************************************************************************************************************************
+2022-05-31 08:55:41,354 p=39345 u=root n=ansible | local_zfs_root             : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-05-31 08:56:18,008 p=39434 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be 
+removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:56:18,273 p=39434 u=root n=ansible | PLAY [live] ****************************************************************************************************************************************************************************************************
+2022-05-31 08:56:19,874 p=39434 u=root n=ansible | TASK [Gathering Facts] *****************************************************************************************************************************************************************************************
+2022-05-31 08:56:19,875 p=39434 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:56:19,941 p=39434 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/install.yml for local_zfs_root
+2022-05-31 08:56:24,883 p=39434 u=root n=ansible | TASK [01-system-prep : Install global dependencies] ************************************************************************************************************************************************************
+2022-05-31 08:56:24,883 p=39434 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 08:56:24,912 p=39434 u=root n=ansible | PLAY RECAP *****************************************************************************************************************************************************************************************************
+2022-05-31 08:56:24,913 p=39434 u=root n=ansible | local_zfs_root             : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-05-31 08:56:54,779 p=39531 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be 
+removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:56:55,022 p=39531 u=root n=ansible | PLAY [live] ****************************************************************************************************************************************************************************************************
+2022-05-31 08:56:56,096 p=39531 u=root n=ansible | TASK [Gathering Facts] *****************************************************************************************************************************************************************************************
+2022-05-31 08:56:56,097 p=39531 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:56:56,207 p=39531 u=root n=ansible | TASK [01-system-prep : debug] **********************************************************************************************************************************************************************************
+2022-05-31 08:56:56,208 p=39531 u=root n=ansible | fatal: [local_zfs_root]: FAILED! => {"msg": "The conditional check 'not deboostrapped' failed. The error was: error while evaluating conditional (not deboostrapped): 'deboostrapped' is undefined\n\nThe error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/main.yml': line 32, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n    - debug: msg='Disks ures'\n      ^ here\n"}
+2022-05-31 08:56:56,216 p=39531 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.1.live.install_zfs.retry
+
+2022-05-31 08:56:56,216 p=39531 u=root n=ansible | PLAY RECAP *****************************************************************************************************************************************************************************************************
+2022-05-31 08:56:56,216 p=39531 u=root n=ansible | local_zfs_root             : ok=1    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2022-05-31 08:57:23,268 p=39570 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be 
+removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:57:23,537 p=39570 u=root n=ansible | PLAY [live] ****************************************************************************************************************************************************************************************************
+2022-05-31 08:57:24,692 p=39570 u=root n=ansible | TASK [Gathering Facts] *****************************************************************************************************************************************************************************************
+2022-05-31 08:57:24,693 p=39570 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:57:24,748 p=39570 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/cleanup.yml for local_zfs_root
+2022-05-31 08:57:24,820 p=39570 u=root n=ansible | TASK [01-system-prep : debug] **********************************************************************************************************************************************************************************
+2022-05-31 08:57:24,820 p=39570 u=root n=ansible | fatal: [local_zfs_root]: FAILED! => {"msg": "The conditional check 'not deboostrapped' failed. The error was: error while evaluating conditional (not deboostrapped): 'deboostrapped' is undefined\n\nThe error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/main.yml': line 32, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n    - debug: msg='Disks ures'\n      ^ here\n"}
+2022-05-31 08:57:24,830 p=39570 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.1.live.install_zfs.retry
+
+2022-05-31 08:57:24,830 p=39570 u=root n=ansible | PLAY RECAP *****************************************************************************************************************************************************************************************************
+2022-05-31 08:57:24,830 p=39570 u=root n=ansible | local_zfs_root             : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-05-31 08:57:52,926 p=39609 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be 
+removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:57:53,108 p=39609 u=root n=ansible | PLAY [live] ****************************************************************************************************************************************************************************************************
+2022-05-31 08:57:54,060 p=39609 u=root n=ansible | TASK [Gathering Facts] *****************************************************************************************************************************************************************************************
+2022-05-31 08:57:54,061 p=39609 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:57:54,146 p=39609 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/cleanup.yml for local_zfs_root
+2022-05-31 08:57:54,562 p=39609 u=root n=ansible | TASK [01-system-prep : check if already mount] *****************************************************************************************************************************************************************
+2022-05-31 08:57:54,563 p=39609 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:57:54,617 p=39609 u=root n=ansible | TASK [01-system-prep : set_fact] *******************************************************************************************************************************************************************************
+2022-05-31 08:57:54,618 p=39609 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:57:54,708 p=39609 u=root n=ansible | PLAY RECAP *****************************************************************************************************************************************************************************************************
+2022-05-31 08:57:54,709 p=39609 u=root n=ansible | local_zfs_root             : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2022-05-31 08:57:56,991 p=39657 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be 
+removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:57:57,233 p=39657 u=root n=ansible | PLAY [live] ****************************************************************************************************************************************************************************************************
+2022-05-31 08:57:58,510 p=39657 u=root n=ansible | TASK [Gathering Facts] *****************************************************************************************************************************************************************************************
+2022-05-31 08:57:58,511 p=39657 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:57:58,572 p=39657 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/cleanup.yml for local_zfs_root
+2022-05-31 08:57:59,021 p=39657 u=root n=ansible | TASK [01-system-prep : check if already mount] *****************************************************************************************************************************************************************
+2022-05-31 08:57:59,021 p=39657 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:57:59,077 p=39657 u=root n=ansible | TASK [01-system-prep : set_fact] *******************************************************************************************************************************************************************************
+2022-05-31 08:57:59,078 p=39657 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:57:59,162 p=39657 u=root n=ansible | PLAY RECAP *****************************************************************************************************************************************************************************************************
+2022-05-31 08:57:59,162 p=39657 u=root n=ansible | local_zfs_root             : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2022-05-31 08:58:29,107 p=39706 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:58:29,334 p=39706 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 08:58:30,363 p=39706 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 08:58:30,364 p=39706 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:58:30,420 p=39706 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/cleanup.yml for local_zfs_root
+2022-05-31 08:58:30,476 p=39706 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:58:30,479 p=39706 u=root n=ansible | fatal: [local_zfs_root]: FAILED! => {"msg": "The conditional check 'not deboostrapped' failed. The error was: error while evaluating conditional (not deboostrapped): 'deboostrapped' is undefined\n\nThe error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/main.yml': line 36, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n    - debug: msg='Disks ures'\n      ^ here\n"}
+2022-05-31 08:58:30,486 p=39706 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.1.live.install_zfs.retry
+
+2022-05-31 08:58:30,488 p=39706 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 08:58:30,488 p=39706 u=root n=ansible | local_zfs_root             : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-05-31 08:58:40,559 p=39745 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:58:40,819 p=39745 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 08:58:41,846 p=39745 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 08:58:41,846 p=39745 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:58:41,919 p=39745 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/debugmsg.yml for local_zfs_root
+2022-05-31 08:58:41,979 p=39745 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:58:41,980 p=39745 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "1 Ubuntu"
+}
+2022-05-31 08:58:42,040 p=39745 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:58:42,041 p=39745 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "2 22.04"
+}
+2022-05-31 08:58:42,101 p=39745 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:58:42,102 p=39745 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "3 22"
+}
+2022-05-31 08:58:42,536 p=39745 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 08:58:42,536 p=39745 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:58:42,793 p=39745 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 08:58:42,794 p=39745 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:58:42,864 p=39745 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:58:42,870 p=39745 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '18.5G', 'size': '18.5G', 'name': 'backupPool1'}) => {
+    "msg": "4 ZFS pool backupPool1 has 18.5G free space out of 18.5G."
+}
+2022-05-31 08:58:42,871 p=39745 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '89.5G', 'size': '89.5G', 'name': 'dataPool'}) => {
+    "msg": "4 ZFS pool dataPool has 89.5G free space out of 89.5G."
+}
+2022-05-31 08:58:42,880 p=39745 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '16.4G', 'size': '16.5G', 'name': 'root_pool'}) => {
+    "msg": "4 ZFS pool root_pool has 16.4G free space out of 16.5G."
+}
+2022-05-31 08:58:42,888 p=39745 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '12.2G', 'size': '14.5G', 'name': 'rpool'}) => {
+    "msg": "4 ZFS pool rpool has 12.2G free space out of 14.5G."
+}
+2022-05-31 08:58:42,952 p=39745 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:58:42,953 p=39745 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "rpool name root_pool"
+}
+2022-05-31 08:58:43,004 p=39745 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/install.yml for local_zfs_root
+2022-05-31 08:58:44,772 p=39745 u=root n=ansible | TASK [01-system-prep : Install global dependencies] *******************************************************************************************************************************************************************
+2022-05-31 08:58:44,773 p=39745 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:58:44,883 p=39745 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:58:44,884 p=39745 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks ['sdf']"
+}
+2022-05-31 08:58:44,996 p=39745 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:58:44,998 p=39745 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "_root_pool_type  "
+}
+2022-05-31 08:58:45,047 p=39745 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/cleanup.yml for local_zfs_root
+2022-05-31 08:58:45,617 p=39745 u=root n=ansible | TASK [01-system-prep : umount target] *********************************************************************************************************************************************************************************
+2022-05-31 08:58:45,618 p=39745 u=root n=ansible | failed: [local_zfs_root] (item=/mnt/install/boot/efi) => {"ansible_loop_var": "item", "changed": true, "cmd": "umount /mnt/install//mnt/install/boot/efi\n", "delta": "0:00:00.010733", "end": "2022-05-31 08:58:45.580871", "item": "/mnt/install/boot/efi", "msg": "non-zero return code", "rc": 32, "start": "2022-05-31 08:58:45.570138", "stderr": "umount: /mnt/install//mnt/install/boot/efi: no mount point specified.", "stderr_lines": ["umount: /mnt/install//mnt/install/boot/efi: no mount point specified."], "stdout": "", "stdout_lines": []}
+2022-05-31 08:58:45,802 p=39745 u=root n=ansible | failed: [local_zfs_root] (item=/mnt/install/boot) => {"ansible_loop_var": "item", "changed": true, "cmd": "umount /mnt/install//mnt/install/boot\n", "delta": "0:00:00.008191", "end": "2022-05-31 08:58:45.783008", "item": "/mnt/install/boot", "msg": "non-zero return code", "rc": 32, "start": "2022-05-31 08:58:45.774817", "stderr": "umount: /mnt/install//mnt/install/boot: no mount point specified.", "stderr_lines": ["umount: /mnt/install//mnt/install/boot: no mount point specified."], "stdout": "", "stdout_lines": []}
+2022-05-31 08:58:45,811 p=39745 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.1.live.install_zfs.retry
+
+2022-05-31 08:58:45,811 p=39745 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 08:58:45,812 p=39745 u=root n=ansible | local_zfs_root             : ok=14   changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2022-05-31 08:59:33,712 p=39843 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 08:59:33,962 p=39843 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 08:59:34,903 p=39843 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 08:59:34,904 p=39843 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:59:34,965 p=39843 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/debugmsg.yml for local_zfs_root
+2022-05-31 08:59:35,015 p=39843 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:59:35,016 p=39843 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "1 Ubuntu"
+}
+2022-05-31 08:59:35,065 p=39843 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:59:35,066 p=39843 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "2 22.04"
+}
+2022-05-31 08:59:35,118 p=39843 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:59:35,119 p=39843 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "3 22"
+}
+2022-05-31 08:59:35,526 p=39843 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 08:59:35,528 p=39843 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:59:35,766 p=39843 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 08:59:35,767 p=39843 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:59:35,834 p=39843 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:59:35,835 p=39843 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '18.5G', 'size': '18.5G', 'name': 'backupPool1'}) => {
+    "msg": "4 ZFS pool backupPool1 has 18.5G free space out of 18.5G."
+}
+2022-05-31 08:59:35,845 p=39843 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '89.5G', 'size': '89.5G', 'name': 'dataPool'}) => {
+    "msg": "4 ZFS pool dataPool has 89.5G free space out of 89.5G."
+}
+2022-05-31 08:59:35,851 p=39843 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '16.4G', 'size': '16.5G', 'name': 'root_pool'}) => {
+    "msg": "4 ZFS pool root_pool has 16.4G free space out of 16.5G."
+}
+2022-05-31 08:59:35,863 p=39843 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '12.2G', 'size': '14.5G', 'name': 'rpool'}) => {
+    "msg": "4 ZFS pool rpool has 12.2G free space out of 14.5G."
+}
+2022-05-31 08:59:35,914 p=39843 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:59:35,915 p=39843 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "rpool name root_pool"
+}
+2022-05-31 08:59:35,952 p=39843 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/install.yml for local_zfs_root
+2022-05-31 08:59:37,239 p=39843 u=root n=ansible | TASK [01-system-prep : Install global dependencies] *******************************************************************************************************************************************************************
+2022-05-31 08:59:37,239 p=39843 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:59:37,292 p=39843 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:59:37,295 p=39843 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks ['sdf']"
+}
+2022-05-31 08:59:37,366 p=39843 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 08:59:37,368 p=39843 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "_root_pool_type  "
+}
+2022-05-31 08:59:37,407 p=39843 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/cleanup.yml for local_zfs_root
+2022-05-31 08:59:37,886 p=39843 u=root n=ansible | TASK [01-system-prep : umount target] *********************************************************************************************************************************************************************************
+2022-05-31 08:59:37,887 p=39843 u=root n=ansible | changed: [local_zfs_root] => (item=/mnt/install/boot/efi)
+2022-05-31 08:59:38,106 p=39843 u=root n=ansible | changed: [local_zfs_root] => (item=/mnt/install/boot)
+2022-05-31 08:59:38,355 p=39843 u=root n=ansible | TASK [01-system-prep : Get list of Available zfs pools] ***************************************************************************************************************************************************************
+2022-05-31 08:59:38,355 p=39843 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 08:59:38,446 p=39951 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: '{{_root_pool}}' in zpool_list.stdout
+
+2022-05-31 08:59:38,649 p=39843 u=root n=ansible | TASK [01-system-prep : Destroy existing "root_pool"] ******************************************************************************************************************************************************************
+2022-05-31 08:59:38,649 p=39843 u=root n=ansible | fatal: [local_zfs_root]: FAILED! => {"changed": true, "cmd": ["zpool", "destroy", "-f", "root_pool"], "delta": "0:00:00.011084", "end": "2022-05-31 08:59:38.629077", "msg": "non-zero return code", "rc": 1, "start": "2022-05-31 08:59:38.617993", "stderr": "cannot unmount '/mnt/install': pool or dataset is busy\ncould not destroy 'root_pool': could not unmount datasets", "stderr_lines": ["cannot unmount '/mnt/install': pool or dataset is busy", "could not destroy 'root_pool': could not unmount datasets"], "stdout": "", "stdout_lines": []}
+2022-05-31 08:59:38,655 p=39843 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.1.live.install_zfs.retry
+
+2022-05-31 08:59:38,656 p=39843 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 08:59:38,656 p=39843 u=root n=ansible | local_zfs_root             : ok=16   changed=1    unreachable=0    failed=1    skipped=2    rescued=0    ignored=0   
+2022-05-31 09:00:19,680 p=40216 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:00:19,900 p=40216 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 09:00:20,905 p=40216 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 09:00:20,906 p=40216 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:00:20,966 p=40216 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/cleanup.yml for local_zfs_root
+2022-05-31 09:00:21,027 p=40216 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:00:21,028 p=40216 u=root n=ansible | fatal: [local_zfs_root]: FAILED! => {"msg": "The conditional check 'not deboostrapped' failed. The error was: error while evaluating conditional (not deboostrapped): 'deboostrapped' is undefined\n\nThe error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/main.yml': line 36, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n    - debug: msg='Disks ures'\n      ^ here\n"}
+2022-05-31 09:00:21,060 p=40216 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.1.live.install_zfs.retry
+
+2022-05-31 09:00:21,060 p=40216 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 09:00:21,061 p=40216 u=root n=ansible | local_zfs_root             : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-05-31 09:00:47,499 p=40253 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:00:47,656 p=40253 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/main.yml': line 32, column 5, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+#  tags:
+    - zfs_clean
+    ^ here
+
+2022-05-31 09:01:05,691 p=40256 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:01:05,849 p=40256 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/main.yml': line 32, column 5, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+#  tags:
+    - zfs_clean
+    ^ here
+
+2022-05-31 09:01:26,932 p=40259 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:01:27,163 p=40259 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 09:01:28,206 p=40259 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 09:01:28,207 p=40259 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:01:28,262 p=40259 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/cleanup.yml for local_zfs_root
+2022-05-31 09:01:28,696 p=40259 u=root n=ansible | TASK [01-system-prep : check if already mount] ************************************************************************************************************************************************************************
+2022-05-31 09:01:28,697 p=40259 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:01:28,756 p=40259 u=root n=ansible | TASK [01-system-prep : set_fact] **************************************************************************************************************************************************************************************
+2022-05-31 09:01:28,757 p=40259 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:01:29,137 p=40259 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 09:01:29,137 p=40259 u=root n=ansible | local_zfs_root             : ok=4    changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+2022-05-31 09:02:35,662 p=40336 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:02:35,873 p=40336 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 09:02:37,183 p=40336 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 09:02:37,184 p=40336 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:02:37,261 p=40336 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/cleanup.yml for local_zfs_root
+2022-05-31 09:02:37,748 p=40336 u=root n=ansible | TASK [01-system-prep : check if already mount] ************************************************************************************************************************************************************************
+2022-05-31 09:02:37,748 p=40336 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:02:37,803 p=40336 u=root n=ansible | TASK [01-system-prep : set_fact] **************************************************************************************************************************************************************************************
+2022-05-31 09:02:37,804 p=40336 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:02:38,223 p=40336 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 09:02:38,224 p=40336 u=root n=ansible | local_zfs_root             : ok=4    changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+2022-05-31 09:03:26,177 p=40399 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:03:26,406 p=40399 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 09:03:27,454 p=40399 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 09:03:27,457 p=40399 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:03:27,519 p=40399 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/cleanup.yml for local_zfs_root
+2022-05-31 09:03:27,898 p=40399 u=root n=ansible | TASK [01-system-prep : check if already mount] ************************************************************************************************************************************************************************
+2022-05-31 09:03:27,899 p=40399 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:03:27,947 p=40399 u=root n=ansible | TASK [01-system-prep : set_fact] **************************************************************************************************************************************************************************************
+2022-05-31 09:03:27,947 p=40399 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:03:28,310 p=40399 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 09:03:28,310 p=40399 u=root n=ansible | local_zfs_root             : ok=4    changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+2022-05-31 09:04:40,695 p=40465 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:04:40,913 p=40465 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 09:04:41,892 p=40465 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 09:04:41,893 p=40465 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:04:41,960 p=40465 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/cleanup.yml for local_zfs_root
+2022-05-31 09:04:42,556 p=40465 u=root n=ansible | TASK [01-system-prep : umount target] *********************************************************************************************************************************************************************************
+2022-05-31 09:04:42,557 p=40465 u=root n=ansible | failed: [local_zfs_root] (item=/mnt/install/boot/efi) => {"ansible_loop_var": "item", "changed": true, "cmd": "umount /mnt/install/boot/efi\n", "delta": "0:00:00.029940", "end": "2022-05-31 09:04:42.513970", "item": "/mnt/install/boot/efi", "msg": "non-zero return code", "rc": 32, "start": "2022-05-31 09:04:42.484030", "stderr": "umount: /mnt/install/boot/efi: no mount point specified.", "stderr_lines": ["umount: /mnt/install/boot/efi: no mount point specified."], "stdout": "", "stdout_lines": []}
+2022-05-31 09:04:42,769 p=40465 u=root n=ansible | failed: [local_zfs_root] (item=/mnt/install/boot) => {"ansible_loop_var": "item", "changed": true, "cmd": "umount /mnt/install/boot\n", "delta": "0:00:00.008056", "end": "2022-05-31 09:04:42.747090", "item": "/mnt/install/boot", "msg": "non-zero return code", "rc": 32, "start": "2022-05-31 09:04:42.739034", "stderr": "umount: /mnt/install/boot: not mounted.", "stderr_lines": ["umount: /mnt/install/boot: not mounted."], "stdout": "", "stdout_lines": []}
+2022-05-31 09:04:42,778 p=40465 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.1.live.install_zfs.retry
+
+2022-05-31 09:04:42,778 p=40465 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 09:04:42,779 p=40465 u=root n=ansible | local_zfs_root             : ok=2    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2022-05-31 09:05:29,608 p=40528 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:05:29,851 p=40528 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 09:05:31,378 p=40528 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 09:05:31,378 p=40528 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:05:31,444 p=40528 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/debugmsg.yml for local_zfs_root
+2022-05-31 09:05:31,498 p=40528 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:05:31,498 p=40528 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "1 Ubuntu"
+}
+2022-05-31 09:05:31,550 p=40528 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:05:31,551 p=40528 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "2 22.04"
+}
+2022-05-31 09:05:31,604 p=40528 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:05:31,604 p=40528 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "3 22"
+}
+2022-05-31 09:05:31,963 p=40528 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:05:31,963 p=40528 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:05:32,192 p=40528 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:05:32,193 p=40528 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:05:32,262 p=40528 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:05:32,263 p=40528 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '18.5G', 'size': '18.5G', 'name': 'backupPool1'}) => {
+    "msg": "4 ZFS pool backupPool1 has 18.5G free space out of 18.5G."
+}
+2022-05-31 09:05:32,273 p=40528 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '89.5G', 'size': '89.5G', 'name': 'dataPool'}) => {
+    "msg": "4 ZFS pool dataPool has 89.5G free space out of 89.5G."
+}
+2022-05-31 09:05:32,282 p=40528 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '12.2G', 'size': '14.5G', 'name': 'rpool'}) => {
+    "msg": "4 ZFS pool rpool has 12.2G free space out of 14.5G."
+}
+2022-05-31 09:05:32,341 p=40528 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:05:32,344 p=40528 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "rpool name root_pool"
+}
+2022-05-31 09:05:32,387 p=40528 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/install.yml for local_zfs_root
+2022-05-31 09:05:33,638 p=40528 u=root n=ansible | TASK [01-system-prep : Install global dependencies] *******************************************************************************************************************************************************************
+2022-05-31 09:05:33,639 p=40528 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:05:33,692 p=40528 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:05:33,695 p=40528 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks ['sdf']"
+}
+2022-05-31 09:05:33,774 p=40528 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:05:33,776 p=40528 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "_root_pool_type  "
+}
+2022-05-31 09:05:33,821 p=40528 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/cleanup.yml for local_zfs_root
+2022-05-31 09:05:34,316 p=40528 u=root n=ansible | TASK [01-system-prep : umount target] *********************************************************************************************************************************************************************************
+2022-05-31 09:05:34,317 p=40528 u=root n=ansible | failed: [local_zfs_root] (item=/mnt/install/boot/efi) => {"ansible_loop_var": "item", "changed": true, "cmd": "umount /mnt/install/boot/efi\n", "delta": "0:00:00.007468", "end": "2022-05-31 09:05:34.288612", "item": "/mnt/install/boot/efi", "msg": "non-zero return code", "rc": 32, "start": "2022-05-31 09:05:34.281144", "stderr": "umount: /mnt/install/boot/efi: no mount point specified.", "stderr_lines": ["umount: /mnt/install/boot/efi: no mount point specified."], "stdout": "", "stdout_lines": []}
+2022-05-31 09:05:34,535 p=40528 u=root n=ansible | failed: [local_zfs_root] (item=/mnt/install/boot) => {"ansible_loop_var": "item", "changed": true, "cmd": "umount /mnt/install/boot\n", "delta": "0:00:00.007190", "end": "2022-05-31 09:05:34.505068", "item": "/mnt/install/boot", "msg": "non-zero return code", "rc": 32, "start": "2022-05-31 09:05:34.497878", "stderr": "umount: /mnt/install/boot: no mount point specified.", "stderr_lines": ["umount: /mnt/install/boot: no mount point specified."], "stdout": "", "stdout_lines": []}
+2022-05-31 09:05:34,541 p=40528 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.1.live.install_zfs.retry
+
+2022-05-31 09:05:34,542 p=40528 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 09:05:34,543 p=40528 u=root n=ansible | local_zfs_root             : ok=14   changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2022-05-31 09:10:30,133 p=40630 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:10:30,288 p=40630 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 09:10:31,074 p=40630 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 09:10:31,074 p=40630 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:10:31,139 p=40630 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/debugmsg.yml for local_zfs_root
+2022-05-31 09:10:31,184 p=40630 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:10:31,185 p=40630 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "1 Ubuntu"
+}
+2022-05-31 09:10:31,245 p=40630 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:10:31,246 p=40630 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "2 22.04"
+}
+2022-05-31 09:10:31,298 p=40630 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:10:31,299 p=40630 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "3 22"
+}
+2022-05-31 09:10:31,587 p=40630 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:10:31,587 p=40630 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:10:31,756 p=40630 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:10:31,756 p=40630 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:10:31,806 p=40630 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:10:31,809 p=40630 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '18.5G', 'size': '18.5G', 'name': 'backupPool1'}) => {
+    "msg": "4 ZFS pool backupPool1 has 18.5G free space out of 18.5G."
+}
+2022-05-31 09:10:31,817 p=40630 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '89.5G', 'size': '89.5G', 'name': 'dataPool'}) => {
+    "msg": "4 ZFS pool dataPool has 89.5G free space out of 89.5G."
+}
+2022-05-31 09:10:31,818 p=40630 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '12.2G', 'size': '14.5G', 'name': 'rpool'}) => {
+    "msg": "4 ZFS pool rpool has 12.2G free space out of 14.5G."
+}
+2022-05-31 09:10:31,859 p=40630 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:10:31,860 p=40630 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "rpool name root_pool"
+}
+2022-05-31 09:10:31,892 p=40630 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/install.yml for local_zfs_root
+2022-05-31 09:10:32,797 p=40630 u=root n=ansible | TASK [01-system-prep : Install global dependencies] *******************************************************************************************************************************************************************
+2022-05-31 09:10:32,797 p=40630 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:10:32,860 p=40630 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:10:32,861 p=40630 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks ['sdf']"
+}
+2022-05-31 09:10:32,915 p=40630 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:10:32,916 p=40630 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "_root_pool_type  "
+}
+2022-05-31 09:10:32,947 p=40630 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/cleanup.yml for local_zfs_root
+2022-05-31 09:10:33,312 p=40630 u=root n=ansible | TASK [01-system-prep : Unmount All Directories] ***********************************************************************************************************************************************************************
+2022-05-31 09:10:33,313 p=40630 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/dev)
+2022-05-31 09:10:33,460 p=40630 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/proc)
+2022-05-31 09:10:33,598 p=40630 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/sys)
+2022-05-31 09:10:33,742 p=40630 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/boot/efi)
+2022-05-31 09:10:33,888 p=40630 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/boot)
+2022-05-31 09:10:34,029 p=40630 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/home)
+2022-05-31 09:10:34,169 p=40630 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/run)
+2022-05-31 09:10:34,316 p=40630 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/tmpfs)
+2022-05-31 09:10:34,573 p=40630 u=root n=ansible | TASK [01-system-prep : Get list of Available zfs pools] ***************************************************************************************************************************************************************
+2022-05-31 09:10:34,573 p=40630 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:10:34,644 p=40754 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: '{{_root_pool}}' in zpool_list.stdout
+
+2022-05-31 09:10:34,896 p=40630 u=root n=ansible | TASK [01-system-prep : check if already mount] ************************************************************************************************************************************************************************
+2022-05-31 09:10:34,896 p=40630 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:10:34,925 p=40630 u=root n=ansible | TASK [01-system-prep : set_fact] **************************************************************************************************************************************************************************************
+2022-05-31 09:10:34,926 p=40630 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:10:34,955 p=40630 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:10:34,957 p=40630 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks ures"
+}
+2022-05-31 09:10:34,981 p=40766 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ _system_disks }}
+
+2022-05-31 09:10:34,999 p=40630 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/disks.yml for local_zfs_root
+2022-05-31 09:10:35,032 p=40630 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:10:35,033 p=40630 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "11111111 Disks ['sdf']"
+}
+2022-05-31 09:10:35,209 p=40630 u=root n=ansible | TASK [01-system-prep : Set disk_check_failed to false by default] *****************************************************************************************************************************************************
+2022-05-31 09:10:35,209 p=40630 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:10:35,253 p=40630 u=root n=ansible | TASK [01-system-prep : Set up var for disks] **************************************************************************************************************************************************************************
+2022-05-31 09:10:35,253 p=40630 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:10:35,287 p=40630 u=root n=ansible | TASK [01-system-prep : var for disks output] **************************************************************************************************************************************************************************
+2022-05-31 09:10:35,288 p=40630 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "System disks ===> : loop1 sdf sdd sdb loop6 loop4 sr0 loop2 loop0 sde sdc loop7 sda loop5 loop3"
+}
+2022-05-31 09:10:35,332 p=40630 u=root n=ansible | TASK [01-system-prep : Set up ignored disks] **************************************************************************************************************************************************************************
+2022-05-31 09:10:35,333 p=40630 u=root n=ansible | ok: [local_zfs_root] => (item=sdf)
+2022-05-31 09:10:35,339 p=40630 u=root n=ansible | ok: [local_zfs_root] => (item=loop)
+2022-05-31 09:10:35,345 p=40630 u=root n=ansible | ok: [local_zfs_root] => (item=dm)
+2022-05-31 09:10:35,356 p=40630 u=root n=ansible | ok: [local_zfs_root] => (item=md)
+2022-05-31 09:10:35,364 p=40630 u=root n=ansible | ok: [local_zfs_root] => (item=sr)
+2022-05-31 09:10:35,399 p=40630 u=root n=ansible | TASK [01-system-prep : var for disks output] **************************************************************************************************************************************************************************
+2022-05-31 09:10:35,400 p=40630 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "System disks ===> : ['sdf']"
+}
+2022-05-31 09:10:35,427 p=40790 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ _system_disks }}
+
+2022-05-31 09:10:35,453 p=40630 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/partition.yml for local_zfs_root
+2022-05-31 09:10:35,778 p=40630 u=root n=ansible | TASK [01-system-prep : Check to see if partition exists on disk already] **********************************************************************************************************************************************
+2022-05-31 09:10:35,781 p=40630 u=root n=ansible | changed: [local_zfs_root] => (item=sdf)
+2022-05-31 09:10:37,111 p=40630 u=root n=ansible | TASK [01-system-prep : forcibly zap disks] ****************************************************************************************************************************************************************************
+2022-05-31 09:10:37,112 p=40630 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:10:37,175 p=40630 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:10:37,176 p=40630 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "_root_device_list ['/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0']"
+}
+2022-05-31 09:10:37,211 p=40630 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:10:37,212 p=40630 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Create bootloader partition(s) -n1:1M:+512M -t1:EF00 -c1:EFI"
+}
+2022-05-31 09:10:38,462 p=40630 u=root n=ansible | TASK [01-system-prep : set up efi disk partitions] ********************************************************************************************************************************************************************
+2022-05-31 09:10:38,462 p=40630 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:10:39,806 p=40630 u=root n=ansible | TASK [01-system-prep : set up boot disk partitions] *******************************************************************************************************************************************************************
+2022-05-31 09:10:39,806 p=40630 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:10:41,229 p=40630 u=root n=ansible | TASK [01-system-prep : set up swap disk partitions] *******************************************************************************************************************************************************************
+2022-05-31 09:10:41,230 p=40630 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:10:42,483 p=40630 u=root n=ansible |  [ERROR]: User interrupted execution
+

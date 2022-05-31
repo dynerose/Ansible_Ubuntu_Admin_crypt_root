@@ -14,42 +14,50 @@
 
 - name: Create filesystems
   include_tasks: cleanup.yml
-  when: cleanup|default('') == "ABSOLUTELY"
+#  when: cleanup|default('') == "ABSOLUTELY"
   tags:
-    - zfs_partition
+    - zfs_clean
 
 - name: check if already mount
   stat:
     path: "{{ _installdir }}/boot"
   register: _stat_mount
+  tags:
+    - zfs_clean
 
 - set_fact:
     deboostrapped: "{{ _stat_mount.stat.exists }}"
     deboostrappedin_chroot: "{{ _stat_mount.stat.exists }}"
+  tags:
+    - zfs_clean
 
 - block:
-  - include_tasks: disks.yml
-    when:
-    - "{{ _system_disks }}"
-    tags:
-      - zfs_disks
 
-  - include_tasks: partition.yml
-    when:
-    - "{{ _system_disks }}"
-    tags:
-      - zfs_partition
+    - debug: msg='Disks ures'
+      tags: zfs_clean
 
-  - include_tasks: mdadmin.yml
-    when:
-    - "{{ _system_disks }}"
-    tags:
-      - zfs_partition
+    - include_tasks: disks.yml
+      when:
+      - "{{ _system_disks }}"
+      tags:
+        - zfs_disks
 
-  - include_tasks: luks.yml
-    when: _lukscrypt | default(false) | bool == true
-    tags:
-      - zfs_lukscrypt
+    - include_tasks: partition.yml
+      when:
+      - "{{ _system_disks }}"
+      tags:
+        - zfs_partition
+
+    - include_tasks: mdadmin.yml
+      when:
+      - "{{ _system_disks }}"
+      tags:
+        - zfs_partition
+
+    - include_tasks: luks.yml
+      when: _lukscrypt | default(false) | bool == true
+      tags:
+        - zfs_lukscrypt
 #- include_tasks: zfs_check.yml
 #  tags:
 #    - zfs_bootstrap
@@ -60,17 +68,19 @@
 #    debug:
 #      msg: "{{ my_list | to_json | from_json | map('json_query', jmes_path) | join(' ') }}"
 
-  - include_tasks: create_zpool.yml
-    tags:
-      - create_zpool
+    - include_tasks: create_zpool.yml
+      tags:
+        - create_zpool
 
-  - include_tasks: create_zfs.yml
-    tags:
-      - create_zfs
-      - zfs_bootstrap
+    - include_tasks: create_zfs.yml
+      tags:
+        - create_zfs
+        - zfs_bootstrap
 
-  - include_tasks: finish.yml
-    tags:
-      - zfs_final
+    - include_tasks: finish.yml
+      tags:
+        - zfs_final
 
-when: not deboostrapped or cleanup|default('') == "ABSOLUTELY"
+  when: not deboostrapped
+  tags:
+    - zfs_clean

@@ -4,31 +4,37 @@
   command: umount {{ _installdir }}/{{ item }}
   with_items: "{{ pseudo_fs|reverse }}"
   when: _pseudomount is defined and _pseudomount.changed
+  tags:
+    - zfs_clean
 
-- name: umount target
-  shell: >
-    umount {{ _installdir }}/{{ item }}
-  with_items:
-   - "{{_installdir}}/boot/efi"
-   - "{{_installdir}}/boot"
-
-#- name: Unmount All Directories
-#  mount:
-#    name: "{{ item }}"
-#    state: unmounted
-#    fstype: none
-#    src: none
-#  become: True
+#- name: umount target
+#  shell: >
+#    umount {{ item }}
 #  with_items:
-#   - "{{ _installdir }}/dev"
-#   - "{{_installdir}}/proc"
-#   - "{{_installdir}}/sys"
 #   - "{{_installdir}}/boot/efi"
 #   - "{{_installdir}}/boot"
-#   - "{{_installdir}}/home"
-#   - "{{_installdir}}/run"
-#   - "{{_installdir}}/tmpfs"
+#  tags:
+#    - zfs_clean
 
+- name: Unmount All Directories
+  mount:
+    name: "{{ item }}"
+    state: absent
+#    state: unmounted
+    fstype: none
+    src: none
+  become: True
+  with_items:
+   - "{{ _installdir }}/dev"
+   - "{{_installdir}}/proc"
+   - "{{_installdir}}/sys"
+   - "{{_installdir}}/boot/efi"
+   - "{{_installdir}}/boot"
+   - "{{_installdir}}/home"
+   - "{{_installdir}}/run"
+   - "{{_installdir}}/tmpfs"
+  tags:
+    - zfs_clean
 
 - name: Get list of Available zfs pools
   command: zpool list
@@ -36,18 +42,21 @@
   changed_when: False
   tags:
   - zfs_partition
+  - zfs_clean
 
 - name: Destroy existing bpool
   command: zpool destroy -f "{{_boot_pool}}"
   when: "'bpool' in zpool_list.stdout"
   tags:
   - zfs_partition
+  - zfs_clean
 
 - name: Destroy existing "{{_root_pool}}"
   command: zpool destroy -f  "{{_root_pool}}"
   when: "'{{_root_pool}}' in zpool_list.stdout"
   tags:
   - zfs_partition
+  - zfs_clean
 
 #- name: Close luks devices
 #  command: >
