@@ -1,0 +1,34 @@
+---
+- hosts: live
+  connection: local
+  vars_files:
+    - ../vars/main.yml
+    - ../vars/zfs.yml
+    - ../vars/disks.yml
+
+#  vars_prompt:
+#    - name: crypt_passphrase
+#      prompt: "Enter passphrase"
+#      default: "Password"
+#      encrypt: "sha512_crypt"
+#      private: yes
+#      confirm: yes
+  roles:
+    - role: 01-system-prep
+#      tags:
+#        - zfs_debug
+#        - zfs_install
+#        - zfs_disks
+#        - zfs_partition
+#        - zfs_bootstrap
+#        - zfs_final
+#  tasks:
+#    - debug:
+#        msg: "System1 {{ _password }} password are"
+#    - debug:
+#        msg: "/playbooks/group_vars/all.yml {{ nas_user }} nas_user are"
+#    - debug:
+#       msg: "/vars/disks.yml {{ _root_disks  }} root disks"
+#    - debug:
+#       msg: "/vars/disks.yml {{ _data_disks  }} data disks"
+ 

@@ -1,0 +1,29 @@
+---
+# handlers file for 01-system-prep
+- name: Generating Netplan Configuration
+  command: netplan generate
+  listen: netplan generate config
+  notify: netplan apply config
+  become: true
+
+- name: Applying Netplan Configuration
+  command: netplan apply
+  listen: netplan apply config
+  become: true
+  when: netplan_apply
+
+#- name: restart networkd
+#  become: true
+#  service:
+#    name: systemd-networkd
+#    state: restarted
+
+#- name: restart resolved
+#  become: true
+#  service:
+#    name: systemd-resolved
+#    state: restarted
+
+#- name: apply network interface
+#  become: true
+#  shell: netplan apply

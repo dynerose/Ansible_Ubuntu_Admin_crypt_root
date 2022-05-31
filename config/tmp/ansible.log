@@ -1,0 +1,11 @@
+2022-05-31 05:54:26,507 p=3054 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in 
+version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 05:54:26,663 p=3054 u=root n=ansible | PLAY [live] *********************************************************************************************************************************************************************************************************************************
+2022-05-31 05:54:27,457 p=3054 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-05-31 05:54:27,457 p=3054 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 05:54:27,493 p=3054 u=root n=ansible | TASK [01-system-prep : debug] ***************************************************************************************************************************************************************************************************************
+2022-05-31 05:54:27,494 p=3054 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks"
+}
+2022-05-31 05:54:27,520 p=3054 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-05-31 05:54:27,521 p=3054 u=root n=ansible | local_zfs_root             : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

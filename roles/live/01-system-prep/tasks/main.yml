@@ -1,0 +1,7 @@
+---
+
+#- include_tasks: debugmsg.yml
+#  tags: zfs_debug
+# {{ _system_disks }}'
+- debug: msg='Disks'
+  tags: zfs_debug

@@ -1,0 +1,4 @@
+---
+# defaults file for parted
+# Default parted optimization
+parted_optimization: optimal

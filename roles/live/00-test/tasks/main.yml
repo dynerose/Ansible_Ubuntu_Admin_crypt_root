@@ -1,0 +1,4 @@
+---
+- name: Print test message
+  debug:
+    msg: " ELSO mount | grep -v zfs | tac | awk '/\/mnt/ {print $3}' | xargs -i{} umount -lf {}"
