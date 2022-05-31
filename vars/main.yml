@@ -15,9 +15,13 @@ _hostname:
 _installdir: /mnt/install
 
 #####################################################################################################################################################################################################
-
+release: jammy
+# release: "impish"
 debug:
   msg: "DISK {{ _target_disks }} "
+
+debug:
+  msg: "release {{ release }} "
 
 enable_task_debugger: true
 isneeded: true

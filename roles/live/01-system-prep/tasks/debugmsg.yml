@@ -13,6 +13,8 @@
 #  debug:
 #    msg: " ELSO mount | grep -v zfs | tac | awk '/\/mnt/ {print $3}' | xargs -i{} umount -lf {}"
 
+- debug: msg="4 {{ release }}"
+  tags: zfs_debug
 # Gather facts about ZFS pool rpool
 - zpool_facts: pool=rpool
   tags: zfs_debug

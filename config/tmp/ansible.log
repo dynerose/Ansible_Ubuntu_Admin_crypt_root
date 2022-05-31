@@ -3157,3 +3157,717 @@ removed from ansible-base in version 2.13. Deprecation warnings can be disabled 
 2022-05-31 09:31:12,743 p=63530 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
 2022-05-31 09:31:14,047 p=63530 u=root n=ansible |  [ERROR]: User interrupted execution
 
+2022-05-31 09:31:27,010 p=63852 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:31:27,169 p=63852 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 09:31:27,964 p=63852 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 09:31:27,965 p=63852 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:31:28,022 p=63852 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/debugmsg.yml for local_zfs_root
+2022-05-31 09:31:28,068 p=63852 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:28,069 p=63852 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "1 Ubuntu"
+}
+2022-05-31 09:31:28,113 p=63852 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:28,113 p=63852 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "2 22.04"
+}
+2022-05-31 09:31:28,155 p=63852 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:28,156 p=63852 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "3 22"
+}
+2022-05-31 09:31:28,464 p=63852 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:31:28,464 p=63852 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:31:28,645 p=63852 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:31:28,646 p=63852 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:31:28,697 p=63852 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:28,698 p=63852 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '18.5G', 'size': '18.5G', 'name': 'backupPool1'}) => {
+    "msg": "4 ZFS pool backupPool1 has 18.5G free space out of 18.5G."
+}
+2022-05-31 09:31:28,705 p=63852 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '89.5G', 'size': '89.5G', 'name': 'dataPool'}) => {
+    "msg": "4 ZFS pool dataPool has 89.5G free space out of 89.5G."
+}
+2022-05-31 09:31:28,712 p=63852 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '11.4G', 'size': '14.5G', 'name': 'rpool'}) => {
+    "msg": "4 ZFS pool rpool has 11.4G free space out of 14.5G."
+}
+2022-05-31 09:31:28,755 p=63852 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:28,756 p=63852 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "rpool name root_pool"
+}
+2022-05-31 09:31:28,785 p=63852 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/install.yml for local_zfs_root
+2022-05-31 09:31:29,749 p=63852 u=root n=ansible | TASK [01-system-prep : Install global dependencies] *******************************************************************************************************************************************************************
+2022-05-31 09:31:29,750 p=63852 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:31:29,794 p=63852 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:29,795 p=63852 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks ['sdf']"
+}
+2022-05-31 09:31:29,855 p=63852 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:29,856 p=63852 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "_root_pool_type  "
+}
+2022-05-31 09:31:29,888 p=63852 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/cleanup.yml for local_zfs_root
+2022-05-31 09:31:30,418 p=63852 u=root n=ansible | TASK [01-system-prep : Unmount All Directories] ***********************************************************************************************************************************************************************
+2022-05-31 09:31:30,419 p=63852 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/dev)
+2022-05-31 09:31:30,583 p=63852 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/proc)
+2022-05-31 09:31:30,741 p=63852 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/sys)
+2022-05-31 09:31:30,900 p=63852 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/boot/efi)
+2022-05-31 09:31:31,082 p=63852 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/boot)
+2022-05-31 09:31:31,255 p=63852 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/home)
+2022-05-31 09:31:31,433 p=63852 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/run)
+2022-05-31 09:31:31,607 p=63852 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/tmpfs)
+2022-05-31 09:31:31,933 p=63852 u=root n=ansible | TASK [01-system-prep : Get list of Available zfs pools] ***************************************************************************************************************************************************************
+2022-05-31 09:31:31,933 p=63852 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:31:32,003 p=63976 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: '{{_root_pool}}' in zpool_list.stdout
+
+2022-05-31 09:31:32,376 p=63852 u=root n=ansible | TASK [01-system-prep : check if already mount] ************************************************************************************************************************************************************************
+2022-05-31 09:31:32,377 p=63852 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:31:32,408 p=63852 u=root n=ansible | TASK [01-system-prep : set_fact] **************************************************************************************************************************************************************************************
+2022-05-31 09:31:32,409 p=63852 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:31:32,438 p=63852 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:32,439 p=63852 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks ures"
+}
+2022-05-31 09:31:32,464 p=63988 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ _system_disks }}
+
+2022-05-31 09:31:32,482 p=63852 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/disks.yml for local_zfs_root
+2022-05-31 09:31:32,513 p=63852 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:32,514 p=63852 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "11111111 Disks ['sdf']"
+}
+2022-05-31 09:31:32,678 p=63852 u=root n=ansible | TASK [01-system-prep : Set disk_check_failed to false by default] *****************************************************************************************************************************************************
+2022-05-31 09:31:32,679 p=63852 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:31:32,720 p=63852 u=root n=ansible | TASK [01-system-prep : Set up var for disks] **************************************************************************************************************************************************************************
+2022-05-31 09:31:32,720 p=63852 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:31:32,755 p=63852 u=root n=ansible | TASK [01-system-prep : var for disks output] **************************************************************************************************************************************************************************
+2022-05-31 09:31:32,755 p=63852 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "System disks ===> : loop1 sdf sdd sdb loop6 loop4 sr0 loop2 loop0 sde sdc loop7 sda loop5 loop3"
+}
+2022-05-31 09:31:32,798 p=63852 u=root n=ansible | TASK [01-system-prep : Set up ignored disks] **************************************************************************************************************************************************************************
+2022-05-31 09:31:32,798 p=63852 u=root n=ansible | ok: [local_zfs_root] => (item=sdf)
+2022-05-31 09:31:32,805 p=63852 u=root n=ansible | ok: [local_zfs_root] => (item=loop)
+2022-05-31 09:31:32,814 p=63852 u=root n=ansible | ok: [local_zfs_root] => (item=dm)
+2022-05-31 09:31:32,821 p=63852 u=root n=ansible | ok: [local_zfs_root] => (item=md)
+2022-05-31 09:31:32,827 p=63852 u=root n=ansible | ok: [local_zfs_root] => (item=sr)
+2022-05-31 09:31:32,858 p=63852 u=root n=ansible | TASK [01-system-prep : var for disks output] **************************************************************************************************************************************************************************
+2022-05-31 09:31:32,859 p=63852 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "System disks ===> : ['sdf']"
+}
+2022-05-31 09:31:32,884 p=64012 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ _system_disks }}
+
+2022-05-31 09:31:32,905 p=63852 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/partition.yml for local_zfs_root
+2022-05-31 09:31:33,202 p=63852 u=root n=ansible | TASK [01-system-prep : Check to see if partition exists on disk already] **********************************************************************************************************************************************
+2022-05-31 09:31:33,203 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item=sdf)
+2022-05-31 09:31:34,637 p=63852 u=root n=ansible | TASK [01-system-prep : forcibly zap disks] ****************************************************************************************************************************************************************************
+2022-05-31 09:31:34,638 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:31:34,697 p=63852 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:34,700 p=63852 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "_root_device_list ['/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0']"
+}
+2022-05-31 09:31:34,732 p=63852 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:31:34,735 p=63852 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Create bootloader partition(s) -n1:1M:+512M -t1:EF00 -c1:EFI"
+}
+2022-05-31 09:31:36,020 p=63852 u=root n=ansible | TASK [01-system-prep : set up efi disk partitions] ********************************************************************************************************************************************************************
+2022-05-31 09:31:36,022 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:31:37,457 p=63852 u=root n=ansible | TASK [01-system-prep : set up boot disk partitions] *******************************************************************************************************************************************************************
+2022-05-31 09:31:37,457 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:31:40,699 p=63852 u=root n=ansible | TASK [01-system-prep : set up swap disk partitions] *******************************************************************************************************************************************************************
+2022-05-31 09:31:40,699 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:31:45,831 p=63852 u=root n=ansible | TASK [01-system-prep : set up root disk partitions] *******************************************************************************************************************************************************************
+2022-05-31 09:31:45,831 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:31:46,163 p=63852 u=root n=ansible | TASK [01-system-prep : print info disk] *******************************************************************************************************************************************************************************
+2022-05-31 09:31:46,164 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:31:46,472 p=63852 u=root n=ansible | TASK [01-system-prep : format boot] ***********************************************************************************************************************************************************************************
+2022-05-31 09:31:46,473 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:31:46,788 p=63852 u=root n=ansible | TASK [01-system-prep : format /boot/efi] ******************************************************************************************************************************************************************************
+2022-05-31 09:31:46,788 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:31:46,886 p=63852 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/create_zpool.yml for local_zfs_root
+2022-05-31 09:31:47,642 p=63852 u=root n=ansible | TASK [01-system-prep : set up root zfs crypt devices] *****************************************************************************************************************************************************************
+2022-05-31 09:31:47,643 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0-part4)
+2022-05-31 09:31:47,693 p=63852 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/create_zfs.yml for local_zfs_root
+2022-05-31 09:31:47,970 p=63852 u=root n=ansible | TASK [01-system-prep : Update ZFS root datasets1] *********************************************************************************************************************************************************************
+2022-05-31 09:31:47,970 p=63852 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:31:48,190 p=63852 u=root n=ansible | TASK [01-system-prep : Update ZFS root datasets2] *********************************************************************************************************************************************************************
+2022-05-31 09:31:48,191 p=63852 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:31:48,709 p=63852 u=root n=ansible | TASK [01-system-prep : create mountpoints] ****************************************************************************************************************************************************************************
+2022-05-31 09:31:48,709 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/home'})
+2022-05-31 09:31:48,922 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/home/root', 'properties': {'mountpoint': '/root'}})
+2022-05-31 09:31:49,128 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var', 'properties': {'canmount': False}})
+2022-05-31 09:31:49,326 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var/lib', 'properties': {'canmount': False}})
+2022-05-31 09:31:49,547 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var/cache', 'properties': {'com.sun:auto-snapshot': False}})
+2022-05-31 09:31:49,746 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var/log', 'properties': {'com.sun:auto-snapshot': False}})
+2022-05-31 09:31:49,980 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var/spool', 'properties': {'com.sun:auto-snapshot': False}})
+2022-05-31 09:31:50,195 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var/tmp', 'properties': {'com.sun:auto-snapshot': False}})
+2022-05-31 09:31:50,405 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var/lib/docker', 'properties': {'com.sun:auto-snapshot': False}})
+2022-05-31 09:31:50,767 p=63852 u=root n=ansible | TASK [01-system-prep : create mountpoints] ****************************************************************************************************************************************************************************
+2022-05-31 09:31:50,767 p=63852 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/datastore', 'properties': {'mountpoint': '/mnt/disk0'}})
+2022-05-31 09:31:50,864 p=63852 u=root n=ansible | TASK [01-system-prep : include_tasks] *********************************************************************************************************************************************************************************
+2022-05-31 09:31:50,864 p=63852 u=root n=ansible | fatal: [local_zfs_root]: FAILED! => {"reason": "conflicting action statements: debug, var\n\nThe error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/finish.yml': line 81, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n    - zfs_final\n- debug:\n  ^ here\n"}
+2022-05-31 09:31:50,870 p=63852 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.1.live.install_zfs.retry
+
+2022-05-31 09:31:50,871 p=63852 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 09:31:50,871 p=63852 u=root n=ansible | local_zfs_root             : ok=45   changed=14   unreachable=0    failed=1    skipped=24   rescued=0    ignored=0   
+2022-05-31 09:32:50,587 p=64570 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:32:50,761 p=64570 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 09:32:51,569 p=64570 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 09:32:51,569 p=64570 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:32:51,623 p=64570 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/debugmsg.yml for local_zfs_root
+2022-05-31 09:32:51,666 p=64570 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:32:51,667 p=64570 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "1 Ubuntu"
+}
+2022-05-31 09:32:51,711 p=64570 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:32:51,712 p=64570 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "2 22.04"
+}
+2022-05-31 09:32:51,752 p=64570 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:32:51,753 p=64570 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "3 22"
+}
+2022-05-31 09:32:52,040 p=64570 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:32:52,041 p=64570 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:32:52,213 p=64570 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:32:52,213 p=64570 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:32:52,264 p=64570 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:32:52,264 p=64570 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '18.5G', 'size': '18.5G', 'name': 'backupPool1'}) => {
+    "msg": "4 ZFS pool backupPool1 has 18.5G free space out of 18.5G."
+}
+2022-05-31 09:32:52,269 p=64570 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '89.5G', 'size': '89.5G', 'name': 'dataPool'}) => {
+    "msg": "4 ZFS pool dataPool has 89.5G free space out of 89.5G."
+}
+2022-05-31 09:32:52,277 p=64570 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '16.5G', 'size': '16.5G', 'name': 'root_pool'}) => {
+    "msg": "4 ZFS pool root_pool has 16.5G free space out of 16.5G."
+}
+2022-05-31 09:32:52,283 p=64570 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '11.4G', 'size': '14.5G', 'name': 'rpool'}) => {
+    "msg": "4 ZFS pool rpool has 11.4G free space out of 14.5G."
+}
+2022-05-31 09:32:52,327 p=64570 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:32:52,328 p=64570 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "rpool name root_pool"
+}
+2022-05-31 09:32:52,359 p=64570 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/install.yml for local_zfs_root
+2022-05-31 09:32:53,256 p=64570 u=root n=ansible | TASK [01-system-prep : Install global dependencies] *******************************************************************************************************************************************************************
+2022-05-31 09:32:53,256 p=64570 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:32:53,299 p=64570 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:32:53,300 p=64570 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks ['sdf']"
+}
+2022-05-31 09:32:53,362 p=64570 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:32:53,363 p=64570 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "_root_pool_type  "
+}
+2022-05-31 09:32:53,398 p=64570 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/cleanup.yml for local_zfs_root
+2022-05-31 09:32:53,769 p=64570 u=root n=ansible | TASK [01-system-prep : Unmount All Directories] ***********************************************************************************************************************************************************************
+2022-05-31 09:32:53,770 p=64570 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/dev)
+2022-05-31 09:32:53,918 p=64570 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/proc)
+2022-05-31 09:32:54,065 p=64570 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/sys)
+2022-05-31 09:32:54,217 p=64570 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/boot/efi)
+2022-05-31 09:32:54,363 p=64570 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/boot)
+2022-05-31 09:32:54,511 p=64570 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/home)
+2022-05-31 09:32:54,659 p=64570 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/run)
+2022-05-31 09:32:54,810 p=64570 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/tmpfs)
+2022-05-31 09:32:55,110 p=64570 u=root n=ansible | TASK [01-system-prep : Get list of Available zfs pools] ***************************************************************************************************************************************************************
+2022-05-31 09:32:55,111 p=64570 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:32:55,184 p=64694 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: '{{_root_pool}}' in zpool_list.stdout
+
+2022-05-31 09:33:00,565 p=64570 u=root n=ansible | TASK [01-system-prep : Destroy existing "root_pool"] ******************************************************************************************************************************************************************
+2022-05-31 09:33:00,565 p=64570 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:33:00,851 p=64570 u=root n=ansible | TASK [01-system-prep : check if already mount] ************************************************************************************************************************************************************************
+2022-05-31 09:33:00,852 p=64570 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:33:00,884 p=64570 u=root n=ansible | TASK [01-system-prep : set_fact] **************************************************************************************************************************************************************************************
+2022-05-31 09:33:00,884 p=64570 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:33:00,916 p=64570 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:33:00,917 p=64570 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks ures"
+}
+2022-05-31 09:33:00,941 p=64718 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ _system_disks }}
+
+2022-05-31 09:33:00,960 p=64570 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/disks.yml for local_zfs_root
+2022-05-31 09:33:00,993 p=64570 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:33:00,994 p=64570 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "11111111 Disks ['sdf']"
+}
+2022-05-31 09:33:01,163 p=64570 u=root n=ansible | TASK [01-system-prep : Set disk_check_failed to false by default] *****************************************************************************************************************************************************
+2022-05-31 09:33:01,163 p=64570 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:33:01,206 p=64570 u=root n=ansible | TASK [01-system-prep : Set up var for disks] **************************************************************************************************************************************************************************
+2022-05-31 09:33:01,207 p=64570 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:33:01,241 p=64570 u=root n=ansible | TASK [01-system-prep : var for disks output] **************************************************************************************************************************************************************************
+2022-05-31 09:33:01,242 p=64570 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "System disks ===> : loop1 sdf sdd sdb loop6 loop4 sr0 loop2 loop0 sde sdc loop7 sda loop5 loop3"
+}
+2022-05-31 09:33:01,285 p=64570 u=root n=ansible | TASK [01-system-prep : Set up ignored disks] **************************************************************************************************************************************************************************
+2022-05-31 09:33:01,287 p=64570 u=root n=ansible | ok: [local_zfs_root] => (item=sdf)
+2022-05-31 09:33:01,304 p=64570 u=root n=ansible | ok: [local_zfs_root] => (item=loop)
+2022-05-31 09:33:01,304 p=64570 u=root n=ansible | ok: [local_zfs_root] => (item=dm)
+2022-05-31 09:33:01,313 p=64570 u=root n=ansible | ok: [local_zfs_root] => (item=md)
+2022-05-31 09:33:01,318 p=64570 u=root n=ansible | ok: [local_zfs_root] => (item=sr)
+2022-05-31 09:33:01,350 p=64570 u=root n=ansible | TASK [01-system-prep : var for disks output] **************************************************************************************************************************************************************************
+2022-05-31 09:33:01,351 p=64570 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "System disks ===> : ['sdf']"
+}
+2022-05-31 09:33:01,376 p=64742 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ _system_disks }}
+
+2022-05-31 09:33:01,400 p=64570 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/partition.yml for local_zfs_root
+2022-05-31 09:33:01,748 p=64570 u=root n=ansible | TASK [01-system-prep : Check to see if partition exists on disk already] **********************************************************************************************************************************************
+2022-05-31 09:33:01,748 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item=sdf)
+2022-05-31 09:33:03,103 p=64570 u=root n=ansible | TASK [01-system-prep : forcibly zap disks] ****************************************************************************************************************************************************************************
+2022-05-31 09:33:03,103 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:33:03,164 p=64570 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:33:03,164 p=64570 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "_root_device_list ['/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0']"
+}
+2022-05-31 09:33:03,199 p=64570 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:33:03,200 p=64570 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Create bootloader partition(s) -n1:1M:+512M -t1:EF00 -c1:EFI"
+}
+2022-05-31 09:33:04,426 p=64570 u=root n=ansible | TASK [01-system-prep : set up efi disk partitions] ********************************************************************************************************************************************************************
+2022-05-31 09:33:04,426 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:33:07,771 p=64570 u=root n=ansible | TASK [01-system-prep : set up boot disk partitions] *******************************************************************************************************************************************************************
+2022-05-31 09:33:07,772 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:33:12,857 p=64570 u=root n=ansible | TASK [01-system-prep : set up swap disk partitions] *******************************************************************************************************************************************************************
+2022-05-31 09:33:12,858 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:33:14,160 p=64570 u=root n=ansible | TASK [01-system-prep : set up root disk partitions] *******************************************************************************************************************************************************************
+2022-05-31 09:33:14,161 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:33:14,473 p=64570 u=root n=ansible | TASK [01-system-prep : print info disk] *******************************************************************************************************************************************************************************
+2022-05-31 09:33:14,474 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:33:14,773 p=64570 u=root n=ansible | TASK [01-system-prep : format boot] ***********************************************************************************************************************************************************************************
+2022-05-31 09:33:14,774 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:33:15,074 p=64570 u=root n=ansible | TASK [01-system-prep : format /boot/efi] ******************************************************************************************************************************************************************************
+2022-05-31 09:33:15,075 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:33:15,178 p=64570 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/create_zpool.yml for local_zfs_root
+2022-05-31 09:33:15,844 p=64570 u=root n=ansible | TASK [01-system-prep : set up root zfs crypt devices] *****************************************************************************************************************************************************************
+2022-05-31 09:33:15,844 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0-part4)
+2022-05-31 09:33:15,892 p=64570 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/create_zfs.yml for local_zfs_root
+2022-05-31 09:33:16,130 p=64570 u=root n=ansible | TASK [01-system-prep : Update ZFS root datasets1] *********************************************************************************************************************************************************************
+2022-05-31 09:33:16,131 p=64570 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:33:16,337 p=64570 u=root n=ansible | TASK [01-system-prep : Update ZFS root datasets2] *********************************************************************************************************************************************************************
+2022-05-31 09:33:16,338 p=64570 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:33:16,816 p=64570 u=root n=ansible | TASK [01-system-prep : create mountpoints] ****************************************************************************************************************************************************************************
+2022-05-31 09:33:16,817 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/home'})
+2022-05-31 09:33:17,052 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/home/root', 'properties': {'mountpoint': '/root'}})
+2022-05-31 09:33:17,269 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var', 'properties': {'canmount': False}})
+2022-05-31 09:33:17,481 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var/lib', 'properties': {'canmount': False}})
+2022-05-31 09:33:17,691 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var/cache', 'properties': {'com.sun:auto-snapshot': False}})
+2022-05-31 09:33:17,900 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var/log', 'properties': {'com.sun:auto-snapshot': False}})
+2022-05-31 09:33:18,108 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var/spool', 'properties': {'com.sun:auto-snapshot': False}})
+2022-05-31 09:33:18,323 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var/tmp', 'properties': {'com.sun:auto-snapshot': False}})
+2022-05-31 09:33:18,533 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var/lib/docker', 'properties': {'com.sun:auto-snapshot': False}})
+2022-05-31 09:33:18,875 p=64570 u=root n=ansible | TASK [01-system-prep : create mountpoints] ****************************************************************************************************************************************************************************
+2022-05-31 09:33:18,876 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/datastore', 'properties': {'mountpoint': '/mnt/disk0'}})
+2022-05-31 09:33:18,946 p=64570 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/finish.yml for local_zfs_root
+2022-05-31 09:33:19,141 p=64570 u=root n=ansible | TASK [01-system-prep : /mnt/install/run] ******************************************************************************************************************************************************************************
+2022-05-31 09:33:19,142 p=64570 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:33:19,330 p=64570 u=root n=ansible | TASK [01-system-prep : /mnt/install/run] ******************************************************************************************************************************************************************************
+2022-05-31 09:33:19,330 p=64570 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:33:19,521 p=64570 u=root n=ansible | TASK [01-system-prep : /mnt/install/run/lock] *************************************************************************************************************************************************************************
+2022-05-31 09:33:19,522 p=64570 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:33:19,716 p=64570 u=root n=ansible | TASK [01-system-prep : mkdir boot] ************************************************************************************************************************************************************************************
+2022-05-31 09:33:19,716 p=64570 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:33:19,961 p=64570 u=root n=ansible | TASK [01-system-prep : mount /mnt/install/boot] ***********************************************************************************************************************************************************************
+2022-05-31 09:33:19,962 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0-part2)
+2022-05-31 09:33:19,994 p=64570 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:33:19,996 p=64570 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "mount"
+}
+2022-05-31 09:33:20,215 p=64570 u=root n=ansible | TASK [01-system-prep : mkdir /boot/efi] *******************************************************************************************************************************************************************************
+2022-05-31 09:33:20,216 p=64570 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:33:20,447 p=64570 u=root n=ansible | TASK [01-system-prep : mount /mnt/install/boot/efi] *******************************************************************************************************************************************************************
+2022-05-31 09:33:20,447 p=64570 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0-part1)
+2022-05-31 09:33:20,479 p=64570 u=root n=ansible | TASK [01-system-prep : run debootstrap and set devices=off for root pool] *********************************************************************************************************************************************
+2022-05-31 09:33:20,480 p=64570 u=root n=ansible | fatal: [local_zfs_root]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: '_ubuntu_release' is undefined\n\nThe error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/finish.yml': line 74, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n##################################################################################################################################################\n- name: run debootstrap and set devices=off for root pool\n  ^ here\n"}
+2022-05-31 09:33:20,485 p=64570 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.1.live.install_zfs.retry
+
+2022-05-31 09:33:20,486 p=64570 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 09:33:20,487 p=64570 u=root n=ansible | local_zfs_root             : ok=55   changed=22   unreachable=0    failed=1    skipped=23   rescued=0    ignored=0   
+2022-05-31 09:42:16,669 p=65504 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:42:16,782 p=65504 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/vars/main.yml, line 3, column 1, found a duplicate dict key (debug). Using last defined value only.
+
+2022-05-31 09:42:16,835 p=65504 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 09:42:17,637 p=65504 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 09:42:17,637 p=65504 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:42:17,694 p=65504 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/debugmsg.yml for local_zfs_root
+2022-05-31 09:42:17,738 p=65504 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:42:17,739 p=65504 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "1 Ubuntu"
+}
+2022-05-31 09:42:17,780 p=65504 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:42:17,781 p=65504 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "2 22.04"
+}
+2022-05-31 09:42:17,823 p=65504 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:42:17,824 p=65504 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "3 22"
+}
+2022-05-31 09:42:18,109 p=65504 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:42:18,109 p=65504 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:42:18,281 p=65504 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:42:18,282 p=65504 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:42:18,330 p=65504 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:42:18,331 p=65504 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '18.5G', 'size': '18.5G', 'name': 'backupPool1'}) => {
+    "msg": "4 ZFS pool backupPool1 has 18.5G free space out of 18.5G."
+}
+2022-05-31 09:42:18,337 p=65504 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '89.5G', 'size': '89.5G', 'name': 'dataPool'}) => {
+    "msg": "4 ZFS pool dataPool has 89.5G free space out of 89.5G."
+}
+2022-05-31 09:42:18,342 p=65504 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '16.5G', 'size': '16.5G', 'name': 'root_pool'}) => {
+    "msg": "4 ZFS pool root_pool has 16.5G free space out of 16.5G."
+}
+2022-05-31 09:42:18,348 p=65504 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '11.4G', 'size': '14.5G', 'name': 'rpool'}) => {
+    "msg": "4 ZFS pool rpool has 11.4G free space out of 14.5G."
+}
+2022-05-31 09:42:18,391 p=65504 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:42:18,391 p=65504 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "rpool name root_pool"
+}
+2022-05-31 09:42:18,424 p=65504 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/install.yml for local_zfs_root
+2022-05-31 09:42:19,291 p=65504 u=root n=ansible | TASK [01-system-prep : Install global dependencies] *******************************************************************************************************************************************************************
+2022-05-31 09:42:19,291 p=65504 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:42:19,334 p=65504 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:42:19,335 p=65504 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks ['sdf']"
+}
+2022-05-31 09:42:19,393 p=65504 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:42:19,393 p=65504 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "_root_pool_type  "
+}
+2022-05-31 09:42:19,425 p=65504 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/cleanup.yml for local_zfs_root
+2022-05-31 09:42:19,814 p=65504 u=root n=ansible | TASK [01-system-prep : Unmount All Directories] ***********************************************************************************************************************************************************************
+2022-05-31 09:42:19,815 p=65504 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/dev)
+2022-05-31 09:42:19,963 p=65504 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/proc)
+2022-05-31 09:42:20,109 p=65504 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/sys)
+2022-05-31 09:42:20,259 p=65504 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/boot/efi)
+2022-05-31 09:42:20,419 p=65504 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/boot)
+2022-05-31 09:42:20,575 p=65504 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/home)
+2022-05-31 09:42:20,731 p=65504 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/run)
+2022-05-31 09:42:20,878 p=65504 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/tmpfs)
+2022-05-31 09:42:21,194 p=65504 u=root n=ansible | TASK [01-system-prep : Get list of Available zfs pools] ***************************************************************************************************************************************************************
+2022-05-31 09:42:21,195 p=65504 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:42:21,270 p=65630 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: '{{_root_pool}}' in zpool_list.stdout
+
+2022-05-31 09:42:21,447 p=65504 u=root n=ansible | TASK [01-system-prep : Destroy existing "root_pool"] ******************************************************************************************************************************************************************
+2022-05-31 09:42:21,448 p=65504 u=root n=ansible | fatal: [local_zfs_root]: FAILED! => {"changed": true, "cmd": ["zpool", "destroy", "-f", "root_pool"], "delta": "0:00:00.010399", "end": "2022-05-31 09:42:21.427749", "msg": "non-zero return code", "rc": 1, "start": "2022-05-31 09:42:21.417350", "stderr": "cannot unmount '/mnt/install': pool or dataset is busy\ncould not destroy 'root_pool': could not unmount datasets", "stderr_lines": ["cannot unmount '/mnt/install': pool or dataset is busy", "could not destroy 'root_pool': could not unmount datasets"], "stdout": "", "stdout_lines": []}
+2022-05-31 09:42:21,453 p=65504 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.1.live.install_zfs.retry
+
+2022-05-31 09:42:21,453 p=65504 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 09:42:21,454 p=65504 u=root n=ansible | local_zfs_root             : ok=16   changed=0    unreachable=0    failed=1    skipped=2    rescued=0    ignored=0   
+2022-05-31 09:44:59,635 p=65680 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:44:59,744 p=65680 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/vars/main.yml, line 3, column 1, found a duplicate dict key (debug). Using last defined value only.
+
+2022-05-31 09:44:59,795 p=65680 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 09:45:00,601 p=65680 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 09:45:00,601 p=65680 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:45:00,686 p=65680 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/debugmsg.yml for local_zfs_root
+2022-05-31 09:45:00,741 p=65680 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:45:00,741 p=65680 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "1 Ubuntu"
+}
+2022-05-31 09:45:00,791 p=65680 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:45:00,791 p=65680 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "2 22.04"
+}
+2022-05-31 09:45:00,840 p=65680 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:45:00,841 p=65680 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "3 22"
+}
+2022-05-31 09:45:00,890 p=65680 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:45:00,891 p=65680 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "4 impish"
+}
+2022-05-31 09:45:01,161 p=65680 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:45:01,162 p=65680 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:45:01,329 p=65680 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:45:01,329 p=65680 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:45:01,379 p=65680 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:45:01,380 p=65680 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '18.5G', 'size': '18.5G', 'name': 'backupPool1'}) => {
+    "msg": "4 ZFS pool backupPool1 has 18.5G free space out of 18.5G."
+}
+2022-05-31 09:45:01,385 p=65680 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '89.5G', 'size': '89.5G', 'name': 'dataPool'}) => {
+    "msg": "4 ZFS pool dataPool has 89.5G free space out of 89.5G."
+}
+2022-05-31 09:45:01,395 p=65680 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '11.4G', 'size': '14.5G', 'name': 'rpool'}) => {
+    "msg": "4 ZFS pool rpool has 11.4G free space out of 14.5G."
+}
+2022-05-31 09:45:01,435 p=65680 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:45:01,436 p=65680 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "rpool name root_pool"
+}
+2022-05-31 09:45:01,479 p=65680 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:45:01,480 p=65680 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks ['sdf']"
+}
+2022-05-31 09:45:01,536 p=65680 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:45:01,537 p=65680 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "_root_pool_type  "
+}
+2022-05-31 09:45:01,572 p=65680 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 09:45:01,573 p=65680 u=root n=ansible | local_zfs_root             : ok=12   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-05-31 09:47:27,183 p=65876 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:47:27,299 p=65876 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 2 column 1 (char 1)
+
+Syntax Error while loading YAML.
+  could not find expected ':'
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/vars/main.yml': line 19, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+release:"jammy"
+# release: "impish"
+^ here
+
+2022-05-31 09:47:49,427 p=65879 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:47:49,546 p=65879 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 2 column 1 (char 1)
+
+Syntax Error while loading YAML.
+  could not find expected ':'
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/vars/main.yml': line 19, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+release:jammy
+# release: "impish"
+^ here
+
+2022-05-31 09:48:12,562 p=65882 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:48:12,679 p=65882 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/vars/main.yml, line 3, column 1, found a duplicate dict key (debug). Using last defined value only.
+
+2022-05-31 09:48:12,732 p=65882 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 09:48:13,579 p=65882 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 09:48:13,580 p=65882 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:48:13,635 p=65882 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/debugmsg.yml for local_zfs_root
+2022-05-31 09:48:13,681 p=65882 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:13,682 p=65882 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "1 Ubuntu"
+}
+2022-05-31 09:48:13,726 p=65882 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:13,727 p=65882 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "2 22.04"
+}
+2022-05-31 09:48:13,775 p=65882 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:13,776 p=65882 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "3 22"
+}
+2022-05-31 09:48:13,817 p=65882 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:13,818 p=65882 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "4 jammy"
+}
+2022-05-31 09:48:14,115 p=65882 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:48:14,116 p=65882 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:48:14,296 p=65882 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:48:14,297 p=65882 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:48:14,349 p=65882 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:14,352 p=65882 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '18.5G', 'size': '18.5G', 'name': 'backupPool1'}) => {
+    "msg": "4 ZFS pool backupPool1 has 18.5G free space out of 18.5G."
+}
+2022-05-31 09:48:14,355 p=65882 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '89.5G', 'size': '89.5G', 'name': 'dataPool'}) => {
+    "msg": "4 ZFS pool dataPool has 89.5G free space out of 89.5G."
+}
+2022-05-31 09:48:14,360 p=65882 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '11.4G', 'size': '14.5G', 'name': 'rpool'}) => {
+    "msg": "4 ZFS pool rpool has 11.4G free space out of 14.5G."
+}
+2022-05-31 09:48:14,404 p=65882 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:14,405 p=65882 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "rpool name root_pool"
+}
+2022-05-31 09:48:14,447 p=65882 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:14,448 p=65882 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks ['sdf']"
+}
+2022-05-31 09:48:14,508 p=65882 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:14,509 p=65882 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "_root_pool_type  "
+}
+2022-05-31 09:48:14,533 p=65882 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 09:48:14,533 p=65882 u=root n=ansible | local_zfs_root             : ok=12   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-05-31 09:48:22,545 p=65947 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed
+ from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-05-31 09:48:22,666 p=65947 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/vars/main.yml, line 3, column 1, found a duplicate dict key (debug). Using last defined value only.
+
+2022-05-31 09:48:22,724 p=65947 u=root n=ansible | PLAY [live] ***********************************************************************************************************************************************************************************************************
+2022-05-31 09:48:23,581 p=65947 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************************************************************************************************
+2022-05-31 09:48:23,582 p=65947 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:48:23,638 p=65947 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/debugmsg.yml for local_zfs_root
+2022-05-31 09:48:23,681 p=65947 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:23,682 p=65947 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "1 Ubuntu"
+}
+2022-05-31 09:48:23,731 p=65947 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:23,733 p=65947 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "2 22.04"
+}
+2022-05-31 09:48:23,780 p=65947 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:23,781 p=65947 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "3 22"
+}
+2022-05-31 09:48:23,828 p=65947 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:23,829 p=65947 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "4 jammy"
+}
+2022-05-31 09:48:24,145 p=65947 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:48:24,146 p=65947 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:48:24,342 p=65947 u=root n=ansible | TASK [01-system-prep : zpool_facts] ***********************************************************************************************************************************************************************************
+2022-05-31 09:48:24,343 p=65947 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:48:24,407 p=65947 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:24,409 p=65947 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '18.5G', 'size': '18.5G', 'name': 'backupPool1'}) => {
+    "msg": "4 ZFS pool backupPool1 has 18.5G free space out of 18.5G."
+}
+2022-05-31 09:48:24,410 p=65947 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '89.5G', 'size': '89.5G', 'name': 'dataPool'}) => {
+    "msg": "4 ZFS pool dataPool has 89.5G free space out of 89.5G."
+}
+2022-05-31 09:48:24,411 p=65947 u=root n=ansible | ok: [local_zfs_root] => (item={'free': '11.4G', 'size': '14.5G', 'name': 'rpool'}) => {
+    "msg": "4 ZFS pool rpool has 11.4G free space out of 14.5G."
+}
+2022-05-31 09:48:24,456 p=65947 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:24,457 p=65947 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "rpool name root_pool"
+}
+2022-05-31 09:48:24,488 p=65947 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/install.yml for local_zfs_root
+2022-05-31 09:48:25,432 p=65947 u=root n=ansible | TASK [01-system-prep : Install global dependencies] *******************************************************************************************************************************************************************
+2022-05-31 09:48:25,433 p=65947 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:48:25,481 p=65947 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:25,482 p=65947 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks ['sdf']"
+}
+2022-05-31 09:48:25,549 p=65947 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:25,550 p=65947 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "_root_pool_type  "
+}
+2022-05-31 09:48:25,588 p=65947 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/cleanup.yml for local_zfs_root
+2022-05-31 09:48:26,026 p=65947 u=root n=ansible | TASK [01-system-prep : Unmount All Directories] ***********************************************************************************************************************************************************************
+2022-05-31 09:48:26,027 p=65947 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/dev)
+2022-05-31 09:48:26,199 p=65947 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/proc)
+2022-05-31 09:48:26,483 p=65947 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/sys)
+2022-05-31 09:48:26,654 p=65947 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/boot/efi)
+2022-05-31 09:48:26,848 p=65947 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/boot)
+2022-05-31 09:48:27,082 p=65947 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/home)
+2022-05-31 09:48:27,232 p=65947 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/run)
+2022-05-31 09:48:27,483 p=65947 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/install/tmpfs)
+2022-05-31 09:48:27,867 p=65947 u=root n=ansible | TASK [01-system-prep : Get list of Available zfs pools] ***************************************************************************************************************************************************************
+2022-05-31 09:48:27,867 p=65947 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:48:27,940 p=66073 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: '{{_root_pool}}' in zpool_list.stdout
+
+2022-05-31 09:48:28,237 p=65947 u=root n=ansible | TASK [01-system-prep : check if already mount] ************************************************************************************************************************************************************************
+2022-05-31 09:48:28,238 p=65947 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:48:28,270 p=65947 u=root n=ansible | TASK [01-system-prep : set_fact] **************************************************************************************************************************************************************************************
+2022-05-31 09:48:28,270 p=65947 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:48:28,301 p=65947 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:28,302 p=65947 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Disks ures"
+}
+2022-05-31 09:48:28,328 p=66085 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ _system_disks }}
+
+2022-05-31 09:48:28,347 p=65947 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/disks.yml for local_zfs_root
+2022-05-31 09:48:28,380 p=65947 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:28,381 p=65947 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "11111111 Disks ['sdf']"
+}
+2022-05-31 09:48:28,577 p=65947 u=root n=ansible | TASK [01-system-prep : Set disk_check_failed to false by default] *****************************************************************************************************************************************************
+2022-05-31 09:48:28,579 p=65947 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:48:28,623 p=65947 u=root n=ansible | TASK [01-system-prep : Set up var for disks] **************************************************************************************************************************************************************************
+2022-05-31 09:48:28,624 p=65947 u=root n=ansible | ok: [local_zfs_root]
+2022-05-31 09:48:28,656 p=65947 u=root n=ansible | TASK [01-system-prep : var for disks output] **************************************************************************************************************************************************************************
+2022-05-31 09:48:28,657 p=65947 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "System disks ===> : loop1 sdf sdd sdb loop6 loop4 sr0 loop2 loop0 sde sdc loop7 sda loop5 loop3"
+}
+2022-05-31 09:48:28,703 p=65947 u=root n=ansible | TASK [01-system-prep : Set up ignored disks] **************************************************************************************************************************************************************************
+2022-05-31 09:48:28,705 p=65947 u=root n=ansible | ok: [local_zfs_root] => (item=sdf)
+2022-05-31 09:48:28,711 p=65947 u=root n=ansible | ok: [local_zfs_root] => (item=loop)
+2022-05-31 09:48:28,718 p=65947 u=root n=ansible | ok: [local_zfs_root] => (item=dm)
+2022-05-31 09:48:28,724 p=65947 u=root n=ansible | ok: [local_zfs_root] => (item=md)
+2022-05-31 09:48:28,731 p=65947 u=root n=ansible | ok: [local_zfs_root] => (item=sr)
+2022-05-31 09:48:28,763 p=65947 u=root n=ansible | TASK [01-system-prep : var for disks output] **************************************************************************************************************************************************************************
+2022-05-31 09:48:28,765 p=65947 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "System disks ===> : ['sdf']"
+}
+2022-05-31 09:48:28,789 p=66109 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ _system_disks }}
+
+2022-05-31 09:48:28,812 p=65947 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/partition.yml for local_zfs_root
+2022-05-31 09:48:29,164 p=65947 u=root n=ansible | TASK [01-system-prep : Check to see if partition exists on disk already] **********************************************************************************************************************************************
+2022-05-31 09:48:29,165 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item=sdf)
+2022-05-31 09:48:33,216 p=65947 u=root n=ansible | TASK [01-system-prep : forcibly zap disks] ****************************************************************************************************************************************************************************
+2022-05-31 09:48:33,216 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:48:33,267 p=65947 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:33,267 p=65947 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "_root_device_list ['/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0']"
+}
+2022-05-31 09:48:33,301 p=65947 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:33,301 p=65947 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "Create bootloader partition(s) -n1:1M:+512M -t1:EF00 -c1:EFI"
+}
+2022-05-31 09:48:34,536 p=65947 u=root n=ansible | TASK [01-system-prep : set up efi disk partitions] ********************************************************************************************************************************************************************
+2022-05-31 09:48:34,537 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:48:38,302 p=65947 u=root n=ansible | TASK [01-system-prep : set up boot disk partitions] *******************************************************************************************************************************************************************
+2022-05-31 09:48:38,302 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:48:43,457 p=65947 u=root n=ansible | TASK [01-system-prep : set up swap disk partitions] *******************************************************************************************************************************************************************
+2022-05-31 09:48:43,457 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:48:44,750 p=65947 u=root n=ansible | TASK [01-system-prep : set up root disk partitions] *******************************************************************************************************************************************************************
+2022-05-31 09:48:44,751 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:48:45,142 p=65947 u=root n=ansible | TASK [01-system-prep : print info disk] *******************************************************************************************************************************************************************************
+2022-05-31 09:48:45,143 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:48:45,459 p=65947 u=root n=ansible | TASK [01-system-prep : format boot] ***********************************************************************************************************************************************************************************
+2022-05-31 09:48:45,460 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:48:45,760 p=65947 u=root n=ansible | TASK [01-system-prep : format /boot/efi] ******************************************************************************************************************************************************************************
+2022-05-31 09:48:45,760 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0)
+2022-05-31 09:48:45,864 p=65947 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/create_zpool.yml for local_zfs_root
+2022-05-31 09:48:46,571 p=65947 u=root n=ansible | TASK [01-system-prep : set up root zfs crypt devices] *****************************************************************************************************************************************************************
+2022-05-31 09:48:46,571 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0-part4)
+2022-05-31 09:48:46,620 p=65947 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/create_zfs.yml for local_zfs_root
+2022-05-31 09:48:46,871 p=65947 u=root n=ansible | TASK [01-system-prep : Update ZFS root datasets1] *********************************************************************************************************************************************************************
+2022-05-31 09:48:46,872 p=65947 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:48:47,094 p=65947 u=root n=ansible | TASK [01-system-prep : Update ZFS root datasets2] *********************************************************************************************************************************************************************
+2022-05-31 09:48:47,098 p=65947 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:48:47,653 p=65947 u=root n=ansible | TASK [01-system-prep : create mountpoints] ****************************************************************************************************************************************************************************
+2022-05-31 09:48:47,655 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/home'})
+2022-05-31 09:48:47,882 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/home/root', 'properties': {'mountpoint': '/root'}})
+2022-05-31 09:48:48,128 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var', 'properties': {'canmount': False}})
+2022-05-31 09:48:48,383 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var/lib', 'properties': {'canmount': False}})
+2022-05-31 09:48:48,616 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var/cache', 'properties': {'com.sun:auto-snapshot': False}})
+2022-05-31 09:48:48,857 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var/log', 'properties': {'com.sun:auto-snapshot': False}})
+2022-05-31 09:48:49,109 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var/spool', 'properties': {'com.sun:auto-snapshot': False}})
+2022-05-31 09:48:49,349 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var/tmp', 'properties': {'com.sun:auto-snapshot': False}})
+2022-05-31 09:48:49,599 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/var/lib/docker', 'properties': {'com.sun:auto-snapshot': False}})
+2022-05-31 09:48:49,982 p=65947 u=root n=ansible | TASK [01-system-prep : create mountpoints] ****************************************************************************************************************************************************************************
+2022-05-31 09:48:49,982 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item={'name': 'root_pool/datastore', 'properties': {'mountpoint': '/mnt/disk0'}})
+2022-05-31 09:48:50,059 p=65947 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/01-system-prep/tasks/finish.yml for local_zfs_root
+2022-05-31 09:48:50,276 p=65947 u=root n=ansible | TASK [01-system-prep : /mnt/install/run] ******************************************************************************************************************************************************************************
+2022-05-31 09:48:50,277 p=65947 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:48:50,487 p=65947 u=root n=ansible | TASK [01-system-prep : /mnt/install/run] ******************************************************************************************************************************************************************************
+2022-05-31 09:48:50,487 p=65947 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:48:50,690 p=65947 u=root n=ansible | TASK [01-system-prep : /mnt/install/run/lock] *************************************************************************************************************************************************************************
+2022-05-31 09:48:50,691 p=65947 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:48:50,906 p=65947 u=root n=ansible | TASK [01-system-prep : mkdir boot] ************************************************************************************************************************************************************************************
+2022-05-31 09:48:50,906 p=65947 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:48:51,148 p=65947 u=root n=ansible | TASK [01-system-prep : mount /mnt/install/boot] ***********************************************************************************************************************************************************************
+2022-05-31 09:48:51,149 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0-part2)
+2022-05-31 09:48:51,187 p=65947 u=root n=ansible | TASK [01-system-prep : debug] *****************************************************************************************************************************************************************************************
+2022-05-31 09:48:51,187 p=65947 u=root n=ansible | ok: [local_zfs_root] => {
+    "msg": "mount"
+}
+2022-05-31 09:48:51,395 p=65947 u=root n=ansible | TASK [01-system-prep : mkdir /boot/efi] *******************************************************************************************************************************************************************************
+2022-05-31 09:48:51,396 p=65947 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:48:51,658 p=65947 u=root n=ansible | TASK [01-system-prep : mount /mnt/install/boot/efi] *******************************************************************************************************************************************************************
+2022-05-31 09:48:51,659 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item=/dev/disk/by-id/scsi-36000c2952e009bceac033227b66adfd0-part1)
+2022-05-31 09:52:34,826 p=65947 u=root n=ansible | TASK [01-system-prep : run debootstrap and set devices=off for root pool] *********************************************************************************************************************************************
+2022-05-31 09:52:34,827 p=65947 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:52:35,581 p=65947 u=root n=ansible | TASK [01-system-prep : write /etc/hostname in chroot] *****************************************************************************************************************************************************************
+2022-05-31 09:52:35,581 p=65947 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:52:35,927 p=65947 u=root n=ansible | TASK [01-system-prep : add hostname entries to /etc/hosts in chroot] **************************************************************************************************************************************************
+2022-05-31 09:52:35,928 p=65947 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:52:36,378 p=65947 u=root n=ansible | TASK [01-system-prep : write /mnt/install/apt/sources.list in chroot] *************************************************************************************************************************************************
+2022-05-31 09:52:36,379 p=65947 u=root n=ansible | changed: [local_zfs_root]
+2022-05-31 09:52:36,630 p=65947 u=root n=ansible | TASK [01-system-prep : mount special filesystems for chroot] **********************************************************************************************************************************************************
+2022-05-31 09:52:36,631 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item=/dev "/mnt/install/dev")
+2022-05-31 09:52:36,810 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item=/proc "/mnt/install/proc")
+2022-05-31 09:52:36,999 p=65947 u=root n=ansible | changed: [local_zfs_root] => (item=/sys "/mnt/install/sys")
+2022-05-31 09:52:37,026 p=65947 u=root n=ansible | PLAY RECAP ************************************************************************************************************************************************************************************************************
+2022-05-31 09:52:37,028 p=65947 u=root n=ansible | local_zfs_root             : ok=60   changed=26   unreachable=0    failed=0    skipped=24   rescued=0    ignored=0   
