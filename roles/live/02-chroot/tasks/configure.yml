@@ -226,23 +226,67 @@
   with_items:
     - cryptsetup
   when:
-    - _crypt | default(false) | bool == true
+#    - _crypt | default(false) | bool == true
+    - _lukscrypt | default(false) | bool == true
   tags:
     - chroot_configure
 
+###############################################################################
 # #For an encrypted (LUKS or ZFS native encryption) single-disk install:
-- name: For an encrypted (LUKS or ZFS native encryption) single-disk install
+###############################################################################
+
+# #For an encrypted (ZFS native encryption) single-disk install:
+###############################################################################
+- name: create swap zvol
+  zfs:
+    name: "{{_root_pool}}/swap"
+    state: present
+    extra_zfs_properties:
+      "{{ _zfsprep_swap_opts }}"
+    when:
+      - _zfs_swap | default(false) | bool == true
+      - _crypt | default(false) | bool == true
+      - _raid | default(false) | bool != true
+      - _lukscrypt | default(false) | bool  != true
+    tags:
+      - chroot_configure
+
+- name: mkswap For an encrypted (native ZFS encryption) single-disk install
+  shell: "mkswap -f /dev/zvol/{{_root_pool}}/swap  && echo /dev/zvol/{{_root_pool}}/swap  none swap,defaults 0 0 >> /etc/fstab  && swapon -av"
+  when:
+    - _crypt | default(false) | bool == true
+    - _raid | default(false) | bool != true
+    - _zfs_swap | default(false) | bool == true
+  tags:
+    - chroot_configure
+- lineinfile:
+    line: "RESUME=none"
+    path: /etc/initramfs-tools/conf.d/resume
+    create: yes
+    state: present
+  when:
+    - _crypt | default(false) | bool == true
+    - _raid | default(false) | bool != true
+    - _zfs_swap | default(false) | bool == true
+###############################################################################
+
+# #For an encrypted (LUKS encryption) single-disk install:
+###############################################################################
+- name: mkswap For an encrypted (LUKS encryption) single-disk install
   shell: "echo swap /dev/disk/by-id/{{ _root_disks_by_id  | first }}{{_swap_part_append}} /dev/urandom swap,cipher=aes-xts-plain64:sha256,size=512 >> /etc/crypttab"
   when:
     - _crypt | default(false) | bool == true
     - _raid | default(false) | bool != true
+    - _zfs_swap | default(false) | bool != true
   tags:
     - chroot_configure
+
 - name: /dev/mapper/swap
   shell: echo /dev/mapper/swap none swap defaults 0 0 >> /etc/fstab
   when:
     - _crypt | default(false) | bool == true
     - _raid | default(false) | bool != true
+    - _zfs_swap | default(false) | bool != true
   tags:
     - chroot_configure
 
@@ -285,26 +329,13 @@
 
 - name: Mount a tmpfs to /tmp
   shell: "cp /usr/share/systemd/tmp.mount /etc/systemd/system/ && systemctl enable tmp.mount"
-#  when:
-#    - _crypt | default(false) | bool == true
-#    - _raid | default(false) | bool == true
+  when:
+    - _crypt | default(false) | bool == true
+    - _raid | default(false) | bool == true
   tags:
     - chroot_configure
 
 ######################################################################################################################
-# Setup system groups:
-- name: addgroup --system lpadmin
-  shell: "addgroup --system lpadmin"
-  tags:
-    - chroot_configure
-- name: addgroup --system lxd
-  shell: "addgroup --system lxd"
-  tags:
-    - chroot_configure
-- name: addgroup --system sambashare
-  shell: "addgroup --system sambashare"
-  tags:
-    - chroot_configure
 
 - name: zfs-import-bpool.service
   template:

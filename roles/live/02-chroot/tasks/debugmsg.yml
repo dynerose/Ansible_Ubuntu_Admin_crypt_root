@@ -1,21 +1,40 @@
 ---
 
 #- name: Distribution
-- debug: msg="1 {{ ansible_distribution }}"
+#- debug: msg="1 {{ ansible_distribution }}"
+#  tags: zfs_debug
+##- name: Distribution version
+#- debug: msg="2 {{ ansible_distribution_version}}"
+#  tags: zfs_debug
+##- name: Distribution major version
+#- debug: msg="3 {{ ansible_distribution_major_version }}"
+#  tags: zfs_debug
+##- name: Print test message
+##  debug:
+##    msg: " ELSO mount | grep -v zfs | tac | awk '/\/mnt/ {print $3}' | xargs -i{} umount -lf {}"
+
+#- debug: msg="4 {{ release }}"
+#  tags: chroot_debug
+
+- name: Verify that the ZFS boot filesystem is recognized
+  shell: grub-probe /boot
+  register: grub_probe
+#  until: grub_probe.stdout.find("ext2") == true
+#  retries: 2
+#  delay: 1
   tags: chroot_debug
 
-#- name: Distribution version
-- debug: msg="2 {{ ansible_distribution_version}}"
-  tags: zfs_debug
-
-#- name: Distribution major version
-- debug: msg="3 {{ ansible_distribution_major_version }}"
+- debug: msg="{{grub_probe.stdout}}"
+#- debug: msg="name: rebuild initramfs if neccessary  shell: update-initramfs -c -k all"
+  register: grubinstalled
+  changed_when: true
+  failed_when: false  # dpkg -s returns 1 when packages is not found
+  check_mode: yes # this can safely run in check_mode
+  when: grub_probe.stdout == "ext2"
   tags: chroot_debug
 
-#- name: Print test message
-#  debug:
-#    msg: " ELSO mount | grep -v zfs | tac | awk '/\/mnt/ {print $3}' | xargs -i{} umount -lf {}"
-
-- debug: msg="4 {{ release }}"
+- debug: msg=" SIKER $$$"
+  when: grubinstalled.changed
+#  when: grubinstalled.stat.exists
+#  when: ansible_facts['os_family'] == "Debian"
   tags: chroot_debug
-

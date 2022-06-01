@@ -7,8 +7,8 @@
   vars_files:
     - ../vars/main.yml
     - ../vars/disks.yml
+    - ../vars/users.yml
     - ../vars/zfs.yml
-
 #  vars_prompt:
 #    - name: "user_name"
 #      prompt: "Enter User Name"

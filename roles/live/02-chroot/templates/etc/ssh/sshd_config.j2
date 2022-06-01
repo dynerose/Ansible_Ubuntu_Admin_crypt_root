@@ -1,9 +1,8 @@
 # {{ ansible_managed }}
-
 Port {{ sshd_port }}
-{% for address in sshd_listen_address %}
-ListenAddress {{ address }}
-{% endfor %}
+#{% for address in sshd_listen_address %}
+#ListenAddress {{ address }}
+#{% endfor %}
 {% if sshd_allow_groups %}
 AllowGroups {{ sshd_allow_groups | unique | join(" ") }}
 {% endif %}

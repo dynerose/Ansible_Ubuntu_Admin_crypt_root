@@ -131,3 +131,12 @@ _zfs_ignore_disks:
   - dm
   - md
   - sr
+_zfs_swap: true
+_zfs_swap_opts:
+  volsize: 4G
+  compression: zle
+  logbias: throughput
+  sync: always
+  primarycache: metadata
+  secondarycache: none
+  com.sun:auto-snapshot: false

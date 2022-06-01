@@ -1,5 +1,3 @@
-
-# Will be added to the docker group to give user command line access to docker
 _user: sa
 _password: Password
 _root_password_hash: "DC647EB65E6711E155375218212B3964"  # "{{ _password }}"
@@ -17,11 +15,6 @@ _installdir: /mnt/install
 #####################################################################################################################################################################################################
 release: jammy
 # release: "impish"
-debug:
-  msg: "DISK {{ _target_disks }} "
-
-debug:
-  msg: "release {{ release }} "
 
 enable_task_debugger: true
 isneeded: true
@@ -33,5 +26,4 @@ _timezone: "UTC"
 _extra_locales: []
 _locales: "{{ _extra_locales + ['en_US.UTF-8'] }}"
 _lang: "en_US.UTF-8"
-
 _system_memory: 800M

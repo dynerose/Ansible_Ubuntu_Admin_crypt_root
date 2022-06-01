@@ -9,6 +9,7 @@
   ignore_errors: true
   tags:
     - chroot_ssh_server
+
 - name: Ensure Ed25519 host key is present
   command: ssh-keygen -q -t ed25519 -N "" -f ssh_host_ed25519_key
   args:
