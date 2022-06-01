@@ -1,5 +1,15 @@
 ---
 # defaults file for 02-chroot
+zfs_swap: true
+zfs_swap_opts:
+  volsize: 4G
+  compression: zle
+  logbias: throughput
+  sync: always
+  primarycache: metadata
+  secondarycache: none
+  com.sun:auto-snapshot: false
+
 #_grub_cmdline: "root=ZFS={{ _root_pool }}/root"
 grub_timeout: 10
 debug_kernel: false

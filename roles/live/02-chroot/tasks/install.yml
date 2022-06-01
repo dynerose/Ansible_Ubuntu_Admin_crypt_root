@@ -6,10 +6,14 @@
 - apt:
     name: software-properties-common
     state: present
+  ignore_errors: yes
+  when: ansible_facts['os_family'] == "Debian"
   tags:
     - chroot_install
 
 - shell: add-apt-repository universe
+  ignore_errors: yes
+  when: ansible_facts['os_family'] == "Debian"
   tags:
     - chroot_install
 
@@ -18,9 +22,33 @@
   apt:
     update_cache: yes
     upgrade: 'yes'
+  ignore_errors: yes
+  register: apt_check
+  when: ansible_facts['os_family'] == "Debian"
   tags:
     - chroot_install
 
+- name: "Check if listed package is installed or not on Debian Linux family"
+  package:
+    name: "{{ item }}"
+    state: present
+  check_mode: true
+  loop: "{{ dependencies.global }}"
+  register: package_check
+  when: apt_check and ansible_facts['os_family'] == "Debian"
+  tags:
+    - chroot_install
+
+- name: "Print execution results"
+  debug:
+    msg: "Package is installed"
+  when: package_check is succeeded
+  tags:
+    - chroot_install
+
+###############################################################################
+# Setup locale and time zone.
+###############################################################################
 - name: install locales
   locale_gen:
     name: "{{ item }}"
@@ -62,19 +90,18 @@
   tags:
     - chroot_install
 
-- name: install our kernel linux-image-generic
-  apt:
-    name: linux-image-generic
-    install_recommends: no
-    state: present
-  tags:
-    - chroot_install
-
+######################################################################################################################
+# Install GRUB/Linux/ZFS in the chroot environment for the new system:
+######################################################################################################################
 - name: zfs-dkms note-incompatible-licenses note true
   shell: "zfs-dkms zfs-dkms/note-incompatible-licenses note true | debconf-set-selections"
   tags:
     - chroot_install
 
+######################################################################################################################
+# Install GRUB/Linux/ZFS for UEFI booting:
+# Followed by boot environment packages.
+######################################################################################################################
 - name: Install zfs dependencies
   apt:
     name: "{{ dependencies.zfs }}"
@@ -84,6 +111,7 @@
   tags:
     - chroot_install
 
+# Now we’re ready to onboard the latest Linux image.
 - name: Install global dependencies
   apt:
     name: "{{ dependencies.global }}"
@@ -93,11 +121,36 @@
   tags:
     - chroot_install
 
+######################################################################################################################
+# Install lukscrypt
+######################################################################################################################
+- name: Install lukscrypt dependencies
+  apt:
+    name: "{{ dependencies.encryption }}"
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ debian_cache_valid_time|default(7200) }}"
+  when: _lukscrypt | default(false) | bool == true
+  tags:
+    - chroot_install
 
-  encryption:
-  lvm:
-  md:
-  legacy_packages:
+######################################################################################################################
+# Install GRUB/Linux/ZFS for legacy (BIOS) booting:
+######################################################################################################################
+- name: Install legacy dependencies
+  apt:
+    name: "{{ dependencies.legacy_packages }}"
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ debian_cache_valid_time|default(7200) }}"
+  when: _efi|default(false)|bool != true
+  tags:
+    - chroot_install
+
+#  encryption:
+#  lvm:
+#  md:
+#  legacy_packages:
 #- name: Ensure specified packages are in there desired state
 #  package:
 #    name: '{{ item }}'
@@ -129,62 +182,6 @@
 #  apt:
 #    name: zfs-initramfs
 #    state: present
-
-- apt:
-    name: cryptsetup
-    state: present
-  when: _lukscrypt | default(false) | bool == true
-  tags:
-    - chroot_install
-
-- name: install grub-pc
-  apt:
-    name: grub-pc
-    state: present
-  when: _efi|default(false)|bool != true
-  tags:
-    - chroot_install
-
-- apt:
-    name: dosfstools
-    state: present
-  when: _efi|default(false)|bool == true
-  tags:
-    - chroot_install
-
-#- name: install grub-efi-amd64
-#  apt:
-#    name: grub-efi-amd64
-#    state: present
-#  when: _efi|default(false)|bool == true
-#  tags:
-#    - chroot_install
-
-#- apt:
-#    name: grub-efi-amd64-signed
-#    state: present
-#  when: _efi|default(false)|bool == true
-#  tags:
-#    - chroot_install
-
-#- apt:
-#    name: shim-signed
-#    state: present
-#  when: _efi|default(false)|bool == true
-#  tags:
-#    - chroot_install
-
-#- name: Ensure specified packages are in there desired state
-#  package:
-#    name: '{{ item }}'
-#    state: present
-#  with_flattened: '{{ default_packages }}'
-##  tags: [ 'role::kodi:pkgs' ]
-##  register: is_softneedinstalled
-##  become: yes
-#  become: true
-#  tags:
-#    - chroot_install
 
 ## For mirror or raidz topology
 #- name: install mdadm

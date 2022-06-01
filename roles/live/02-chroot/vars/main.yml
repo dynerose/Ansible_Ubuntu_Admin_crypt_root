@@ -6,6 +6,7 @@ grub2_config: /boot/grub/grub.cfg
 # default_packages:
 dependencies:
   global:
+    - software-properties-common
     - ansible
     - curl
     - debootstrap

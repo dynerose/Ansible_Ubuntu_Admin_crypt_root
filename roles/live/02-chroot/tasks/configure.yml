@@ -26,50 +26,12 @@
   tags:
     - chroot_configure
 
-####################################################################################################################################################33
-## ZFS STORE
-####################################################################################################################################################33
-# 7 Create the EFI filesystem:
-# For a mirror or raidz topology, repeat the mkdosfs for the additional disks, but do not repeat the other commands.
-- name: Unmount EFI
-  mount:
-    path: "/boot/efi"
-    state: unmounted
-  when:
-    - _zfs_boot | default(false) | bool == true
-    -  _efi|default(false)|bool == true
-  tags:
-    - chroot_configure
-
-#- name: force umoount EFI
-#  shell: "umount /boot/efi"
-
-# Perform these steps for both UEFI and legacy (BIOS) booting all drives if mirrored or raid
-# For a mirror or raidz topology, repeat the mkdosfs for the additional disks.
-# Note: The -s 1 for mkdosfs is only necessary for drives which present 4 KiB logical sectors (“4Kn” drives) 
-# to meet the minimum cluster size (given the partition size of 512 MiB) for FAT32. It also works fine on drives which present 512 B sectors.
-- name: format EFI
-  shell: "mkdosfs -F 32 -s 1 -n EFI {{ item }}{{ _efi_part_append }}"
-  with_items:
-    - "{{ _root_device_list }}"
-#    - "/dev/disk/by-id/{{ _root_disks_by_id }}{{_efi_part_append}}"
-#    - "/dev/disk/by-id/{{ _root_disks_by_id | first }}{{_efi_part_append}}"
-#    -  "{% for item in  _root_device_list  %}{{ item }}{{ _efi_part_append }}{% if not loop.last %} {% endif %}{% endfor %}"
-  when:
-    - _zfs_boot | default(false) | bool == true
-    -  _efi|default(false)|bool == true
-  tags:
-    - chroot_configure
-
-#- name: create directory /boot/efi
-#  shell: "mkdir -p /boot/efi"
-#  when: _efi | default(false) | bool == true
-
+# To mount boot and EFI partition, we need to do some fstab setup.
 - name: echo fstab boot1
   shell: "echo PARTUUID=$(blkid -s PARTUUID -o value {{ item }}) /boot ext4 noatime,nofail,x-systemd.device-timeout=5s 0 1 >> /etc/fstab"
   with_items:
     - "/dev/disk/by-id/{{ _root_disks_by_id | first }}{{_boot_part_append}}"
-  when: 
+  when:
     - _zfs_boot | default(false) | bool != true
     -  _efi|default(false)|bool == true
   tags:
@@ -89,16 +51,6 @@
 #  shell: "echo UUID=$(blkid -s UUID -o value {{ item }}) /boot/efi vfat defaults 0 0 >> /etc/fstab"
   shell: "echo /dev/disk/by-uuid/$(blkid -s UUID -o value {{ item }}) /boot/efi vfat defaults 0 0 >> /etc/fstab"
 # /boot/efi vfat nofail,x-systemd.device-timeout=1 0 1
-  with_items:
-    - "/dev/disk/by-id/{{ _root_disks_by_id | first }}{{_efi_part_append}}"
-  when:
-    - _zfs_boot | default(false) | bool == true
-    -  _efi|default(false)|bool == true
-  tags:
-    - chroot_configure
-
-- name: mkdir and mount /boot/efi
-  shell: "mkdir -p /boot/efi && mount {{ item }} /boot/efi"
   with_items:
     - "/dev/disk/by-id/{{ _root_disks_by_id | first }}{{_efi_part_append}}"
   when:
@@ -161,44 +113,8 @@
     - chroot_configure
 
 ######################################################################################################################
-# 9 Install GRUB/Linux/ZFS in the chroot environment for the new system:
 ######################################################################################################################
-
-# Install GRUB/Linux/ZFS for legacy (BIOS) booting:
-######################################################################################################################
-- name: Install GRUBLinuxZFS for legacy (BIOS) booting
-  package:
-    name: '{{ item }}'
-    state: present
-  with_flattened: '{{ _zfs_chroot_legacy_packages }}'
-  when: _efi|default(false)|bool != true
-  tags:
-    - chroot_configure
-
-# Install GRUB/Linux/ZFS for UEFI booting:
-# libzfs2linux zfs-initramfs zfs-zed zfsutils-linux
-- name: Install GRUBLinuxZFS for UEFI booting
-  package:
-    name: '{{ item }}'
-    state: present
-  with_flattened: '{{ _zfs_chroot_packages }}'
-  when: _efi|default(false)|bool == true
-  tags:
-    - chroot_configure
-# For a mirror or raidz topology, this step only installs GRUB on the first disk. The other disk(s) will be handled later. 
-# For some reason, grub-efi-amd64 does not prompt for install_devices here, but does after a reboot.
-
-#apt remove --purge os-prober
-#- name: Remove os-prober
-#  apt:
-#    pkg: os-prober
-#    state: absent
-#    purge: yes
-#  sudo: yes
-
-######################################################################################################################
-######################################################################################################################
-# 12 Configure swap
+# Configure swap
 ######################################################################################################################
 # For an unencrypted single-disk install
 ######################################################################################################################
@@ -308,7 +224,7 @@
 - name: install cryptsetup
   apt: name={{ item }} state=absent
   with_items:
-   - cryptsetup
+    - cryptsetup
   when:
     - _crypt | default(false) | bool == true
   tags:

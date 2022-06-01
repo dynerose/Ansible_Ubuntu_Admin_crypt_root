@@ -1,25 +1,26 @@
 ---
 - hosts: chroot
+#  debugger: on_skipped
+  debugger: never
   connection: chroot
   become: yes
   vars_files:
     - ../vars/main.yml
     - ../vars/disks.yml
     - ../vars/zfs.yml
-    - ../vars/programs.yml
 
-  vars_prompt:
-    - name: "user_name"
-      prompt: "Enter User Name"
-      default: "sa"
-      private: yes
-      confirm: yes
-    - name: "user_password"
-      prompt: "Enter User Password"
-      default: "sa"
-#      encrypt: "sha512_crypt"
-      private: yes
-      confirm: yes
+#  vars_prompt:
+#    - name: "user_name"
+#      prompt: "Enter User Name"
+#      default: "sa"
+#      private: yes
+#      confirm: yes
+#    - name: "user_password"
+#      prompt: "Enter User Password"
+#      default: "sa"
+##      encrypt: "sha512_crypt"
+#      private: yes
+#      confirm: yes
 #  tasks:
 #  - name: Patch sensu_check module (ttl)
 #    become: yes

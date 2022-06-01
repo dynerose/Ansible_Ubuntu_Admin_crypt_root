@@ -1,5 +1,7 @@
 ---
-
+- import_tasks: debugmsg.yml
+  tags:
+    - chroot_debug
 
 # tasks file for 02-chroot effdf
 #- debug:

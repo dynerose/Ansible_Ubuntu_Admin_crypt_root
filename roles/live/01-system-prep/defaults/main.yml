@@ -1,10 +1,3 @@
 ---
-# packages to install
-install_packages: []
-
 # use tmpfs for debootstrap?
 use_tmpfs: no
-
-# defaults file for parted
-# Default parted optimization
-parted_optimization: optimal

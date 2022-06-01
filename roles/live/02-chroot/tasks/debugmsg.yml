@@ -1,0 +1,21 @@
+---
+
+#- name: Distribution
+- debug: msg="1 {{ ansible_distribution }}"
+  tags: chroot_debug
+
+#- name: Distribution version
+- debug: msg="2 {{ ansible_distribution_version}}"
+  tags: zfs_debug
+
+#- name: Distribution major version
+- debug: msg="3 {{ ansible_distribution_major_version }}"
+  tags: chroot_debug
+
+#- name: Print test message
+#  debug:
+#    msg: " ELSO mount | grep -v zfs | tac | awk '/\/mnt/ {print $3}' | xargs -i{} umount -lf {}"
+
+- debug: msg="4 {{ release }}"
+  tags: chroot_debug
+
