@@ -6793,3 +6793,1803 @@ line 196, column 3, found a duplicate dict key (when). Using last defined value 
 
 2022-06-01 10:37:33,639 p=66603 u=root n=ansible | PLAY RECAP ************************************************************************************************************************
 2022-06-01 10:37:33,640 p=66603 u=root n=ansible | /mnt/install/              : ok=6    changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:11:12,224 p=67531 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and
+ misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in version 2.13. 
+Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:11:12,492 p=67531 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/configure_grub.yml,
+line 196, column 3, found a duplicate dict key (when). Using last defined value only.
+
+2022-06-01 11:11:12,525 p=67531 u=root n=ansible | PLAY [chroot] *********************************************************************************************************************
+2022-06-01 11:11:15,139 p=67531 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************
+2022-06-01 11:11:15,140 p=67531 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:11:15,482 p=67531 u=root n=ansible | TASK [02-chroot : addgroup --system lpadmin] **************************************************************************************
+2022-06-01 11:11:15,483 p=67531 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:11:15,704 p=67531 u=root n=ansible | TASK [02-chroot : addgroup --system lxd] ******************************************************************************************
+2022-06-01 11:11:15,704 p=67531 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:11:15,962 p=67531 u=root n=ansible | TASK [02-chroot : addgroup --system sambashare] ***********************************************************************************
+2022-06-01 11:11:15,962 p=67531 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:11:16,358 p=67531 u=root n=ansible | TASK [02-chroot : create users home directory] ************************************************************************************
+2022-06-01 11:11:16,359 p=67531 u=root n=ansible | changed: [/mnt/install/] => (item={'name': 'user1', 'password': 'Password', 'comment': 'AdamListek', 'uid': 1077, 'group': 'sudo', 'createhome': True, 'home': '/home/user1'})
+2022-06-01 11:11:16,402 p=67531 u=root n=ansible | TASK [02-chroot : Adding user sudo] ***********************************************************************************************
+2022-06-01 11:11:16,402 p=67531 u=root n=ansible | fatal: [/mnt/install/]: FAILED! => {"msg": "Unexpected templating type error occurred on ({{ user_password | password_hash('sha512') }}): crypt() argument 1 must be str, not None"}
+2022-06-01 11:11:16,409 p=67531 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.2.live.chroot.retry
+
+2022-06-01 11:11:16,409 p=67531 u=root n=ansible | PLAY RECAP ************************************************************************************************************************
+2022-06-01 11:11:16,409 p=67531 u=root n=ansible | /mnt/install/              : ok=5    changed=4    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:12:33,095 p=67629 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and
+ misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in version 2.13. 
+Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:12:33,284 p=67629 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/configure_grub.yml,
+line 196, column 3, found a duplicate dict key (when). Using last defined value only.
+
+2022-06-01 11:12:33,316 p=67629 u=root n=ansible | PLAY [chroot] *********************************************************************************************************************
+2022-06-01 11:12:34,266 p=67629 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************
+2022-06-01 11:12:34,267 p=67629 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:12:34,626 p=67629 u=root n=ansible | TASK [02-chroot : addgroup --system lpadmin] **************************************************************************************
+2022-06-01 11:12:34,627 p=67629 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:12:34,834 p=67629 u=root n=ansible | TASK [02-chroot : addgroup --system lxd] ******************************************************************************************
+2022-06-01 11:12:34,834 p=67629 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:12:35,047 p=67629 u=root n=ansible | TASK [02-chroot : addgroup --system sambashare] ***********************************************************************************
+2022-06-01 11:12:35,047 p=67629 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:12:35,380 p=67629 u=root n=ansible | TASK [02-chroot : create users home directory] ************************************************************************************
+2022-06-01 11:12:35,381 p=67629 u=root n=ansible | ok: [/mnt/install/] => (item={'name': 'user1', 'password': 'Password', 'comment': 'AdamListek', 'uid': 1077, 'group': 'sudo', 'createhome': True, 'home': '/home/user1'})
+2022-06-01 11:12:36,658 p=67629 u=root n=ansible | TASK [02-chroot : Adding user sudo] ***********************************************************************************************
+2022-06-01 11:12:36,659 p=67629 u=root n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: TypeError: getpwnam() argument must be str, not None
+2022-06-01 11:12:36,659 p=67629 u=root n=ansible | fatal: [/mnt/install/]: FAILED! => {"changed": false, "module_stderr": "Traceback (most recent call last):\n  File \"<stdin>\", line 102, in <module>\n  File \"<stdin>\", line 94, in _ansiballz_main\n  File \"<stdin>\", line 40, in invoke_module\n  File \"/usr/lib/python3.10/runpy.py\", line 209, in run_module\n    return _run_module_code(code, init_globals, run_name, mod_spec)\n  File \"/usr/lib/python3.10/runpy.py\", line 96, in _run_module_code\n    _run_code(code, mod_globals, init_globals,\n  File \"/usr/lib/python3.10/runpy.py\", line 86, in _run_code\n    exec(code, run_globals)\n  File \"/tmp/ansible_user_payload_w1uea46m/ansible_user_payload.zip/ansible/modules/user.py\", line 3103, in <module>\n  File \"/tmp/ansible_user_payload_w1uea46m/ansible_user_payload.zip/ansible/modules/user.py\", line 3014, in main\n  File \"/tmp/ansible_user_payload_w1uea46m/ansible_user_payload.zip/ansible/modules/user.py\", line 973, in user_exists\nTypeError: getpwnam() argument must be str, not None\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+2022-06-01 11:12:36,667 p=67629 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.2.live.chroot.retry
+
+2022-06-01 11:12:36,668 p=67629 u=root n=ansible | PLAY RECAP ************************************************************************************************************************
+2022-06-01 11:12:36,668 p=67629 u=root n=ansible | /mnt/install/              : ok=5    changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:19:36,786 p=68066 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and
+ misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in version 2.13. 
+Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:19:36,977 p=68066 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/configure_grub.yml,
+line 196, column 3, found a duplicate dict key (when). Using last defined value only.
+
+2022-06-01 11:19:37,013 p=68066 u=root n=ansible | PLAY [chroot] *********************************************************************************************************************
+2022-06-01 11:19:38,004 p=68066 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************
+2022-06-01 11:19:38,005 p=68066 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:19:38,391 p=68066 u=root n=ansible | TASK [02-chroot : Verify that the ZFS boot filesystem is recognized] **************************************************************
+2022-06-01 11:19:38,392 p=68066 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:19:38,439 p=68066 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:19:38,440 p=68066 u=root n=ansible | changed: [/mnt/install/] => {
+    "msg": "ext2"
+}
+2022-06-01 11:19:38,486 p=68066 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:19:38,487 p=68066 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": " SIKER $$$"
+}
+2022-06-01 11:19:38,787 p=68066 u=root n=ansible | TASK [02-chroot : Get all users] **************************************************************************************************
+2022-06-01 11:19:38,787 p=68066 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:19:38,840 p=68066 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:19:38,850 p=68066 u=root n=ansible | ok: [/mnt/install/] => {
+    "getent_passwd": {
+        "_apt": [
+            "x",
+            "105",
+            "65534",
+            "",
+            "/nonexistent",
+            "/usr/sbin/nologin"
+        ],
+        "backup": [
+            "x",
+            "34",
+            "34",
+            "backup",
+            "/var/backups",
+            "/usr/sbin/nologin"
+        ],
+        "bin": [
+            "x",
+            "2",
+            "2",
+            "bin",
+            "/bin",
+            "/usr/sbin/nologin"
+        ],
+        "daemon": [
+            "x",
+            "1",
+            "1",
+            "daemon",
+            "/usr/sbin",
+            "/usr/sbin/nologin"
+        ],
+        "games": [
+            "x",
+            "5",
+            "60",
+            "games",
+            "/usr/games",
+            "/usr/sbin/nologin"
+        ],
+        "gnats": [
+            "x",
+            "41",
+            "41",
+            "Gnats Bug-Reporting System (admin)",
+            "/var/lib/gnats",
+            "/usr/sbin/nologin"
+        ],
+        "irc": [
+            "x",
+            "39",
+            "39",
+            "ircd",
+            "/run/ircd",
+            "/usr/sbin/nologin"
+        ],
+        "list": [
+            "x",
+            "38",
+            "38",
+            "Mailing List Manager",
+            "/var/list",
+            "/usr/sbin/nologin"
+        ],
+        "lp": [
+            "x",
+            "7",
+            "7",
+            "lp",
+            "/var/spool/lpd",
+            "/usr/sbin/nologin"
+        ],
+        "mail": [
+            "x",
+            "8",
+            "8",
+            "mail",
+            "/var/mail",
+            "/usr/sbin/nologin"
+        ],
+        "man": [
+            "x",
+            "6",
+            "12",
+            "man",
+            "/var/cache/man",
+            "/usr/sbin/nologin"
+        ],
+        "messagebus": [
+            "x",
+            "102",
+            "105",
+            "",
+            "/nonexistent",
+            "/usr/sbin/nologin"
+        ],
+        "news": [
+            "x",
+            "9",
+            "9",
+            "news",
+            "/var/spool/news",
+            "/usr/sbin/nologin"
+        ],
+        "nobody": [
+            "x",
+            "65534",
+            "65534",
+            "nobody",
+            "/nonexistent",
+            "/usr/sbin/nologin"
+        ],
+        "proxy": [
+            "x",
+            "13",
+            "13",
+            "proxy",
+            "/bin",
+            "/usr/sbin/nologin"
+        ],
+        "root": [
+            "x",
+            "0",
+            "0",
+            "root",
+            "/root",
+            "/bin/bash"
+        ],
+        "sshd": [
+            "x",
+            "107",
+            "65534",
+            "",
+            "/run/sshd",
+            "/usr/sbin/nologin"
+        ],
+        "sync": [
+            "x",
+            "4",
+            "65534",
+            "sync",
+            "/bin",
+            "/bin/sync"
+        ],
+        "sys": [
+            "x",
+            "3",
+            "3",
+            "sys",
+            "/dev",
+            "/usr/sbin/nologin"
+        ],
+        "syslog": [
+            "x",
+            "104",
+            "111",
+            "",
+            "/home/syslog",
+            "/usr/sbin/nologin"
+        ],
+        "systemd-network": [
+            "x",
+            "100",
+            "102",
+            "systemd Network Management,,,",
+            "/run/systemd",
+            "/usr/sbin/nologin"
+        ],
+        "systemd-resolve": [
+            "x",
+            "101",
+            "103",
+            "systemd Resolver,,,",
+            "/run/systemd",
+            "/usr/sbin/nologin"
+        ],
+        "systemd-timesync": [
+            "x",
+            "103",
+            "106",
+            "systemd Time Synchronization,,,",
+            "/run/systemd",
+            "/usr/sbin/nologin"
+        ],
+        "usbmux": [
+            "x",
+            "106",
+            "46",
+            "usbmux daemon,,,",
+            "/var/lib/usbmux",
+            "/usr/sbin/nologin"
+        ],
+        "uucp": [
+            "x",
+            "10",
+            "10",
+            "uucp",
+            "/var/spool/uucp",
+            "/usr/sbin/nologin"
+        ],
+        "www-data": [
+            "x",
+            "33",
+            "33",
+            "www-data",
+            "/var/www",
+            "/usr/sbin/nologin"
+        ]
+    }
+}
+2022-06-01 11:19:38,900 p=68066 u=root n=ansible | TASK [02-chroot : Print the usernames] ********************************************************************************************
+2022-06-01 11:19:38,900 p=68066 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": [
+        "root",
+        "daemon",
+        "bin",
+        "sys",
+        "sync",
+        "games",
+        "man",
+        "lp",
+        "mail",
+        "news",
+        "uucp",
+        "proxy",
+        "www-data",
+        "backup",
+        "list",
+        "irc",
+        "gnats",
+        "nobody",
+        "systemd-network",
+        "systemd-resolve",
+        "messagebus",
+        "systemd-timesync",
+        "syslog",
+        "_apt",
+        "usbmux",
+        "sshd"
+    ]
+}
+2022-06-01 11:19:38,953 p=68066 u=root n=ansible | TASK [02-chroot : Check if a root user exists] ************************************************************************************
+2022-06-01 11:19:38,954 p=68066 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": "The root user exists"
+}
+2022-06-01 11:19:39,142 p=68066 u=root n=ansible | TASK [02-chroot : Check that the Foo user is present] *****************************************************************************
+2022-06-01 11:19:39,143 p=68066 u=root n=ansible | fatal: [/mnt/install/]: FAILED! => {"changed": false, "msg": "One or more supplied key could not be found in the database."}
+2022-06-01 11:19:39,154 p=68066 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.2.live.chroot.retry
+
+2022-06-01 11:19:39,155 p=68066 u=root n=ansible | PLAY RECAP ************************************************************************************************************************
+2022-06-01 11:19:39,155 p=68066 u=root n=ansible | /mnt/install/              : ok=8    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:31:17,505 p=68451 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and
+ misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in version 2.13. 
+Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:31:17,683 p=68451 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/configure_grub.yml,
+line 196, column 3, found a duplicate dict key (when). Using last defined value only.
+
+2022-06-01 11:31:17,714 p=68451 u=root n=ansible | PLAY [chroot] *********************************************************************************************************************
+2022-06-01 11:31:18,654 p=68451 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************
+2022-06-01 11:31:18,654 p=68451 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:31:19,025 p=68451 u=root n=ansible | TASK [02-chroot : Verify that the ZFS boot filesystem is recognized] **************************************************************
+2022-06-01 11:31:19,026 p=68451 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:31:19,076 p=68451 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:31:19,078 p=68451 u=root n=ansible | changed: [/mnt/install/] => {
+    "msg": "ext2"
+}
+2022-06-01 11:31:19,124 p=68451 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:31:19,126 p=68451 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": " SIKER $$$"
+}
+2022-06-01 11:31:19,480 p=68451 u=root n=ansible | TASK [02-chroot : Get all users] **************************************************************************************************
+2022-06-01 11:31:19,480 p=68451 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:31:19,526 p=68451 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:31:19,527 p=68451 u=root n=ansible | ok: [/mnt/install/] => {
+    "getent_passwd": {
+        "_apt": [
+            "x",
+            "105",
+            "65534",
+            "",
+            "/nonexistent",
+            "/usr/sbin/nologin"
+        ],
+        "backup": [
+            "x",
+            "34",
+            "34",
+            "backup",
+            "/var/backups",
+            "/usr/sbin/nologin"
+        ],
+        "bin": [
+            "x",
+            "2",
+            "2",
+            "bin",
+            "/bin",
+            "/usr/sbin/nologin"
+        ],
+        "daemon": [
+            "x",
+            "1",
+            "1",
+            "daemon",
+            "/usr/sbin",
+            "/usr/sbin/nologin"
+        ],
+        "games": [
+            "x",
+            "5",
+            "60",
+            "games",
+            "/usr/games",
+            "/usr/sbin/nologin"
+        ],
+        "gnats": [
+            "x",
+            "41",
+            "41",
+            "Gnats Bug-Reporting System (admin)",
+            "/var/lib/gnats",
+            "/usr/sbin/nologin"
+        ],
+        "irc": [
+            "x",
+            "39",
+            "39",
+            "ircd",
+            "/run/ircd",
+            "/usr/sbin/nologin"
+        ],
+        "list": [
+            "x",
+            "38",
+            "38",
+            "Mailing List Manager",
+            "/var/list",
+            "/usr/sbin/nologin"
+        ],
+        "lp": [
+            "x",
+            "7",
+            "7",
+            "lp",
+            "/var/spool/lpd",
+            "/usr/sbin/nologin"
+        ],
+        "mail": [
+            "x",
+            "8",
+            "8",
+            "mail",
+            "/var/mail",
+            "/usr/sbin/nologin"
+        ],
+        "man": [
+            "x",
+            "6",
+            "12",
+            "man",
+            "/var/cache/man",
+            "/usr/sbin/nologin"
+        ],
+        "messagebus": [
+            "x",
+            "102",
+            "105",
+            "",
+            "/nonexistent",
+            "/usr/sbin/nologin"
+        ],
+        "news": [
+            "x",
+            "9",
+            "9",
+            "news",
+            "/var/spool/news",
+            "/usr/sbin/nologin"
+        ],
+        "nobody": [
+            "x",
+            "65534",
+            "65534",
+            "nobody",
+            "/nonexistent",
+            "/usr/sbin/nologin"
+        ],
+        "proxy": [
+            "x",
+            "13",
+            "13",
+            "proxy",
+            "/bin",
+            "/usr/sbin/nologin"
+        ],
+        "root": [
+            "x",
+            "0",
+            "0",
+            "root",
+            "/root",
+            "/bin/bash"
+        ],
+        "sshd": [
+            "x",
+            "107",
+            "65534",
+            "",
+            "/run/sshd",
+            "/usr/sbin/nologin"
+        ],
+        "sync": [
+            "x",
+            "4",
+            "65534",
+            "sync",
+            "/bin",
+            "/bin/sync"
+        ],
+        "sys": [
+            "x",
+            "3",
+            "3",
+            "sys",
+            "/dev",
+            "/usr/sbin/nologin"
+        ],
+        "syslog": [
+            "x",
+            "104",
+            "111",
+            "",
+            "/home/syslog",
+            "/usr/sbin/nologin"
+        ],
+        "systemd-network": [
+            "x",
+            "100",
+            "102",
+            "systemd Network Management,,,",
+            "/run/systemd",
+            "/usr/sbin/nologin"
+        ],
+        "systemd-resolve": [
+            "x",
+            "101",
+            "103",
+            "systemd Resolver,,,",
+            "/run/systemd",
+            "/usr/sbin/nologin"
+        ],
+        "systemd-timesync": [
+            "x",
+            "103",
+            "106",
+            "systemd Time Synchronization,,,",
+            "/run/systemd",
+            "/usr/sbin/nologin"
+        ],
+        "usbmux": [
+            "x",
+            "106",
+            "46",
+            "usbmux daemon,,,",
+            "/var/lib/usbmux",
+            "/usr/sbin/nologin"
+        ],
+        "uucp": [
+            "x",
+            "10",
+            "10",
+            "uucp",
+            "/var/spool/uucp",
+            "/usr/sbin/nologin"
+        ],
+        "www-data": [
+            "x",
+            "33",
+            "33",
+            "www-data",
+            "/var/www",
+            "/usr/sbin/nologin"
+        ]
+    }
+}
+2022-06-01 11:31:19,576 p=68451 u=root n=ansible | TASK [02-chroot : Print the usernames] ********************************************************************************************
+2022-06-01 11:31:19,578 p=68451 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": [
+        "root",
+        "daemon",
+        "bin",
+        "sys",
+        "sync",
+        "games",
+        "man",
+        "lp",
+        "mail",
+        "news",
+        "uucp",
+        "proxy",
+        "www-data",
+        "backup",
+        "list",
+        "irc",
+        "gnats",
+        "nobody",
+        "systemd-network",
+        "systemd-resolve",
+        "messagebus",
+        "systemd-timesync",
+        "syslog",
+        "_apt",
+        "usbmux",
+        "sshd"
+    ]
+}
+2022-06-01 11:31:19,628 p=68451 u=root n=ansible | TASK [02-chroot : Check if a root user exists] ************************************************************************************
+2022-06-01 11:31:19,628 p=68451 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": "The root user exists"
+}
+2022-06-01 11:31:19,818 p=68451 u=root n=ansible | TASK [02-chroot : Check that the Foo user is present] *****************************************************************************
+2022-06-01 11:31:19,819 p=68451 u=root n=ansible | fatal: [/mnt/install/]: FAILED! => {"changed": false, "msg": "One or more supplied key could not be found in the database."}
+2022-06-01 11:31:19,828 p=68451 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.2.live.chroot.retry
+
+2022-06-01 11:31:19,829 p=68451 u=root n=ansible | PLAY RECAP ************************************************************************************************************************
+2022-06-01 11:31:19,830 p=68451 u=root n=ansible | /mnt/install/              : ok=8    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:31:51,118 p=68539 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and
+ misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in version 2.13. 
+Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:31:51,304 p=68539 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/configure_grub.yml,
+line 196, column 3, found a duplicate dict key (when). Using last defined value only.
+
+2022-06-01 11:31:51,337 p=68539 u=root n=ansible | PLAY [chroot] *********************************************************************************************************************
+2022-06-01 11:31:52,325 p=68539 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************
+2022-06-01 11:31:52,325 p=68539 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:31:52,684 p=68539 u=root n=ansible | TASK [02-chroot : Verify that the ZFS boot filesystem is recognized] **************************************************************
+2022-06-01 11:31:52,685 p=68539 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:31:52,761 p=68539 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:31:52,762 p=68539 u=root n=ansible | changed: [/mnt/install/] => {
+    "msg": "ext2"
+}
+2022-06-01 11:31:52,809 p=68539 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:31:52,810 p=68539 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": " SIKER $$$"
+}
+2022-06-01 11:31:53,070 p=68539 u=root n=ansible | TASK [02-chroot : Get all users] **************************************************************************************************
+2022-06-01 11:31:53,071 p=68539 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:31:53,120 p=68539 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:31:53,122 p=68539 u=root n=ansible | ok: [/mnt/install/] => {
+    "getent_passwd": {
+        "_apt": [
+            "x",
+            "105",
+            "65534",
+            "",
+            "/nonexistent",
+            "/usr/sbin/nologin"
+        ],
+        "backup": [
+            "x",
+            "34",
+            "34",
+            "backup",
+            "/var/backups",
+            "/usr/sbin/nologin"
+        ],
+        "bin": [
+            "x",
+            "2",
+            "2",
+            "bin",
+            "/bin",
+            "/usr/sbin/nologin"
+        ],
+        "daemon": [
+            "x",
+            "1",
+            "1",
+            "daemon",
+            "/usr/sbin",
+            "/usr/sbin/nologin"
+        ],
+        "games": [
+            "x",
+            "5",
+            "60",
+            "games",
+            "/usr/games",
+            "/usr/sbin/nologin"
+        ],
+        "gnats": [
+            "x",
+            "41",
+            "41",
+            "Gnats Bug-Reporting System (admin)",
+            "/var/lib/gnats",
+            "/usr/sbin/nologin"
+        ],
+        "irc": [
+            "x",
+            "39",
+            "39",
+            "ircd",
+            "/run/ircd",
+            "/usr/sbin/nologin"
+        ],
+        "list": [
+            "x",
+            "38",
+            "38",
+            "Mailing List Manager",
+            "/var/list",
+            "/usr/sbin/nologin"
+        ],
+        "lp": [
+            "x",
+            "7",
+            "7",
+            "lp",
+            "/var/spool/lpd",
+            "/usr/sbin/nologin"
+        ],
+        "mail": [
+            "x",
+            "8",
+            "8",
+            "mail",
+            "/var/mail",
+            "/usr/sbin/nologin"
+        ],
+        "man": [
+            "x",
+            "6",
+            "12",
+            "man",
+            "/var/cache/man",
+            "/usr/sbin/nologin"
+        ],
+        "messagebus": [
+            "x",
+            "102",
+            "105",
+            "",
+            "/nonexistent",
+            "/usr/sbin/nologin"
+        ],
+        "news": [
+            "x",
+            "9",
+            "9",
+            "news",
+            "/var/spool/news",
+            "/usr/sbin/nologin"
+        ],
+        "nobody": [
+            "x",
+            "65534",
+            "65534",
+            "nobody",
+            "/nonexistent",
+            "/usr/sbin/nologin"
+        ],
+        "proxy": [
+            "x",
+            "13",
+            "13",
+            "proxy",
+            "/bin",
+            "/usr/sbin/nologin"
+        ],
+        "root": [
+            "x",
+            "0",
+            "0",
+            "root",
+            "/root",
+            "/bin/bash"
+        ],
+        "sshd": [
+            "x",
+            "107",
+            "65534",
+            "",
+            "/run/sshd",
+            "/usr/sbin/nologin"
+        ],
+        "sync": [
+            "x",
+            "4",
+            "65534",
+            "sync",
+            "/bin",
+            "/bin/sync"
+        ],
+        "sys": [
+            "x",
+            "3",
+            "3",
+            "sys",
+            "/dev",
+            "/usr/sbin/nologin"
+        ],
+        "syslog": [
+            "x",
+            "104",
+            "111",
+            "",
+            "/home/syslog",
+            "/usr/sbin/nologin"
+        ],
+        "systemd-network": [
+            "x",
+            "100",
+            "102",
+            "systemd Network Management,,,",
+            "/run/systemd",
+            "/usr/sbin/nologin"
+        ],
+        "systemd-resolve": [
+            "x",
+            "101",
+            "103",
+            "systemd Resolver,,,",
+            "/run/systemd",
+            "/usr/sbin/nologin"
+        ],
+        "systemd-timesync": [
+            "x",
+            "103",
+            "106",
+            "systemd Time Synchronization,,,",
+            "/run/systemd",
+            "/usr/sbin/nologin"
+        ],
+        "usbmux": [
+            "x",
+            "106",
+            "46",
+            "usbmux daemon,,,",
+            "/var/lib/usbmux",
+            "/usr/sbin/nologin"
+        ],
+        "uucp": [
+            "x",
+            "10",
+            "10",
+            "uucp",
+            "/var/spool/uucp",
+            "/usr/sbin/nologin"
+        ],
+        "www-data": [
+            "x",
+            "33",
+            "33",
+            "www-data",
+            "/var/www",
+            "/usr/sbin/nologin"
+        ]
+    }
+}
+2022-06-01 11:31:53,172 p=68539 u=root n=ansible | TASK [02-chroot : Print the usernames] ********************************************************************************************
+2022-06-01 11:31:53,173 p=68539 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": [
+        "root",
+        "daemon",
+        "bin",
+        "sys",
+        "sync",
+        "games",
+        "man",
+        "lp",
+        "mail",
+        "news",
+        "uucp",
+        "proxy",
+        "www-data",
+        "backup",
+        "list",
+        "irc",
+        "gnats",
+        "nobody",
+        "systemd-network",
+        "systemd-resolve",
+        "messagebus",
+        "systemd-timesync",
+        "syslog",
+        "_apt",
+        "usbmux",
+        "sshd"
+    ]
+}
+2022-06-01 11:31:53,222 p=68539 u=root n=ansible | TASK [02-chroot : Check if a root user exists] ************************************************************************************
+2022-06-01 11:31:53,223 p=68539 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": "The root user exists"
+}
+2022-06-01 11:31:53,415 p=68539 u=root n=ansible | TASK [02-chroot : Check that the Foo user is present] *****************************************************************************
+2022-06-01 11:31:53,416 p=68539 u=root n=ansible | fatal: [/mnt/install/]: FAILED! => {"changed": false, "msg": "One or more supplied key could not be found in the database."}
+2022-06-01 11:31:53,423 p=68539 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.2.live.chroot.retry
+
+2022-06-01 11:31:53,423 p=68539 u=root n=ansible | PLAY RECAP ************************************************************************************************************************
+2022-06-01 11:31:53,423 p=68539 u=root n=ansible | /mnt/install/              : ok=8    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:32:17,765 p=68627 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and
+ misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in version 2.13. 
+Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:32:17,947 p=68627 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/configure_grub.yml,
+line 196, column 3, found a duplicate dict key (when). Using last defined value only.
+
+2022-06-01 11:32:17,979 p=68627 u=root n=ansible | PLAY [chroot] *********************************************************************************************************************
+2022-06-01 11:32:18,924 p=68627 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************
+2022-06-01 11:32:18,925 p=68627 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:32:19,285 p=68627 u=root n=ansible | TASK [02-chroot : Verify that the ZFS boot filesystem is recognized] **************************************************************
+2022-06-01 11:32:19,286 p=68627 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:32:19,338 p=68627 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:32:19,338 p=68627 u=root n=ansible | changed: [/mnt/install/] => {
+    "msg": "ext2"
+}
+2022-06-01 11:32:19,391 p=68627 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:32:19,391 p=68627 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": " SIKER $$$"
+}
+2022-06-01 11:32:19,683 p=68627 u=root n=ansible | TASK [02-chroot : Get all users] **************************************************************************************************
+2022-06-01 11:32:19,683 p=68627 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:32:19,762 p=68627 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:32:19,775 p=68627 u=root n=ansible | ok: [/mnt/install/] => {
+    "getent_passwd": {
+        "_apt": [
+            "x",
+            "105",
+            "65534",
+            "",
+            "/nonexistent",
+            "/usr/sbin/nologin"
+        ],
+        "backup": [
+            "x",
+            "34",
+            "34",
+            "backup",
+            "/var/backups",
+            "/usr/sbin/nologin"
+        ],
+        "bin": [
+            "x",
+            "2",
+            "2",
+            "bin",
+            "/bin",
+            "/usr/sbin/nologin"
+        ],
+        "daemon": [
+            "x",
+            "1",
+            "1",
+            "daemon",
+            "/usr/sbin",
+            "/usr/sbin/nologin"
+        ],
+        "games": [
+            "x",
+            "5",
+            "60",
+            "games",
+            "/usr/games",
+            "/usr/sbin/nologin"
+        ],
+        "gnats": [
+            "x",
+            "41",
+            "41",
+            "Gnats Bug-Reporting System (admin)",
+            "/var/lib/gnats",
+            "/usr/sbin/nologin"
+        ],
+        "irc": [
+            "x",
+            "39",
+            "39",
+            "ircd",
+            "/run/ircd",
+            "/usr/sbin/nologin"
+        ],
+        "list": [
+            "x",
+            "38",
+            "38",
+            "Mailing List Manager",
+            "/var/list",
+            "/usr/sbin/nologin"
+        ],
+        "lp": [
+            "x",
+            "7",
+            "7",
+            "lp",
+            "/var/spool/lpd",
+            "/usr/sbin/nologin"
+        ],
+        "mail": [
+            "x",
+            "8",
+            "8",
+            "mail",
+            "/var/mail",
+            "/usr/sbin/nologin"
+        ],
+        "man": [
+            "x",
+            "6",
+            "12",
+            "man",
+            "/var/cache/man",
+            "/usr/sbin/nologin"
+        ],
+        "messagebus": [
+            "x",
+            "102",
+            "105",
+            "",
+            "/nonexistent",
+            "/usr/sbin/nologin"
+        ],
+        "news": [
+            "x",
+            "9",
+            "9",
+            "news",
+            "/var/spool/news",
+            "/usr/sbin/nologin"
+        ],
+        "nobody": [
+            "x",
+            "65534",
+            "65534",
+            "nobody",
+            "/nonexistent",
+            "/usr/sbin/nologin"
+        ],
+        "proxy": [
+            "x",
+            "13",
+            "13",
+            "proxy",
+            "/bin",
+            "/usr/sbin/nologin"
+        ],
+        "root": [
+            "x",
+            "0",
+            "0",
+            "root",
+            "/root",
+            "/bin/bash"
+        ],
+        "sshd": [
+            "x",
+            "107",
+            "65534",
+            "",
+            "/run/sshd",
+            "/usr/sbin/nologin"
+        ],
+        "sync": [
+            "x",
+            "4",
+            "65534",
+            "sync",
+            "/bin",
+            "/bin/sync"
+        ],
+        "sys": [
+            "x",
+            "3",
+            "3",
+            "sys",
+            "/dev",
+            "/usr/sbin/nologin"
+        ],
+        "syslog": [
+            "x",
+            "104",
+            "111",
+            "",
+            "/home/syslog",
+            "/usr/sbin/nologin"
+        ],
+        "systemd-network": [
+            "x",
+            "100",
+            "102",
+            "systemd Network Management,,,",
+            "/run/systemd",
+            "/usr/sbin/nologin"
+        ],
+        "systemd-resolve": [
+            "x",
+            "101",
+            "103",
+            "systemd Resolver,,,",
+            "/run/systemd",
+            "/usr/sbin/nologin"
+        ],
+        "systemd-timesync": [
+            "x",
+            "103",
+            "106",
+            "systemd Time Synchronization,,,",
+            "/run/systemd",
+            "/usr/sbin/nologin"
+        ],
+        "usbmux": [
+            "x",
+            "106",
+            "46",
+            "usbmux daemon,,,",
+            "/var/lib/usbmux",
+            "/usr/sbin/nologin"
+        ],
+        "uucp": [
+            "x",
+            "10",
+            "10",
+            "uucp",
+            "/var/spool/uucp",
+            "/usr/sbin/nologin"
+        ],
+        "www-data": [
+            "x",
+            "33",
+            "33",
+            "www-data",
+            "/var/www",
+            "/usr/sbin/nologin"
+        ]
+    }
+}
+2022-06-01 11:32:19,978 p=68627 u=root n=ansible | TASK [02-chroot : Check that the Foo user is present] *****************************************************************************
+2022-06-01 11:32:19,979 p=68627 u=root n=ansible | fatal: [/mnt/install/]: FAILED! => {"changed": false, "msg": "One or more supplied key could not be found in the database."}
+2022-06-01 11:32:20,006 p=68627 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.2.live.chroot.retry
+
+2022-06-01 11:32:20,007 p=68627 u=root n=ansible | PLAY RECAP ************************************************************************************************************************
+2022-06-01 11:32:20,007 p=68627 u=root n=ansible | /mnt/install/              : ok=6    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:32:31,963 p=68711 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and
+ misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in version 2.13. 
+Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:32:32,141 p=68711 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/configure_grub.yml,
+line 196, column 3, found a duplicate dict key (when). Using last defined value only.
+
+2022-06-01 11:32:32,173 p=68711 u=root n=ansible | PLAY [chroot] *********************************************************************************************************************
+2022-06-01 11:32:33,122 p=68711 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************
+2022-06-01 11:32:33,123 p=68711 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:32:33,511 p=68711 u=root n=ansible | TASK [02-chroot : Verify that the ZFS boot filesystem is recognized] **************************************************************
+2022-06-01 11:32:33,512 p=68711 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:32:33,591 p=68711 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:32:33,592 p=68711 u=root n=ansible | changed: [/mnt/install/] => {
+    "msg": "ext2"
+}
+2022-06-01 11:32:33,638 p=68711 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:32:33,639 p=68711 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": " SIKER $$$"
+}
+2022-06-01 11:32:33,915 p=68711 u=root n=ansible | TASK [02-chroot : Check that the Foo user is present] *****************************************************************************
+2022-06-01 11:32:33,915 p=68711 u=root n=ansible | fatal: [/mnt/install/]: FAILED! => {"changed": false, "msg": "One or more supplied key could not be found in the database."}
+2022-06-01 11:32:33,923 p=68711 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.2.live.chroot.retry
+
+2022-06-01 11:32:33,924 p=68711 u=root n=ansible | PLAY RECAP ************************************************************************************************************************
+2022-06-01 11:32:33,925 p=68711 u=root n=ansible | /mnt/install/              : ok=4    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:32:51,082 p=68786 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and
+ misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in version 2.13. 
+Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:32:51,258 p=68786 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/configure_grub.yml,
+line 196, column 3, found a duplicate dict key (when). Using last defined value only.
+
+2022-06-01 11:32:51,290 p=68786 u=root n=ansible | PLAY [chroot] *********************************************************************************************************************
+2022-06-01 11:32:52,239 p=68786 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************
+2022-06-01 11:32:52,239 p=68786 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:32:52,602 p=68786 u=root n=ansible | TASK [02-chroot : Verify that the ZFS boot filesystem is recognized] **************************************************************
+2022-06-01 11:32:52,602 p=68786 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:32:52,651 p=68786 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:32:52,651 p=68786 u=root n=ansible | changed: [/mnt/install/] => {
+    "msg": "ext2"
+}
+2022-06-01 11:32:52,699 p=68786 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:32:52,700 p=68786 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": " SIKER $$$"
+}
+2022-06-01 11:32:53,002 p=68786 u=root n=ansible | TASK [02-chroot : Check that the Foo user is present] *****************************************************************************
+2022-06-01 11:32:53,002 p=68786 u=root n=ansible | fatal: [/mnt/install/]: FAILED! => {"changed": false, "msg": "One or more supplied key could not be found in the database."}
+2022-06-01 11:32:53,011 p=68786 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.2.live.chroot.retry
+
+2022-06-01 11:32:53,011 p=68786 u=root n=ansible | PLAY RECAP ************************************************************************************************************************
+2022-06-01 11:32:53,011 p=68786 u=root n=ansible | /mnt/install/              : ok=4    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:34:14,654 p=68878 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and
+ misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in version 2.13. 
+Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:34:14,840 p=68878 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/configure_grub.yml,
+line 196, column 3, found a duplicate dict key (when). Using last defined value only.
+
+2022-06-01 11:34:14,874 p=68878 u=root n=ansible | PLAY [chroot] *********************************************************************************************************************
+2022-06-01 11:34:15,864 p=68878 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************
+2022-06-01 11:34:15,864 p=68878 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:34:16,230 p=68878 u=root n=ansible | TASK [02-chroot : Verify that the ZFS boot filesystem is recognized] **************************************************************
+2022-06-01 11:34:16,231 p=68878 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:34:16,303 p=68878 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:34:16,304 p=68878 u=root n=ansible | changed: [/mnt/install/] => {
+    "msg": "ext2"
+}
+2022-06-01 11:34:16,352 p=68878 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:34:16,353 p=68878 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": " SIKER $$$"
+}
+2022-06-01 11:34:16,399 p=68878 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:34:16,402 p=68878 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": "username passwords  "
+}
+2022-06-01 11:34:16,444 p=68878 u=root n=ansible | TASK [02-chroot : Adding user sudo] ***********************************************************************************************
+2022-06-01 11:34:16,445 p=68878 u=root n=ansible | fatal: [/mnt/install/]: FAILED! => {"msg": "Unexpected templating type error occurred on ({{ user_password | password_hash('sha512') }}): crypt() argument 1 must be str, not None"}
+2022-06-01 11:34:16,454 p=68878 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.2.live.chroot.retry
+
+2022-06-01 11:34:16,454 p=68878 u=root n=ansible | PLAY RECAP ************************************************************************************************************************
+2022-06-01 11:34:16,455 p=68878 u=root n=ansible | /mnt/install/              : ok=5    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:35:35,375 p=68957 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and
+ misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in version 2.13. 
+Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:35:35,559 p=68957 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/configure_grub.yml,
+line 196, column 3, found a duplicate dict key (when). Using last defined value only.
+
+2022-06-01 11:35:35,591 p=68957 u=root n=ansible | PLAY [chroot] *********************************************************************************************************************
+2022-06-01 11:35:36,544 p=68957 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************
+2022-06-01 11:35:36,545 p=68957 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:35:36,908 p=68957 u=root n=ansible | TASK [02-chroot : Verify that the ZFS boot filesystem is recognized] **************************************************************
+2022-06-01 11:35:36,909 p=68957 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:35:36,972 p=68957 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:35:36,973 p=68957 u=root n=ansible | changed: [/mnt/install/] => {
+    "msg": "ext2"
+}
+2022-06-01 11:35:37,019 p=68957 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:35:37,020 p=68957 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": " SIKER $$$"
+}
+2022-06-01 11:35:37,083 p=68957 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:35:37,083 p=68957 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": "username passwords  "
+}
+2022-06-01 11:35:37,494 p=68957 u=root n=ansible | TASK [02-chroot : Adding user sudo] ***********************************************************************************************
+2022-06-01 11:35:37,495 p=68957 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:35:37,804 p=68957 u=root n=ansible | TASK [02-chroot : Check that the Foo user is present] *****************************************************************************
+2022-06-01 11:35:37,805 p=68957 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:35:37,853 p=68957 u=root n=ansible | TASK [02-chroot : Adding user groups] *********************************************************************************************
+2022-06-01 11:35:37,853 p=68957 u=root n=ansible | fatal: [/mnt/install/]: FAILED! => {"msg": "template error while templating string: Expected an expression, got 'end of print statement'. String: {{}}"}
+2022-06-01 11:35:37,888 p=68957 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.2.live.chroot.retry
+
+2022-06-01 11:35:37,888 p=68957 u=root n=ansible | PLAY RECAP ************************************************************************************************************************
+2022-06-01 11:35:37,889 p=68957 u=root n=ansible | /mnt/install/              : ok=7    changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:36:12,887 p=69052 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and
+ misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in version 2.13. 
+Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:36:13,069 p=69052 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/configure_grub.yml,
+line 196, column 3, found a duplicate dict key (when). Using last defined value only.
+
+2022-06-01 11:36:13,101 p=69052 u=root n=ansible | PLAY [chroot] *********************************************************************************************************************
+2022-06-01 11:36:14,042 p=69052 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************
+2022-06-01 11:36:14,042 p=69052 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:36:14,406 p=69052 u=root n=ansible | TASK [02-chroot : Verify that the ZFS boot filesystem is recognized] **************************************************************
+2022-06-01 11:36:14,406 p=69052 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:36:14,454 p=69052 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:36:14,454 p=69052 u=root n=ansible | changed: [/mnt/install/] => {
+    "msg": "ext2"
+}
+2022-06-01 11:36:14,503 p=69052 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:36:14,504 p=69052 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": " SIKER $$$"
+}
+2022-06-01 11:36:14,550 p=69052 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:36:14,551 p=69052 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": "username passwords  "
+}
+2022-06-01 11:36:14,932 p=69052 u=root n=ansible | TASK [02-chroot : Adding user sudo] ***********************************************************************************************
+2022-06-01 11:36:14,932 p=69052 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:36:15,205 p=69052 u=root n=ansible | TASK [02-chroot : Check that the Foo user is present] *****************************************************************************
+2022-06-01 11:36:15,206 p=69052 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:36:15,247 p=69052 u=root n=ansible | TASK [02-chroot : Adding user groups] *********************************************************************************************
+2022-06-01 11:36:15,248 p=69052 u=root n=ansible | fatal: [/mnt/install/]: FAILED! => {"msg": "template error while templating string: Expected an expression, got 'end of print statement'. String: {{}}"}
+2022-06-01 11:36:15,257 p=69052 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.2.live.chroot.retry
+
+2022-06-01 11:36:15,257 p=69052 u=root n=ansible | PLAY RECAP ************************************************************************************************************************
+2022-06-01 11:36:15,258 p=69052 u=root n=ansible | /mnt/install/              : ok=7    changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:36:29,582 p=69146 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and
+ misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in version 2.13. 
+Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:36:29,763 p=69146 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/configure_grub.yml,
+line 196, column 3, found a duplicate dict key (when). Using last defined value only.
+
+2022-06-01 11:36:29,794 p=69146 u=root n=ansible | PLAY [chroot] *********************************************************************************************************************
+2022-06-01 11:36:30,736 p=69146 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************
+2022-06-01 11:36:30,737 p=69146 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:36:31,099 p=69146 u=root n=ansible | TASK [02-chroot : Verify that the ZFS boot filesystem is recognized] **************************************************************
+2022-06-01 11:36:31,100 p=69146 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:36:31,147 p=69146 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:36:31,148 p=69146 u=root n=ansible | changed: [/mnt/install/] => {
+    "msg": "ext2"
+}
+2022-06-01 11:36:31,195 p=69146 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:36:31,196 p=69146 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": " SIKER $$$"
+}
+2022-06-01 11:36:31,240 p=69146 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:36:31,241 p=69146 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": "username passwords  "
+}
+2022-06-01 11:36:31,646 p=69146 u=root n=ansible | TASK [02-chroot : Adding user sudo] ***********************************************************************************************
+2022-06-01 11:36:31,647 p=69146 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:36:31,915 p=69146 u=root n=ansible | TASK [02-chroot : Check that the Foo user is present] *****************************************************************************
+2022-06-01 11:36:31,915 p=69146 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:36:31,957 p=69146 u=root n=ansible | TASK [02-chroot : Adding user groups] *********************************************************************************************
+2022-06-01 11:36:31,957 p=69146 u=root n=ansible | fatal: [/mnt/install/]: FAILED! => {"msg": "template error while templating string: Expected an expression, got 'end of print statement'. String: {{}}"}
+2022-06-01 11:36:31,967 p=69146 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.2.live.chroot.retry
+
+2022-06-01 11:36:31,967 p=69146 u=root n=ansible | PLAY RECAP ************************************************************************************************************************
+2022-06-01 11:36:31,968 p=69146 u=root n=ansible | /mnt/install/              : ok=7    changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:36:47,381 p=69240 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and
+ misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in version 2.13. 
+Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:36:47,559 p=69240 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/configure_grub.yml,
+line 196, column 3, found a duplicate dict key (when). Using last defined value only.
+
+2022-06-01 11:36:47,590 p=69240 u=root n=ansible | PLAY [chroot] *********************************************************************************************************************
+2022-06-01 11:36:48,513 p=69240 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************
+2022-06-01 11:36:48,513 p=69240 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:36:48,867 p=69240 u=root n=ansible | TASK [02-chroot : Verify that the ZFS boot filesystem is recognized] **************************************************************
+2022-06-01 11:36:48,868 p=69240 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:36:48,913 p=69240 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:36:48,914 p=69240 u=root n=ansible | changed: [/mnt/install/] => {
+    "msg": "ext2"
+}
+2022-06-01 11:36:48,966 p=69240 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:36:48,967 p=69240 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": " SIKER $$$"
+}
+2022-06-01 11:36:49,030 p=69240 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:36:49,030 p=69240 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": "username passwords  "
+}
+2022-06-01 11:36:49,396 p=69240 u=root n=ansible | TASK [02-chroot : Adding user sudo] ***********************************************************************************************
+2022-06-01 11:36:49,397 p=69240 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:36:49,670 p=69240 u=root n=ansible | TASK [02-chroot : user] ***********************************************************************************************************
+2022-06-01 11:36:49,670 p=69240 u=root n=ansible | changed: [/mnt/install/] => (item={'name': 'user1', 'password': 'Password', 'comment': 'AdamListek', 'uid': 1077, 'group': 'sudo', 'createhome': True, 'home': '/home/user1'})
+2022-06-01 11:36:49,744 p=69240 u=root n=ansible | PLAY RECAP ************************************************************************************************************************
+2022-06-01 11:36:49,746 p=69240 u=root n=ansible | /mnt/install/              : ok=7    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:36:53,346 p=69339 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and
+ misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in version 2.13. 
+Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:36:53,528 p=69339 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/configure_grub.yml,
+line 196, column 3, found a duplicate dict key (when). Using last defined value only.
+
+2022-06-01 11:36:53,560 p=69339 u=root n=ansible | PLAY [chroot] *********************************************************************************************************************
+2022-06-01 11:36:54,502 p=69339 u=root n=ansible | TASK [Gathering Facts] ************************************************************************************************************
+2022-06-01 11:36:54,503 p=69339 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:36:54,869 p=69339 u=root n=ansible | TASK [02-chroot : Verify that the ZFS boot filesystem is recognized] **************************************************************
+2022-06-01 11:36:54,870 p=69339 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:36:54,945 p=69339 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:36:54,947 p=69339 u=root n=ansible | changed: [/mnt/install/] => {
+    "msg": "ext2"
+}
+2022-06-01 11:36:54,996 p=69339 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:36:54,998 p=69339 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": " SIKER $$$"
+}
+2022-06-01 11:36:55,046 p=69339 u=root n=ansible | TASK [02-chroot : debug] **********************************************************************************************************
+2022-06-01 11:36:55,048 p=69339 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": "username passwords  "
+}
+2022-06-01 11:36:55,399 p=69339 u=root n=ansible | TASK [02-chroot : Adding user sudo] ***********************************************************************************************
+2022-06-01 11:36:55,399 p=69339 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:36:55,638 p=69339 u=root n=ansible | TASK [02-chroot : user] ***********************************************************************************************************
+2022-06-01 11:36:55,639 p=69339 u=root n=ansible | ok: [/mnt/install/] => (item={'name': 'user1', 'password': 'Password', 'comment': 'AdamListek', 'uid': 1077, 'group': 'sudo', 'createhome': True, 'home': '/home/user1'})
+2022-06-01 11:36:55,668 p=69339 u=root n=ansible | PLAY RECAP ************************************************************************************************************************
+2022-06-01 11:36:55,668 p=69339 u=root n=ansible | /mnt/install/              : ok=7    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:44:54,276 p=69472 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and
+ misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in version 2.13. 
+Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:44:54,400 p=69472 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected '-' indicator
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/debugmsg.yml': line 50, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+name: create users home directory
+^ here
+
+2022-06-01 11:46:26,777 p=69696 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and
+ misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in version 2.13. 
+Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:46:26,899 p=69696 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected '-' indicator
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/debugmsg.yml': line 50, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+name: create users home directory
+^ here
+
+2022-06-01 11:46:35,302 p=69698 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly 
+instead. This feature will be removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:46:35,428 p=69698 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected '-' indicator
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/debugmsg.yml': line 50, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+name: create users home directory
+^ here
+
+2022-06-01 11:48:16,560 p=69700 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly 
+instead. This feature will be removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:48:16,680 p=69700 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected '-' indicator
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/debugmsg.yml': line 50, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+name: create users home directory
+^ here
+
+2022-06-01 11:48:44,123 p=69702 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly 
+instead. This feature will be removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:48:44,244 p=69702 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected '-' indicator
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/debugmsg.yml': line 50, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+shell: zfs create -o mountpoint=/home/"{{ user_name }}" "{{ _root_pool }}"/home/"{{ user_name }}"
+^ here
+We could be wrong, but this one looks like it might be an issue with
+missing quotes. Always quote template expression brackets when they
+start a value. For instance:
+
+    with_items:
+      - {{ foo }}
+
+Should be written as:
+
+    with_items:
+      - "{{ foo }}"
+
+2022-06-01 11:49:42,676 p=69704 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly 
+instead. This feature will be removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:49:42,794 p=69704 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected '-' indicator
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/debugmsg.yml': line 49, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+shell: zfs create -o mountpoint=/home/"{{ user_name }}" "{{ _root_pool }}"/home/"{{ user_name }}"
+^ here
+We could be wrong, but this one looks like it might be an issue with
+missing quotes. Always quote template expression brackets when they
+start a value. For instance:
+
+    with_items:
+      - {{ foo }}
+
+Should be written as:
+
+    with_items:
+      - "{{ foo }}"
+
+2022-06-01 11:50:16,744 p=69715 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly 
+instead. This feature will be removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:50:16,870 p=69715 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected '-' indicator
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/debugmsg.yml': line 48, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tags: chroot_debug
+name: elso
+^ here
+
+2022-06-01 11:50:42,512 p=69717 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly 
+instead. This feature will be removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:50:42,634 p=69717 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected '-' indicator
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/debugmsg.yml': line 53, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+shell: adduser --disabled-password --gecos " " "{{ user_name }}"
+^ here
+We could be wrong, but this one looks like it might be an issue with
+missing quotes. Always quote template expression brackets when they
+start a value. For instance:
+
+    with_items:
+      - {{ foo }}
+
+Should be written as:
+
+    with_items:
+      - "{{ foo }}"
+
+2022-06-01 11:51:04,914 p=69719 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly 
+instead. This feature will be removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:51:05,099 p=69719 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/configure_grub.yml, line 196, column 3, found a duplicate dict key
+(when). Using last defined value only.
+
+2022-06-01 11:51:05,133 p=69719 u=root n=ansible | PLAY [chroot] *************************************************************************************************************************************************************************
+2022-06-01 11:51:06,074 p=69719 u=root n=ansible | TASK [Gathering Facts] ****************************************************************************************************************************************************************
+2022-06-01 11:51:06,075 p=69719 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:51:06,438 p=69719 u=root n=ansible | TASK [02-chroot : Verify that the ZFS boot filesystem is recognized] ******************************************************************************************************************
+2022-06-01 11:51:06,438 p=69719 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:51:06,519 p=69719 u=root n=ansible | TASK [02-chroot : debug] **************************************************************************************************************************************************************
+2022-06-01 11:51:06,519 p=69719 u=root n=ansible | changed: [/mnt/install/] => {
+    "msg": "ext2"
+}
+2022-06-01 11:51:06,600 p=69719 u=root n=ansible | TASK [02-chroot : debug] **************************************************************************************************************************************************************
+2022-06-01 11:51:06,601 p=69719 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": " SIKER $$$"
+}
+2022-06-01 11:51:06,659 p=69719 u=root n=ansible | TASK [02-chroot : debug] **************************************************************************************************************************************************************
+2022-06-01 11:51:06,659 p=69719 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": "username passwords  "
+}
+2022-06-01 11:51:06,855 p=69719 u=root n=ansible | TASK [02-chroot : elso] ***************************************************************************************************************************************************************
+2022-06-01 11:51:06,856 p=69719 u=root n=ansible | fatal: [/mnt/install/]: FAILED! => {"changed": true, "cmd": ["zfs", "create", "-o", "mountpoint=/home/", "root_pool/home/"], "delta": "0:00:00.007102", "end": "2022-06-01 10:51:06.836588", "msg": "non-zero return code", "rc": 1, "start": "2022-06-01 10:51:06.829486", "stderr": "cannot create 'root_pool/home/': trailing slash in name", "stderr_lines": ["cannot create 'root_pool/home/': trailing slash in name"], "stdout": "", "stdout_lines": []}
+2022-06-01 11:51:06,864 p=69719 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.2.live.chroot.retry
+
+2022-06-01 11:51:06,865 p=69719 u=root n=ansible | PLAY RECAP ****************************************************************************************************************************************************************************
+2022-06-01 11:51:06,865 p=69719 u=root n=ansible | /mnt/install/              : ok=5    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:51:46,522 p=69796 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly 
+instead. This feature will be removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:51:46,698 p=69796 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/configure_grub.yml, line 196, column 3, found a duplicate dict key
+(when). Using last defined value only.
+
+2022-06-01 11:51:46,731 p=69796 u=root n=ansible | PLAY [chroot] *************************************************************************************************************************************************************************
+2022-06-01 11:51:47,712 p=69796 u=root n=ansible | TASK [Gathering Facts] ****************************************************************************************************************************************************************
+2022-06-01 11:51:47,713 p=69796 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:51:48,077 p=69796 u=root n=ansible | TASK [02-chroot : Verify that the ZFS boot filesystem is recognized] ******************************************************************************************************************
+2022-06-01 11:51:48,077 p=69796 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:51:48,126 p=69796 u=root n=ansible | TASK [02-chroot : debug] **************************************************************************************************************************************************************
+2022-06-01 11:51:48,127 p=69796 u=root n=ansible | changed: [/mnt/install/] => {
+    "msg": "ext2"
+}
+2022-06-01 11:51:48,175 p=69796 u=root n=ansible | TASK [02-chroot : debug] **************************************************************************************************************************************************************
+2022-06-01 11:51:48,176 p=69796 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": " SIKER $$$"
+}
+2022-06-01 11:51:48,220 p=69796 u=root n=ansible | TASK [02-chroot : debug] **************************************************************************************************************************************************************
+2022-06-01 11:51:48,222 p=69796 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": "username passwords  "
+}
+2022-06-01 11:51:48,462 p=69796 u=root n=ansible | TASK [02-chroot : elso] ***************************************************************************************************************************************************************
+2022-06-01 11:51:48,463 p=69796 u=root n=ansible | fatal: [/mnt/install/]: FAILED! => {"changed": true, "cmd": ["zfs", "create", "-o", "mountpoint=/home/", "root_pool/home/"], "delta": "0:00:00.006928", "end": "2022-06-01 10:51:48.443767", "msg": "non-zero return code", "rc": 1, "start": "2022-06-01 10:51:48.436839", "stderr": "cannot create 'root_pool/home/': trailing slash in name", "stderr_lines": ["cannot create 'root_pool/home/': trailing slash in name"], "stdout": "", "stdout_lines": []}
+2022-06-01 11:51:48,471 p=69796 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.2.live.chroot.retry
+
+2022-06-01 11:51:48,471 p=69796 u=root n=ansible | PLAY RECAP ****************************************************************************************************************************************************************************
+2022-06-01 11:51:48,472 p=69796 u=root n=ansible | /mnt/install/              : ok=5    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:53:32,910 p=69889 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly 
+instead. This feature will be removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:53:33,094 p=69889 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/configure_grub.yml, line 196, column 3, found a duplicate dict key
+(when). Using last defined value only.
+
+2022-06-01 11:53:33,128 p=69889 u=root n=ansible | PLAY [chroot] *************************************************************************************************************************************************************************
+2022-06-01 11:53:34,074 p=69889 u=root n=ansible | TASK [Gathering Facts] ****************************************************************************************************************************************************************
+2022-06-01 11:53:34,075 p=69889 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:53:34,459 p=69889 u=root n=ansible | TASK [02-chroot : Verify that the ZFS boot filesystem is recognized] ******************************************************************************************************************
+2022-06-01 11:53:34,459 p=69889 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:53:34,512 p=69889 u=root n=ansible | TASK [02-chroot : debug] **************************************************************************************************************************************************************
+2022-06-01 11:53:34,513 p=69889 u=root n=ansible | changed: [/mnt/install/] => {
+    "msg": "ext2"
+}
+2022-06-01 11:53:34,566 p=69889 u=root n=ansible | TASK [02-chroot : debug] **************************************************************************************************************************************************************
+2022-06-01 11:53:34,567 p=69889 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": " SIKER $$$"
+}
+2022-06-01 11:53:34,618 p=69889 u=root n=ansible | TASK [02-chroot : debug] **************************************************************************************************************************************************************
+2022-06-01 11:53:34,619 p=69889 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": "username passwords  "
+}
+2022-06-01 11:53:34,700 p=69889 u=root n=ansible | TASK [02-chroot : debug] **************************************************************************************************************************************************************
+2022-06-01 11:53:34,701 p=69889 u=root n=ansible | fatal: [/mnt/install/]: FAILED! => {"msg": "Invalid options for debug: \"zfs create -o mountpoint"}
+2022-06-01 11:53:34,709 p=69889 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.2.live.chroot.retry
+
+2022-06-01 11:53:34,710 p=69889 u=root n=ansible | PLAY RECAP ****************************************************************************************************************************************************************************
+2022-06-01 11:53:34,710 p=69889 u=root n=ansible | /mnt/install/              : ok=5    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:54:33,603 p=69964 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly 
+instead. This feature will be removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:54:33,781 p=69964 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/configure_grub.yml, line 196, column 3, found a duplicate dict key
+(when). Using last defined value only.
+
+2022-06-01 11:54:33,812 p=69964 u=root n=ansible | PLAY [chroot] *************************************************************************************************************************************************************************
+2022-06-01 11:54:34,778 p=69964 u=root n=ansible | TASK [Gathering Facts] ****************************************************************************************************************************************************************
+2022-06-01 11:54:34,779 p=69964 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:54:35,145 p=69964 u=root n=ansible | TASK [02-chroot : Verify that the ZFS boot filesystem is recognized] ******************************************************************************************************************
+2022-06-01 11:54:35,145 p=69964 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:54:35,227 p=69964 u=root n=ansible | TASK [02-chroot : debug] **************************************************************************************************************************************************************
+2022-06-01 11:54:35,228 p=69964 u=root n=ansible | changed: [/mnt/install/] => {
+    "msg": "ext2"
+}
+2022-06-01 11:54:35,298 p=69964 u=root n=ansible | TASK [02-chroot : debug] **************************************************************************************************************************************************************
+2022-06-01 11:54:35,300 p=69964 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": " SIKER $$$"
+}
+2022-06-01 11:54:35,347 p=69964 u=root n=ansible | TASK [02-chroot : debug] **************************************************************************************************************************************************************
+2022-06-01 11:54:35,348 p=69964 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": "username passwords  "
+}
+2022-06-01 11:54:35,396 p=69964 u=root n=ansible | TASK [02-chroot : debug] **************************************************************************************************************************************************************
+2022-06-01 11:54:35,397 p=69964 u=root n=ansible | fatal: [/mnt/install/]: FAILED! => {"msg": "Invalid options for debug: mountpoint"}
+2022-06-01 11:54:35,405 p=69964 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.2.live.chroot.retry
+
+2022-06-01 11:54:35,406 p=69964 u=root n=ansible | PLAY RECAP ****************************************************************************************************************************************************************************
+2022-06-01 11:54:35,406 p=69964 u=root n=ansible | /mnt/install/              : ok=5    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:55:38,762 p=70042 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly 
+instead. This feature will be removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:55:38,886 p=70042 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/debugmsg.yml': line 50, column 38, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+#  command: "zfs create -o mountpoint=/home/{{ user_name }} {{ _root_pool }}/home/{{ user_name }}"
+                                     ^ here
+
+There appears to be both 'k=v' shorthand syntax and YAML in this task. Only one syntax may be used.
+We could be wrong, but this one looks like it might be an issue with
+missing quotes. Always quote template expression brackets when they
+start a value. For instance:
+
+    with_items:
+      - {{ foo }}
+
+Should be written as:
+
+    with_items:
+      - "{{ foo }}"
+
+2022-06-01 11:56:23,780 p=70045 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly 
+instead. This feature will be removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:56:23,958 p=70045 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/configure_grub.yml, line 196, column 3, found a duplicate dict key
+(when). Using last defined value only.
+
+2022-06-01 11:56:23,990 p=70045 u=root n=ansible | PLAY [chroot] *************************************************************************************************************************************************************************
+2022-06-01 11:56:24,973 p=70045 u=root n=ansible | TASK [Gathering Facts] ****************************************************************************************************************************************************************
+2022-06-01 11:56:24,974 p=70045 u=root n=ansible | ok: [/mnt/install/]
+2022-06-01 11:56:25,352 p=70045 u=root n=ansible | TASK [02-chroot : Verify that the ZFS boot filesystem is recognized] ******************************************************************************************************************
+2022-06-01 11:56:25,353 p=70045 u=root n=ansible | changed: [/mnt/install/]
+2022-06-01 11:56:25,407 p=70045 u=root n=ansible | TASK [02-chroot : debug] **************************************************************************************************************************************************************
+2022-06-01 11:56:25,408 p=70045 u=root n=ansible | changed: [/mnt/install/] => {
+    "msg": "ext2"
+}
+2022-06-01 11:56:25,454 p=70045 u=root n=ansible | TASK [02-chroot : debug] **************************************************************************************************************************************************************
+2022-06-01 11:56:25,455 p=70045 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": " SIKER $$$"
+}
+2022-06-01 11:56:25,532 p=70045 u=root n=ansible | TASK [02-chroot : debug] **************************************************************************************************************************************************************
+2022-06-01 11:56:25,533 p=70045 u=root n=ansible | ok: [/mnt/install/] => {
+    "msg": "username passwords  "
+}
+2022-06-01 11:56:25,847 p=70045 u=root n=ansible | TASK [02-chroot : create users home directory] ****************************************************************************************************************************************
+2022-06-01 11:56:25,848 p=70045 u=root n=ansible | fatal: [/mnt/install/]: FAILED! => {"changed": false, "msg": "cannot create 'root_pool/home/': trailing slash in name\n"}
+2022-06-01 11:56:25,855 p=70045 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/0.2.live.chroot.retry
+
+2022-06-01 11:56:25,856 p=70045 u=root n=ansible | PLAY RECAP ****************************************************************************************************************************************************************************
+2022-06-01 11:56:25,856 p=70045 u=root n=ansible | /mnt/install/              : ok=5    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-01 11:56:59,385 p=70124 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly 
+instead. This feature will be removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 11:56:59,505 p=70124 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  found unknown escape character
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/debugmsg.yml': line 55, column 28, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  zfs:
+    name: "{{ _root_pool }}\home\{{ user_name }}"
+                           ^ here
+We could be wrong, but this one looks like it might be an issue with
+missing quotes. Always quote template expression brackets when they
+start a value. For instance:
+
+    with_items:
+      - {{ foo }}
+
+Should be written as:
+
+    with_items:
+      - "{{ foo }}"
+
+2022-06-01 12:03:05,171 p=70469 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly 
+instead. This feature will be removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 12:03:05,313 p=70469 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  found unknown escape character
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/debugmsg.yml': line 68, column 28, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  zfs:
+    name: "{{ _root_pool }}\home\{{ user_name }}"
+                           ^ here
+We could be wrong, but this one looks like it might be an issue with
+missing quotes. Always quote template expression brackets when they
+start a value. For instance:
+
+    with_items:
+      - {{ foo }}
+
+Should be written as:
+
+    with_items:
+      - "{{ foo }}"
+
+2022-06-01 12:03:09,792 p=70472 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly 
+instead. This feature will be removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 12:03:09,912 p=70472 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  found unknown escape character
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/debugmsg.yml': line 68, column 28, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  zfs:
+    name: "{{ _root_pool }}\home\{{ user_name }}"
+                           ^ here
+We could be wrong, but this one looks like it might be an issue with
+missing quotes. Always quote template expression brackets when they
+start a value. For instance:
+
+    with_items:
+      - {{ foo }}
+
+Should be written as:
+
+    with_items:
+      - "{{ foo }}"
+
+2022-06-01 12:03:37,286 p=70474 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly 
+instead. This feature will be removed from ansible-base in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-01 12:03:37,413 p=70474 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  found unknown escape character
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live/02-chroot/tasks/debugmsg.yml': line 68, column 28, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  zfs:
+    name: "{{ _root_pool }}\home\{{ user_name }}"
+                           ^ here
+We could be wrong, but this one looks like it might be an issue with
+missing quotes. Always quote template expression brackets when they
+start a value. For instance:
+
+    with_items:
+      - {{ foo }}
+
+Should be written as:
+
+    with_items:
+      - "{{ foo }}"
+

@@ -38,3 +38,34 @@
 #  when: grubinstalled.stat.exists
 #  when: ansible_facts['os_family'] == "Debian"
   tags: chroot_debug
+
+
+######################################################################################################
+
+# If you only want to ensure that one user and group exists the following can be used
+- debug:  msg="username passwords {{ user_name }} {{ user_password }}"
+  tags: chroot_debug
+
+##- name: "elso"
+#  command: "zfs create -o mountpoint=/home/{{ user_name }} {{ _root_pool }}/home/{{ user_name }}"
+#- debug:  "msg= zfs create -o mountpoint=/home/""{{ user_name }}" "{{ _root_pool }}""/home/""{{ user_name }}"
+#  tags: chroot_debug
+
+- name: create users home directory
+  zfs:
+    name: "{{ _root_pool }}\home\{{ user_name }}"
+    state: present
+  tags:
+    - chroot_debug
+
+#- shell: adduser --disabled-password --gecos " " "{{ user_name }}"
+#  tags: chroot_debug
+#- shell: cp -a /etc/skel/. /home/"{{ user_name }}"
+#  tags: chroot_debug
+#- shell: chown -R "{{user_name}}:{{user_name}} /home/{{user_name}}"
+#  tags: chroot_debug
+#- shell: usermod -a -G adm,cdrom,dip,lpadmin,lxd,plugdev,sambashare,sudo "{{user_name}}"
+#  tags: chroot_debug
+#- shell: echo -e "{{user_name}}:{{_password}}" | chpasswd
+#  tags: chroot_debug
+

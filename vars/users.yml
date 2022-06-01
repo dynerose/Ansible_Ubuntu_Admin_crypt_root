@@ -8,3 +8,9 @@ _users:
     home: /home/user1    # Defaults to /home/<username>
 
 # ansible web -m ansible.builtin.user -a "name=adambertram uid=1041 group=admin"
+
+_user_volumes:
+  - name: "{{ _root_pool }}/home"
+  - name: "{{ _root_pool }}/home/sa"
+    properties:
+      mountpoint: /home/sa

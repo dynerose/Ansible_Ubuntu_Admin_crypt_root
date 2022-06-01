@@ -22,10 +22,15 @@
 
 - name: create users home directory
   zfs:
+    name: "{{ _root_pool }}/home/{{ user_name }}"
+    state: present
+  tags:
+    - chroot_users
+
+- name: create users home directory
+  zfs:
     name: "{{ _root_pool }}/home/{{ item.name }}"
     state: present
-    extra_zfs_properties:
-      com.sun:auto-snapshot: false
   with_items:
     - "{{ _users }}"
   tags:
@@ -36,10 +41,10 @@
 #  register: user_on_board
 #  ignore_errors: yes 
 #  continue with the playbook
-- debug:
-    msg: username passwords {{ user_name }} {{ user_password }}
-  tags:
-    - chroot_users
+#- debug:
+#    msg: username passwords {{ user_name }} {{ user_password }}
+#  tags:
+#    - chroot_users
 
 - name: Adding user sudo
   user:
@@ -48,7 +53,7 @@
     shell: /bin/bash
     groups: users,sudo
     append: yes
-    password: "{{ user_password | password_hash('sha512') }}"
+    password: "{{ _root_password_hash }}"
     create_home: yes
     home: "/home/{{ user_name }}"
   tags:
@@ -66,7 +71,7 @@
     home: "/home/{{ item.name }}"
   with_items: "{{ _users }}"
   tags:
-    - chroot_users
+    - chroot_userseret
 
 # cp -a /etc/skel/. /home/"$user"
 # chown -R "$user":"$user" /home/"$user"
