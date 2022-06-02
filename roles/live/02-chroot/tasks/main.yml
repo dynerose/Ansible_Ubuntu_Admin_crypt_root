@@ -18,7 +18,7 @@
 - import_tasks: configure.yml
   tags:
     - chroot_configure
-
+    - chroot_configure_swap
 #- import_tasks: data_array.yml
 #  tags:
 #    - chroot_data_array

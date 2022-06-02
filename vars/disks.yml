@@ -4,16 +4,17 @@ _zap_disks: true
 _efi: true
 _grub: false
 _swap: true
+_zfs_swap: true
 _crypt: true
 _lukscrypt: false
 _legacy_device_nodes: false
 _mdadm: false
-_raid: true
+_raid: false
 _zfs_boot: false
 _zfs_docker: true
 
 _system_disks:
-  - sdf
+  - sde
 #  - sda
 #  - sdb
 #  - sdc

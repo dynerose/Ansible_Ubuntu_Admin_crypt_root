@@ -4,74 +4,57 @@
   shell: "addgroup --system lpadmin"
   tags:
     - chroot_users
+
 - name: addgroup --system lxd
   shell: "addgroup --system lxd"
   tags:
     - chroot_users
+
 - name: addgroup --system sambashare
   shell: "addgroup --system sambashare"
   tags:
     - chroot_users
 
-
-#root_pool/home             384K  13.5G      192K  none
-#root_pool/home/root        192K  13.5G      192K  none
-#name: "{{ _root_pool }}/var/cache"
-#    properties:
-#      com.sun:auto-snapshot: false
-
-- name: create users home directory
-  zfs:
-    name: "{{ _root_pool }}/home/{{ user_name }}"
-    state: present
+- name: Check if user exists
+  command: getent passwd {{ user_name }}
+  register: user_on_board
+  ignore_errors: yes
   tags:
     - chroot_users
 
-- name: create users home directory
-  zfs:
-    name: "{{ _root_pool }}/home/{{ item.name }}"
-    state: present
-  with_items:
-    - "{{ _users }}"
+- debug: msg= username passwords {{ user_name }} {{ user_password }}
   tags:
     - chroot_users
 
-#- name: Check if user exists
-#  command: getent passwd {{ user_name }}
-#  register: user_on_board
-#  ignore_errors: yes 
-#  continue with the playbook
-#- debug:
-#    msg: username passwords {{ user_name }} {{ user_password }}
-#  tags:
-#    - chroot_users
-
-- name: Adding user sudo
-  user:
-    name: "{{ user_name }}"
-    comment: "Alap system user"
-    shell: /bin/bash
-    groups: users,sudo
-    append: yes
-    password: "{{ _root_password_hash }}"
-    create_home: yes
-    home: "/home/{{ user_name }}"
-  tags:
-    - chroot_users
-
-- name: Adding users
+- name: Delete user
   user:
     name: "{{ item.name }}"
-    comment: "Alap users"
-    shell: /bin/bash
-    groups: users,sudo
-    append: yes
-    password: "{{ item.password | password_hash('sha512') }}"
-    create_home: yes
-    home: "/home/{{ item.name }}"
+    state: absent
+    remove: true
+    force: true
   with_items: "{{ _users }}"
   tags:
-    - chroot_userseret
+    - chroot_users
 
-# cp -a /etc/skel/. /home/"$user"
-# chown -R "$user":"$user" /home/"$user"
+- name: Adding user
+  user:
+    name: "{{ item.name }}"
+    state: present
+    comment: "{{ item.comment }}"
+    shell: /bin/bash
+    groups: "{{ item.groups }}"
+    append: yes
+    password: "{{ _root_password_hash }}"
+#    password: "{{ userpass | password_hash('sha512') }}"
+    update_password: on_create
+    create_home: yes
+    generate_ssh_key: yes
+#    ssh_key_type: rsa
+    ssh_key_type: ed25519
+    ssh_key_bits: 4096
+    ssh_key_file: ".ssh/{{ item.ssh_key_filename }}"
+#    ssh_key_passphrase: "{{ssh_passphrase}}"
+    force: no
+  with_items: "{{ _users }}"
+  tags:
+    - chroot_users

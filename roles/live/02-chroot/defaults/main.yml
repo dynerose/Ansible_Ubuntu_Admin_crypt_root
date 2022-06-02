@@ -9,6 +9,16 @@ curl_address: https://launchpadlibrarian.net/478315221/2150-fix-systemd-dependen
 curl_sed: '"s|/etc|/lib|;s|\.in$||"'
 curl_patch: "(cd / ; sudo patch -p1)"
 
+zfs_swap_opts:
+  volsize: 4G
+  compression: zle
+  logbias: throughput
+  sync: always
+  primarycache: metadata
+  secondarycache: none
+  com.sun:auto-snapshot: false
+zfs_grub_cmdline: "elevator=noop"
+
 # Define Raid Arrays to manage
 mdadm_arrays:
     # Define array name

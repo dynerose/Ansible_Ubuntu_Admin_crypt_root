@@ -1,16 +1,19 @@
 _users:
-  - name: user1
+  - name: sa
     password: Password
-    comment: AdamListek
-    uid: 1077
-    group: sudo
-    createhome: yes        # Defaults to yes
-    home: /home/user1    # Defaults to /home/<username>
-
+    comment: Test
+    uid: 1100
+    groups: sudo, users
+    createhome: yes # Defaults to yes
+    home: /home/sa  # Defaults to /home/<username>
+    ssh_key_filename: id_rsa_user
+    ssh_passphrase: Password
 # ansible web -m ansible.builtin.user -a "name=adambertram uid=1041 group=admin"
 
 _user_volumes:
-  - name: "{{ _root_pool }}/home"
   - name: "{{ _root_pool }}/home/sa"
+    properties:
+      mountpoint: /home/sa
+  - name: "{{ _root_pool }}/home/user1"
     properties:
       mountpoint: /home/sa

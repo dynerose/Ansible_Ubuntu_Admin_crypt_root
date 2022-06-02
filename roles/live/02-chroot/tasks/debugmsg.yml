@@ -51,12 +51,6 @@
 #- debug:  "msg= zfs create -o mountpoint=/home/""{{ user_name }}" "{{ _root_pool }}""/home/""{{ user_name }}"
 #  tags: chroot_debug
 
-- name: create users home directory
-  zfs:
-    name: "{{ _root_pool }}\home\{{ user_name }}"
-    state: present
-  tags:
-    - chroot_debug
 
 #- shell: adduser --disabled-password --gecos " " "{{ user_name }}"
 #  tags: chroot_debug
@@ -69,3 +63,56 @@
 #- shell: echo -e "{{user_name}}:{{_password}}" | chpasswd
 #  tags: chroot_debug
 
+
+- name: create zfs swap
+  shell : "zfs create -V 4G -b $(getconf PAGESIZE) -o compression=off -o logbias=throughput -o sync=always -o primarycache=metadata -o secondarycache=none {{ _root_pool }}/swap"
+  when:
+    - _zfs_swap | default(false) | bool == true
+    - _crypt | default(false) | bool == true
+    - _raid | default(false) | bool != true
+    - _lukscrypt | default(false) | bool  != true
+  tags:
+    - chroot_debug
+    - chroot_configure_swap
+
+
+#mkswap -f /dev/zvol/$POOL/swap
+#echo "/dev/zvol/$POOL/swap none swap defaults 0 0" >> /etc/fstab
+#echo RESUME=none > /etc/initramfs-tools/conf.d/resume
+
+#- name: create swap zvol
+#  zfs:
+#    name: "{{ _root_pool }}/swap "
+#    state: present
+#    extra_zfs_properties:
+#      "{{ zfs_swap_opts }}"
+#    when:
+#      - _zfs_swap | default(false) | bool == true
+#      - _crypt | default(false) | bool == true
+#      - _raid | default(false) | bool != true
+#      - _lukscrypt | default(false) | bool  != true
+#    tags:
+#      - chroot_configure_swap
+
+- name: mkswap For an encrypted (native ZFS encryption) single-disk install
+  shell: "mkswap -f /dev/zvol/{{_root_pool}}/swap  && echo /dev/zvol/{{_root_pool}}/swap  none swap,defaults 0 0 >> /etc/fstab  && swapon -av"
+  when:
+    - _crypt | default(false) | bool == true
+    - _raid | default(false) | bool != true
+    - _zfs_swap | default(false) | bool == true
+  tags:
+    - chroot_configure_swap
+    - chroot_debug
+
+- lineinfile:
+    line: "RESUME=none"
+    path: /etc/initramfs-tools/conf.d/resume
+    create: yes
+    state: present
+  when:
+    - _crypt | default(false) | bool == true
+    - _raid | default(false) | bool != true
+    - _zfs_swap | default(false) | bool == true
+  tags:
+    - chroot_configure_swap
+    - chroot_debug

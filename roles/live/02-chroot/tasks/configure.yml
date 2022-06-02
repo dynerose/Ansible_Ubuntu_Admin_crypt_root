@@ -237,28 +237,47 @@
 
 # #For an encrypted (ZFS native encryption) single-disk install:
 ###############################################################################
-- name: create swap zvol
-  zfs:
-    name: "{{_root_pool}}/swap"
-    state: present
-    extra_zfs_properties:
-      "{{ _zfsprep_swap_opts }}"
-    when:
-      - _zfs_swap | default(false) | bool == true
-      - _crypt | default(false) | bool == true
-      - _raid | default(false) | bool != true
-      - _lukscrypt | default(false) | bool  != true
-    tags:
-      - chroot_configure
+
+- name: create zfs swap
+  shell : "zfs create -V 4G -b $(getconf PAGESIZE) -o compression=off -o logbias=throughput -o sync=always -o primarycache=metadata -o secondarycache=none {{ _root_pool }}/swap"
+  when:
+    - _zfs_swap | default(false) | bool == true
+    - _crypt | default(false) | bool == true
+    - _raid | default(false) | bool != true
+    - _lukscrypt | default(false) | bool  != true
+  tags:
+    - chroot_configure
+    - chroot_configure_swap
+
+
+#mkswap -f /dev/zvol/$POOL/swap
+#echo "/dev/zvol/$POOL/swap none swap defaults 0 0" >> /etc/fstab
+#echo RESUME=none > /etc/initramfs-tools/conf.d/resume
+
+#- name: create swap zvol
+#  zfs:
+#    name: "{{ _root_pool }}/swap "
+#    state: present
+#    extra_zfs_properties:
+#      "{{ zfs_swap_opts }}"
+#    when:
+#      - _zfs_swap | default(false) | bool == true
+#      - _crypt | default(false) | bool == true
+#      - _raid | default(false) | bool != true
+#      - _lukscrypt | default(false) | bool  != true
+#    tags:
+#      - chroot_configure_swap
 
 - name: mkswap For an encrypted (native ZFS encryption) single-disk install
-  shell: "mkswap -f /dev/zvol/{{_root_pool}}/swap  && echo /dev/zvol/{{_root_pool}}/swap  none swap,defaults 0 0 >> /etc/fstab  && swapon -av"
+  shell: "mkswap -f /dev/zvol/{{_root_pool}}/swap  && echo /dev/zvol/{{_root_pool}}/swap  none swap,defaults 0 0 >> /etc/fstab  && swapon -av /dev/zvol/{{_root_pool}}/swap"
   when:
     - _crypt | default(false) | bool == true
     - _raid | default(false) | bool != true
     - _zfs_swap | default(false) | bool == true
   tags:
+    - chroot_configure_swap
     - chroot_configure
+
 - lineinfile:
     line: "RESUME=none"
     path: /etc/initramfs-tools/conf.d/resume
@@ -268,7 +287,9 @@
     - _crypt | default(false) | bool == true
     - _raid | default(false) | bool != true
     - _zfs_swap | default(false) | bool == true
-###############################################################################
+  tags:
+    - chroot_configure_swap
+    - chroot_configure
 
 # #For an encrypted (LUKS encryption) single-disk install:
 ###############################################################################
@@ -279,6 +300,7 @@
     - _raid | default(false) | bool != true
     - _zfs_swap | default(false) | bool != true
   tags:
+    - chroot_configure_swap
     - chroot_configure
 
 - name: /dev/mapper/swap
@@ -288,6 +310,7 @@
     - _raid | default(false) | bool != true
     - _zfs_swap | default(false) | bool != true
   tags:
+    - chroot_configure_swap
     - chroot_configure
 
 
@@ -302,6 +325,7 @@
   when:
     - _crypt | default(false) | bool == true
     - _raid | default(false) | bool == true
+    - _zfs_swap | default(false) | bool != true
   ignore_errors: true
   tags:
     - chroot_configure
@@ -311,6 +335,7 @@
   when:
     - _crypt | default(false) | bool == true
     - _raid | default(false) | bool == true
+    - _zfs_swap | default(false) | bool != true
   tags:
     - chroot_configure
 
@@ -319,6 +344,7 @@
   when:
     - _crypt | default(false) | bool == true
     - _raid | default(false) | bool == true
+    - _zfs_swap | default(false) | bool != true
   tags:
     - chroot_configure
 
@@ -332,6 +358,7 @@
   when:
     - _crypt | default(false) | bool == true
     - _raid | default(false) | bool == true
+    - _zfs_swap | default(false) | bool != true
   tags:
     - chroot_configure
 
