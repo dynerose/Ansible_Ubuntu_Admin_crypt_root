@@ -1,0 +1,63 @@
+---
+# tasks file for 03-chroot-final
+- name: Create a snapshot of {{_root_pool }}/root file system.
+  zfs:
+    name: "{{ _root_pool }}/ROOT/ubuntu@{{ ansible_date_time.date }}install2"
+    state: present
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - chroot_end
+
+- name: Create a snapshot of {{_root_pool }}/root file system.
+  zfs:
+    name: "{{ _root_pool }}/root@{{ ansible_date_time.date }}install2"
+    state: present
+  when:
+    - _zfs_boot | default(false) | bool != true
+  tags:
+    - chroot_end
+
+#- name: Autoremove unused packages
+#  command: "mount | grep -v zfs | tac | awk '/\/mnt/ {print $3}' | xargs -i{} umount -lf {}"
+#  tags:
+#    - chroot_end
+
+- name: umount1
+  shell: "mount | grep -v zfs | tac | awk '/\/mnt/ {print $3}' | xargs -i{} umount -lf {}"
+# mount | grep -v zfs | tac | awk '/\/mnt/ {print $3}' | xargs -i{} umount -lf {}
+  tags:
+    - chroot_end
+
+- name: Unmount2  All Directories
+  mount:
+    name: "{{ item }}"
+    state: unmounted
+    fstype: none
+    src: none
+  become: True
+  with_items:
+   - "{{ _installdir }}/dev"
+   - "{{_installdir}}/proc"
+   - "{{_installdir}}/sys"
+#   - "{{_installdir}}/boot/efi"
+   - "{{_installdir}}/boot"
+   - "{{_installdir}}/home"
+   - "{{_installdir}}/boot/efi"
+   - "{{_installdir}}/boot"
+#   - "{{_installdir}}/tmpfs"
+  tags:
+    - chroot_end
+
+- name: export all bpool
+  shell: zpool export {{_boot_pool}}
+  when:
+    - _zfs_boot | default(false) | bool == true
+  tags:
+    - chroot_end
+
+- name: export all zpool
+  shell: zpool export {{_root_pool}}
+  tags:
+    - chroot_end
+

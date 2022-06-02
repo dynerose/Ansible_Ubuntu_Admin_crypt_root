@@ -43,7 +43,19 @@
   tags:
     - chroot_finaly
 
+- import_tasks: netplan.yml
+  when: netplan_enabled
+  tags:
+    - chroot_netplan
+
 - import_tasks: final.yml
   tags:
     - chroot_final
+
+- import_tasks: end.yml
+  tags:
+    - chroot_end
+    - chroot_end1
+    - chroot_end11
+    - chroot_end12
 
