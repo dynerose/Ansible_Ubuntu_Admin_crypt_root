@@ -1,0 +1,8 @@
+# directories
+
+- name: Create Directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ _config_directory }}"

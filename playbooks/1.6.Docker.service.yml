@@ -1,0 +1,34 @@
+---
+- hosts: local
+#  user: root
+  become: true
+  connection: local
+  vars_files:
+    - ../vars/main.yml
+    - ../vars/services.yml
+  ###
+  ### Requirements
+  ###
+  roles:
+    - role: glances
+      tags:
+        - glances
+      when: (glances_enabled | default(False))
+
+    - role: portainer
+      tags:
+        - portainer
+      when: (portainer_enabled | default(False))
+
+  tasks:
+    - import_tasks: tasks/stats.yml
+      when: (stats_enabled | default(False))
+      tags: stats
+
+    - import_tasks: tasks/calibre.yml
+      when: (calibre_enabled | default(False))
+      tags: calibre
+
+    - import_tasks: tasks/cops.yml
+      when: (calibre_enabled | default(False))
+      tags: cops

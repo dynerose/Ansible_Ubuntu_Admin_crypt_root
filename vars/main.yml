@@ -4,11 +4,13 @@ _root_password_hash: "DC647EB65E6711E155375218212B3964"  # "{{ _password }}"
 # Your email and domain, used for Let's Encrypt SSL certs
 _email: me@info.local
 
+
 # Applications will have subdomain SSL certificates created if Traefik is enabled, e.g. ansible-nas.<your-domain>, nextcloud.<your-domain>
 _domain: info.local
 _hostname:
   short: TEST
   long: TEST.local.com
+
 
 _installdir: /mnt/install
 

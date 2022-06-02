@@ -1,0 +1,22 @@
+---
+- hosts: local
+#  user: root
+  become: true
+  connection: local
+  vars_files:
+    - ../vars/main.yml
+    - ../vars/services.yml
+  ###
+  ### Requirements
+  ###
+  roles:
+    - role: server-general
+#    tags:
+#      - server-general
+  ###
+  ### Requirements
+  ###
+
+  ###
+  ### Applications
+  ###

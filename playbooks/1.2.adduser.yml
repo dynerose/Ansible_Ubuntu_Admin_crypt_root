@@ -1,0 +1,48 @@
+---
+- hosts: local
+  connection: local
+  vars_files:
+    - ../vars/main.yml
+    - ../vars/system_services.yml
+#    - ../vars/add_user.yml
+  vars_prompt:
+    - name: "users_name"
+      prompt: "Enter User Name"
+      default: "username"
+      private: no
+      confirm: yes
+    - name: "user_password"
+      prompt: "Enter User Password"
+      default: "password"
+#      encrypt: "sha512_crypt"
+      private: yes
+      confirm: yes
+  vars:
+    users:
+      - username: "{{ users_name }}"
+#        name: Test
+        home_create: yes
+ #       home: /root
+        home_mode: "0750"
+        groups:
+          - users
+          - root
+#      authorized_keys:
+#        - "{{ lookup('file', 'tests/id_rsa.pub') }}"
+#      ssh_key: "{{ lookup('file', 'tests/id_rsa') }}"
+        ssh_key_generate: yes
+        ssh_key_password: "{{ user_password }}"
+        user_create: yes
+        append: yes
+  roles:
+    - role: addusers
+#  tasks:
+#    - name: generate SSH key "{{ssh_key_filename}}"
+#      user:
+#        name: "{{ansible_user}}"
+#        generate_ssh_key: yes
+#        ssh_key_type: rsa
+#        ssh_key_bits: 4096
+#        ssh_key_file: .ssh/{{ssh_key_filename}}
+#        ssh_key_passphrase: "{{ssh_passphrase}}"
+#        force: no

@@ -1,0 +1,96 @@
+---
+- include_tasks: setup-Debian.yml
+  when:
+    - ansible_os_family == 'Debian'
+    - need_docker  | bool
+  tags: docker
+
+- name: Install Docker.
+  package:
+    name: "{{ docker_package }}"
+    state: "{{ docker_package_state }}"
+  notify: restart docker
+  when:
+    - need_docker | bool
+  tags: docker
+
+- name: Ensure Docker is started and enabled at boot.
+  service:
+    name: docker
+    state: "{{ docker_service_state }}"
+    enabled: "{{ docker_service_enabled }}"
+  ignore_errors: "{{ ansible_check_mode }}"
+  when:
+    - need_docker | bool
+  tags: docker
+
+#- name: Ensure handlers are notified now to avoid firewall conflicts.
+#  meta: flush_handlers
+#  when:
+#    - need_docker
+#  tags: docker
+
+- include_tasks: docker-compose.yml
+  when:
+    - docker_install_compose | bool
+    - need_docker | bool
+  tags: docker
+
+- include_tasks: docker-users.yml
+  when:
+    - docker_users | length > 0
+    - need_docker | bool
+  tags: docker
+
+- name: Creates directory
+  file:
+    path: "{{ docker_config_graph }}"
+    state: directory
+    mode: 0755
+    owner: "{{ docker_users  | first }}"
+    group: users
+  when:
+    - docker_users | length > 0
+    - need_docker | bool
+  tags: docker
+
+- name: Creates directory docker_home
+  file:
+    path: "{{ docker_home }}"
+    state: directory
+    mode: 0755
+    owner: "{{ docker_users  | first }}"
+    group: users
+  when:
+    - docker_users | length > 0
+    - need_docker | bool
+  tags: docker
+
+# configure docker deamon json file
+- name: configure docker daemon.json
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+    mode: 0400
+    owner: root
+    group: root
+  notify: restart docker
+  when:
+    - docker_users | length > 0
+    - need_docker | bool
+  tags: docker
+
+#/etc/docker. The file should have this content:
+#{
+#  "data-root": "/path/to/your/docker"
+#}
+#of course you should customize the location “/path/to/your/docker” with the path you want to use for your new docker data directory.
+#
+#3. COPY THE CURRENT DATA DIRECTORY TO THE NEW ONE
+#sudo rsync -aP /var/lib/docker/ /path/to/your/docker
+#4. RENAME THE OLD DOCKER DIRECTORY
+#sudo mv /var/lib/docker /var/lib/docker.old
+#This is just a sanity check to see that everything is ok and docker daemon will effectively use the new location for its data.
+#
+#5. RESTART THE DOCKER DAEMON
+#sudo service docker start

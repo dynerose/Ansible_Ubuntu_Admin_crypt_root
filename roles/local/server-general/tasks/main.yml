@@ -1,0 +1,75 @@
+---
+- name: Set login banner
+  copy:
+    src: motd.txt
+    dest: /etc/motd
+  tags:
+    - server-general
+
+- apt:
+    name: software-properties-common
+    state: present
+  ignore_errors: yes
+  when: ansible_facts['os_family'] == "Debian"
+  tags:
+    - server-general
+
+- shell: add-apt-repository universe
+  ignore_errors: yes
+  when: ansible_facts['os_family'] == "Debian"
+  tags:
+    - server-general
+
+- name: update apt cache
+  become: true
+  apt:
+    update_cache: yes
+    upgrade: 'yes'
+  ignore_errors: yes
+  register: apt_check
+  when: ansible_facts['os_family'] == "Debian"
+  tags:
+    - server-general
+
+- name: "Check if listed package is installed or not on Debian Linux family"
+  package:
+    name: "{{ item }}"
+    state: present
+  check_mode: true
+  loop: "{{ dependencies.global }}"
+  register: package_check
+  when: apt_check and ansible_facts['os_family'] == "Debian"
+  tags:
+    - server-general
+
+- name: "Print execution results"
+  debug:
+    msg: "Package is installed"
+  when: package_check is succeeded
+  tags:
+    - server-general
+
+
+#  - name: Configure smartmontools
+
+- name: "Set hostname to {{ _hostname.short }}"
+  hostname:
+    name: "{{ _hostname.short }}"
+  tags:
+    - server-general
+
+- name: "Set timezone to {{ _timezone }}"
+  timezone:
+    name: "{{ _timezone }}"
+  tags:
+    - server-general
+
+#- name: "Permission share directories"
+#  file:
+#    path: "{{ item.path }}"
+#    state: directory
+#    owner: ansible-nas
+#    group: ansible-nas
+#    mode: "u=rwX,g=rwX,o=rX"
+#    recurse: false
+#  loop: "{{ samba_shares }}"

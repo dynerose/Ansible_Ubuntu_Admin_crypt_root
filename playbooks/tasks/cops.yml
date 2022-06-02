@@ -1,0 +1,31 @@
+---
+# admin and password as admin123, and click on the Login
+- name: Create Cops web
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ cops_data_directory }}/config"
+
+- name: Cops Docker Container
+  docker_container:
+    name: cops
+    image: ghcr.io/linuxserver/cops
+    pull: true
+    volumes:
+      - "{{ cops_data_directory }}/config:/config"
+      - "{{ calibre_books_root }}:/books"
+    env:
+      TZ: "{{ _timezone }}"
+      PUID: "{{ calibre_user_id }}"
+      PGID: "{{ calibre_group_id }}"
+    ports:
+      - "{{ cops_port }}:80"
+    restart_policy: unless-stopped
+    labels:
+      traefik.enable: "{{ calibre_available_externally }}"
+      traefik.http.routers.calibre.rule: "Host(`calibre.{{ ansible_nas_domain }}`)"
+      traefik.http.routers.calibre.tls.certresolver: "letsencrypt"
+      traefik.http.routers.calibre.tls.domains[0].main: "{{ ansible_nas_domain }}"
+      traefik.http.routers.calibre.tls.domains[0].sans: "*.{{ ansible_nas_domain }}"
+      traefik.http.services.calibre.loadbalancer.server.port: "80"

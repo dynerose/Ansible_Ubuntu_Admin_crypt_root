@@ -1,0 +1,34 @@
+---
+# Sets the hostname of your server
+_hostname: info
+
+server_extra_packages:
+  server:
+#dependencies:
+#  global:
+    - software-properties-common
+    - ansible
+    - curl
+    - debootstrap
+    - dosfstools
+    - ethtool
+    - gdisk
+    - git
+    - gpart
+    - gparted
+    - htop
+    - lshw
+    - openssh-server
+    - mc
+    - nano
+    - net-tools
+    - ncdu
+    - parted
+    - p7zip-full
+    - python3-pip
+    - rsync
+    - ssh-askpass
+    - strace
+    - tree
+    - wget
+#    - zstd
