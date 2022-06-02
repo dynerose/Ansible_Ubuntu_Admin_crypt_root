@@ -10278,3 +10278,39 @@ feature will be removed from community.general in version 3.0.0. Deprecation war
 2022-06-02 10:56:39,996 p=8882 u=root n=ansible | changed: [local_zfs_root]
 2022-06-02 10:56:40,415 p=8882 u=root n=ansible | TASK [portainer : Create Portainer Directories] *********************************************************************************************************************************************************************************************
 2022-06-02 10:56:40,416 p=8882 u=root n=ansible | changed: [local_zfs_root] => (item=/mnt/data2000-new/docker-data/portainer/config)
+2022-06-02 10:57:11,971 p=8882 u=root n=ansible | TASK [portainer : Portainer Docker Container] ***********************************************************************************************************************************************************************************************
+2022-06-02 10:57:11,973 p=8882 u=root n=ansible | changed: [local_zfs_root]
+2022-06-02 10:57:12,232 p=8882 u=root n=ansible | TASK [Create InfluxDB and Telegraf Directories] *********************************************************************************************************************************************************************************************
+2022-06-02 10:57:12,232 p=8882 u=root n=ansible | changed: [local_zfs_root] => (item=/mnt/data2000-new/docker-data/influxdb)
+2022-06-02 10:57:12,431 p=8882 u=root n=ansible | changed: [local_zfs_root] => (item=/mnt/data2000-new/docker-data/telegraf)
+2022-06-02 10:57:12,644 p=8882 u=root n=ansible | TASK [Create Grafana Directories] ***********************************************************************************************************************************************************************************************************
+2022-06-02 10:57:12,645 p=8882 u=root n=ansible | changed: [local_zfs_root] => (item=/mnt/data2000-new/docker-data/grafana)
+2022-06-02 10:57:12,809 p=8882 u=root n=ansible | changed: [local_zfs_root] => (item=/mnt/data2000-new/docker-data/grafana/data)
+2022-06-02 10:57:12,962 p=8882 u=root n=ansible | changed: [local_zfs_root] => (item=/mnt/data2000-new/docker-data/grafana/data/dashboards/ansible-nas)
+2022-06-02 10:57:13,115 p=8882 u=root n=ansible | changed: [local_zfs_root] => (item=/mnt/data2000-new/docker-data/grafana/config/)
+2022-06-02 10:57:13,269 p=8882 u=root n=ansible | changed: [local_zfs_root] => (item=/mnt/data2000-new/docker-data/grafana/config/provisioning)
+2022-06-02 10:57:13,424 p=8882 u=root n=ansible | changed: [local_zfs_root] => (item=/mnt/data2000-new/docker-data/grafana/config/provisioning/datasources)
+2022-06-02 10:57:13,581 p=8882 u=root n=ansible | changed: [local_zfs_root] => (item=/mnt/data2000-new/docker-data/grafana/config/provisioning/dashboards)
+2022-06-02 10:57:47,118 p=8882 u=root n=ansible | TASK [InfluxDB] *****************************************************************************************************************************************************************************************************************************
+2022-06-02 10:57:47,120 p=8882 u=root n=ansible | changed: [local_zfs_root]
+2022-06-02 10:57:47,192 p=8882 u=root n=ansible | TASK [hddtemp] ******************************************************************************************************************************************************************************************************************************
+2022-06-02 10:57:47,193 p=8882 u=root n=ansible | fatal: [local_zfs_root]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'ansible_nas_timezone' is undefined\n\nThe error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/playbooks/tasks/stats.yml': line 39, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n- name: hddtemp\n  ^ here\n"}
+2022-06-02 10:57:47,198 p=8882 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/1.6.Docker.service.retry
+
+2022-06-02 10:57:47,198 p=8882 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-02 10:57:47,199 p=8882 u=root n=ansible | local_zfs_root             : ok=7    changed=6    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-02 10:59:36,426 p=10198 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in 
+version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-02 10:59:36,639 p=10198 u=root n=ansible | PLAY [local] ********************************************************************************************************************************************************************************************************************************
+2022-06-02 10:59:37,504 p=10198 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-02 10:59:37,504 p=10198 u=root n=ansible | ok: [local_zfs_root]
+2022-06-02 10:59:39,833 p=10198 u=root n=ansible | TASK [glances : Create Glances Container] ***************************************************************************************************************************************************************************************************
+2022-06-02 10:59:39,834 p=10198 u=root n=ansible | [DEPRECATION WARNING]: The container_default_behavior option will change its default value from "compatibility" to "no_defaults" in community.general 3.0.0. To remove this warning, please specify an explicit value for it now. This 
+feature will be removed from community.general in version 3.0.0. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-02 10:59:39,834 p=10198 u=root n=ansible | ok: [local_zfs_root]
+2022-06-02 10:59:40,112 p=10198 u=root n=ansible | TASK [portainer : Create Portainer Directories] *********************************************************************************************************************************************************************************************
+2022-06-02 10:59:40,113 p=10198 u=root n=ansible | ok: [local_zfs_root] => (item=/mnt/data2000-new/docker-data/portainer/config)
+2022-06-02 10:59:42,231 p=10198 u=root n=ansible | TASK [portainer : Portainer Docker Container] ***********************************************************************************************************************************************************************************************
+2022-06-02 10:59:42,233 p=10198 u=root n=ansible | ok: [local_zfs_root]
+2022-06-02 10:59:42,874 p=10198 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-02 10:59:42,875 p=10198 u=root n=ansible | local_zfs_root             : ok=4    changed=0    unreachable=0    failed=0    skipped=14   rescued=0    ignored=0   

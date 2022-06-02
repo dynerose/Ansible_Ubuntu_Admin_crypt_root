@@ -3,7 +3,7 @@ need_docker: true
 docker_home: /mnt/data2000-new/docker-data
 
 # System Management
-stats_enabled: true
+stats_enabled: false
 guacamole_enabled: false
 virtual_desktop_enabled: false
 krusader_enabled: false
