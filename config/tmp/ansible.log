@@ -10314,3 +10314,74 @@ feature will be removed from community.general in version 3.0.0. Deprecation war
 2022-06-02 10:59:42,233 p=10198 u=root n=ansible | ok: [local_zfs_root]
 2022-06-02 10:59:42,874 p=10198 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
 2022-06-02 10:59:42,875 p=10198 u=root n=ansible | local_zfs_root             : ok=4    changed=0    unreachable=0    failed=0    skipped=14   rescued=0    ignored=0   
+2022-06-13 11:37:58,071 p=8896 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in 
+version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-13 11:37:58,230 p=8896 u=root n=ansible | ERROR! the role 'drbd' was not found in /opt/Ansible_Ubuntu_Admin_crypt_root/playbooks/roles:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/local:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/profiles:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/vendors:/opt/Ansible_Ubuntu_Admin_crypt_root/playbooks
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/playbooks/R.drbd.yml': line 38, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  roles:
+    - role: drbd
+      ^ here
+
+2022-06-13 11:41:16,894 p=8956 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in 
+version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-13 11:41:16,895 p=8956 u=root n=ansible | ERROR! the playbook: ansible-playbook could not be found
+2022-06-13 11:41:30,545 p=8958 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in 
+version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-13 11:41:30,546 p=8958 u=root n=ansible | ERROR! the playbook: ansible-playbook could not be found
+2022-06-13 11:47:04,907 p=8990 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in 
+version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-13 11:47:04,907 p=8990 u=root n=ansible | ERROR! the playbook: ansible-playbook could not be found
+2022-06-13 11:47:35,597 p=8993 u=root n=ansible | [DEPRECATION WARNING]: DEFAULT_HASH_BEHAVIOUR option, this feature is fragile and not portable, leading to continual confusion and misuse, use the ``combine`` filter explicitly instead. This feature will be removed from ansible-base in 
+version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2022-06-13 11:47:35,597 p=8993 u=root n=ansible | ERROR! the playbook: ansible-playbook could not be found
+2022-06-13 11:48:03,048 p=9001 u=root n=ansible | ERROR! the playbook: ansible-playbook could not be found
+2022-06-13 11:48:14,208 p=9002 u=root n=ansible | ERROR! the playbook: ansible-playbook could not be found
+2022-06-13 11:48:38,422 p=9004 u=root n=ansible | ERROR! the role 'drbd' was not found in /opt/Ansible_Ubuntu_Admin_crypt_root/playbooks/roles:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/local:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/profiles:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/vendors:/opt/Ansible_Ubuntu_Admin_crypt_root/playbooks
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/playbooks/R.drbd.yml': line 38, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  roles:
+    - role: drbd
+      ^ here
+
+2022-06-13 11:50:37,954 p=9062 u=root n=ansible | ERROR! the role 'drbd' was not found in /opt/Ansible_Ubuntu_Admin_crypt_root/playbooks/roles:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/local:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/profiles:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/vendors:/opt/Ansible_Ubuntu_Admin_crypt_root/playbooks
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/playbooks/R.drbd.yml': line 39, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  roles:
+    - role: drbd
+      ^ here
+
+2022-06-13 11:57:30,263 p=9078 u=root n=ansible | ERROR! the role 'drbd' was not found in /opt/Ansible_Ubuntu_Admin_crypt_root/playbooks/roles:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/local:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/profiles:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/vendors:/opt/Ansible_Ubuntu_Admin_crypt_root/playbooks
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/playbooks/R.drbd.yml': line 7, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+#    - role: server-general
+    - role: drbd
+      ^ here
+
+2022-06-13 11:57:57,933 p=9081 u=root n=ansible | ERROR! the role 'drbd' was not found in /opt/Ansible_Ubuntu_Admin_crypt_root/playbooks/roles:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/local:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/live:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/profiles:/opt/Ansible_Ubuntu_Admin_crypt_root/roles/vendors:/opt/Ansible_Ubuntu_Admin_crypt_root/playbooks
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/playbooks/R.drbd.yml': line 7, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+#    - role: server-general
+    - drbd
+      ^ here
+

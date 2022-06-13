@@ -1,0 +1,49 @@
+---
+# tasks file for ansible-drbd
+
+- name: main | updating /etc/hosts (localhost)
+  template:
+    src: etc/hosts.j2
+    dest: /etc/hosts_new
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  tags:
+    - drbd
+    - debian
+
+- include_tasks: debian.yml
+  tags:
+    - drbd
+    - debian
+  when: ansible_os_family == "Debian"
+
+# tasks file for ansible-ntp
+- include_tasks: ntp.yml
+  when: ansible_os_family == "Debian"
+  tags:
+    - drbd
+    - debian
+
+- include_tasks: disks.yml
+  tags:
+    - drbd
+    - drbd-config
+    - drbd-disks
+
+- include_tasks: heartbeat.yml
+  tags:
+    - drbd
+    - drbd-heartbeat
+  when: drbd_use_heartbeat
+
+- include_tasks: config.yml
+  tags:
+    - drbd
+    - drbd-config
+
+- include_tasks: services.yml
+  tags:
+    - drbd
+    - drbd-services
