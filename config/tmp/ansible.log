@@ -10385,3 +10385,948 @@ The offending line appears to be:
     - drbd
       ^ here
 
+2022-06-13 12:03:29,935 p=9139 u=root n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: target
+
+2022-06-13 12:03:29,936 p=9139 u=root n=ansible | PLAY [target] *******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:03:29,937 p=9139 u=root n=ansible | skipping: no hosts matched
+2022-06-13 12:03:29,938 p=9139 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:03:48,974 p=9142 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:03:54,248 p=9146 u=root n=ansible | [WARNING]: Unhandled error in Python interpreter discovery for host zfsnode2: Failed to connect to the host via ssh: ssh: connect to host 0.0.7.200 port 1992: Connection timed out
+
+2022-06-13 12:03:54,255 p=9145 u=root n=ansible | [WARNING]: Unhandled error in Python interpreter discovery for host zfsnode1: Failed to connect to the host via ssh: ssh: connect to host 0.0.7.200 port 1992: Connection timed out
+
+2022-06-13 12:03:59,293 p=9142 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:03:59,296 p=9142 u=root n=ansible | fatal: [zfsnode2]: UNREACHABLE! => {"changed": false, "msg": "Data could not be sent to remote host \"1992\". Make sure this host can be reached over ssh: ssh: connect to host 0.0.7.200 port 1992: Connection timed out\r\n", "unreachable": true}
+2022-06-13 12:03:59,300 p=9142 u=root n=ansible | fatal: [zfsnode1]: UNREACHABLE! => {"changed": false, "msg": "Data could not be sent to remote host \"1992\". Make sure this host can be reached over ssh: ssh: connect to host 0.0.7.200 port 1992: Connection timed out\r\n", "unreachable": true}
+2022-06-13 12:03:59,303 p=9142 u=root n=ansible | NO MORE HOSTS LEFT **************************************************************************************************************************************************************************************************************************
+2022-06-13 12:03:59,306 p=9142 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-13 12:03:59,306 p=9142 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:03:59,307 p=9142 u=root n=ansible | zfsnode1                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:03:59,307 p=9142 u=root n=ansible | zfsnode2                   : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:05:22,146 p=9183 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:05:22,437 p=9183 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:05:22,442 p=9183 u=root n=ansible | fatal: [192.168.100.11]: FAILED! => {"msg": "Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host's fingerprint to your known_hosts file to manage this host."}
+2022-06-13 12:05:22,443 p=9183 u=root n=ansible | fatal: [192.168.100.12]: FAILED! => {"msg": "Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host's fingerprint to your known_hosts file to manage this host."}
+2022-06-13 12:05:22,452 p=9183 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-13 12:05:22,453 p=9183 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:05:22,453 p=9183 u=root n=ansible | 192.168.100.11             : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:05:22,454 p=9183 u=root n=ansible | 192.168.100.12             : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:06:25,698 p=9224 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:06:26,789 p=9224 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:06:26,791 p=9224 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:06:26,845 p=9224 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:06:28,676 p=9224 u=root n=ansible | TASK [drbd : main | updating /etc/hosts (localhost)] ****************************************************************************************************************************************************************************************
+2022-06-13 12:06:28,677 p=9224 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:06:28,701 p=9224 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:06:28,797 p=9224 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.12
+2022-06-13 12:06:28,823 p=9224 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.11
+2022-06-13 12:06:30,039 p=9224 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:06:30,040 p=9224 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:06:30,064 p=9224 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:06:30,065 p=9224 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:06:31,142 p=9224 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:06:31,143 p=9224 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:06:31,210 p=9224 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.12
+2022-06-13 12:06:31,240 p=9224 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:06:31,241 p=9224 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:06:31,290 p=9224 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.11
+2022-06-13 12:06:31,312 p=9224 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:06:31,313 p=9224 u=root n=ansible | 192.168.100.11             : ok=6    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:06:31,314 p=9224 u=root n=ansible | 192.168.100.12             : ok=6    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:08:13,684 p=9484 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:08:14,818 p=9484 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:08:14,820 p=9484 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:08:14,822 p=9484 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:08:16,688 p=9484 u=root n=ansible | TASK [drbd : main | updating /etc/hosts (localhost)] ****************************************************************************************************************************************************************************************
+2022-06-13 12:08:16,689 p=9484 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:08:16,795 p=9484 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.12
+2022-06-13 12:08:17,144 p=9484 u=root n=ansible | changed: [192.168.100.11]
+2022-06-13 12:08:17,201 p=9484 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.11
+2022-06-13 12:08:18,052 p=9484 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:08:18,053 p=9484 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:08:18,358 p=9484 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:08:18,359 p=9484 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:08:19,189 p=9484 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:08:19,190 p=9484 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:08:19,251 p=9484 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.12
+2022-06-13 12:08:19,306 p=9484 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.12
+2022-06-13 12:08:19,367 p=9484 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.12
+2022-06-13 12:08:19,412 p=9484 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/config.yml for 192.168.100.12
+2022-06-13 12:08:19,449 p=9484 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/services.yml for 192.168.100.12
+2022-06-13 12:08:19,511 p=9484 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:08:19,512 p=9484 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:08:19,560 p=9484 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.11
+2022-06-13 12:08:19,593 p=9484 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.11
+2022-06-13 12:08:19,647 p=9484 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.11
+2022-06-13 12:08:19,683 p=9484 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/config.yml for 192.168.100.11
+2022-06-13 12:08:19,713 p=9484 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/services.yml for 192.168.100.11
+2022-06-13 12:08:19,737 p=9484 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:08:19,738 p=9484 u=root n=ansible | 192.168.100.11             : ok=10   changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:08:19,738 p=9484 u=root n=ansible | 192.168.100.12             : ok=10   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:28:20,408 p=9876 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:28:21,503 p=9876 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:28:21,506 p=9876 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:28:21,537 p=9876 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:28:23,332 p=9876 u=root n=ansible | TASK [drbd : main | updating /etc/hosts (localhost)] ****************************************************************************************************************************************************************************************
+2022-06-13 12:28:23,332 p=9876 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:28:23,367 p=9876 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:28:23,407 p=9876 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.12
+2022-06-13 12:28:23,438 p=9876 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.11
+2022-06-13 12:28:24,728 p=9876 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:28:24,729 p=9876 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:28:24,852 p=9876 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:28:24,853 p=9876 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:28:25,830 p=9876 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:28:25,831 p=9876 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:28:25,894 p=9876 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.12
+2022-06-13 12:28:26,008 p=9876 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:28:26,008 p=9876 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:28:26,064 p=9876 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.11
+2022-06-13 12:28:37,821 p=9876 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:28:37,821 p=9876 u=root n=ansible | changed: [192.168.100.11]
+2022-06-13 12:28:39,948 p=9876 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:28:39,948 p=9876 u=root n=ansible | changed: [192.168.100.11]
+2022-06-13 12:28:39,995 p=9876 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.11
+2022-06-13 12:28:40,600 p=9876 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:28:40,601 p=9876 u=root n=ansible | changed: [192.168.100.12]
+2022-06-13 12:28:40,643 p=9876 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:28:40,644 p=9876 u=root n=ansible | failed: [192.168.100.11] (item={'device': '/dev/drbd0', 'disk': '/dev/sdc', 'filesystem': 'ext4', 'partitions': 1, 'mountpoint': '/mnt/nfs', 'mountopts': 'defaults', 'resource': 'r0', 'state': 'present', 'use_partition': '/dev/sdc1'}) => {"ansible_loop_var": "item", "changed": false, "item": {"device": "/dev/drbd0", "disk": "/dev/sdc", "filesystem": "ext4", "mountopts": "defaults", "mountpoint": "/mnt/nfs", "partitions": 1, "resource": "r0", "state": "present", "use_partition": "/dev/sdc1"}, "msg": "Failed to find required executable parted in paths: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"}
+2022-06-13 12:28:42,603 p=9876 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:28:42,604 p=9876 u=root n=ansible | changed: [192.168.100.12]
+2022-06-13 12:28:42,645 p=9876 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.12
+2022-06-13 12:28:43,127 p=9876 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:28:43,129 p=9876 u=root n=ansible | failed: [192.168.100.12] (item={'device': '/dev/drbd0', 'disk': '/dev/sdc', 'filesystem': 'ext4', 'partitions': 1, 'mountpoint': '/mnt/nfs', 'mountopts': 'defaults', 'resource': 'r0', 'state': 'present', 'use_partition': '/dev/sdc1'}) => {"ansible_loop_var": "item", "changed": false, "item": {"device": "/dev/drbd0", "disk": "/dev/sdc", "filesystem": "ext4", "mountopts": "defaults", "mountpoint": "/mnt/nfs", "partitions": 1, "resource": "r0", "state": "present", "use_partition": "/dev/sdc1"}, "msg": "Failed to find required executable parted in paths: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"}
+2022-06-13 12:28:43,136 p=9876 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-13 12:28:43,137 p=9876 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:28:43,138 p=9876 u=root n=ansible | 192.168.100.11             : ok=9    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:28:43,139 p=9876 u=root n=ansible | 192.168.100.12             : ok=9    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:30:21,080 p=10722 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:30:22,165 p=10722 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:30:22,167 p=10722 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:30:22,204 p=10722 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:30:24,035 p=10722 u=root n=ansible | TASK [drbd : main | updating /etc/hosts (localhost)] ****************************************************************************************************************************************************************************************
+2022-06-13 12:30:24,036 p=10722 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:30:24,091 p=10722 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:30:24,131 p=10722 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.12
+2022-06-13 12:30:24,159 p=10722 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.11
+2022-06-13 12:30:25,365 p=10722 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:30:25,365 p=10722 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:30:25,415 p=10722 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:30:25,416 p=10722 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:30:26,544 p=10722 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:30:26,545 p=10722 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:30:26,563 p=10722 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:30:26,564 p=10722 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:30:26,603 p=10722 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.11
+2022-06-13 12:30:26,634 p=10722 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.12
+2022-06-13 12:30:27,762 p=10722 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:30:27,763 p=10722 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:30:27,779 p=10722 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:30:27,780 p=10722 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:30:29,351 p=10722 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:30:29,355 p=10722 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:30:29,375 p=10722 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:30:29,376 p=10722 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:30:29,416 p=10722 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.11
+2022-06-13 12:30:29,445 p=10722 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.12
+2022-06-13 12:30:30,013 p=10722 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:30:30,014 p=10722 u=root n=ansible | failed: [192.168.100.12] (item={'device': '/dev/drbd0', 'disk': '/dev/sdc', 'filesystem': 'ext4', 'partitions': 1, 'mountpoint': '/mnt/nfs', 'mountopts': 'defaults', 'resource': 'r0', 'state': 'present', 'use_partition': '/dev/sdc1'}) => {"ansible_loop_var": "item", "changed": false, "item": {"device": "/dev/drbd0", "disk": "/dev/sdc", "filesystem": "ext4", "mountopts": "defaults", "mountpoint": "/mnt/nfs", "partitions": 1, "resource": "r0", "state": "present", "use_partition": "/dev/sdc1"}, "msg": "Failed to find required executable parted in paths: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"}
+2022-06-13 12:30:30,072 p=10722 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:30:30,072 p=10722 u=root n=ansible | failed: [192.168.100.11] (item={'device': '/dev/drbd0', 'disk': '/dev/sdc', 'filesystem': 'ext4', 'partitions': 1, 'mountpoint': '/mnt/nfs', 'mountopts': 'defaults', 'resource': 'r0', 'state': 'present', 'use_partition': '/dev/sdc1'}) => {"ansible_loop_var": "item", "changed": false, "item": {"device": "/dev/drbd0", "disk": "/dev/sdc", "filesystem": "ext4", "mountopts": "defaults", "mountpoint": "/mnt/nfs", "partitions": 1, "resource": "r0", "state": "present", "use_partition": "/dev/sdc1"}, "msg": "Failed to find required executable parted in paths: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"}
+2022-06-13 12:30:30,078 p=10722 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-13 12:30:30,079 p=10722 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:30:30,079 p=10722 u=root n=ansible | 192.168.100.11             : ok=9    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:30:30,079 p=10722 u=root n=ansible | 192.168.100.12             : ok=9    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:31:19,722 p=11165 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:31:20,807 p=11165 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:31:20,808 p=11165 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:31:20,847 p=11165 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:31:22,622 p=11165 u=root n=ansible | TASK [drbd : main | updating /etc/hosts (localhost)] ****************************************************************************************************************************************************************************************
+2022-06-13 12:31:22,623 p=11165 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:31:22,683 p=11165 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.11
+2022-06-13 12:31:22,726 p=11165 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:31:22,798 p=11165 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.12
+2022-06-13 12:31:23,952 p=11165 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:31:23,953 p=11165 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:31:24,018 p=11165 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:31:24,018 p=11165 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:31:25,093 p=11165 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:31:25,094 p=11165 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:31:25,156 p=11165 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:31:25,156 p=11165 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:31:25,183 p=11165 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.12
+2022-06-13 12:31:25,209 p=11165 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.11
+2022-06-13 12:31:26,314 p=11165 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:31:26,314 p=11165 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:31:26,362 p=11165 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:31:26,363 p=11165 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:31:27,857 p=11165 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:31:27,858 p=11165 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:31:27,914 p=11165 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.12
+2022-06-13 12:31:27,963 p=11165 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:31:27,963 p=11165 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:31:28,002 p=11165 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.11
+2022-06-13 12:31:28,527 p=11165 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:31:28,528 p=11165 u=root n=ansible | failed: [192.168.100.12] (item={'device': '/dev/drbd0', 'disk': '/dev/sdc', 'filesystem': 'ext4', 'partitions': 1, 'mountpoint': '/mnt/nfs', 'mountopts': 'defaults', 'resource': 'r0', 'state': 'present', 'use_partition': '/dev/sdc1'}) => {"ansible_loop_var": "item", "changed": false, "item": {"device": "/dev/drbd0", "disk": "/dev/sdc", "filesystem": "ext4", "mountopts": "defaults", "mountpoint": "/mnt/nfs", "partitions": 1, "resource": "r0", "state": "present", "use_partition": "/dev/sdc1"}, "msg": "Failed to find required executable parted in paths: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"}
+2022-06-13 12:31:28,548 p=11165 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:31:28,549 p=11165 u=root n=ansible | failed: [192.168.100.11] (item={'device': '/dev/drbd0', 'disk': '/dev/sdc', 'filesystem': 'ext4', 'partitions': 1, 'mountpoint': '/mnt/nfs', 'mountopts': 'defaults', 'resource': 'r0', 'state': 'present', 'use_partition': '/dev/sdc1'}) => {"ansible_loop_var": "item", "changed": false, "item": {"device": "/dev/drbd0", "disk": "/dev/sdc", "filesystem": "ext4", "mountopts": "defaults", "mountpoint": "/mnt/nfs", "partitions": 1, "resource": "r0", "state": "present", "use_partition": "/dev/sdc1"}, "msg": "Failed to find required executable parted in paths: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"}
+2022-06-13 12:31:28,555 p=11165 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-13 12:31:28,555 p=11165 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:31:28,556 p=11165 u=root n=ansible | 192.168.100.11             : ok=9    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:31:28,556 p=11165 u=root n=ansible | 192.168.100.12             : ok=9    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:33:08,061 p=11641 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:33:09,137 p=11641 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:33:09,139 p=11641 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:33:10,047 p=11641 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:33:10,943 p=11641 u=root n=ansible | TASK [drbd : main | updating /etc/hosts (localhost)] ****************************************************************************************************************************************************************************************
+2022-06-13 12:33:10,944 p=11641 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:33:11,004 p=11641 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.11
+2022-06-13 12:33:11,682 p=11641 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:33:11,745 p=11641 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.12
+2022-06-13 12:33:12,369 p=11641 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:33:12,370 p=11641 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:33:12,875 p=11641 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:33:12,876 p=11641 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:33:13,498 p=11641 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:33:13,499 p=11641 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:33:14,007 p=11641 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:33:14,008 p=11641 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:33:17,087 p=11641 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:33:17,088 p=11641 u=root n=ansible | changed: [192.168.100.11]
+2022-06-13 12:33:17,143 p=11641 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.11
+2022-06-13 12:33:18,253 p=11641 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:33:18,255 p=11641 u=root n=ansible | changed: [192.168.100.12]
+2022-06-13 12:33:18,393 p=11641 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.12
+2022-06-13 12:33:18,600 p=11641 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:33:18,600 p=11641 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:33:19,679 p=11641 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:33:19,679 p=11641 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:33:20,402 p=11641 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:33:20,403 p=11641 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:33:20,452 p=11641 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.11
+2022-06-13 12:33:21,498 p=11641 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:33:21,499 p=11641 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:33:21,530 p=11641 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.12
+2022-06-13 12:33:22,421 p=11641 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:33:22,422 p=11641 u=root n=ansible | changed: [192.168.100.12] => (item={'device': '/dev/drbd0', 'disk': '/dev/sdc', 'filesystem': 'ext4', 'partitions': 1, 'mountpoint': '/mnt/nfs', 'mountopts': 'defaults', 'resource': 'r0', 'state': 'present', 'use_partition': '/dev/sdc1'})
+2022-06-13 12:33:22,480 p=11641 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.12
+2022-06-13 12:33:22,684 p=11641 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:33:22,685 p=11641 u=root n=ansible | changed: [192.168.100.11] => (item={'device': '/dev/drbd0', 'disk': '/dev/sdc', 'filesystem': 'ext4', 'partitions': 1, 'mountpoint': '/mnt/nfs', 'mountopts': 'defaults', 'resource': 'r0', 'state': 'present', 'use_partition': '/dev/sdc1'})
+2022-06-13 12:33:22,763 p=11641 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.11
+2022-06-13 12:33:23,221 p=11641 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 12:33:23,222 p=11641 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:33:23,223 p=11641 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 12:33:23,224 p=11641 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:33:23,269 p=11641 u=root n=ansible | TASK [drbd : heartbeat | Creating Heartbeat Authkey On Master] ******************************************************************************************************************************************************************************
+2022-06-13 12:33:23,270 p=11641 u=root n=ansible | fatal: [192.168.100.11]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:33:23,295 p=11641 u=root n=ansible | TASK [drbd : heartbeat | Creating Heartbeat Authkey On Master] ******************************************************************************************************************************************************************************
+2022-06-13 12:33:23,296 p=11641 u=root n=ansible | fatal: [192.168.100.12]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:33:23,300 p=11641 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-13 12:33:23,301 p=11641 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:33:23,301 p=11641 u=root n=ansible | 192.168.100.11             : ok=13   changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:33:23,302 p=11641 u=root n=ansible | 192.168.100.12             : ok=13   changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:35:05,546 p=12305 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:35:06,642 p=12305 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:35:06,644 p=12305 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:35:06,704 p=12305 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:35:08,479 p=12305 u=root n=ansible | TASK [drbd : main | updating /etc/hosts (localhost)] ****************************************************************************************************************************************************************************************
+2022-06-13 12:35:08,480 p=12305 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:35:08,502 p=12305 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:35:08,600 p=12305 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.12
+2022-06-13 12:35:08,627 p=12305 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.11
+2022-06-13 12:35:09,817 p=12305 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:35:09,818 p=12305 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:35:09,852 p=12305 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:35:09,852 p=12305 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:35:10,960 p=12305 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:35:10,961 p=12305 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:35:11,190 p=12305 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:35:11,191 p=12305 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:35:12,070 p=12305 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:35:12,071 p=12305 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:35:12,135 p=12305 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.12
+2022-06-13 12:35:12,300 p=12305 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:35:12,301 p=12305 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:35:12,356 p=12305 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.11
+2022-06-13 12:35:13,340 p=12305 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:35:13,341 p=12305 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:35:13,535 p=12305 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:35:13,535 p=12305 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:35:14,887 p=12305 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:35:14,891 p=12305 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:35:15,014 p=12305 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.12
+2022-06-13 12:35:15,105 p=12305 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:35:15,106 p=12305 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:35:15,146 p=12305 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.11
+2022-06-13 12:35:15,719 p=12305 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:35:15,720 p=12305 u=root n=ansible | ok: [192.168.100.12] => (item=None)
+2022-06-13 12:35:15,772 p=12305 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:35:15,773 p=12305 u=root n=ansible | ok: [192.168.100.11] => (item=None)
+2022-06-13 12:35:15,818 p=12305 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.12
+2022-06-13 12:35:15,851 p=12305 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.11
+2022-06-13 12:35:16,394 p=12305 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 12:35:16,395 p=12305 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:35:16,421 p=12305 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 12:35:16,422 p=12305 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:35:16,452 p=12305 u=root n=ansible | TASK [drbd : heartbeat | Creating Heartbeat Authkey On Master] ******************************************************************************************************************************************************************************
+2022-06-13 12:35:16,453 p=12305 u=root n=ansible | fatal: [192.168.100.12]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:35:16,476 p=12305 u=root n=ansible | TASK [drbd : heartbeat | Creating Heartbeat Authkey On Master] ******************************************************************************************************************************************************************************
+2022-06-13 12:35:16,476 p=12305 u=root n=ansible | fatal: [192.168.100.11]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:35:16,482 p=12305 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-13 12:35:16,483 p=12305 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:35:16,483 p=12305 u=root n=ansible | 192.168.100.11             : ok=13   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:35:16,483 p=12305 u=root n=ansible | 192.168.100.12             : ok=13   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:42:59,258 p=12863 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:43:00,365 p=12863 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:43:00,366 p=12863 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:43:00,399 p=12863 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:43:00,439 p=12863 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:43:00,440 p=12863 u=root n=ansible | 192.168.100.11             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:43:00,440 p=12863 u=root n=ansible | 192.168.100.12             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:44:45,207 p=12927 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:44:46,295 p=12927 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:44:46,306 p=12927 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:44:46,323 p=12927 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:44:46,367 p=12927 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:44:46,368 p=12927 u=root n=ansible | 192.168.100.11             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:44:46,368 p=12927 u=root n=ansible | 192.168.100.12             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:45:28,894 p=12987 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:45:29,989 p=12987 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:45:29,990 p=12987 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:45:30,011 p=12987 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:45:30,059 p=12987 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:45:30,059 p=12987 u=root n=ansible | 192.168.100.11             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:45:30,060 p=12987 u=root n=ansible | 192.168.100.12             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:45:42,634 p=13045 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:45:43,715 p=13045 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:45:43,717 p=13045 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:45:43,756 p=13045 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:45:45,535 p=13045 u=root n=ansible | TASK [drbd : main | updating /etc/hosts (localhost)] ****************************************************************************************************************************************************************************************
+2022-06-13 12:45:45,535 p=13045 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:45:45,594 p=13045 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:45:45,666 p=13045 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.12
+2022-06-13 12:45:45,766 p=13045 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.11
+2022-06-13 12:45:46,944 p=13045 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:45:46,944 p=13045 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:45:46,977 p=13045 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:45:46,979 p=13045 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:45:48,091 p=13045 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:45:48,092 p=13045 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:45:48,117 p=13045 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:45:48,118 p=13045 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:45:49,210 p=13045 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:45:49,210 p=13045 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:45:49,290 p=13045 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.12
+2022-06-13 12:45:49,428 p=13045 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:45:49,428 p=13045 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:45:49,483 p=13045 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.11
+2022-06-13 12:45:50,418 p=13045 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:45:50,419 p=13045 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:45:50,662 p=13045 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:45:50,664 p=13045 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:45:51,947 p=13045 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:45:51,949 p=13045 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:45:52,047 p=13045 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.12
+2022-06-13 12:45:52,238 p=13045 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:45:52,239 p=13045 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:45:52,280 p=13045 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.11
+2022-06-13 12:45:52,741 p=13045 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:45:52,741 p=13045 u=root n=ansible | ok: [192.168.100.12] => (item=None)
+2022-06-13 12:45:52,854 p=13045 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.12
+2022-06-13 12:45:52,911 p=13045 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:45:52,913 p=13045 u=root n=ansible | ok: [192.168.100.11] => (item=None)
+2022-06-13 12:45:53,000 p=13045 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.11
+2022-06-13 12:45:53,440 p=13045 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 12:45:53,441 p=13045 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:45:53,472 p=13045 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 12:45:53,474 p=13045 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:45:54,011 p=13045 u=root n=ansible | TASK [drbd : heartbeat | Creating Heartbeat Authkey On Master] ******************************************************************************************************************************************************************************
+2022-06-13 12:45:54,012 p=13045 u=root n=ansible | changed: [192.168.100.11]
+2022-06-13 12:45:54,042 p=13045 u=root n=ansible | TASK [drbd : heartbeat | Creating Heartbeat Authkey On Master] ******************************************************************************************************************************************************************************
+2022-06-13 12:45:54,042 p=13045 u=root n=ansible | changed: [192.168.100.12]
+2022-06-13 12:45:54,071 p=13045 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-13 12:45:54,072 p=13045 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:45:54,098 p=13045 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-13 12:45:54,099 p=13045 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:45:54,126 p=13045 u=root n=ansible | TASK [drbd : heartbeat | Setting Heartbeat Authkey On Master] *******************************************************************************************************************************************************************************
+2022-06-13 12:45:54,127 p=13045 u=root n=ansible | fatal: [192.168.100.11]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:45:54,154 p=13045 u=root n=ansible | TASK [drbd : heartbeat | Setting Heartbeat Authkey On Master] *******************************************************************************************************************************************************************************
+2022-06-13 12:45:54,156 p=13045 u=root n=ansible | fatal: [192.168.100.12]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:45:54,163 p=13045 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-13 12:45:54,164 p=13045 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:45:54,164 p=13045 u=root n=ansible | 192.168.100.11             : ok=15   changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:45:54,165 p=13045 u=root n=ansible | 192.168.100.12             : ok=15   changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:47:07,731 p=13623 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:47:08,810 p=13623 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:47:08,811 p=13623 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:47:08,848 p=13623 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:47:10,673 p=13623 u=root n=ansible | TASK [drbd : main | updating /etc/hosts (localhost)] ****************************************************************************************************************************************************************************************
+2022-06-13 12:47:10,673 p=13623 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:47:10,723 p=13623 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:47:10,764 p=13623 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.11
+2022-06-13 12:47:10,793 p=13623 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.12
+2022-06-13 12:47:12,015 p=13623 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:47:12,016 p=13623 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:47:12,181 p=13623 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:47:12,183 p=13623 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:47:13,147 p=13623 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:47:13,148 p=13623 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:47:13,348 p=13623 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:47:13,349 p=13623 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:47:14,372 p=13623 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:47:14,373 p=13623 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:47:14,463 p=13623 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.12
+2022-06-13 12:47:14,582 p=13623 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:47:14,583 p=13623 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:47:14,641 p=13623 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.11
+2022-06-13 12:47:15,691 p=13623 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:47:15,692 p=13623 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:47:15,860 p=13623 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:47:15,861 p=13623 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:47:17,231 p=13623 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:47:17,233 p=13623 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:47:17,306 p=13623 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.12
+2022-06-13 12:47:17,422 p=13623 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:47:17,422 p=13623 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:47:17,460 p=13623 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.11
+2022-06-13 12:47:18,042 p=13623 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:47:18,043 p=13623 u=root n=ansible | ok: [192.168.100.12] => (item=None)
+2022-06-13 12:47:18,095 p=13623 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:47:18,098 p=13623 u=root n=ansible | ok: [192.168.100.11] => (item=None)
+2022-06-13 12:47:18,136 p=13623 u=root n=ansible | TASK [drbd : include_tasks] *****************************************************************************************************************************************************************************************************************
+2022-06-13 12:47:18,137 p=13623 u=root n=ansible | fatal: [192.168.100.12]: FAILED! => {"reason": "We were unable to read either as JSON nor YAML, these are the errors we got from each:\nJSON: Expecting value: line 1 column 1 (char 0)\n\nSyntax Error while loading YAML.\n  did not find expected key\n\nThe error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml': line 16, column 9, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n#        not _drbd_heartbeat_authkey_check['stat']['exists'] and\n        inventory_hostname == groups[drbd_group][0]\n        ^ here\n"}
+2022-06-13 12:47:18,155 p=13623 u=root n=ansible | fatal: [192.168.100.11]: FAILED! => {"reason": "We were unable to read either as JSON nor YAML, these are the errors we got from each:\nJSON: Expecting value: line 1 column 1 (char 0)\n\nSyntax Error while loading YAML.\n  did not find expected key\n\nThe error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml': line 16, column 9, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n#        not _drbd_heartbeat_authkey_check['stat']['exists'] and\n        inventory_hostname == groups[drbd_group][0]\n        ^ here\n"}
+2022-06-13 12:47:18,160 p=13623 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-13 12:47:18,161 p=13623 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:47:18,162 p=13623 u=root n=ansible | 192.168.100.11             : ok=11   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:47:18,163 p=13623 u=root n=ansible | 192.168.100.12             : ok=11   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:48:50,645 p=14123 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:48:51,725 p=14123 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:48:51,726 p=14123 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:48:51,785 p=14123 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:48:53,545 p=14123 u=root n=ansible | TASK [drbd : main | updating /etc/hosts (localhost)] ****************************************************************************************************************************************************************************************
+2022-06-13 12:48:53,547 p=14123 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:48:53,552 p=14123 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:48:53,608 p=14123 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.11
+2022-06-13 12:48:53,668 p=14123 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.12
+2022-06-13 12:48:54,846 p=14123 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:48:54,846 p=14123 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:48:54,876 p=14123 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:48:54,877 p=14123 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:48:55,958 p=14123 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:48:55,959 p=14123 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:48:56,052 p=14123 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:48:56,053 p=14123 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:48:57,079 p=14123 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:48:57,080 p=14123 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:48:57,142 p=14123 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.12
+2022-06-13 12:48:57,294 p=14123 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:48:57,295 p=14123 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:48:57,351 p=14123 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.11
+2022-06-13 12:48:58,292 p=14123 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:48:58,293 p=14123 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:48:58,491 p=14123 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:48:58,492 p=14123 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:48:59,845 p=14123 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:48:59,845 p=14123 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:48:59,901 p=14123 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.12
+2022-06-13 12:49:00,045 p=14123 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:49:00,047 p=14123 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:49:00,090 p=14123 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.11
+2022-06-13 12:49:00,626 p=14123 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:49:00,628 p=14123 u=root n=ansible | ok: [192.168.100.12] => (item=None)
+2022-06-13 12:49:00,707 p=14123 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:49:00,708 p=14123 u=root n=ansible | ok: [192.168.100.11] => (item=None)
+2022-06-13 12:49:00,723 p=14123 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.12
+2022-06-13 12:49:00,817 p=14123 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.11
+2022-06-13 12:49:01,295 p=14123 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 12:49:01,296 p=14123 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:49:01,326 p=14123 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 12:49:01,327 p=14123 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:49:01,357 p=14123 u=root n=ansible | TASK [drbd : heartbeat | Creating Heartbeat Authkey On Master] ******************************************************************************************************************************************************************************
+2022-06-13 12:49:01,358 p=14123 u=root n=ansible | fatal: [192.168.100.12]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:49:01,381 p=14123 u=root n=ansible | TASK [drbd : heartbeat | Creating Heartbeat Authkey On Master] ******************************************************************************************************************************************************************************
+2022-06-13 12:49:01,382 p=14123 u=root n=ansible | fatal: [192.168.100.11]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:49:01,388 p=14123 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-13 12:49:01,388 p=14123 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:49:01,389 p=14123 u=root n=ansible | 192.168.100.11             : ok=13   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:49:01,389 p=14123 u=root n=ansible | 192.168.100.12             : ok=13   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:49:24,248 p=14656 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:49:25,317 p=14656 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:49:25,318 p=14656 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:49:25,364 p=14656 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:49:27,123 p=14656 u=root n=ansible | TASK [drbd : main | updating /etc/hosts (localhost)] ****************************************************************************************************************************************************************************************
+2022-06-13 12:49:27,123 p=14656 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:49:27,150 p=14656 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:49:27,217 p=14656 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.12
+2022-06-13 12:49:27,246 p=14656 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.11
+2022-06-13 12:49:28,525 p=14656 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:49:28,526 p=14656 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:49:28,548 p=14656 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:49:28,550 p=14656 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:49:29,642 p=14656 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:49:29,643 p=14656 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:49:29,682 p=14656 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:49:29,683 p=14656 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:49:30,779 p=14656 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:49:30,782 p=14656 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:49:30,797 p=14656 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:49:30,798 p=14656 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:49:30,835 p=14656 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.12
+2022-06-13 12:49:30,863 p=14656 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.11
+2022-06-13 12:49:31,991 p=14656 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:49:31,991 p=14656 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:49:32,011 p=14656 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:49:32,012 p=14656 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:49:33,614 p=14656 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:49:33,615 p=14656 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:49:33,640 p=14656 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:49:33,641 p=14656 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:49:33,680 p=14656 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.12
+2022-06-13 12:49:33,709 p=14656 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.11
+2022-06-13 12:49:34,393 p=14656 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:49:34,394 p=14656 u=root n=ansible | ok: [192.168.100.12] => (item=None)
+2022-06-13 12:49:34,423 p=14656 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:49:34,424 p=14656 u=root n=ansible | ok: [192.168.100.11] => (item=None)
+2022-06-13 12:49:34,468 p=14656 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.12
+2022-06-13 12:49:34,500 p=14656 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.11
+2022-06-13 12:49:35,006 p=14656 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 12:49:35,008 p=14656 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:49:35,036 p=14656 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 12:49:35,037 p=14656 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:49:35,063 p=14656 u=root n=ansible | TASK [drbd : heartbeat | Creating Heartbeat Authkey On Master] ******************************************************************************************************************************************************************************
+2022-06-13 12:49:35,064 p=14656 u=root n=ansible | fatal: [192.168.100.12]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:49:35,091 p=14656 u=root n=ansible | TASK [drbd : heartbeat | Creating Heartbeat Authkey On Master] ******************************************************************************************************************************************************************************
+2022-06-13 12:49:35,092 p=14656 u=root n=ansible | fatal: [192.168.100.11]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:49:35,096 p=14656 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-13 12:49:35,096 p=14656 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:49:35,096 p=14656 u=root n=ansible | 192.168.100.11             : ok=13   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:49:35,097 p=14656 u=root n=ansible | 192.168.100.12             : ok=13   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:52:18,876 p=15193 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:52:19,948 p=15193 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:52:19,949 p=15193 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:52:20,037 p=15193 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:52:21,830 p=15193 u=root n=ansible | TASK [drbd : main | updating /etc/hosts (localhost)] ****************************************************************************************************************************************************************************************
+2022-06-13 12:52:21,830 p=15193 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:52:21,877 p=15193 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:52:21,919 p=15193 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.11
+2022-06-13 12:52:21,947 p=15193 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.12
+2022-06-13 12:52:23,142 p=15193 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:52:23,142 p=15193 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:52:23,183 p=15193 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:52:23,184 p=15193 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:52:24,257 p=15193 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:52:24,258 p=15193 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:52:24,359 p=15193 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:52:24,360 p=15193 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:52:25,415 p=15193 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:52:25,416 p=15193 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:52:25,478 p=15193 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.12
+2022-06-13 12:52:25,557 p=15193 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:52:25,558 p=15193 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:52:25,618 p=15193 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.11
+2022-06-13 12:52:26,682 p=15193 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:52:26,683 p=15193 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:52:26,846 p=15193 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:52:26,847 p=15193 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:52:28,259 p=15193 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:52:28,260 p=15193 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:52:28,310 p=15193 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.12
+2022-06-13 12:52:28,446 p=15193 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:52:28,447 p=15193 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:52:28,490 p=15193 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.11
+2022-06-13 12:52:29,060 p=15193 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:52:29,060 p=15193 u=root n=ansible | ok: [192.168.100.12] => (item=None)
+2022-06-13 12:52:29,183 p=15193 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.12
+2022-06-13 12:52:29,213 p=15193 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:52:29,215 p=15193 u=root n=ansible | ok: [192.168.100.11] => (item=None)
+2022-06-13 12:52:29,291 p=15193 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.11
+2022-06-13 12:52:29,745 p=15193 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 12:52:29,745 p=15193 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:52:29,803 p=15193 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-13 12:52:29,804 p=15193 u=root n=ansible | fatal: [192.168.100.12]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:52:29,815 p=15193 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 12:52:29,816 p=15193 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:52:29,861 p=15193 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-13 12:52:29,862 p=15193 u=root n=ansible | fatal: [192.168.100.11]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:52:29,867 p=15193 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-13 12:52:29,868 p=15193 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:52:29,868 p=15193 u=root n=ansible | 192.168.100.11             : ok=13   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:52:29,868 p=15193 u=root n=ansible | 192.168.100.12             : ok=13   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:53:26,646 p=15730 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:53:27,740 p=15730 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:53:27,742 p=15730 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:53:27,784 p=15730 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:53:27,816 p=15730 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:53:27,816 p=15730 u=root n=ansible | 192.168.100.11             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:53:27,817 p=15730 u=root n=ansible | 192.168.100.12             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:53:43,763 p=15788 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:53:44,845 p=15788 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:53:44,846 p=15788 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:53:44,883 p=15788 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:53:44,915 p=15788 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:53:44,916 p=15788 u=root n=ansible | 192.168.100.11             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:53:44,916 p=15788 u=root n=ansible | 192.168.100.12             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:54:37,206 p=15847 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:54:38,298 p=15847 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:54:38,299 p=15847 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:54:38,342 p=15847 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:54:38,381 p=15847 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:54:38,382 p=15847 u=root n=ansible | 192.168.100.11             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:54:38,382 p=15847 u=root n=ansible | 192.168.100.12             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:54:59,753 p=15907 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:55:00,820 p=15907 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:55:00,821 p=15907 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:55:00,869 p=15907 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:55:00,901 p=15907 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:55:00,902 p=15907 u=root n=ansible | 192.168.100.11             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:55:00,903 p=15907 u=root n=ansible | 192.168.100.12             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:55:16,027 p=15965 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:55:17,107 p=15965 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:55:17,108 p=15965 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:55:17,141 p=15965 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:55:17,172 p=15965 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-13 12:55:17,173 p=15965 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:55:17,204 p=15965 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:55:17,222 p=15965 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-13 12:55:17,223 p=15965 u=root n=ansible | fatal: [192.168.100.12]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:55:17,247 p=15965 u=root n=ansible | fatal: [192.168.100.11]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:55:17,256 p=15965 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-13 12:55:17,257 p=15965 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:55:17,257 p=15965 u=root n=ansible | 192.168.100.11             : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:55:17,258 p=15965 u=root n=ansible | 192.168.100.12             : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:55:49,061 p=16033 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:55:50,140 p=16033 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:55:50,141 p=16033 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:55:50,174 p=16033 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:55:50,204 p=16033 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-13 12:55:50,205 p=16033 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:55:50,234 p=16033 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:55:50,258 p=16033 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-13 12:55:50,259 p=16033 u=root n=ansible | fatal: [192.168.100.12]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:55:50,279 p=16033 u=root n=ansible | fatal: [192.168.100.11]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:55:50,286 p=16033 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-13 12:55:50,287 p=16033 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:55:50,287 p=16033 u=root n=ansible | 192.168.100.11             : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:55:50,288 p=16033 u=root n=ansible | 192.168.100.12             : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:56:59,156 p=16114 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:57:00,236 p=16114 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:57:00,238 p=16114 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:57:00,280 p=16114 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:57:00,317 p=16114 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:57:00,317 p=16114 u=root n=ansible | 192.168.100.11             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:57:00,318 p=16114 u=root n=ansible | 192.168.100.12             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:57:11,581 p=16171 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:57:12,710 p=16171 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:57:12,711 p=16171 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:57:12,750 p=16171 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:57:14,616 p=16171 u=root n=ansible | TASK [drbd : main | updating /etc/hosts (localhost)] ****************************************************************************************************************************************************************************************
+2022-06-13 12:57:14,620 p=16171 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:57:14,641 p=16171 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:57:14,683 p=16171 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.12
+2022-06-13 12:57:14,710 p=16171 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.11
+2022-06-13 12:57:15,910 p=16171 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:57:15,910 p=16171 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:57:15,932 p=16171 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:57:15,934 p=16171 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:57:17,043 p=16171 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:57:17,044 p=16171 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:57:17,147 p=16171 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:57:17,147 p=16171 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:57:18,166 p=16171 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:57:18,166 p=16171 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:57:18,232 p=16171 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.12
+2022-06-13 12:57:18,269 p=16171 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:57:18,270 p=16171 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:57:18,339 p=16171 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.11
+2022-06-13 12:57:19,432 p=16171 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:57:19,432 p=16171 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:57:19,566 p=16171 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:57:19,566 p=16171 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:57:21,022 p=16171 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:57:21,023 p=16171 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:57:21,082 p=16171 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.12
+2022-06-13 12:57:21,138 p=16171 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:57:21,139 p=16171 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:57:21,182 p=16171 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.11
+2022-06-13 12:57:21,852 p=16171 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:57:21,853 p=16171 u=root n=ansible | ok: [192.168.100.12] => (item=None)
+2022-06-13 12:57:21,854 p=16171 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:57:21,854 p=16171 u=root n=ansible | ok: [192.168.100.11] => (item=None)
+2022-06-13 12:57:21,914 p=16171 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.11
+2022-06-13 12:57:21,946 p=16171 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.12
+2022-06-13 12:57:22,464 p=16171 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 12:57:22,465 p=16171 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:57:22,488 p=16171 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 12:57:22,490 p=16171 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:57:22,520 p=16171 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-13 12:57:22,520 p=16171 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:57:22,546 p=16171 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-13 12:57:22,547 p=16171 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:57:22,575 p=16171 u=root n=ansible | TASK [drbd : heartbeat | Creating Heartbeat Authkey On Master] ******************************************************************************************************************************************************************************
+2022-06-13 12:57:22,576 p=16171 u=root n=ansible | fatal: [192.168.100.12]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:57:22,604 p=16171 u=root n=ansible | TASK [drbd : heartbeat | Creating Heartbeat Authkey On Master] ******************************************************************************************************************************************************************************
+2022-06-13 12:57:22,605 p=16171 u=root n=ansible | fatal: [192.168.100.11]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:57:22,611 p=16171 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-13 12:57:22,611 p=16171 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:57:22,612 p=16171 u=root n=ansible | 192.168.100.11             : ok=14   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:57:22,612 p=16171 u=root n=ansible | 192.168.100.12             : ok=14   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:58:19,093 p=16717 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:58:20,176 p=16717 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:58:20,178 p=16717 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:58:20,223 p=16717 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:58:20,259 p=16717 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:58:20,259 p=16717 u=root n=ansible | 192.168.100.11             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:58:20,260 p=16717 u=root n=ansible | 192.168.100.12             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:58:31,033 p=16776 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:58:32,132 p=16776 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:58:32,133 p=16776 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:58:32,170 p=16776 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:58:34,005 p=16776 u=root n=ansible | TASK [drbd : main | updating /etc/hosts (localhost)] ****************************************************************************************************************************************************************************************
+2022-06-13 12:58:34,005 p=16776 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:58:34,007 p=16776 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:58:34,070 p=16776 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.11
+2022-06-13 12:58:34,097 p=16776 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.12
+2022-06-13 12:58:35,302 p=16776 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:58:35,302 p=16776 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:58:35,331 p=16776 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:58:35,332 p=16776 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:58:36,438 p=16776 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:58:36,439 p=16776 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:58:36,589 p=16776 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:58:36,595 p=16776 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:58:37,556 p=16776 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:58:37,556 p=16776 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:58:37,624 p=16776 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.12
+2022-06-13 12:58:37,814 p=16776 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:58:37,815 p=16776 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:58:37,870 p=16776 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.11
+2022-06-13 12:58:38,786 p=16776 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:58:38,787 p=16776 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:58:39,007 p=16776 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:58:39,008 p=16776 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:58:40,373 p=16776 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:58:40,375 p=16776 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:58:40,426 p=16776 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.12
+2022-06-13 12:58:40,560 p=16776 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:58:40,563 p=16776 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:58:40,608 p=16776 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.11
+2022-06-13 12:58:41,193 p=16776 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:58:41,194 p=16776 u=root n=ansible | ok: [192.168.100.12] => (item=None)
+2022-06-13 12:58:41,291 p=16776 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:58:41,292 p=16776 u=root n=ansible | ok: [192.168.100.11] => (item=None)
+2022-06-13 12:58:41,304 p=16776 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml, line 21, column 3, found a duplicate dict key (no_log). Using last defined value only.
+
+2022-06-13 12:58:41,304 p=16776 u=root n=ansible | [WARNING]: While constructing a mapping from /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml, line 21, column 3, found a duplicate dict key (when). Using last defined value only.
+
+2022-06-13 12:58:41,310 p=16776 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.12
+2022-06-13 12:58:41,366 p=16776 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.11
+2022-06-13 12:58:41,862 p=16776 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 12:58:41,863 p=16776 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:58:41,885 p=16776 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 12:58:41,886 p=16776 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:58:41,915 p=16776 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-13 12:58:41,916 p=16776 u=root n=ansible | fatal: [192.168.100.12]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:58:41,940 p=16776 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-13 12:58:41,940 p=16776 u=root n=ansible | fatal: [192.168.100.11]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 12:58:41,945 p=16776 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-13 12:58:41,946 p=16776 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:58:41,946 p=16776 u=root n=ansible | 192.168.100.11             : ok=13   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:58:41,947 p=16776 u=root n=ansible | 192.168.100.12             : ok=13   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:59:43,459 p=17312 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:59:44,586 p=17312 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:59:44,588 p=17312 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:59:44,630 p=17312 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:59:44,661 p=17312 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 12:59:44,661 p=17312 u=root n=ansible | 192.168.100.11             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:59:44,661 p=17312 u=root n=ansible | 192.168.100.12             : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-13 12:59:50,018 p=17369 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 12:59:51,107 p=17369 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 12:59:51,108 p=17369 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:59:51,142 p=17369 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:59:53,023 p=17369 u=root n=ansible | TASK [drbd : main | updating /etc/hosts (localhost)] ****************************************************************************************************************************************************************************************
+2022-06-13 12:59:53,023 p=17369 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:59:53,045 p=17369 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:59:53,086 p=17369 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.11
+2022-06-13 12:59:53,112 p=17369 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.12
+2022-06-13 12:59:54,306 p=17369 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:59:54,307 p=17369 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:59:54,348 p=17369 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 12:59:54,349 p=17369 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:59:55,468 p=17369 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:59:55,468 p=17369 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:59:55,570 p=17369 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 12:59:55,571 p=17369 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:59:56,571 p=17369 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:59:56,572 p=17369 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:59:56,656 p=17369 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.12
+2022-06-13 12:59:56,758 p=17369 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 12:59:56,759 p=17369 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:59:56,813 p=17369 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.11
+2022-06-13 12:59:57,795 p=17369 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:59:57,795 p=17369 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:59:57,969 p=17369 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 12:59:57,970 p=17369 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:59:59,336 p=17369 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:59:59,336 p=17369 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 12:59:59,394 p=17369 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.12
+2022-06-13 12:59:59,561 p=17369 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 12:59:59,562 p=17369 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 12:59:59,602 p=17369 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.11
+2022-06-13 13:00:00,120 p=17369 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 13:00:00,122 p=17369 u=root n=ansible | ok: [192.168.100.12] => (item=None)
+2022-06-13 13:00:00,225 p=17369 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.12
+2022-06-13 13:00:00,250 p=17369 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 13:00:00,251 p=17369 u=root n=ansible | ok: [192.168.100.11] => (item=None)
+2022-06-13 13:00:00,341 p=17369 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.11
+2022-06-13 13:00:00,810 p=17369 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 13:00:00,811 p=17369 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 13:00:00,836 p=17369 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 13:00:00,837 p=17369 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 13:00:00,840 p=17901 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{inventory_hostname}} == 192.168.100.11
+
+2022-06-13 13:00:00,861 p=17902 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{inventory_hostname}} == 192.168.100.11
+
+2022-06-13 13:00:00,868 p=17369 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-13 13:00:00,869 p=17369 u=root n=ansible | fatal: [192.168.100.12]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 13:00:00,892 p=17369 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-13 13:00:00,892 p=17369 u=root n=ansible | fatal: [192.168.100.11]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 13:00:00,898 p=17369 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-13 13:00:00,898 p=17369 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 13:00:00,899 p=17369 u=root n=ansible | 192.168.100.11             : ok=13   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 13:00:00,899 p=17369 u=root n=ansible | 192.168.100.12             : ok=13   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 13:00:20,822 p=17906 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 13:00:21,291 p=17906 u=root n=ansible |  [ERROR]: User interrupted execution
+
+2022-06-13 13:00:23,660 p=17934 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 13:00:24,015 p=17934 u=root n=ansible |  [ERROR]: User interrupted execution
+
+2022-06-13 13:01:50,505 p=17960 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 13:01:51,630 p=17960 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 13:01:51,632 p=17960 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 13:01:51,667 p=17960 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 13:01:53,460 p=17960 u=root n=ansible | TASK [drbd : main | updating /etc/hosts (localhost)] ****************************************************************************************************************************************************************************************
+2022-06-13 13:01:53,461 p=17960 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 13:01:53,482 p=17960 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 13:01:53,556 p=17960 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.11
+2022-06-13 13:01:53,582 p=17960 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.12
+2022-06-13 13:01:54,787 p=17960 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 13:01:54,788 p=17960 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 13:01:54,859 p=17960 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 13:01:54,860 p=17960 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 13:01:55,934 p=17960 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 13:01:55,935 p=17960 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 13:01:56,026 p=17960 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 13:01:56,027 p=17960 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 13:01:57,053 p=17960 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 13:01:57,054 p=17960 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 13:01:57,128 p=17960 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.12
+2022-06-13 13:01:57,219 p=17960 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 13:01:57,219 p=17960 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 13:01:57,277 p=17960 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.11
+2022-06-13 13:01:58,298 p=17960 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 13:01:58,299 p=17960 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 13:01:58,445 p=17960 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 13:01:58,446 p=17960 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 13:01:59,867 p=17960 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 13:01:59,868 p=17960 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 13:01:59,928 p=17960 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.12
+2022-06-13 13:02:00,064 p=17960 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 13:02:00,065 p=17960 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 13:02:00,105 p=17960 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.11
+2022-06-13 13:02:00,724 p=17960 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 13:02:00,725 p=17960 u=root n=ansible | ok: [192.168.100.11] => (item=None)
+2022-06-13 13:02:00,758 p=17960 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 13:02:00,759 p=17960 u=root n=ansible | ok: [192.168.100.12] => (item=None)
+2022-06-13 13:02:00,813 p=17960 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.11
+2022-06-13 13:02:00,845 p=17960 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.12
+2022-06-13 13:02:01,394 p=17960 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 13:02:01,396 p=17960 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 13:02:01,412 p=17960 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 13:02:01,414 p=17960 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 13:02:01,417 p=18490 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{inventory_hostname}} == 192.168.100.11
+
+2022-06-13 13:02:01,439 p=18491 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{inventory_hostname}} == 192.168.100.11
+
+2022-06-13 13:02:01,447 p=17960 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-13 13:02:01,448 p=17960 u=root n=ansible | fatal: [192.168.100.12]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 13:02:01,471 p=17960 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-13 13:02:01,472 p=17960 u=root n=ansible | fatal: [192.168.100.11]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 13:02:01,477 p=17960 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-13 13:02:01,477 p=17960 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 13:02:01,478 p=17960 u=root n=ansible | 192.168.100.11             : ok=13   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 13:02:01,478 p=17960 u=root n=ansible | 192.168.100.12             : ok=13   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 13:02:59,016 p=18502 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-13 13:03:00,116 p=18502 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-13 13:03:00,117 p=18502 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 13:03:00,171 p=18502 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 13:03:02,102 p=18502 u=root n=ansible | TASK [drbd : main | updating /etc/hosts (localhost)] ****************************************************************************************************************************************************************************************
+2022-06-13 13:03:02,103 p=18502 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 13:03:02,162 p=18502 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 13:03:02,212 p=18502 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.12
+2022-06-13 13:03:02,291 p=18502 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for 192.168.100.11
+2022-06-13 13:03:04,339 p=18502 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 13:03:04,341 p=18502 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 13:03:04,425 p=18502 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-13 13:03:04,429 p=18502 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 13:03:06,225 p=18502 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 13:03:06,226 p=18502 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 13:03:06,550 p=18502 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-13 13:03:06,551 p=18502 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 13:03:08,775 p=18502 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 13:03:08,776 p=18502 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 13:03:08,855 p=18502 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.11
+2022-06-13 13:03:09,283 p=18502 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-13 13:03:09,284 p=18502 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 13:03:09,492 p=18502 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for 192.168.100.12
+2022-06-13 13:03:11,046 p=18502 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 13:03:11,047 p=18502 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 13:03:11,171 p=18502 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-13 13:03:11,172 p=18502 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 13:03:13,119 p=18502 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 13:03:13,119 p=18502 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 13:03:13,172 p=18502 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.11
+2022-06-13 13:03:13,258 p=18502 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-13 13:03:13,259 p=18502 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 13:03:13,331 p=18502 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for 192.168.100.12
+2022-06-13 13:03:14,132 p=18502 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 13:03:14,138 p=18502 u=root n=ansible | ok: [192.168.100.11] => (item=None)
+2022-06-13 13:03:14,175 p=18502 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-13 13:03:14,176 p=18502 u=root n=ansible | ok: [192.168.100.12] => (item=None)
+2022-06-13 13:03:14,247 p=18502 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.11
+2022-06-13 13:03:14,281 p=18502 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for 192.168.100.12
+2022-06-13 13:03:14,847 p=18502 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 13:03:14,847 p=18502 u=root n=ansible | ok: [192.168.100.12]
+2022-06-13 13:03:14,877 p=19030 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{inventory_hostname}} == 192.168.100.11
+
+2022-06-13 13:03:14,880 p=18502 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-13 13:03:14,880 p=18502 u=root n=ansible | ok: [192.168.100.11]
+2022-06-13 13:03:14,908 p=18502 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-13 13:03:14,909 p=18502 u=root n=ansible | fatal: [192.168.100.12]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 13:03:14,910 p=19033 u=root n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{inventory_hostname}} == 192.168.100.11
+
+2022-06-13 13:03:14,940 p=18502 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-13 13:03:14,940 p=18502 u=root n=ansible | fatal: [192.168.100.11]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result"}
+2022-06-13 13:03:14,946 p=18502 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-13 13:03:14,947 p=18502 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-13 13:03:14,947 p=18502 u=root n=ansible | 192.168.100.11             : ok=13   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-13 13:03:14,948 p=18502 u=root n=ansible | 192.168.100.12             : ok=13   changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   

@@ -28,3 +28,12 @@
   tags:
     - drbd
     - debian
+
+- name: debian | Installing Parted
+  apt:
+    name: parted
+    state: present
+  become: true
+  tags:
+    - drbd
+    - debian

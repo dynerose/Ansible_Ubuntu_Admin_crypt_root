@@ -31,11 +31,13 @@
     - drbd
     - drbd-config
     - drbd-disks
+    - debian
 
 - include_tasks: heartbeat.yml
   tags:
     - drbd
     - drbd-heartbeat
+    - drbd-heartbeats
   when: drbd_use_heartbeat
 
 - include_tasks: config.yml
