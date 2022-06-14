@@ -1,0 +1,59 @@
+- import_tasks: debugmsg.yml
+  tags:
+    - drbd_debug
+    - drbd_install
+
+- name: main | updating /etc/hosts (localhost)
+  template:
+    src: etc/hosts.j2
+    dest: /etc/hosts_new
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  tags:
+    - drbd
+    - debian
+    - drbd_install
+
+- include_tasks: debian.yml
+  tags:
+    - drbd
+    - drbd_install
+    - debian
+  when: ansible_os_family == "Debian"
+
+# tasks file for ansible-ntp
+- include_tasks: ntp.yml
+  when: ansible_os_family == "Debian"
+  tags:
+    - drbd
+    - debian
+    - drbd_install
+
+- include_tasks: disks.yml
+  tags:
+    - drbd
+    - drbd-config
+    - drbd-disks
+    - debian
+    - drbd_install
+
+- include_tasks: heartbeat.yml
+  tags:
+    - drbd
+    - drbd-heartbeat
+    - drbd_install
+  when: drbd_use_heartbeat
+
+- include_tasks: config.yml
+  tags:
+    - drbd
+    - drbd-config
+    - drbd_install
+
+- include_tasks: services.yml
+  tags:
+    - drbd
+    - drbd-services
+    - drbd_install
