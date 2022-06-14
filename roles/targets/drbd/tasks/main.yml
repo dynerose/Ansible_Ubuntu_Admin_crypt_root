@@ -1,6 +1,10 @@
 ---
 # tasks file for ansible-drbd
 
+- import_tasks: debugmsg.yml
+  tags:
+    - drbd_debug
+
 - name: main | updating /etc/hosts (localhost)
   template:
     src: etc/hosts.j2
@@ -33,12 +37,11 @@
     - drbd-disks
     - debian
 
-- include_tasks: heartbeat.yml
-  tags:
-    - drbd
-    - drbd-heartbeat
-    - drbd-heartbeats
-  when: drbd_use_heartbeat
+#- include_tasks: heartbeat.yml
+#  tags:
+#    - drbd
+#    - drbd-heartbeat
+#  when: drbd_use_heartbeat
 
 - include_tasks: config.yml
   tags:

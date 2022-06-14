@@ -1,0 +1,99 @@
+---
+- name: What is my inventory_hostname
+  debug: var={{inventory_hostname}}
+  when: inventory_hostname in groups["primary"]
+  tags:
+    - drbd_debug
+
+- name: What is my ansible_hostname
+  debug: var={{ansible_hostname}}
+  when: ansible_hostname in groups["primary"]
+  tags:
+    - drbd_debug
+
+- name: Createerr
+  shell: dd if=/dev/urandom count=4 2>/dev/null | openssl dgst -sha1 | awk '{ print $2 }'
+  register: results
+  no_log: false
+  when: ansible_hostname in groups["primary"]
+  tags:
+    - drbd_debug
+
+#- name: random Create
+#  debug: var= results.stdout
+#  no_log: false
+#  when: ansible_hostname in groups["primary"]
+#  tags:
+#    - drbd_debug
+
+
+#- name: create lowercase 8 character name for Kubernetes pod name
+#  set_fact:
+#    random_pod_name: "web-{{ lookup('password', '/dev/null chars=ascii_lowercase,digits length=8') }}"
+#  when: ansible_hostname in groups["primary"]
+#  tags:
+#    - drbd_debug
+
+#- name: random_pod_name
+#  debug: var= {{random_pod_name.stdout}}
+#  no_log: false
+#  when: ansible_hostname in groups["primary"]
+#  tags:
+#    - drbd_debug
+
+####################################################333
+#- name: create random but idempotent password
+#  set_fact:
+#3    password: "{{ lookup('password', '/dev/null', seed=inventory_hostname) }}"
+#  no_log: false
+#  when: ansible_hostname in groups["primary"]
+#  tags:
+#    - drbd_debug
+
+#- debug: msg="222 {{ password.stdout }}"
+#  when: ansible_hostname in groups["primary"]
+#  tags:
+#    - drbd_debug
+
+#- debug: msg="1111111111111 {{inventory_hostname}}"
+#  no_log: true
+##  when: "{{inventory_hostname}} == 192.168.100.11"
+#  tags:
+#    - drbd_debug
+
+# Define file path
+#- name: Set remote file path here
+#  set_fact: remote_file_path=/mnt/authkeys
+#  tags:
+#    - drbd_debug
+
+# Check remote file
+#- stat: path="{{ remote_file_path }}"
+#  register: file_path
+#  tags:
+#    - drbd_debug
+
+#- debug: msg=" SIKER $$$"
+##  when: file_path.stat.exists == true
+#  tags:
+#    - drbd_debug
+
+#- name: Checking For Existing Heartbeat Authkey
+#  stat:
+#    path: /etc/ha.d/authkeys
+#  register: _drbd_heartbeat_authkey_check
+#  tags:
+#    - drbd_debug
+
+#- debug: msg="The file or directory exists"
+#  when: _drbd_heartbeat_authkey_check.stat.exists
+#  tags:
+#    - drbd_debug
+
+#- debug: msg="1111111111111 {{inventory_hostname}}"
+#  no_log: true
+#  when: "{{inventory_hostname}} == 192.168.100.11"
+#  tags:
+#    - drbd_debug
+
+######################################################################################################

@@ -2,8 +2,13 @@
 - hosts: targets
 #  connection: ssh
   become: true
+  vars:
+    etc_hosts_add_all_hosts: true
+    pri_domain_name: test.node
   roles:
 #    - role: server-general
+    - role: ansible-ntp
+    - role: ansible-etc-hosts
     - drbd
 #  tasks:
 #    - name: generate SSH key "{{ssh_key_filename}}"

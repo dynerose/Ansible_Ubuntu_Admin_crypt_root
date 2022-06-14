@@ -40,7 +40,7 @@ drbd_disks:
     state: present
     use_partition: /dev/sdc1
 
-drbd_group: test_nodes
+drbd_group: targets
 
 drbd_interface: ens34
 

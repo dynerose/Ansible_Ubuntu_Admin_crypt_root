@@ -1,98 +1,39 @@
 ---
-- name: heartbeat | Checking For Existing Heartbeat Authkey
-  stat:
-    path: /etc/ha.d/authkeys
-  register: _drbd_heartbeat_authkey_check
+
+- name: What is my inventory_hostname
+  debug: var={{inventory_hostname}}
+  when: inventory_hostname in groups["primary"]
   tags:
     - drbd
     - drbd-heartbeat
 
-- debug: msg="1111111111111 {{inventory_hostname}}"
-  no_log: true
-  when: "{{inventory_hostname}} == 192.168.100.11"
-  tags:
-    - drbd-heartbeats
-
-#- debug: msg="{{2222222222222 groups[drbd_group][0]}}"
-#  tags:
-#    - drbd
-#    - drbd-heartbeats
-
-
-- name: heartbeat | Creating Heartbeat Authkey On Master
-  shell: dd if=/dev/urandom count=4 2>/dev/null | openssl dgst -sha1 | awk '{ print $2 }'
-  register: _drbd_heartbeat_authkey
-  no_log: true
-  when: >
-        not _drbd_heartbeat_authkey_check['stat']['exists'] and
-        inventory_hostname == 192.168.100.11
-  tags:
-    - drbd
-    - drbd-heartbeat
-
-- debug: msg="{{_drbd_heartbeat_authkey.stdout}}"
-  no_log: true
-  when: >
-        not _drbd_heartbeat_authkey_check['stat']['exists'] and
-        inventory_hostname == 192.168.100.11
-  tags:
-    - drbd
-    - drbd-heartbeat
-
-
-- name: heartbeat | Setting Heartbeat Authkey On Master
-  set_fact:
-    drbd_heartbeat_authkey: "{{ _drbd_heartbeat_authkey['stdout'] }}"
-  no_log: true
-  when: >
-        not _drbd_heartbeat_authkey_check['stat']['exists'] and
-        inventory_hostname == 192.168.100.11
-  tags:
-    - drbd
-    - drbd-heartbeat
-
-- name: heartbeat | Setting Heartbeat Authkey On Master
-  set_fact:
-    drbd_heartbeat_authkey: "{{ hostvars[groups[drbd_group][0]]['drbd_heartbeat_authkey'] }}"
-  no_log: true
-  when: >
-        not _drbd_heartbeat_authkey_check['stat']['exists'] and
-        inventory_hostname == 192.168.100.11
-  tags:
-    - drbd
-    - drbd-heartbeat
-
-- name: heartbeat | Configuring Heartbeat Authkey
-  template:
-    src: etc/ha.d/authkeys.j2
-    dest: /etc/ha.d/authkeys
-    mode: "u=rw,g=,o="
-  become: true
-  notify: restart heartbeat
-  no_log: true
-  when: >
-        not _drbd_heartbeat_authkey_check['stat']['exists'] and
-        inventory_hostname == 192.168.100.11
+- name: What is my ansible_hostname
+  debug: var={{ansible_hostname}}
+  when: ansible_hostname in groups["primary"]
   tags:
     - drbd
     - drbd-heartbeat
 
 - name: heartbeat | Configuring Heartbeat
   template:
-    src: etc/ha.d/ha.cf.j2
+    src: ha.cf.j2
+#    src: etc/ha.d/ha.cf.j2
     dest: /etc/ha.d/ha.cf
+  no_log: false
   become: true
   notify: restart heartbeat
   tags:
     - drbd
     - drbd-heartbeat
 
-- name: heartbeat | Configuring Heartbeat Resources
-  template:
-    src: etc/ha.d/haresources.j2
-    dest: /etc/ha.d/haresources
-  become: true
-  notify: restart heartbeat
-  tags:
-    - drbd
-    - drbd-heartbeat
+#- name: heartbeat | Configuring Heartbeat Resources
+#  template:
+##    src: etc/ha.d/haresources.j2
+#    src: haresources.j2
+#    dest: /etc/ha.d/haresources
+#  no_log: false
+#  become: true
+##  notify: restart heartbeat
+#  tags:
+#    - drbd
+#    - drbd-heartbeat
