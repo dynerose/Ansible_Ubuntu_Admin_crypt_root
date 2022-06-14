@@ -1,11 +1,41 @@
 #!/usr/bin/env ansible-playbook
 ---
-- name: DRDB status
-  hosts: drbd-cluster
-  any_errors_fatal: true
-  tasks:
+#- name: DRDB Overview
+#  command: 'drbd-overview'
+#  become: true
+#  no_log: false
+#  tags:
+#    - drbd-status
 
-  - name: DRDB Overview
-    command: 'drbd-overview'
-  - name: DRDB PROC
-    command: 'cat /proc/drbd'
+#- name: DRDB PROC
+#  command: 'cat /proc/drbd'
+#  become: true
+#  register: resultstat
+#  no_log: false
+#  when: ansible_hostname in groups["primary"]
+#  tags:
+#    - drbd-status
+
+- name: DRDBPROC
+  shell: 'cat /proc/drbd'
+  register: results
+  no_log: false
+  when: ansible_hostname in groups["primary"]
+  tags:
+    - drbd-status
+
+- debug: msg="{{ results.stdout_lines }}"
+  no_log: false
+  tags:
+    - drbd-status
+
+#- name: What is my inventory_hostname
+#  debug: var={{inventory_hostname}} {{resultstat.stdout}}
+#  when: inventory_hostname in groups["primary"]
+#  tags:
+#    - drbd-status
+
+
+#- debug: var= resultstat.stdout
+#  tags:
+#    - drbd-status

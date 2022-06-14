@@ -1,7 +1,7 @@
 ---
 # tasks file for ansible-drbd
 
-- import_tasks: install.yml
+- import_tasks: install_drbd.yml
   tags:
     - drbd
     - drbd_debug
@@ -30,3 +30,8 @@
     - drbd
     - debian
     - drbd_install
+
+- import_tasks: drbd_status.yml
+  tags:
+    - drbd-status
+#name: DRBD Status
