@@ -4,10 +4,10 @@
 etc_hosts_add_all_hosts: false
 
 # Defines if ipv6 info is included in /etc/hosts
-etc_hosts_enable_ipv6: true
+etc_hosts_enable_ipv6: false
 
 # Defines your primary dns suffix
-etc_hosts_pri_dns_name: vagrant.local
+etc_hosts_pri_dns_name: test.local
 
 # Defines if node has static IP.
 etc_hosts_static_ip: false
@@ -21,12 +21,15 @@ etc_hosts_use_default_ip_address: false
 
 # defaults file for ansible-drbd
 drbd_common:
-  disk: ''
+  disk: |
+    on-io-error detach;
   net: |
     cram-hmac-alg sha1;
     shared-secret "{{ drbd_network_shared_secret }}";
   handlers: ''
-  startup: ''
+  startup: |
+    wfc-timeout  15;
+    degr-wfc-timeout 60;
   options: ''
 
 drbd_disks:
@@ -49,7 +52,7 @@ drbd_network_shared_secret: wXE8MqVa
 drbd_vip: 192.168.100.10
 
 # Debian9/Ubuntu have included drbd support.
-drbd_deb_packages: ['drbd8-utils']
+drbd_deb_packages: ['drbd9-utils']
 # Additional yum repo required. See ELREPO for prebuilt RHEL RPMS, or your local site administrator.
 drbd_rpm_packages: ['drbd84-utils', 'kmod-drbd84']
 

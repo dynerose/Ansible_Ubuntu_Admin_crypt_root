@@ -11,19 +11,23 @@
     - drbd-config
     - drbd-disks
 
-- name: main | updating /etc/hosts (localhost)
-  template:
-    src: etc/hosts.j2
-    dest: /etc/hosts_new
-    owner: root
-    group: root
-    mode: 0644
-  become: true
-  tags:
-    - drbd
-    - debian
-    - drbd_install
+#- import: drbd-status.yml
+#  tags:
+#    - drbd-status
+#- name: main | updating /etc/hosts (localhost)
+#  template:
+#    src: etc/hosts.j2
+#    dest: /etc/hosts_new
+#    owner: root
+#    group: root
+#    mode: 0644
+#  become: true
+#  tags:
+#    - drbd
+#    - debian
+#    - drbd_install
 # tasks file for ansible-ntp
+
 - include_tasks: ntp.yml
   when: ansible_os_family == "Debian"
   tags:
@@ -31,7 +35,7 @@
     - debian
     - drbd_install
 
-- import_tasks: drbd_status.yml
-  tags:
-    - drbd-status
+#- import_tasks: drbd_status.yml
+#  tags:
+#    - drbd-status
 #name: DRBD Status

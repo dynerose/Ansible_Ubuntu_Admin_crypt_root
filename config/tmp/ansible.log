@@ -13873,3 +13873,565 @@ The offending line appears to be:
 2022-06-14 10:09:17,213 p=21582 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
 2022-06-14 10:09:17,213 p=21582 u=root n=ansible | zfs-node1                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 2022-06-14 10:09:17,213 p=21582 u=root n=ansible | zfs-node2                  : ok=1    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2022-06-15 09:20:18,681 p=3942 u=root n=ansible | PLAY [targets] *********************************************************************************************************************
+2022-06-15 09:20:22,225 p=3942 u=root n=ansible | TASK [Gathering Facts] *************************************************************************************************************
+2022-06-15 09:20:22,225 p=3942 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:20:22,505 p=3942 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/local/ansible-ntp/tasks/debian.yml for zfs-node1
+2022-06-15 09:20:23,103 p=3942 u=root n=ansible | fatal: [zfs-node2]: UNREACHABLE! => {"changed": false, "msg": "Data could not be sent to remote host \"192.168.100.12\". Make sure this host can be reached over ssh: ssh: connect to host 192.168.100.12 port 1992: No route to host\r\n", "unreachable": true}
+2022-06-15 09:20:24,019 p=3942 u=root n=ansible | TASK [ansible-ntp : debian | installing packages] **********************************************************************************
+2022-06-15 09:20:24,019 p=3942 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:20:25,694 p=3942 u=root n=ansible | TASK [ansible-ntp : debian | configuring ntp] **************************************************************************************
+2022-06-15 09:20:25,696 p=3942 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:20:28,000 p=3942 u=root n=ansible | TASK [ansible-etc-hosts : main | updating /etc/hosts (localhost)] ******************************************************************
+2022-06-15 09:20:28,001 p=3942 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:20:28,049 p=3942 u=root n=ansible | TASK [drbd : What is my inventory_hostname] ****************************************************************************************
+2022-06-15 09:20:28,049 p=3942 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:20:28,093 p=3942 u=root n=ansible | TASK [drbd : What is my ansible_hostname] ******************************************************************************************
+2022-06-15 09:20:28,094 p=3942 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:20:28,674 p=3942 u=root n=ansible | TASK [drbd : Createerr] ************************************************************************************************************
+2022-06-15 09:20:28,674 p=3942 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:20:30,159 p=3942 u=root n=ansible |  [ERROR]: User interrupted execution
+
+2022-06-15 09:30:13,166 p=1547 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-15 09:30:15,013 p=1547 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-15 09:30:15,015 p=1547 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:30:15,084 p=1547 u=root n=ansible | TASK [drbd : What is my inventory_hostname] *************************************************************************************************************************************************************************************************
+2022-06-15 09:30:15,085 p=1547 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:30:15,131 p=1547 u=root n=ansible | TASK [drbd : What is my ansible_hostname] ***************************************************************************************************************************************************************************************************
+2022-06-15 09:30:15,132 p=1547 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:30:15,687 p=1547 u=root n=ansible | TASK [drbd : Createerr] *********************************************************************************************************************************************************************************************************************
+2022-06-15 09:30:15,688 p=1547 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:30:16,460 p=1547 u=root n=ansible | TASK [drbd : main | updating /etc/hosts (localhost)] ****************************************************************************************************************************************************************************************
+2022-06-15 09:30:16,461 p=1547 u=root n=ansible | fatal: [zfs-node1]: FAILED! => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result", "changed": false}
+2022-06-15 09:30:16,772 p=1547 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-15 09:30:16,773 p=1547 u=root n=ansible | fatal: [zfs-node2]: UNREACHABLE! => {"changed": false, "msg": "Data could not be sent to remote host \"192.168.100.12\". Make sure this host can be reached over ssh: ssh: connect to host 192.168.100.12 port 1992: No route to host\r\n", "unreachable": true}
+2022-06-15 09:30:16,795 p=1547 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-15 09:30:16,796 p=1547 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-15 09:30:16,796 p=1547 u=root n=ansible | zfs-node1                  : ok=4    changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2022-06-15 09:30:16,796 p=1547 u=root n=ansible | zfs-node2                  : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2022-06-15 09:32:22,590 p=1704 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-15 09:32:23,668 p=1704 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-15 09:32:23,669 p=1704 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:32:23,727 p=1704 u=root n=ansible | TASK [drbd : What is my inventory_hostname] *************************************************************************************************************************************************************************************************
+2022-06-15 09:32:23,727 p=1704 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:32:23,775 p=1704 u=root n=ansible | TASK [drbd : What is my ansible_hostname] ***************************************************************************************************************************************************************************************************
+2022-06-15 09:32:23,776 p=1704 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:32:24,324 p=1704 u=root n=ansible | TASK [drbd : Createerr] *********************************************************************************************************************************************************************************************************************
+2022-06-15 09:32:24,324 p=1704 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:32:24,373 p=1704 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for zfs-node1
+2022-06-15 09:32:25,922 p=1704 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-15 09:32:25,922 p=1704 u=root n=ansible | fatal: [zfs-node2]: UNREACHABLE! => {"changed": false, "msg": "Data could not be sent to remote host \"192.168.100.12\". Make sure this host can be reached over ssh: ssh: connect to host 192.168.100.12 port 1992: No route to host\r\n", "unreachable": true}
+2022-06-15 09:32:26,857 p=1704 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-15 09:32:26,857 p=1704 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:32:27,997 p=1704 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-15 09:32:27,998 p=1704 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:32:29,079 p=1704 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-15 09:32:29,083 p=1704 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:32:29,416 p=1704 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for zfs-node1
+2022-06-15 09:32:30,207 p=1704 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-15 09:32:30,207 p=1704 u=root n=ansible | ok: [zfs-node1] => (item=None)
+2022-06-15 09:32:30,262 p=1704 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for zfs-node1
+2022-06-15 09:32:30,312 p=1704 u=root n=ansible | TASK [drbd : What is my inventory_hostname] *************************************************************************************************************************************************************************************************
+2022-06-15 09:32:30,312 p=1704 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:32:30,358 p=1704 u=root n=ansible | TASK [drbd : What is my ansible_hostname] ***************************************************************************************************************************************************************************************************
+2022-06-15 09:32:30,358 p=1704 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:32:30,965 p=1704 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-15 09:32:30,966 p=1704 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:32:33,084 p=1704 u=root n=ansible |  [ERROR]: User interrupted execution
+
+2022-06-15 09:35:03,300 p=2099 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-15 09:35:04,355 p=2099 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-15 09:35:04,356 p=2099 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:35:04,421 p=2099 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/local/ansible-ntp/tasks/debian.yml for zfs-node1
+2022-06-15 09:35:05,513 p=2099 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:35:05,579 p=2099 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/local/ansible-ntp/tasks/debian.yml for zfs-node2
+2022-06-15 09:35:05,729 p=2099 u=root n=ansible | TASK [ansible-ntp : debian | installing packages] *******************************************************************************************************************************************************************************************
+2022-06-15 09:35:05,729 p=2099 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:35:07,455 p=2099 u=root n=ansible | TASK [ansible-ntp : debian | configuring ntp] ***********************************************************************************************************************************************************************************************
+2022-06-15 09:35:07,455 p=2099 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:35:09,787 p=2099 u=root n=ansible | TASK [ansible-etc-hosts : main | updating /etc/hosts (localhost)] ***************************************************************************************************************************************************************************
+2022-06-15 09:35:09,789 p=2099 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:35:09,841 p=2099 u=root n=ansible | TASK [drbd : What is my inventory_hostname] *************************************************************************************************************************************************************************************************
+2022-06-15 09:35:09,842 p=2099 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:35:09,889 p=2099 u=root n=ansible | TASK [drbd : What is my ansible_hostname] ***************************************************************************************************************************************************************************************************
+2022-06-15 09:35:09,890 p=2099 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:35:10,545 p=2099 u=root n=ansible | TASK [drbd : Createerr] *********************************************************************************************************************************************************************************************************************
+2022-06-15 09:35:10,546 p=2099 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:35:10,597 p=2099 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for zfs-node1
+2022-06-15 09:35:11,781 p=2099 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-15 09:35:11,782 p=2099 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:35:12,964 p=2099 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-15 09:35:12,964 p=2099 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:35:14,484 p=2099 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-15 09:35:14,484 p=2099 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:35:14,529 p=2099 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for zfs-node1
+2022-06-15 09:35:15,370 p=2099 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-15 09:35:15,371 p=2099 u=root n=ansible | ok: [zfs-node1] => (item=None)
+2022-06-15 09:35:15,430 p=2099 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for zfs-node1
+2022-06-15 09:35:15,481 p=2099 u=root n=ansible | TASK [drbd : What is my inventory_hostname] *************************************************************************************************************************************************************************************************
+2022-06-15 09:35:15,482 p=2099 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:35:15,533 p=2099 u=root n=ansible | TASK [drbd : What is my ansible_hostname] ***************************************************************************************************************************************************************************************************
+2022-06-15 09:35:15,534 p=2099 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:35:16,096 p=2099 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-15 09:35:16,097 p=2099 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:35:17,807 p=2099 u=root n=ansible | TASK [drbd : heartbeat | Configuring Heartbeat] *********************************************************************************************************************************************************************************************
+2022-06-15 09:35:17,808 p=2099 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:35:19,739 p=2099 u=root n=ansible | TASK [drbd : heartbeat | Configuring Heartbeat Resources] ***********************************************************************************************************************************************************************************
+2022-06-15 09:35:19,742 p=2099 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:35:20,089 p=2099 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/config.yml for zfs-node1
+2022-06-15 09:35:22,130 p=2099 u=root n=ansible | TASK [drbd : config | Configuring DRBD] *****************************************************************************************************************************************************************************************************
+2022-06-15 09:35:22,131 p=2099 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:35:22,690 p=2099 u=root n=ansible | TASK [drbd : config | Loading DRBD Kernel Module] *******************************************************************************************************************************************************************************************
+2022-06-15 09:35:22,691 p=2099 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:35:23,169 p=2099 u=root n=ansible | TASK [drbd : config | Checking DRBD Mirror Devices Creation Status] *************************************************************************************************************************************************************************
+2022-06-15 09:35:23,170 p=2099 u=root n=ansible | ok: [zfs-node1] => (item=None)
+2022-06-15 09:35:23,171 p=2099 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:35:24,133 p=2099 u=root n=ansible | TASK [drbd : config | Creating DRBD Mountpoint] *********************************************************************************************************************************************************************************************
+2022-06-15 09:35:24,134 p=2099 u=root n=ansible | ok: [zfs-node1] => (item=None)
+2022-06-15 09:35:24,979 p=2099 u=root n=ansible | TASK [drbd : config | Updating /etc/fstab Mounts] *******************************************************************************************************************************************************************************************
+2022-06-15 09:35:24,979 p=2099 u=root n=ansible | changed: [zfs-node1] => (item=None)
+2022-06-15 09:35:25,011 p=2099 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/services.yml for zfs-node1
+2022-06-15 09:35:28,032 p=2099 u=root n=ansible | TASK [drbd : services | Ensuring drbd Service Is Enabled On Boot] ***************************************************************************************************************************************************************************
+2022-06-15 09:35:28,033 p=2099 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:35:28,652 p=2099 u=root n=ansible | TASK [drbd : services | Ensuring heartbeat Service Is Enabled On Boot] **********************************************************************************************************************************************************************
+2022-06-15 09:35:28,653 p=2099 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:35:28,722 p=2099 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for zfs-node1
+2022-06-15 09:35:29,931 p=2099 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-15 09:35:29,932 p=2099 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:35:31,463 p=2099 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-15 09:35:31,465 p=2099 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:35:31,945 p=2099 u=root n=ansible | TASK [drbd : DRDBPROC] **********************************************************************************************************************************************************************************************************************
+2022-06-15 09:35:31,946 p=2099 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:35:31,992 p=2099 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-15 09:35:31,993 p=2099 u=root n=ansible | ok: [zfs-node1] => {
+    "msg": [
+        "version: 8.4.11 (api:1/proto:86-101)",
+        "srcversion: 61C29F6DD5B0075B1C17505 "
+    ]
+}
+2022-06-15 09:35:32,606 p=2099 u=root n=ansible | RUNNING HANDLER [drbd : restart heartbeat] **************************************************************************************************************************************************************************************************
+2022-06-15 09:35:32,607 p=2099 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:35:34,115 p=2099 u=root n=ansible | TASK [ansible-ntp : debian | installing packages] *******************************************************************************************************************************************************************************************
+2022-06-15 09:35:34,116 p=2099 u=root n=ansible | changed: [zfs-node2]
+2022-06-15 09:35:36,179 p=2099 u=root n=ansible | TASK [ansible-ntp : debian | configuring ntp] ***********************************************************************************************************************************************************************************************
+2022-06-15 09:35:36,179 p=2099 u=root n=ansible | changed: [zfs-node2]
+2022-06-15 09:35:38,508 p=2099 u=root n=ansible | TASK [ansible-etc-hosts : main | updating /etc/hosts (localhost)] ***************************************************************************************************************************************************************************
+2022-06-15 09:35:38,510 p=2099 u=root n=ansible | changed: [zfs-node2]
+2022-06-15 09:35:38,726 p=2099 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for zfs-node2
+2022-06-15 09:36:06,695 p=2099 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-15 09:36:06,697 p=2099 u=root n=ansible | changed: [zfs-node2]
+2022-06-15 09:36:45,076 p=2099 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-15 09:36:45,077 p=2099 u=root n=ansible | changed: [zfs-node2]
+2022-06-15 09:36:48,485 p=2099 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-15 09:36:48,486 p=2099 u=root n=ansible | changed: [zfs-node2]
+2022-06-15 09:36:48,517 p=2099 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for zfs-node2
+2022-06-15 09:36:49,485 p=2099 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-15 09:36:49,485 p=2099 u=root n=ansible | changed: [zfs-node2] => (item=None)
+2022-06-15 09:36:49,543 p=2099 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for zfs-node2
+2022-06-15 09:36:50,103 p=2099 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-15 09:36:50,103 p=2099 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:36:52,317 p=2099 u=root n=ansible | TASK [drbd : heartbeat | Configuring Heartbeat] *********************************************************************************************************************************************************************************************
+2022-06-15 09:36:52,318 p=2099 u=root n=ansible | changed: [zfs-node2]
+2022-06-15 09:36:54,397 p=2099 u=root n=ansible | TASK [drbd : heartbeat | Configuring Heartbeat Resources] ***********************************************************************************************************************************************************************************
+2022-06-15 09:36:54,398 p=2099 u=root n=ansible | changed: [zfs-node2]
+2022-06-15 09:36:54,434 p=2099 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/config.yml for zfs-node2
+2022-06-15 09:36:56,589 p=2099 u=root n=ansible | TASK [drbd : config | Configuring DRBD] *****************************************************************************************************************************************************************************************************
+2022-06-15 09:36:56,589 p=2099 u=root n=ansible | changed: [zfs-node2]
+2022-06-15 09:36:57,153 p=2099 u=root n=ansible | TASK [drbd : config | Loading DRBD Kernel Module] *******************************************************************************************************************************************************************************************
+2022-06-15 09:36:57,153 p=2099 u=root n=ansible | changed: [zfs-node2]
+2022-06-15 09:36:57,650 p=2099 u=root n=ansible | TASK [drbd : config | Checking DRBD Mirror Devices Creation Status] *************************************************************************************************************************************************************************
+2022-06-15 09:36:57,650 p=2099 u=root n=ansible | ok: [zfs-node2] => (item=None)
+2022-06-15 09:36:57,650 p=2099 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:36:58,170 p=2099 u=root n=ansible | TASK [drbd : config | Creating DRBD Mirror Devices] *****************************************************************************************************************************************************************************************
+2022-06-15 09:36:58,171 p=2099 u=root n=ansible | failed: [zfs-node2] (item=None) => {"censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result", "changed": true}
+2022-06-15 09:36:58,179 p=2099 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-15 09:36:58,179 p=2099 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-15 09:36:58,179 p=2099 u=root n=ansible | zfs-node1                  : ok=35   changed=8    unreachable=0    failed=0    skipped=13   rescued=0    ignored=0   
+2022-06-15 09:36:58,179 p=2099 u=root n=ansible | zfs-node2                  : ok=19   changed=11   unreachable=0    failed=1    skipped=12   rescued=0    ignored=0   
+2022-06-15 09:40:18,792 p=3728 u=root n=ansible | ERROR! this task 'import' has extra params, which is only allowed in the following modules: ansible.builtin.meta, win_shell, ansible.legacy.set_fact, shell, ansible.legacy.include_role, ansible.builtin.add_host, ansible.builtin.import_tasks, set_fact, ansible.builtin.shell, ansible.builtin.set_fact, ansible.legacy.import_tasks, raw, include, include_vars, ansible.windows.win_command, ansible.legacy.shell, group_by, add_host, meta, ansible.builtin.include_tasks, command, ansible.builtin.script, ansible.legacy.raw, ansible.builtin.group_by, ansible.builtin.include_role, import_role, ansible.builtin.raw, ansible.builtin.command, ansible.legacy.include_vars, include_role, ansible.legacy.meta, include_tasks, ansible.legacy.win_command, ansible.legacy.include, win_command, ansible.legacy.include_tasks, ansible.builtin.include_vars, ansible.legacy.add_host, ansible.legacy.import_role, ansible.legacy.group_by, ansible.windows.win_shell, ansible.legacy.command, ansible.builtin.win_shell, script, ansible.builtin.import_role, ansible.builtin.win_command, ansible.legacy.script, ansible.builtin.include, ansible.legacy.win_shell, import_tasks
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/main.yml': line 14, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+- import: drbd-status.yml
+  ^ here
+
+2022-06-15 09:46:46,049 p=3807 u=root n=ansible | ERROR! this task 'import' has extra params, which is only allowed in the following modules: ansible.windows.win_command, ansible.legacy.win_shell, ansible.windows.win_shell, import_role, ansible.legacy.command, ansible.legacy.script, shell, include_vars, ansible.legacy.import_role, script, ansible.builtin.meta, ansible.legacy.include, ansible.builtin.set_fact, ansible.builtin.shell, ansible.builtin.win_shell, meta, win_command, ansible.legacy.include_vars, command, ansible.legacy.set_fact, include_tasks, ansible.builtin.include_role, ansible.legacy.include_role, ansible.builtin.import_tasks, ansible.legacy.add_host, ansible.legacy.group_by, ansible.builtin.include_vars, ansible.builtin.import_role, ansible.builtin.win_command, ansible.legacy.shell, ansible.legacy.meta, ansible.builtin.include, ansible.builtin.group_by, win_shell, ansible.builtin.add_host, ansible.legacy.win_command, ansible.legacy.include_tasks, group_by, include, ansible.legacy.raw, ansible.builtin.include_tasks, ansible.legacy.import_tasks, ansible.builtin.raw, raw, ansible.builtin.script, ansible.builtin.command, set_fact, add_host, import_tasks, include_role
+
+The error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/main.yml': line 14, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+- import: drbd-status.yml
+  ^ here
+
+2022-06-15 09:47:12,064 p=3810 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-15 09:47:13,159 p=3810 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-15 09:47:13,160 p=3810 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:47:13,195 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:13,235 p=3810 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/local/ansible-ntp/tasks/debian.yml for zfs-node2
+2022-06-15 09:47:13,262 p=3810 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/local/ansible-ntp/tasks/debian.yml for zfs-node1
+2022-06-15 09:47:14,439 p=3810 u=root n=ansible | TASK [ansible-ntp : debian | installing packages] *******************************************************************************************************************************************************************************************
+2022-06-15 09:47:14,440 p=3810 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:47:14,587 p=3810 u=root n=ansible | TASK [ansible-ntp : debian | installing packages] *******************************************************************************************************************************************************************************************
+2022-06-15 09:47:14,588 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:16,317 p=3810 u=root n=ansible | TASK [ansible-ntp : debian | configuring ntp] ***********************************************************************************************************************************************************************************************
+2022-06-15 09:47:16,318 p=3810 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:47:16,382 p=3810 u=root n=ansible | TASK [ansible-ntp : debian | configuring ntp] ***********************************************************************************************************************************************************************************************
+2022-06-15 09:47:16,383 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:18,175 p=3810 u=root n=ansible | TASK [ansible-etc-hosts : main | updating /etc/hosts (localhost)] ***************************************************************************************************************************************************************************
+2022-06-15 09:47:18,175 p=3810 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:47:18,245 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:18,298 p=3810 u=root n=ansible | TASK [drbd : What is my inventory_hostname] *************************************************************************************************************************************************************************************************
+2022-06-15 09:47:18,298 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:18,355 p=3810 u=root n=ansible | TASK [drbd : What is my ansible_hostname] ***************************************************************************************************************************************************************************************************
+2022-06-15 09:47:18,356 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:18,387 p=3810 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for zfs-node2
+2022-06-15 09:47:18,963 p=3810 u=root n=ansible | TASK [drbd : Createerr] *********************************************************************************************************************************************************************************************************************
+2022-06-15 09:47:18,963 p=3810 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:47:19,014 p=3810 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for zfs-node1
+2022-06-15 09:47:19,471 p=3810 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-15 09:47:19,472 p=3810 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:47:20,175 p=3810 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-15 09:47:20,175 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:20,528 p=3810 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-15 09:47:20,529 p=3810 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:47:21,427 p=3810 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-15 09:47:21,431 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:21,575 p=3810 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-15 09:47:21,576 p=3810 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:47:21,664 p=3810 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for zfs-node2
+2022-06-15 09:47:22,342 p=3810 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-15 09:47:22,343 p=3810 u=root n=ansible | ok: [zfs-node2] => (item=None)
+2022-06-15 09:47:22,411 p=3810 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for zfs-node2
+2022-06-15 09:47:22,647 p=3810 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-15 09:47:22,647 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:22,686 p=3810 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for zfs-node1
+2022-06-15 09:47:23,099 p=3810 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-15 09:47:23,100 p=3810 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:47:23,285 p=3810 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-15 09:47:23,286 p=3810 u=root n=ansible | ok: [zfs-node1] => (item=None)
+2022-06-15 09:47:23,368 p=3810 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for zfs-node1
+2022-06-15 09:47:23,437 p=3810 u=root n=ansible | TASK [drbd : What is my inventory_hostname] *************************************************************************************************************************************************************************************************
+2022-06-15 09:47:23,438 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:23,513 p=3810 u=root n=ansible | TASK [drbd : What is my ansible_hostname] ***************************************************************************************************************************************************************************************************
+2022-06-15 09:47:23,514 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:23,991 p=3810 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-15 09:47:23,991 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:24,995 p=3810 u=root n=ansible | TASK [drbd : heartbeat | Configuring Heartbeat] *********************************************************************************************************************************************************************************************
+2022-06-15 09:47:24,996 p=3810 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:47:25,747 p=3810 u=root n=ansible | TASK [drbd : heartbeat | Configuring Heartbeat] *********************************************************************************************************************************************************************************************
+2022-06-15 09:47:25,748 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:26,594 p=3810 u=root n=ansible | TASK [drbd : heartbeat | Configuring Heartbeat Resources] ***********************************************************************************************************************************************************************************
+2022-06-15 09:47:26,594 p=3810 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:47:26,642 p=3810 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/config.yml for zfs-node2
+2022-06-15 09:47:27,332 p=3810 u=root n=ansible | TASK [drbd : heartbeat | Configuring Heartbeat Resources] ***********************************************************************************************************************************************************************************
+2022-06-15 09:47:27,333 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:27,372 p=3810 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/config.yml for zfs-node1
+2022-06-15 09:47:28,857 p=3810 u=root n=ansible | TASK [drbd : config | Configuring DRBD] *****************************************************************************************************************************************************************************************************
+2022-06-15 09:47:28,858 p=3810 u=root n=ansible | changed: [zfs-node2]
+2022-06-15 09:47:29,096 p=3810 u=root n=ansible | TASK [drbd : config | Configuring DRBD] *****************************************************************************************************************************************************************************************************
+2022-06-15 09:47:29,098 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:29,437 p=3810 u=root n=ansible | TASK [drbd : config | Loading DRBD Kernel Module] *******************************************************************************************************************************************************************************************
+2022-06-15 09:47:29,438 p=3810 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:47:29,565 p=3810 u=root n=ansible | TASK [drbd : config | Loading DRBD Kernel Module] *******************************************************************************************************************************************************************************************
+2022-06-15 09:47:29,566 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:29,934 p=3810 u=root n=ansible | TASK [drbd : config | Checking DRBD Mirror Devices Creation Status] *************************************************************************************************************************************************************************
+2022-06-15 09:47:29,934 p=3810 u=root n=ansible | ok: [zfs-node2] => (item=None)
+2022-06-15 09:47:29,935 p=3810 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:47:30,089 p=3810 u=root n=ansible | TASK [drbd : config | Checking DRBD Mirror Devices Creation Status] *************************************************************************************************************************************************************************
+2022-06-15 09:47:30,090 p=3810 u=root n=ansible | ok: [zfs-node1] => (item=None)
+2022-06-15 09:47:30,090 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:30,489 p=3810 u=root n=ansible | TASK [drbd : config | Creating DRBD Mirror Devices] *****************************************************************************************************************************************************************************************
+2022-06-15 09:47:30,489 p=3810 u=root n=ansible | changed: [zfs-node2] => (item=None)
+2022-06-15 09:47:31,064 p=3810 u=root n=ansible | TASK [drbd : config | Marking DRDB Mirror Devices Created] **********************************************************************************************************************************************************************************
+2022-06-15 09:47:31,065 p=3810 u=root n=ansible | changed: [zfs-node2] => (item=None)
+2022-06-15 09:47:31,067 p=3810 u=root n=ansible | TASK [drbd : config | Creating DRBD Mountpoint] *********************************************************************************************************************************************************************************************
+2022-06-15 09:47:31,067 p=3810 u=root n=ansible | ok: [zfs-node1] => (item=None)
+2022-06-15 09:47:31,632 p=3810 u=root n=ansible | TASK [drbd : config | Bringing DRBD Mirror Devices Up] **************************************************************************************************************************************************************************************
+2022-06-15 09:47:31,634 p=3810 u=root n=ansible | changed: [zfs-node2] => (item=None)
+2022-06-15 09:47:31,766 p=3810 u=root n=ansible | TASK [drbd : config | Updating /etc/fstab Mounts] *******************************************************************************************************************************************************************************************
+2022-06-15 09:47:31,768 p=3810 u=root n=ansible | ok: [zfs-node1] => (item=None)
+2022-06-15 09:47:31,810 p=3810 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/services.yml for zfs-node1
+2022-06-15 09:47:32,350 p=3810 u=root n=ansible | TASK [drbd : config | Creating DRBD Mountpoint] *********************************************************************************************************************************************************************************************
+2022-06-15 09:47:32,351 p=3810 u=root n=ansible | changed: [zfs-node2] => (item=None)
+2022-06-15 09:47:32,695 p=3810 u=root n=ansible | TASK [drbd : services | Ensuring drbd Service Is Enabled On Boot] ***************************************************************************************************************************************************************************
+2022-06-15 09:47:32,696 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:32,846 p=3810 u=root n=ansible | TASK [drbd : config | Updating /etc/fstab Mounts] *******************************************************************************************************************************************************************************************
+2022-06-15 09:47:32,847 p=3810 u=root n=ansible | changed: [zfs-node2] => (item=None)
+2022-06-15 09:47:32,897 p=3810 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/services.yml for zfs-node2
+2022-06-15 09:47:33,323 p=3810 u=root n=ansible | TASK [drbd : services | Ensuring heartbeat Service Is Enabled On Boot] **********************************************************************************************************************************************************************
+2022-06-15 09:47:33,324 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:33,380 p=3810 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for zfs-node1
+2022-06-15 09:47:34,485 p=3810 u=root n=ansible | TASK [drbd : services | Ensuring drbd Service Is Enabled On Boot] ***************************************************************************************************************************************************************************
+2022-06-15 09:47:34,486 p=3810 u=root n=ansible | changed: [zfs-node2]
+2022-06-15 09:47:34,572 p=3810 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-15 09:47:34,572 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:35,107 p=3810 u=root n=ansible | TASK [drbd : services | Ensuring heartbeat Service Is Enabled On Boot] **********************************************************************************************************************************************************************
+2022-06-15 09:47:35,107 p=3810 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:47:35,172 p=3810 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for zfs-node2
+2022-06-15 09:47:36,100 p=3810 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-15 09:47:36,103 p=3810 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:47:36,303 p=3810 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-15 09:47:36,304 p=3810 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:47:36,626 p=3810 u=root n=ansible | TASK [drbd : DRDBPROC] **********************************************************************************************************************************************************************************************************************
+2022-06-15 09:47:36,633 p=3810 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:47:36,693 p=3810 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-15 09:47:36,697 p=3810 u=root n=ansible | ok: [zfs-node1] => {
+    "msg": [
+        "version: 8.4.11 (api:1/proto:86-101)",
+        "srcversion: 61C29F6DD5B0075B1C17505 "
+    ]
+}
+2022-06-15 09:47:37,800 p=3810 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-15 09:47:37,801 p=3810 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:47:37,886 p=3810 u=root n=ansible | TASK [drbd : debug] *************************************************************************************************************************************************************************************************************************
+2022-06-15 09:47:37,887 p=3810 u=root n=ansible | fatal: [zfs-node2]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'dict object' has no attribute 'stdout_lines'\n\nThe error appears to be in '/opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/drbd_status.yml': line 27, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n- debug: msg=\"{{ results.stdout_lines }}\"\n  ^ here\nWe could be wrong, but this one looks like it might be an issue with\nmissing quotes. Always quote template expression brackets when they\nstart a value. For instance:\n\n    with_items:\n      - {{ foo }}\n\nShould be written as:\n\n    with_items:\n      - \"{{ foo }}\"\n"}
+2022-06-15 09:47:37,893 p=3810 u=root n=ansible | 	to retry, use: --limit @/opt/Ansible_Ubuntu_Admin_crypt_root/config/tmp/retry/R.drbd.retry
+
+2022-06-15 09:47:37,895 p=3810 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-15 09:47:37,895 p=3810 u=root n=ansible | zfs-node1                  : ok=34   changed=2    unreachable=0    failed=0    skipped=13   rescued=0    ignored=0   
+2022-06-15 09:47:37,896 p=3810 u=root n=ansible | zfs-node2                  : ok=30   changed=7    unreachable=0    failed=1    skipped=16   rescued=0    ignored=0   
+2022-06-15 09:48:33,865 p=5224 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-15 09:48:34,961 p=5224 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-15 09:48:34,964 p=5224 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:48:34,988 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:35,034 p=5224 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/local/ansible-ntp/tasks/debian.yml for zfs-node2
+2022-06-15 09:48:35,059 p=5224 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/local/ansible-ntp/tasks/debian.yml for zfs-node1
+2022-06-15 09:48:36,230 p=5224 u=root n=ansible | TASK [ansible-ntp : debian | installing packages] *******************************************************************************************************************************************************************************************
+2022-06-15 09:48:36,231 p=5224 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:48:36,356 p=5224 u=root n=ansible | TASK [ansible-ntp : debian | installing packages] *******************************************************************************************************************************************************************************************
+2022-06-15 09:48:36,357 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:38,111 p=5224 u=root n=ansible | TASK [ansible-ntp : debian | configuring ntp] ***********************************************************************************************************************************************************************************************
+2022-06-15 09:48:38,112 p=5224 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:48:38,258 p=5224 u=root n=ansible | TASK [ansible-ntp : debian | configuring ntp] ***********************************************************************************************************************************************************************************************
+2022-06-15 09:48:38,258 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:39,993 p=5224 u=root n=ansible | TASK [ansible-etc-hosts : main | updating /etc/hosts (localhost)] ***************************************************************************************************************************************************************************
+2022-06-15 09:48:39,994 p=5224 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:48:40,145 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:40,195 p=5224 u=root n=ansible | TASK [drbd : What is my inventory_hostname] *************************************************************************************************************************************************************************************************
+2022-06-15 09:48:40,195 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:40,227 p=5224 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for zfs-node2
+2022-06-15 09:48:40,246 p=5224 u=root n=ansible | TASK [drbd : What is my ansible_hostname] ***************************************************************************************************************************************************************************************************
+2022-06-15 09:48:40,246 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:40,889 p=5224 u=root n=ansible | TASK [drbd : Createerr] *********************************************************************************************************************************************************************************************************************
+2022-06-15 09:48:40,890 p=5224 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:48:40,943 p=5224 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for zfs-node1
+2022-06-15 09:48:41,289 p=5224 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-15 09:48:41,290 p=5224 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:48:42,130 p=5224 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-15 09:48:42,130 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:42,359 p=5224 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-15 09:48:42,360 p=5224 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:48:43,364 p=5224 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-15 09:48:43,365 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:43,421 p=5224 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-15 09:48:43,422 p=5224 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:48:43,479 p=5224 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for zfs-node2
+2022-06-15 09:48:44,193 p=5224 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-15 09:48:44,193 p=5224 u=root n=ansible | ok: [zfs-node2] => (item=None)
+2022-06-15 09:48:44,266 p=5224 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for zfs-node2
+2022-06-15 09:48:44,591 p=5224 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-15 09:48:44,591 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:44,628 p=5224 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for zfs-node1
+2022-06-15 09:48:45,008 p=5224 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-15 09:48:45,008 p=5224 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:48:45,269 p=5224 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-15 09:48:45,270 p=5224 u=root n=ansible | ok: [zfs-node1] => (item=None)
+2022-06-15 09:48:45,328 p=5224 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for zfs-node1
+2022-06-15 09:48:45,381 p=5224 u=root n=ansible | TASK [drbd : What is my inventory_hostname] *************************************************************************************************************************************************************************************************
+2022-06-15 09:48:45,382 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:45,447 p=5224 u=root n=ansible | TASK [drbd : What is my ansible_hostname] ***************************************************************************************************************************************************************************************************
+2022-06-15 09:48:45,448 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:45,931 p=5224 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-15 09:48:45,933 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:46,443 p=5224 u=root n=ansible | TASK [drbd : heartbeat | Creating Heartbeat Authkey On Master] ******************************************************************************************************************************************************************************
+2022-06-15 09:48:46,443 p=5224 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:48:46,494 p=5224 u=root n=ansible | TASK [drbd : heartbeat | Setting Heartbeat Authkey On Master] *******************************************************************************************************************************************************************************
+2022-06-15 09:48:46,494 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:46,550 p=5224 u=root n=ansible | TASK [drbd : heartbeat | Setting Heartbeat Authkey On Master] *******************************************************************************************************************************************************************************
+2022-06-15 09:48:46,551 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:46,986 p=5224 u=root n=ansible | TASK [drbd : heartbeat | Configuring Heartbeat] *********************************************************************************************************************************************************************************************
+2022-06-15 09:48:46,990 p=5224 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:48:48,638 p=5224 u=root n=ansible | TASK [drbd : heartbeat | Configuring Heartbeat Resources] ***********************************************************************************************************************************************************************************
+2022-06-15 09:48:48,639 p=5224 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:48:48,687 p=5224 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/config.yml for zfs-node2
+2022-06-15 09:48:48,810 p=5224 u=root n=ansible | TASK [drbd : heartbeat | Configuring Heartbeat Authkey] *************************************************************************************************************************************************************************************
+2022-06-15 09:48:48,810 p=5224 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:48:50,362 p=5224 u=root n=ansible | TASK [drbd : config | Configuring DRBD] *****************************************************************************************************************************************************************************************************
+2022-06-15 09:48:50,363 p=5224 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:48:50,430 p=5224 u=root n=ansible | TASK [drbd : heartbeat | Configuring Heartbeat] *********************************************************************************************************************************************************************************************
+2022-06-15 09:48:50,434 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:50,973 p=5224 u=root n=ansible | TASK [drbd : config | Loading DRBD Kernel Module] *******************************************************************************************************************************************************************************************
+2022-06-15 09:48:50,973 p=5224 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:48:51,479 p=5224 u=root n=ansible | TASK [drbd : config | Checking DRBD Mirror Devices Creation Status] *************************************************************************************************************************************************************************
+2022-06-15 09:48:51,479 p=5224 u=root n=ansible | ok: [zfs-node2] => (item=None)
+2022-06-15 09:48:51,480 p=5224 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:48:52,009 p=5224 u=root n=ansible | TASK [drbd : heartbeat | Configuring Heartbeat Resources] ***********************************************************************************************************************************************************************************
+2022-06-15 09:48:52,010 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:52,052 p=5224 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/config.yml for zfs-node1
+2022-06-15 09:48:52,531 p=5224 u=root n=ansible | TASK [drbd : config | Creating DRBD Mountpoint] *********************************************************************************************************************************************************************************************
+2022-06-15 09:48:52,532 p=5224 u=root n=ansible | ok: [zfs-node2] => (item=None)
+2022-06-15 09:48:53,193 p=5224 u=root n=ansible | TASK [drbd : config | Updating /etc/fstab Mounts] *******************************************************************************************************************************************************************************************
+2022-06-15 09:48:53,193 p=5224 u=root n=ansible | ok: [zfs-node2] => (item=None)
+2022-06-15 09:48:53,225 p=5224 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/services.yml for zfs-node2
+2022-06-15 09:48:53,741 p=5224 u=root n=ansible | TASK [drbd : config | Configuring DRBD] *****************************************************************************************************************************************************************************************************
+2022-06-15 09:48:53,742 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:54,199 p=5224 u=root n=ansible | TASK [drbd : config | Loading DRBD Kernel Module] *******************************************************************************************************************************************************************************************
+2022-06-15 09:48:54,201 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:54,319 p=5224 u=root n=ansible | TASK [drbd : services | Ensuring drbd Service Is Enabled On Boot] ***************************************************************************************************************************************************************************
+2022-06-15 09:48:54,320 p=5224 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:48:54,701 p=5224 u=root n=ansible | TASK [drbd : config | Checking DRBD Mirror Devices Creation Status] *************************************************************************************************************************************************************************
+2022-06-15 09:48:54,702 p=5224 u=root n=ansible | ok: [zfs-node1] => (item=None)
+2022-06-15 09:48:54,703 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:54,951 p=5224 u=root n=ansible | TASK [drbd : services | Ensuring heartbeat Service Is Enabled On Boot] **********************************************************************************************************************************************************************
+2022-06-15 09:48:54,952 p=5224 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:48:55,020 p=5224 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for zfs-node2
+2022-06-15 09:48:55,546 p=5224 u=root n=ansible | TASK [drbd : config | Creating DRBD Mountpoint] *********************************************************************************************************************************************************************************************
+2022-06-15 09:48:55,547 p=5224 u=root n=ansible | ok: [zfs-node1] => (item=None)
+2022-06-15 09:48:56,057 p=5224 u=root n=ansible | TASK [drbd : config | Updating /etc/fstab Mounts] *******************************************************************************************************************************************************************************************
+2022-06-15 09:48:56,058 p=5224 u=root n=ansible | ok: [zfs-node1] => (item=None)
+2022-06-15 09:48:56,094 p=5224 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/services.yml for zfs-node1
+2022-06-15 09:48:56,121 p=5224 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-15 09:48:56,122 p=5224 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:48:56,736 p=5224 u=root n=ansible | TASK [drbd : services | Ensuring drbd Service Is Enabled On Boot] ***************************************************************************************************************************************************************************
+2022-06-15 09:48:56,737 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:57,355 p=5224 u=root n=ansible | TASK [drbd : services | Ensuring heartbeat Service Is Enabled On Boot] **********************************************************************************************************************************************************************
+2022-06-15 09:48:57,355 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:48:57,413 p=5224 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for zfs-node1
+2022-06-15 09:48:57,696 p=5224 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-15 09:48:57,697 p=5224 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:48:58,641 p=5224 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-15 09:48:58,642 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:49:00,128 p=5224 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-15 09:49:00,129 p=5224 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:49:00,747 p=5224 u=root n=ansible | RUNNING HANDLER [drbd : restart heartbeat] **************************************************************************************************************************************************************************************************
+2022-06-15 09:49:00,748 p=5224 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:49:00,764 p=5224 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-15 09:49:00,764 p=5224 u=root n=ansible | zfs-node1                  : ok=37   changed=4    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
+2022-06-15 09:49:00,765 p=5224 u=root n=ansible | zfs-node2                  : ok=27   changed=0    unreachable=0    failed=0    skipped=18   rescued=0    ignored=0   
+2022-06-15 09:50:26,321 p=7327 u=root n=ansible | PLAY [targets] ******************************************************************************************************************************************************************************************************************************
+2022-06-15 09:50:27,441 p=7327 u=root n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2022-06-15 09:50:27,443 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:27,453 p=7327 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:50:27,508 p=7327 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/local/ansible-ntp/tasks/debian.yml for zfs-node1
+2022-06-15 09:50:27,537 p=7327 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/local/ansible-ntp/tasks/debian.yml for zfs-node2
+2022-06-15 09:50:28,724 p=7327 u=root n=ansible | TASK [ansible-ntp : debian | installing packages] *******************************************************************************************************************************************************************************************
+2022-06-15 09:50:28,724 p=7327 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:50:28,867 p=7327 u=root n=ansible | TASK [ansible-ntp : debian | installing packages] *******************************************************************************************************************************************************************************************
+2022-06-15 09:50:28,868 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:30,553 p=7327 u=root n=ansible | TASK [ansible-ntp : debian | configuring ntp] ***********************************************************************************************************************************************************************************************
+2022-06-15 09:50:30,555 p=7327 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:50:30,831 p=7327 u=root n=ansible | TASK [ansible-ntp : debian | configuring ntp] ***********************************************************************************************************************************************************************************************
+2022-06-15 09:50:30,832 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:32,571 p=7327 u=root n=ansible | TASK [ansible-etc-hosts : main | updating /etc/hosts (localhost)] ***************************************************************************************************************************************************************************
+2022-06-15 09:50:32,573 p=7327 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:50:32,827 p=7327 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for zfs-node2
+2022-06-15 09:50:32,899 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:32,958 p=7327 u=root n=ansible | TASK [drbd : What is my inventory_hostname] *************************************************************************************************************************************************************************************************
+2022-06-15 09:50:32,958 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:33,006 p=7327 u=root n=ansible | TASK [drbd : What is my ansible_hostname] ***************************************************************************************************************************************************************************************************
+2022-06-15 09:50:33,007 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:33,673 p=7327 u=root n=ansible | TASK [drbd : Createerr] *********************************************************************************************************************************************************************************************************************
+2022-06-15 09:50:33,674 p=7327 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:50:33,733 p=7327 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/debian.yml for zfs-node1
+2022-06-15 09:50:33,939 p=7327 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-15 09:50:33,940 p=7327 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:50:34,945 p=7327 u=root n=ansible | TASK [drbd : debian | Installing drbd9-utils] ***********************************************************************************************************************************************************************************************
+2022-06-15 09:50:34,945 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:35,028 p=7327 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-15 09:50:35,029 p=7327 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:50:36,089 p=7327 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-15 09:50:36,090 p=7327 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:50:36,148 p=7327 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for zfs-node2
+2022-06-15 09:50:36,199 p=7327 u=root n=ansible | TASK [drbd : debian | Installing Heartbeat Package] *****************************************************************************************************************************************************************************************
+2022-06-15 09:50:36,199 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:36,867 p=7327 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-15 09:50:36,868 p=7327 u=root n=ansible | ok: [zfs-node2] => (item=None)
+2022-06-15 09:50:36,953 p=7327 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for zfs-node2
+2022-06-15 09:50:37,465 p=7327 u=root n=ansible | TASK [drbd : debian | Installing Parted] ****************************************************************************************************************************************************************************************************
+2022-06-15 09:50:37,466 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:37,501 p=7327 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/disks.yml for zfs-node1
+2022-06-15 09:50:37,764 p=7327 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-15 09:50:37,765 p=7327 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:50:38,104 p=7327 u=root n=ansible | TASK [drbd : disks | Partitioning Disks] ****************************************************************************************************************************************************************************************************
+2022-06-15 09:50:38,111 p=7327 u=root n=ansible | ok: [zfs-node1] => (item=None)
+2022-06-15 09:50:38,192 p=7327 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/heartbeat.yml for zfs-node1
+2022-06-15 09:50:38,247 p=7327 u=root n=ansible | TASK [drbd : What is my inventory_hostname] *************************************************************************************************************************************************************************************************
+2022-06-15 09:50:38,248 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:38,299 p=7327 u=root n=ansible | TASK [drbd : What is my ansible_hostname] ***************************************************************************************************************************************************************************************************
+2022-06-15 09:50:38,300 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:38,750 p=7327 u=root n=ansible | TASK [drbd : heartbeat | Checking For Existing Heartbeat Authkey] ***************************************************************************************************************************************************************************
+2022-06-15 09:50:38,751 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:39,240 p=7327 u=root n=ansible | TASK [drbd : heartbeat | Creating Heartbeat Authkey On Master] ******************************************************************************************************************************************************************************
+2022-06-15 09:50:39,241 p=7327 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:50:39,295 p=7327 u=root n=ansible | TASK [drbd : heartbeat | Setting Heartbeat Authkey On Master] *******************************************************************************************************************************************************************************
+2022-06-15 09:50:39,295 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:39,356 p=7327 u=root n=ansible | TASK [drbd : heartbeat | Setting Heartbeat Authkey On Master] *******************************************************************************************************************************************************************************
+2022-06-15 09:50:39,357 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:39,702 p=7327 u=root n=ansible | TASK [drbd : heartbeat | Configuring Heartbeat] *********************************************************************************************************************************************************************************************
+2022-06-15 09:50:39,704 p=7327 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:50:41,282 p=7327 u=root n=ansible | TASK [drbd : heartbeat | Configuring Heartbeat Resources] ***********************************************************************************************************************************************************************************
+2022-06-15 09:50:41,282 p=7327 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:50:41,337 p=7327 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/config.yml for zfs-node2
+2022-06-15 09:50:41,580 p=7327 u=root n=ansible | TASK [drbd : heartbeat | Configuring Heartbeat Authkey] *************************************************************************************************************************************************************************************
+2022-06-15 09:50:41,582 p=7327 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:50:42,998 p=7327 u=root n=ansible | TASK [drbd : config | Configuring DRBD] *****************************************************************************************************************************************************************************************************
+2022-06-15 09:50:42,999 p=7327 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:50:43,179 p=7327 u=root n=ansible | TASK [drbd : heartbeat | Configuring Heartbeat] *********************************************************************************************************************************************************************************************
+2022-06-15 09:50:43,179 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:43,627 p=7327 u=root n=ansible | TASK [drbd : config | Loading DRBD Kernel Module] *******************************************************************************************************************************************************************************************
+2022-06-15 09:50:43,628 p=7327 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:50:44,135 p=7327 u=root n=ansible | TASK [drbd : config | Checking DRBD Mirror Devices Creation Status] *************************************************************************************************************************************************************************
+2022-06-15 09:50:44,135 p=7327 u=root n=ansible | ok: [zfs-node2] => (item=None)
+2022-06-15 09:50:44,137 p=7327 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:50:44,778 p=7327 u=root n=ansible | TASK [drbd : heartbeat | Configuring Heartbeat Resources] ***********************************************************************************************************************************************************************************
+2022-06-15 09:50:44,778 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:44,827 p=7327 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/config.yml for zfs-node1
+2022-06-15 09:50:45,187 p=7327 u=root n=ansible | TASK [drbd : config | Creating DRBD Mountpoint] *********************************************************************************************************************************************************************************************
+2022-06-15 09:50:45,187 p=7327 u=root n=ansible | ok: [zfs-node2] => (item=None)
+2022-06-15 09:50:45,837 p=7327 u=root n=ansible | TASK [drbd : config | Updating /etc/fstab Mounts] *******************************************************************************************************************************************************************************************
+2022-06-15 09:50:45,837 p=7327 u=root n=ansible | ok: [zfs-node2] => (item=None)
+2022-06-15 09:50:45,878 p=7327 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/services.yml for zfs-node2
+2022-06-15 09:50:46,550 p=7327 u=root n=ansible | TASK [drbd : config | Configuring DRBD] *****************************************************************************************************************************************************************************************************
+2022-06-15 09:50:46,551 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:46,868 p=7327 u=root n=ansible | TASK [drbd : services | Ensuring drbd Service Is Enabled On Boot] ***************************************************************************************************************************************************************************
+2022-06-15 09:50:46,869 p=7327 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:50:47,049 p=7327 u=root n=ansible | TASK [drbd : config | Loading DRBD Kernel Module] *******************************************************************************************************************************************************************************************
+2022-06-15 09:50:47,050 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:47,500 p=7327 u=root n=ansible | TASK [drbd : services | Ensuring heartbeat Service Is Enabled On Boot] **********************************************************************************************************************************************************************
+2022-06-15 09:50:47,501 p=7327 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:50:47,582 p=7327 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for zfs-node2
+2022-06-15 09:50:47,601 p=7327 u=root n=ansible | TASK [drbd : config | Checking DRBD Mirror Devices Creation Status] *************************************************************************************************************************************************************************
+2022-06-15 09:50:47,601 p=7327 u=root n=ansible | ok: [zfs-node1] => (item=None)
+2022-06-15 09:50:47,602 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:48,429 p=7327 u=root n=ansible | TASK [drbd : config | Creating DRBD Mountpoint] *********************************************************************************************************************************************************************************************
+2022-06-15 09:50:48,430 p=7327 u=root n=ansible | ok: [zfs-node1] => (item=None)
+2022-06-15 09:50:48,688 p=7327 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-15 09:50:48,689 p=7327 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:50:48,921 p=7327 u=root n=ansible | TASK [drbd : config | Updating /etc/fstab Mounts] *******************************************************************************************************************************************************************************************
+2022-06-15 09:50:48,923 p=7327 u=root n=ansible | ok: [zfs-node1] => (item=None)
+2022-06-15 09:50:48,975 p=7327 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/services.yml for zfs-node1
+2022-06-15 09:50:49,644 p=7327 u=root n=ansible | TASK [drbd : services | Ensuring drbd Service Is Enabled On Boot] ***************************************************************************************************************************************************************************
+2022-06-15 09:50:49,644 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:50,259 p=7327 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-15 09:50:50,262 p=7327 u=root n=ansible | ok: [zfs-node2]
+2022-06-15 09:50:50,293 p=7327 u=root n=ansible | TASK [drbd : services | Ensuring heartbeat Service Is Enabled On Boot] **********************************************************************************************************************************************************************
+2022-06-15 09:50:50,294 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:50,346 p=7327 u=root n=ansible | included: /opt/Ansible_Ubuntu_Admin_crypt_root/roles/targets/drbd/tasks/ntp.yml for zfs-node1
+2022-06-15 09:50:51,516 p=7327 u=root n=ansible | TASK [drbd : debian | installing packages] **************************************************************************************************************************************************************************************************
+2022-06-15 09:50:51,516 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:50:53,034 p=7327 u=root n=ansible | TASK [drbd : debian | configuring ntp] ******************************************************************************************************************************************************************************************************
+2022-06-15 09:50:53,035 p=7327 u=root n=ansible | ok: [zfs-node1]
+2022-06-15 09:51:29,677 p=7327 u=root n=ansible | RUNNING HANDLER [drbd : restart heartbeat] **************************************************************************************************************************************************************************************************
+2022-06-15 09:51:29,678 p=7327 u=root n=ansible | changed: [zfs-node1]
+2022-06-15 09:51:29,693 p=7327 u=root n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2022-06-15 09:51:29,694 p=7327 u=root n=ansible | zfs-node1                  : ok=37   changed=4    unreachable=0    failed=0    skipped=9    rescued=0    ignored=0   
+2022-06-15 09:51:29,695 p=7327 u=root n=ansible | zfs-node2                  : ok=27   changed=0    unreachable=0    failed=0    skipped=18   rescued=0    ignored=0   
