@@ -1,0 +1,27 @@
+---
+- hosts: targets
+#  connection: ssh
+  become: true
+  vars:
+    etc_hosts_add_all_hosts: true
+    pri_domain_name: test.local
+  roles:
+#    - role: server-general
+    - role: ansible-apt-sources
+    - role: ansible-motd
+    - role: ansible-ntp
+    - role: ansible-timezone
+      become: true
+    - role: ansible-etc-hosts
+    - drbd
+    - role: ansible-nginx
+#  tasks:
+#    - name: generate SSH key "{{ssh_key_filename}}"
+#      user:
+#        name: "{{ansible_user}}"
+#        generate_ssh_key: yes
+#        ssh_key_type: rsa
+#        ssh_key_bits: 4096
+#        ssh_key_file: .ssh/{{ssh_key_filename}}
+#        ssh_key_passphrase: "{{ssh_passphrase}}"
+#        force: no
